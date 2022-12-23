@@ -1,1 +1,1 @@
-# Astar-PairEnd
+# Astarix-PairEnd
