@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<queue>
+#include<set>
 using namespace std;
 struct DNA{
     string seqId;
@@ -34,11 +35,15 @@ struct Node{
         refpos=_refpos;
         cost=_cost;
     }
+	void output (){
+		cout << "querypos==" << querypos << " refpos==" << refpos << " cost==" << cost << "\n" ;
+	}
     bool operator< (const Node& cell) const{
         return cost>cell.cost;
     }
 };
 int Dijkstra(DNA &query,DNA &Ref){
+	set < pair < int , int > > visited ;
     int n, m;
     n=query.size();
     m=Ref.size();
@@ -46,10 +51,21 @@ int Dijkstra(DNA &query,DNA &Ref){
     for (int i=0; i<=m; ++i)
         q.push(Node(0,i,0));
     Node w,nb;
+	pair < int , int > curcell;
     char c1,c2;
+	int mcost = -1 ;
+	cout << "Start initialization works\n" ;
     while (!q.empty()){
         w=q.top();
         q.pop();
+		/*if ( w.cost > mcost ){
+			mcost = w.cost ;
+			w . output () ;
+		}*/
+		curcell = { w.querypos , w . refpos } ;
+		if ( visited . find ( curcell ) == visited . end () )
+			visited . insert ( curcell ) ;
+		else continue;
         if (w.querypos==n)break;
         if (w.refpos<m){
             nb=Node(w.querypos,w.refpos+1,w.cost+1);
@@ -68,17 +84,20 @@ int Dijkstra(DNA &query,DNA &Ref){
             q.push(nb);
         }
     }
+	//q.clean();
+	while ( ! q . empty () )
+		q . pop () ;
     return w.cost;
 }
 int main(){
     DNA Ref, query;
     int N;
-    cout <<"Enter reference:\n";
+    //cout <<"Enter reference:\n";
     Ref.input();
-    cout << "Enter number of queries\n";
+    //cout << "Enter number of queries\n";
     cin >> N;
     for (int i=0;i<N;++i){
-        cout << "Enter query:\n";
+        //cout << "Enter query:\n";
         query.input();
         cout << "Minimum edit distance:"<<Dijkstra(query,Ref) << endl;
     }
