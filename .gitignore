@@ -3,5 +3,6 @@ input.txt
 make
 .vscode/c_cpp_properties.json
 output.txt
-dpalignment.exe
+dijkstra.exe
 .vscode/c_cpp_properties.json
+dpalignment.exe

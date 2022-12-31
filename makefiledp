@@ -1,0 +1,10 @@
+default: dijkstra
+
+dijkstra:
+	g++ dijkstra.cpp -o dijkstra.exe
+
+test:
+	./dijkstra.exe < input.txt > output.txt
+
+clean:
+	-rm -f dijkstra
