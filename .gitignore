@@ -1,8 +1,6 @@
 dijkstra.exe
-input.txt
-make
-.vscode/c_cpp_properties.json
-output.txt
-dijkstra.exe
-.vscode/c_cpp_properties.json
 dpalignment.exe
+main.exe
+input.txt
+output.txt
+.vscode/c_cpp_properties.json
