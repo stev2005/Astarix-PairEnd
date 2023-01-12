@@ -1,9 +1,9 @@
 #ifndef DPALIGNMENT_H
 #define DPALIGNMENT_H
 #include<bits/stdc++.h>
-#include "DNA.h"
+//#include "DNA.h"
 using namespace std;
-int minimum_edit_distance_dp ( vector < vector <int> > &dp , DNA &query,DNA &Ref ) {
+int minimum_edit_distance_dp ( vector < vector <int> > &dp , string &query,string &Ref ) {
 	int n , m ;
 	char c1 , c2 ;
 	n = query . size() ;
@@ -15,8 +15,10 @@ int minimum_edit_distance_dp ( vector < vector <int> > &dp , DNA &query,DNA &Ref
 		for ( int j = 1 ; j <= m ; ++j ){
 			dp [ i ] [ j ]= dp [ i - 1 ] [ j ] + 1 ;
 			dp [ i ] [ j ]= min ( dp [ i ] [ j ] , dp [ i ] [ j - 1 ] + 1 ) ;
-			c1 = query . get_base_at_pos ( i ) ;
-			c2 = Ref . get_base_at_pos  ( j ) ;
+			//c1 = query . get_base_at_pos ( i ) ;
+			c1 = query [ i - 1 ] ;
+			//c2 = Ref . get_base_at_pos  ( j ) ;
+			c2 = query [ j - 1 ] ;
 			if ( c1 == c2 )
 				dp [ i ] [ j ] = min ( dp [ i ] [ j ] , dp [ i - 1 ] [ j - 1 ] ) ;
 			else dp [ i ] [ j ] = min ( dp [ i ] [ j ] , dp [ i - 1 ] [ j - 1 ] + 1 ) ;

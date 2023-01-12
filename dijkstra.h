@@ -1,7 +1,7 @@
 #ifndef DIJKSTRA_H
 #define DIJKSTRA_H
 #include <bits/stdc++.h>
-#include "DNA.h"
+//#include "DNA.h"
 using namespace std;
 
 struct Node{
@@ -20,7 +20,7 @@ struct Node{
     }
 };
 
-int minimum_edit_distance_dijkstra(DNA &query,DNA &Ref){
+int minimum_edit_distance_dijkstra(string &query,string &Ref){
 	set < pair < int , int > > visited ;
     int n, m;
     n=query.size();
@@ -45,8 +45,10 @@ int minimum_edit_distance_dijkstra(DNA &query,DNA &Ref){
             q.push(nb);
         }
         if (w.querypos<n&&w.refpos<m){
-            c1=Ref.get_base_at_pos(w.refpos+1);
-            c2=query.get_base_at_pos(w.querypos+1);
+            //c1=Ref.get_base_at_pos(w.refpos+1);
+			c1 = Ref [ w.refpos ] ;
+            //c2=query.get_base_at_pos(w.querypos+1);
+			c2 = query [ w.querypos ] ;
             //nb=Node(w.querypos+1,w.refpos+1,w.cost+(c1==c2)?1:0);
             nb=Node(w.querypos+1,w.refpos+1,w.cost);
             if(c1!=c2)++nb.cost;
