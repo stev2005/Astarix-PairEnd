@@ -1,0 +1,21 @@
+dp edit distance == 32
+dijkstra edit distance == 32
+
+dp edit distance == 90
+dijkstra edit distance == 90
+
+dp edit distance == 243
+dijkstra edit distance == 243
+
+dp edit distance == 179
+dijkstra edit distance == 179
+
+dp edit distance == 154
+dijkstra edit distance == 154
+
+dp edit distance == 23
+dijkstra edit distance == 23
+
+dp edit distance == 195
+dijkstra edit distance == 195
+

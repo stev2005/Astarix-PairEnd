@@ -12,16 +12,16 @@ struct Node{
         refpos=_refpos;
         cost=_cost;
     }
-	void output (){
-		cout << "querypos==" << querypos << " refpos==" << refpos << " cost==" << cost << "\n" ;
-	}
+    void output (){
+        cout << "querypos==" << querypos << " refpos==" << refpos << " cost==" << cost << "\n" ;
+    }
     bool operator< (const Node& cell) const{
         return cost>cell.cost;
     }
 };
 
 int minimum_edit_distance_dijkstra(string &query,string &Ref){
-	set < pair < int , int > > visited ;
+    set < pair < int , int > > visited ;
     int n, m;
     n=query.size();
     m=Ref.size();
@@ -29,27 +29,23 @@ int minimum_edit_distance_dijkstra(string &query,string &Ref){
     for (int i=0; i<=m; ++i)
         q.push(Node(0,i,0));
     Node w,nb;
-	pair < int , int > curcell;
+    pair < int , int > curcell;
     char c1,c2;
-	int mcost = -1 ;
     while (!q.empty()){
         w=q.top();
         q.pop();
-		curcell = { w.querypos , w . refpos } ;
-		if ( visited . find ( curcell ) == visited . end () )
-			visited . insert ( curcell ) ;
-		else continue;
+        curcell = { w.querypos , w . refpos } ;
+        if ( visited . find ( curcell ) == visited . end () )
+            visited . insert ( curcell ) ;
+        else continue;
         if (w.querypos==n)break;
         if (w.refpos<m){
             nb=Node(w.querypos,w.refpos+1,w.cost+1);
             q.push(nb);
         }
         if (w.querypos<n&&w.refpos<m){
-            //c1=Ref.get_base_at_pos(w.refpos+1);
-			c1 = Ref [ w.refpos ] ;
-            //c2=query.get_base_at_pos(w.querypos+1);
-			c2 = query [ w.querypos ] ;
-            //nb=Node(w.querypos+1,w.refpos+1,w.cost+(c1==c2)?1:0);
+            c1 = Ref [ w.refpos ] ;
+            c2 = query [ w.querypos ] ;
             nb=Node(w.querypos+1,w.refpos+1,w.cost);
             if(c1!=c2)++nb.cost;
             q.push(nb);
@@ -59,9 +55,8 @@ int minimum_edit_distance_dijkstra(string &query,string &Ref){
             q.push(nb);
         }
     }
-	//q.clean();
-	while ( ! q . empty () )
-		q . pop () ;
+    while ( ! q . empty () )
+        q . pop () ;
     return w.cost;
 }
 
