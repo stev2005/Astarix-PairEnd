@@ -1,35 +1,35 @@
 Explored states dp : 35328
 dp edit distance == 32
-Explored states dijkstra: 31583
+Explored states dijkstra: 30879
 dijkstra edit distance == 32
 
 Explored states dp : 99840
 dp edit distance == 90
-Explored states dijkstra: 88913
+Explored states dijkstra: 88121
 dijkstra edit distance == 90
 
 Explored states dp : 259072
 dp edit distance == 243
-Explored states dijkstra: 215512
+Explored states dijkstra: 214858
 dijkstra edit distance == 243
 
 Explored states dp : 192000
 dp edit distance == 179
-Explored states dijkstra: 167208
+Explored states dijkstra: 166518
 dijkstra edit distance == 179
 
 Explored states dp : 168448
 dp edit distance == 154
-Explored states dijkstra: 145615
+Explored states dijkstra: 144849
 dijkstra edit distance == 154
 
 Explored states dp : 27648
 dp edit distance == 23
-Explored states dijkstra: 24359
+Explored states dijkstra: 23502
 dijkstra edit distance == 23
 
 Explored states dp : 206848
 dp edit distance == 195
-Explored states dijkstra: 177766
+Explored states dijkstra: 177059
 dijkstra edit distance == 195
 

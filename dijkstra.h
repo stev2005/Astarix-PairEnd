@@ -22,14 +22,14 @@ struct Node{
 
 int minimum_edit_distance_dijkstra(string &query,string &Ref){
     set < pair < int , int > > visited ;
-    set < pair < int , int > > explored;
+    //set < pair < int , int > > expanded;
     int n, m;
     n=query.size();
     m=Ref.size();
     priority_queue<Node>q;
     for (int i=0; i<=m; ++i){
         q.push(Node(0,i,0));
-        explored.insert({0,i});
+        //expanded.insert({0,i});
     }
     Node w,nb;
     pair < int , int > curcell;
@@ -45,7 +45,7 @@ int minimum_edit_distance_dijkstra(string &query,string &Ref){
         if (w.refpos<m){
             nb=Node(w.querypos,w.refpos+1,w.cost+1);
             q.push(nb);
-            explored.insert({nb.querypos,nb.refpos});
+            //expanded.insert({nb.querypos,nb.refpos});
         }
         if (w.querypos<n&&w.refpos<m){
             c1 = Ref [ w.refpos ] ;
@@ -53,17 +53,17 @@ int minimum_edit_distance_dijkstra(string &query,string &Ref){
             nb=Node(w.querypos+1,w.refpos+1,w.cost);
             if(c1!=c2)++nb.cost;
             q.push(nb);
-            explored.insert({nb.querypos,nb.refpos});
+            //expanded.insert({nb.querypos,nb.refpos});
         }
         if (w.querypos<n){
             nb=Node(w.querypos+1,w.refpos,w.cost+1);
             q.push(nb);
-            explored.insert({nb.querypos,nb.refpos});
+            //expanded.insert({nb.querypos,nb.refpos});
         }
     }
     while ( ! q . empty () )
         q . pop () ;
-    cout << "Explored states dijkstra: " << explored.size() << "\n" ;
+    cout << "Explored states dijkstra: " << visited.size() << "\n" ;
     return w.cost;
 }
 
