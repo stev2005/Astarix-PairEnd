@@ -4,3 +4,4 @@ main.exe
 input.txt
 output.txt
 .vscode/c_cpp_properties.json
+dijkstratrie.h
