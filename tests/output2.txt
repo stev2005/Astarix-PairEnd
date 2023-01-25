@@ -1,30 +1,65 @@
-Explored states dp : 3584
-dp edit distance == 4
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
+AACCTGGA 21
+AATATCGG 13
+ACGAACCG 20
+ACGTGTGT 11
+ACTGACCT 2
+AGTGCTTG 22
+ATCGGAAG 9
+ATGGTGGG 7
+CCAATATA 14
+CCCGGGAC 31
+GAACCCCG 19
+GAGAAGCC 16
+GATCATCA 5
+GCATCGGC 26
+GCGCAATG 17
+GCTACATC 1
+GCTTGGGC 4
+GGTGCTGA 6
+GTATCTCC 8
+GTCGACGA 25
+GTGTCAGT 27
+GTTGCTAA 28
+TACAGCGT 15
+TATCGGTG 24
+TCAGAACC 12
+TCATTTAC 3
+TCGTCCAT 18
+TGAGGGCC 30
+TGATGCTC 29
+TGATTCGG 10
+TGCCTCTA 0
+TTGTCCAG 23
+
 Explored states dijkstra: 2090
 dijkstra edit distance == 4
+Expanded states: 2114
+dijkstra with trie edit distance == 7
 
-Explored states dp : 26112
-dp edit distance == 45
 Explored states dijkstra: 22078
 dijkstra edit distance == 45
+Expanded states: 20256
+dijkstra with trie edit distance == 94
 
-Explored states dp : 52736
-dp edit distance == 97
 Explored states dijkstra: 43932
 dijkstra edit distance == 97
+Expanded states: 41464
+dijkstra with trie edit distance == 198
 
-Explored states dp : 24576
-dp edit distance == 44
 Explored states dijkstra: 20921
 dijkstra edit distance == 44
+Expanded states: 19020
+dijkstra with trie edit distance == 88
 
-Explored states dp : 53760
-dp edit distance == 101
 Explored states dijkstra: 45909
 dijkstra edit distance == 101
+Expanded states: 42276
+dijkstra with trie edit distance == 202
 
-Explored states dp : 40960
-dp edit distance == 79
 Explored states dijkstra: 36017
 dijkstra edit distance == 79
+Expanded states: 32078
+dijkstra with trie edit distance == 152
 
