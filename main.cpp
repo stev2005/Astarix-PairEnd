@@ -17,10 +17,12 @@ int main(){
     //init_dp_table ( dp , ref ) ;
     vector<int>last,prevpos;
     Trie *T=new Trie();
+    //cout<<"here1\n";
     init_seeds(ref,T,last,prevpos);
+    /*cout<<"here2\n";
     print_out_last_prevpos(last,prevpos);
     printout_seeds(T,"");
-    cout<<"\n";
+    cout<<"\n";*/
     for ( int testcase=0 ; testcase < testcases ; ++ testcase , cout << "\n" ) {
         //query . input();
         cin >> query ;

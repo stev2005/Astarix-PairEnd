@@ -67,23 +67,21 @@ struct Expanded{
 inline void init_seeds(string &ref,Trie *&T,vector<int>&last,vector<int>&prevpos){
     int m=ref.size();
     int len=log2(m);
+    int sz;
     prevpos.resize(m,-1);
-    last.clear();
+    last.resize(m,-1);
     int cntseed=0,prevcnt;
     string w;
     for(int i=0;i<m;i+=len){
         w=ref.substr(i,len);
+        sz=w.size();
         prevcnt=cntseed;
         insert_seed(T,w,0,cntseed);
-        if(prevcnt==cntseed){
-            last.push_back(-1);
+        prevpos[i+sz-1]=last[cntseed];
+        last[cntseed]=i+sz-1;
+        if(prevcnt==cntseed)
             ++cntseed;
-        }
-        else{
-            prevpos[i+len]=last[cntseed];
-            cntseed=prevcnt;
-        }
-        last[cntseed]=i+len;
+        else cntseed=prevcnt;
     }
 }
 
@@ -136,8 +134,6 @@ int minimum_edit_distance_dijkstra_tri(string &query,string &ref,Trie *T,vector<
             else continue;
             bool leaf=true;
             for(int i=0;i<4;++i){
-                nb=Nodetr(w.querypos+1,w.u,w.cost+1);
-                q.push(nb);
                 if(w.u->child[i]==nullptr)
                     continue;
                 leaf=false;
@@ -147,10 +143,17 @@ int minimum_edit_distance_dijkstra_tri(string &query,string &ref,Trie *T,vector<
                 q.push(nb);
                 nb=Nodetr(w.querypos,w.u->child[i],w.cost+1);
                 q.push(nb);
+                nb=Nodetr(w.querypos+1,w.u,w.cost+1);
+                q.push(nb);
+                if(w.querypos==0){
+                    nb=Nodetr(w.querypos,w.u->child[i],w.cost);
+                    q.push(nb);
+                    ///moving the start position
+                }
             }
             if(leaf){
                 for(int i=last[w.u->num];i!=-1;i=prevpos[i]){
-                    nb=Nodetr(w.querypos,i,w.cost);
+                    nb=Nodetr(w.querypos,i+1,w.cost);
                     q.push(nb);
                 }
             }

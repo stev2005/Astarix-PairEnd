@@ -1,51 +1,35 @@
--1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
--1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
-AAAGCA 2
-AACTCA 8
-ATCAAA 4
-ATCCAT 6
-ATCTAG 11
-CAGTTT 9
-CATGCT 12
-GACTCG 10
-GATTTG 0
-GGGTTC 1
-GTATCG 3
-TAGTAA 5
-TTGTTC 7
-
 Explored states dijkstra: 700
 dijkstra edit distance == 4
-Expanded states: 652
-dijkstra with trie edit distance == 7
+Expanded states: 1045
+dijkstra with trie edit distance == 4
 
 Explored states dijkstra: 2066
 dijkstra edit distance == 13
-Expanded states: 1956
-dijkstra with trie edit distance == 27
+Expanded states: 3093
+dijkstra with trie edit distance == 13
 
 Explored states dijkstra: 2464
 dijkstra edit distance == 19
-Expanded states: 2194
-dijkstra with trie edit distance == 31
+Expanded states: 3744
+dijkstra with trie edit distance == 19
 
 Explored states dijkstra: 1461
 dijkstra edit distance == 9
-Expanded states: 1631
-dijkstra with trie edit distance == 22
+Expanded states: 2286
+dijkstra with trie edit distance == 9
 
 Explored states dijkstra: 159
 dijkstra edit distance == 0
-Expanded states: 3652
-dijkstra with trie edit distance == 54
+Expanded states: 159
+dijkstra with trie edit distance == 0
 
 Explored states dijkstra: 3710
 dijkstra edit distance == 25
-Expanded states: 3527
-dijkstra with trie edit distance == 52
+Expanded states: 5474
+dijkstra with trie edit distance == 25
 
 Explored states dijkstra: 4145
 dijkstra edit distance == 40
-Expanded states: 3685
-dijkstra with trie edit distance == 57
+Expanded states: 6552
+dijkstra with trie edit distance == 40
 

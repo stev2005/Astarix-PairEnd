@@ -1,95 +1,35 @@
--1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
--1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 
-AAATGAGG 56
-AAGCAACCC 41
-AAGGACTCA 9
-ACACCTCAT 6
-ACCACTTTT 27
-ACCCCCACG 51
-AGAGCGAGT 28
-AGAGTTCCC 43
-AGCCCCTGC 15
-AGGGTGTTG 19
-ATATATACC 22
-ATGCTCGGT 4
-CAAATTGAC 50
-CAAGCGACC 54
-CACGAAGCT 53
-CAGGAGAAT 39
-CATCGTGCG 44
-CATTACTGT 48
-CATTGGGTA 11
-CCATGTGGC 49
-CCCGGATAC 2
-CCCTATTCA 21
-CGGATCGCT 33
-CTACTCCGG 32
-CTAGAAATA 23
-CTATGCTCC 35
-CTCTCATGA 1
-CTCTGTTGA 0
-CTGTGTCCA 36
-CTGTTCCGA 55
-GCAAGATCA 3
-GCGCTGCTA 25
-GCTAGGAGA 20
-GGTGAAGTC 46
-GGTTTTGGC 26
-GTAAACCAT 18
-GTAATCAAC 24
-GTACAGATT 12
-GTCAGTCAC 34
-GTCGCGCTG 37
-GTTGATGTG 30
-GTTTAAAAC 38
-TAATGCTAG 47
-TACGATGGA 29
-TATCACTTC 31
-TATCTGATT 17
-TCATGCTTT 10
-TCTATACAG 7
-TCTCGTCAT 16
-TGACCCAAC 14
-TGTGCAAGC 5
-TGTGCTGTC 40
-TTACTCGCT 13
-TTCAGTGTG 52
-TTCGGCTTC 45
-TTGCTTTTC 42
-TTGGTCACG 8
-
 Explored states dijkstra: 30879
 dijkstra edit distance == 32
-Expanded states: 25667
-dijkstra with trie edit distance == 60
+Expanded states: 45130
+dijkstra with trie edit distance == 32
 
 Explored states dijkstra: 88121
 dijkstra edit distance == 90
-Expanded states: 74683
-dijkstra with trie edit distance == 186
+Expanded states: 124924
+dijkstra with trie edit distance == 90
 
 Explored states dijkstra: 214858
 dijkstra edit distance == 243
-Expanded states: 195660
-dijkstra with trie edit distance == 497
+Expanded states: 309581
+dijkstra with trie edit distance == 243
 
 Explored states dijkstra: 166518
 dijkstra edit distance == 179
-Expanded states: 144701
-dijkstra with trie edit distance == 366
+Expanded states: 236770
+dijkstra with trie edit distance == 179
 
 Explored states dijkstra: 144849
 dijkstra edit distance == 154
-Expanded states: 126805
-dijkstra with trie edit distance == 320
+Expanded states: 205965
+dijkstra with trie edit distance == 154
 
 Explored states dijkstra: 23502
 dijkstra edit distance == 23
-Expanded states: 19831
-dijkstra with trie edit distance == 45
+Expanded states: 33892
+dijkstra with trie edit distance == 23
 
 Explored states dijkstra: 177059
 dijkstra edit distance == 195
-Expanded states: 155979
-dijkstra with trie edit distance == 395
+Expanded states: 252894
+dijkstra with trie edit distance == 195
 
