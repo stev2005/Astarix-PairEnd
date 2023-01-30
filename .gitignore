@@ -5,3 +5,4 @@ input.txt
 output.txt
 .vscode/c_cpp_properties.json
 TODO.txt
+Generated-tests/gen_test.exe
