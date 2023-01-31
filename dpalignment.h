@@ -34,7 +34,7 @@ int minimum_edit_distance_dp ( vector < vector <int> > &dp , string &query,strin
     int ans = dp [ n ] [ 0 ] ;
     for ( int i = 1 ; i <= m ; ++ i )
         ans = min ( ans , dp [ n ] [ i ] ) ;
-    cout << "Explored states dp : " << n*m << "\n" ;
+    //cout << "Explored states dp : " << n*m << "\n" ;
     return ans ;
 }
 

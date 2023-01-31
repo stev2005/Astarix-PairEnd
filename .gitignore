@@ -6,3 +6,14 @@ output.txt
 .vscode/c_cpp_properties.json
 TODO.txt
 Generated-tests/gen_test.exe
+testshand/output101.txt
+testshand/input102.in
+testshand/input101.in
+testshand/output101.txt
+dpalignment.h
+main.cpp
+makefile
+Generated-tests/gen_test.cpp
+Just-cmp-files/f1.txt
+Just-cmp-files/f2.txt
+Just-cmp-files/makecmp

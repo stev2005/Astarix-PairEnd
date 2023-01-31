@@ -11,7 +11,6 @@ string int_to_string(int num){
         num/=10;
     }
     return s;
-    
 }
 string genstring(int n){
     string s="";
@@ -45,7 +44,7 @@ void gentest(int test,int limit){
     }
     fout.close();
 }
-int main(){
+void purpose1(){
     srand(time(0));
     int numtests,limit;
     //cin>>numtests>>limit;
@@ -56,5 +55,25 @@ int main(){
     for(int test=1;test<=numtests;++test)
         gentest(test,limit);
     cout<<"End of the program\n";
+}
+void genoutputs(){
+    int numtests;
+    cin>>numtests;
+    string testname="";
+    string path="/root/serverexample/Astarix-PairEnd/tests/out/";
+    string target;
+    for(int test=1;test<=numtests;++test){
+        testname="output";
+        testname+=int_to_string(test);
+        testname+=".out";
+        target=path+testname;
+        fstream fout;
+        fout.open(target, ios_base::app);
+        fout.close();
+    }
+}
+int main(){
+    //purpose1();
+    genoutputs();
     return 0;
 }
