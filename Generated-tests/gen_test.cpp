@@ -22,12 +22,14 @@ string genstring(int n){
     return s;
 }
 void gentest(int test,int limit){
-    string testname="input";
+    string path="/root/serverexample/Astarix-PairEnd/tests/";
+    string testname="",  target;
     testname+=int_to_string(test);
-    testname+=".txt";
-    cout<<"testname: "<<testname<<endl;
+    testname+=".in";
+    //cout<<"testname: "<<testname<<endl;
+    target=path+testname;
     fstream fout;
-    fout.open(testname, ios_base::app);
+    fout.open(target, ios_base::app);
     //fout.open("input.txt");
     int n=rand()%limit+30;
     string ref=genstring(n);
@@ -60,11 +62,11 @@ void genoutputs(){
     int numtests;
     cin>>numtests;
     string testname="";
-    string path="/root/serverexample/Astarix-PairEnd/tests/out/";
+    string path="/root/serverexample/Astarix-PairEnd/tests/";
     string target;
     for(int test=1;test<=numtests;++test){
-        testname="output";
-        testname+=int_to_string(test);
+        //testname="output";
+        testname=int_to_string(test);
         testname+=".out";
         target=path+testname;
         fstream fout;

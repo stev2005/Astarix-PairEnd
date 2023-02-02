@@ -3,6 +3,33 @@ default: main
 main:
 	g++ main.cpp -o main.exe
 
+test:
+	for file in $$(ls tests); do \
+		ext="$${file##*.}"; \
+		if [ "$$ext" = "in" ]; then \
+			./main.exe <tests/$$file >output.out; \
+		else \
+			diff -q output.out tests/$$file; \
+		fi \
+	done
+	echo "Testing done"
+
+writeanswers:
+	for file in $$(ls tests); do\
+		ext="$${file##*.}"; \
+		#echo $$ext; \
+		if [ "$$ext" = "in" ]; then \
+			#echo "The value is in"; \
+			./main.exe <tests/$$file >output.out; \
+			#echo $$file; \
+			#cat $$file; \
+		else \
+			#echo "The value is out"; \
+			cp output.out tests/$$file; \
+			#echo "this is an out file"; \
+		fi \
+	done
+
 test1:
 	./main.exe < testshand/input101.in > testshand/output101.txt
 
@@ -31,18 +58,6 @@ alltests:
 		#echo $$file; \
 		./main.exe <tests/in/$$file >output.txt; \
 		cat output.txt; \
-	done
-
-writeanswersofalltests:
-	data="tests/in"
-	answ="tests/out"
-	#n=$${data[@]}
-	#n= $ ls | wc -l
-	n="$${#data[@]}"
-	for((i=0;i<n;++i)); do \
-		in="$${data[i]}"; \
-		out="$${answ[i]}"; \
-		./main.exe <in >out; \
 	done
 
 oldtests:

@@ -26,15 +26,20 @@ int main(){
     //cout<<"Waiting input data. Message from main.exe\n";
     cin >> ref ; 
     cin >> testcases ;
-    vector < vector < int > > dp ;
-    init_dp_table ( dp ,  ref ) ;
-    //vector<int>last, prevpos;
-    //Trie *T=new Trie();
+    ///Vital fo dp approach
+    //vector < vector < int > > dp ;
+    //init_dp_table ( dp ,  ref ) ;
+
+    /// Vital for Trie 
+    vector<int>last, prevpos;
+    Trie *T=new Trie();
     //cout<<"here1\n";
-    //init_kmers(ref, T, last, prevpos);
+    init_kmers(ref, T, last, prevpos);
+
     /*cout<<"here2\n";
     print_out_last_prevpos(last, prevpos);
     printout_kmers(T, "");
+
     cout<<"\n";*/
     /*string cdpath="/root/serverexample/Astarix-PairEnd/tests/out";
     string pathfileм
@@ -44,14 +49,14 @@ int main(){
         //query . input();
         cin >> query ;
         int rezult;
-        rezult = minimum_edit_distance_dp ( dp ,  query ,  ref ) ;
-        cout<<rezult<<"\n";
         /*rezult = minimum_edit_distance_dp ( dp ,  query ,  ref ) ;
-        cout << "dp edit distance == " << rezult << "\n" ;
-        rezult = minimum_edit_distance_dijkstra ( query ,  ref ) ;
-        cout << "dijkstra edit distance == " << rezult << "\n" ;
-        rezult=minimum_edit_distance_dijkstra_tri(query, ref, T, last, prevpos);
-        cout << "dijkstra with trie edit distance == " <<rezult << "\n";*/
+        cout<<rezult<<"\n";*/
+        /*rezult = minimum_edit_distance_dijkstra ( query ,  ref ) ;
+        cout<<rezult<<"\n";*/
+        //cout << "dijkstra edit distance == " << rezult << "\n" ;
+        rezult=minimum_edit_distance_dijkstra_trie(query, ref, T, last, prevpos);
+        cout << rezult << "\n";
+        //cout << "dijkstra with trie edit distance == " <<rezult << "\n";
     }
     //cout<<"End of the main program.\n";
     return 0;

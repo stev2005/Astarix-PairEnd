@@ -17,3 +17,4 @@ Generated-tests/gen_test.cpp
 Just-cmp-files/f1.txt
 Just-cmp-files/f2.txt
 Just-cmp-files/makecmp
+testout.txt

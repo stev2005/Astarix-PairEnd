@@ -31,7 +31,7 @@ struct Nodetr{
     }
 };
 
-int minimum_edit_distance_dijkstra_tri(string &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
+int minimum_edit_distance_dijkstra_trie(string &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
     priority_queue<Nodetr>q;
     Nodetr w(0, T, 0), nb;
     q.push(w);

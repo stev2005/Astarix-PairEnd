@@ -63,7 +63,7 @@ int minimum_edit_distance_dijkstra(string &query,string &Ref){
     }
     while ( ! q . empty () )
         q . pop () ;
-    cout << "Explored states dijkstra: " << visited.size() << "\n" ;
+    //cout << "Explored states dijkstra: " << visited.size() << "\n" ;
     return w.cost;
 }
 
