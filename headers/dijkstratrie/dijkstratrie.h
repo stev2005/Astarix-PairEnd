@@ -1,14 +1,14 @@
 #pragma once
 
-#include "header.h"
+#include "../header.h"
 #include <bits/stdc++.h>
-#include "trie.h"
+#include "../trie.h"
 using namespace std;
 
 struct Nodetr{
     int querypos, refpos, cost;
     Trie *u;
-    bool not_in_trei;
+    //bool not_in_trei;
 
     Nodetr(){}
     Nodetr(int _querypos, int _refpos, int _cost){
@@ -16,14 +16,14 @@ struct Nodetr{
         refpos=_refpos;
         cost=_cost;
         u=nullptr;
-        not_in_trei=true;
+        //not_in_trei=true;
     }
     Nodetr(int _querypos, Trie *_u, int _cost){
         querypos=_querypos;
         u=_u;
         refpos=-1;
         cost=_cost;
-        not_in_trei=false;
+        //not_in_trei=false;
     }
 
     bool operator<(const Nodetr &state)const{
@@ -31,8 +31,39 @@ struct Nodetr{
     }
 };
 
+struct Expanded{
+    int querypos, refpos, cost;
+    Trie *u;
+    //bool not_in_trei;
+
+    Expanded(){}
+    Expanded(int _querypos, int _refpos){
+        querypos=_querypos;
+        refpos=_refpos;
+        u=nullptr;
+        //not_in_trei=true;
+    }
+    Expanded(int _querypos, Trie *_u){
+        querypos=_querypos;
+        u=_u;
+        refpos=-1;
+        //not_in_trei=false;
+    }
+
+    bool operator<(const Expanded &state)const{
+        if (querypos == state.querypos){
+            if (u == state.u)///both are NULL
+                return refpos<state.refpos;
+            return u<state.u;
+        }
+        return querypos < state.querypos;
+    }
+};
+
 int minimum_edit_distance_dijkstra_trie(string &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
     priority_queue<Nodetr>q;
+    set <Expanded> visited;
+    Expanded cur_state;
     Nodetr w(0, T, 0), nb;
     q.push(w);
     int n=query.size(), m=ref.size();
@@ -41,7 +72,12 @@ int minimum_edit_distance_dijkstra_trie(string &query, string &ref, Trie *T, vec
         w=q.top();
         q.pop();
         if(w.querypos==n)break;
-        if(w.not_in_trei){
+        //if(w.not_in_trei){
+        if(w.u==nullptr){
+            cur_state=Expanded(w.querypos,w.refpos);
+            if(visited.find(cur_state)==visited.end())
+                visited.insert(cur_state);
+            else continue;
             if (w.refpos<m){
                 nb=Nodetr(w.querypos, w.refpos+1, w.cost+1);
                 q.push(nb);
@@ -59,6 +95,10 @@ int minimum_edit_distance_dijkstra_trie(string &query, string &ref, Trie *T, vec
             }
         }
         else{
+            cur_state=Expanded(w.querypos,w.u);
+            if(visited.find(cur_state)==visited.end())
+                visited.insert(cur_state);
+            else continue;
             bool leaf=true;
             for(int i=0;i<4;++i){
                 if(w.u->child[i]==nullptr)
