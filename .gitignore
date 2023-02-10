@@ -19,3 +19,4 @@ Just-cmp-files/f2.txt
 Just-cmp-files/makecmp
 testout.txt
 generated-tests/gen_test.exe
+generate_paired-end_tests/testgen.exe
