@@ -41,7 +41,7 @@ struct Expanded{
         rpos= _rpos;
     }
 
-    bool operator<(const Expanded &state){
+    bool operator<(const Expanded &state)const{
         if(qpos == state.qpos){
             if(lpos == state.lpos)
                 return rpos<state.rpos;
@@ -52,19 +52,19 @@ struct Expanded{
 };
 
 int mininum_edit_distance_pairedend(pair< string, string> &query, string &ref){
-    string left = queyry.first;
+    string left = query.first;
     string right = query.second;
     priority_queue <Nodep> q;
     set <Expanded> visited;
-    node w,nb;
+    Nodep w, nb;
     Expanded state;
     int n= left.size();
     int m= ref.size();
-    for(int i=0;i<m;++i)
-        for(int j=0;j<m;++j)
+    for (int i=0;i<m;++i)
+        for (int j=0;j<m;++j)
             q.push(Nodep(0,i,j,0));
-    while(!q.empty()){
-        w=q.top();
+    while (!q.empty()){
+        w= q.top();
         q.pop();
         state= Expanded(w.qpos,w.lpos,w.rpos);
         if(visited.find(state) == visited.end())
@@ -73,8 +73,8 @@ int mininum_edit_distance_pairedend(pair< string, string> &query, string &ref){
         if(w.qpos == n)
             break;
         ///first case
-        if(/*w.qpos<n*/ && w.lpos<m && w.rpos<m){
-            nb=Nodep(w.qpos+1, w.lpos+1, w.rpos+1, w.cosst);
+        if(/*w.qpos<n &&*/ w.lpos<m && w.rpos<m){
+            nb=Nodep(w.qpos+1, w.lpos+1, w.rpos+1, w.cost);
             if(left[w.qpos] != ref[w.lpos])
                 ++nb.cost;
             if(right[w.qpos] != ref[w.rpos])
@@ -111,5 +111,6 @@ int mininum_edit_distance_pairedend(pair< string, string> &query, string &ref){
             q.push(nb);
         }
     }
+    //cout<<"end of the dijkstra\n";
     return w.cost;
 }

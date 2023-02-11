@@ -30,6 +30,30 @@ writeanswers:
 		fi \
 	done
 
+writeanswerspe:
+	dir="tests-paired-end"
+	for file in $$(ls tests-paired-end); do\
+		ext="$${file##*.}"; \
+		echo tests-paired-end/$$file; \
+		echo $$ext; \
+		if [ "$$ext" = "in" ]; then \
+			./main.exe < tests-paired-end/$$file >output.out; \
+		else \
+			cp output.out tests-paired-end/$$file; \
+		fi \
+	done
+
+ deletion:
+	for file in $$(ls tests-paired-end); do\
+		ext="$${file##*.}"; \
+		echo $$ext; \
+		if [ "$$ext" = "in "]; then \
+			echo $$ext; \
+		else \
+			rm tests-paired-end/$$file; \
+		fi \
+	done
+
 printfilesnames:
 	for file in $$(ls /root/serverexample/Astarix-PairEnd/tests/in); do \
 		echo $$file; \

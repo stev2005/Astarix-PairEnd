@@ -53,7 +53,7 @@ void gentests(){
             fout<<query<<endl;
         }
         fout.close();
-        filename=int_to_string(test)+"sol";
+        filename=int_to_string(test)+".sol";
         target=path+filename;
         fout.open(target, ios_base::app);
         fout.close();
