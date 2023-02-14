@@ -8,14 +8,24 @@ struct Trie{
     Trie *child[4];
     int num;
     Trie(){
-        for(int i=0;i<4;++i)
+        for (int i = 0; i < 4; ++i)
             child[i]=nullptr;
         num=-1;
     }
+    
+    bool is_leaf(){
+        for (int i = 0; i < 4; ++i)
+            if (child[i] != nullptr)
+                return false;
+        return true;
+    }
+
 };
 
+
+
 void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
-    if ( pos == s.size() ){
+    if (pos == s.size()){
         if(T->num == -1)
             T->num = num;
         else num = T->num;
