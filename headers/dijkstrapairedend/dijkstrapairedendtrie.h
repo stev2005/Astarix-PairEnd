@@ -132,7 +132,7 @@ struct Expanded{
 
 };
 
-int minimum_edit_distance_pairedend_trie(pair <string, string> &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
+int edit_distance_pairedend_trie(pair <string, string> &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
     string left = query.first;
     string right = query.second;
     int n = left.size();

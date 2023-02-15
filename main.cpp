@@ -38,14 +38,14 @@ int main(){
     //Vital for Trie 
     vector<int>last, prevpos;
     Trie *T=new Trie();
-    init_kmers(ref, T, last, prevpos);
+    construct_trie(ref, T, last, prevpos);
     assert(cout<<"inited kmers\n");
     for (int testcase=1; testcase<=testcases; ++testcase){
         cin>>query.first>>query.second;
         assert(cout<<"testcase=="<<testcase<<" entered\n");
         int rezult;
         //rezult = mininum_edit_distance_pairedend(query, ref);
-        rezult = minimum_edit_distance_pairedend_trie(query, ref, T, last, prevpos);
+        rezult = edit_distance_pairedend_trie(query, ref, T, last, prevpos);
         cout<<rezult<<"\n";
     }
     //cout<<"End of the main program.\n";

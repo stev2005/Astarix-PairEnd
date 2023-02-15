@@ -39,7 +39,7 @@ void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
         }
 }
 
-inline void init_kmers(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
+inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m=ref.size();
     int k=log2(m);
     int sz;
