@@ -60,7 +60,7 @@ struct Expanded{
     }
 };
 
-int minimum_edit_distance_dijkstratrienew(string &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
+int edit_distance_dijkstratrienew(string &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
     priority_queue<Nodetr>q;
     set <Expanded> visited;
     Expanded cur_state;
@@ -115,7 +115,7 @@ int minimum_edit_distance_dijkstratrienew(string &query, string &ref, Trie *T, v
                 if(base[i]==query[w.querypos]){
                     nb=Nodetr(w.querypos+1, w.u->child[i], w.cost);
                     q.push(nb);
-                    continue;
+                    //continue;
                 }   
                 else nb=Nodetr(w.querypos+1, w.u->child[i], w.cost+1);
                 q.push(nb);
