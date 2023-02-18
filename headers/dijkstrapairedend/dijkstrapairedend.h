@@ -51,7 +51,7 @@ struct Expanded{
     }
 };
 
-int mininum_edit_distance_pairedend(pair< string, string> &query, string &ref){
+int edit_distance_pairedend(pair< string, string> &query, string &ref){
     string left = query.first;
     string right = query.second;
     priority_queue <Nodep> q;

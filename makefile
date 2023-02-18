@@ -14,6 +14,9 @@ test:
 	done
 	echo "Testing done"
 
+test1:
+	./main.exe <tests-paired-end/1.in
+
 writeanswers:
 	for file in $$(ls tests); do\
 		ext="$${file##*.}"; \

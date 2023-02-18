@@ -20,11 +20,18 @@ struct Trie{
         return true;
     }
 
+    int num_of_leaf(char c){
+        for (int i = 0; i < 4; ++i)
+            if(child[i] != nullptr && base[i] == c)
+                return i;
+        return -1;
+    }
+
 };
 
 
 
-void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
+/*void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
     if (pos == s.size()){
         if(T->num == -1)
             T->num = num;
@@ -37,9 +44,24 @@ void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
                 T->child[i]=new Trie();
             insert_kmer(T->child[i], s, pos+1, num);
         }
+}*/
+
+void insert_kmer(Trie *&T, string::iterator it, string::iterator bound, int &num){
+    if (it == bound){
+        if(T->num == -1)
+            T->num = num;
+        else num = T->num;
+        return ;
+    }
+    for (int i = 0; i < 4; ++i)
+        if (*it == base[i]){
+            if (T->child[i] == nullptr)
+                T->child[i] = new Trie();
+            insert_kmer(T->child[i], it+1, bound, num);
+        }
 }
 
-inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
+/*inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m=ref.size();
     int k=log2(m);
     int sz;
@@ -52,6 +74,31 @@ inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&
         sz=kmer.size();
         prevcnt=cntkmer;
         insert_kmer(T, kmer, 0, cntkmer);
+        prevpos[i+sz-1]=last[cntkmer];
+        last[cntkmer]=i+sz-1;
+        if(prevcnt==cntkmer)
+            ++cntkmer;
+        else cntkmer=prevcnt;
+    }
+}*/
+
+inline void construct_trie_simple(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
+    int m = ref.size();
+    int k=log2(m);
+    int sz;
+    prevpos.resize(m, -1);
+    last.resize(m, -1);
+    int cntkmer=0, prevcnt;
+    string::iterator st,fi;
+    for(int i=0;i<m-k+1;++i){
+        assert(cout<<"kmer with beign i=="<<i<<"\n");
+        st = ref.begin()+i;
+        fi = st+k;
+        prevcnt=cntkmer;
+        sz = k;
+        insert_kmer(T, st, fi, cntkmer);
+        assert(cout<<"inserted kmer\n");
+        assert(cout<<"cntkmer=="<<cntkmer<<"\n");
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;
         if(prevcnt==cntkmer)
