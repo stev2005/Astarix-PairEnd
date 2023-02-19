@@ -29,8 +29,6 @@ struct Trie{
 
 };
 
-
-
 /*void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
     if (pos == s.size()){
         if(T->num == -1)
@@ -61,7 +59,7 @@ void insert_kmer(Trie *&T, string::iterator it, string::iterator bound, int &num
         }
 }
 
-inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
+/*inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m=ref.size();
     int k=log2(m);
     int sz;
@@ -81,7 +79,7 @@ inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&
         else{
             fi=st+k;
             sz=k;
-        }*/
+        }//
         prevcnt=cntkmer;
         insert_kmer(T, kmer, 0, cntkmer);
         //insert_kmer(T,st,fi,cntkmer);
@@ -91,9 +89,9 @@ inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&
             ++cntkmer;
         else cntkmer=prevcnt;
     }
-}
+}*/
 
-/*inline void construct_trie_simple(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
+inline void construct_trie_simple(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m = ref.size();
     int k=log2(m);
     int sz;
@@ -116,7 +114,7 @@ inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&
             ++cntkmer;
         else cntkmer=prevcnt;
     }
-}*/
+}
 
 inline void print_out_last_prevpos(vector<int>&last, vector<int>&prevpos){
     for(auto cur:last)

@@ -4,10 +4,10 @@
 //#include "headers/dijkstra/dijkstra.h"
 //#include "headers/dijkstra/dijkstranew.h"
 //#include "headers/dijkstratrie/dijkstratrie.h"
-#include "headers/dijkstratrie/dijkstratrienew.h"
+//#include "headers/dijkstratrie/dijkstratrienew.h"
 #include "headers/trie.h"
-//#include "headers/dijkstrapairedend/dijkstrapairedend.h"
-//#include "headers/dijkstrapairedend/dijkstrapairedendtrie.h"
+#include "headers/dijkstrapairedend/dijkstrapairedend.h"
+#include "headers/dijkstrapairedend/dijkstrapairedendtrie.h"
 using namespace std;
 
 /*void seqalignment(){
@@ -26,8 +26,8 @@ using namespace std;
 int main(){
     //DNA ref ,  query;
     string ref;
-    string query;
-    //pair <string, string> query;
+    //string query;
+    pair <string, string> query;
     int testcases;
     //ref.input();
     //cout<<"Waiting input data. Message from main.exe\n";
@@ -40,22 +40,21 @@ int main(){
     //Vital for Trie 
     vector<int>last, prevpos;
     Trie *T=new Trie();
-    construct_trie(ref, T, last, prevpos);
-    //construct_trie_simple(ref, T, last, prevpos);
+    //construct_trie(ref, T, last, prevpos);
+    construct_trie_simple(ref, T, last, prevpos);
     assert(cout<<"inited kmers\n");
     for (int testcase=1; testcase<=testcases; ++testcase){
         assert(cout<<"Enter the queries\n");
-        //cin>>query.first>>query.second;
-        cin>>query;
+        cin>>query.first>>query.second;
+        //cin>>query;
         assert(cout<<"testcase=="<<testcase<<" entered\n");
         int rezult;
-        rezult = edit_distance_dijkstratrienew(query, ref, T, last, prevpos);
-        cout<<rezult<<"\n";
-        //rezult = mininum_edit_distance_pairedend(query, ref);
-        /* rezult = edit_distance_pairedend_trie(query, ref, T, last, prevpos);
+        /*rezult = edit_distance_dijkstratrienew(query, ref, T, last, prevpos);
+        cout<<rezult<<"\n";*/
+        rezult = edit_distance_dijkstra_paired_end_trie(query, ref, T, last, prevpos);
         cout<<rezult<<" ";
         rezult = edit_distance_pairedend(query, ref);
-        cout<<rezult<<"\n";*/
+        cout<<rezult<<"\n";
     }
     //cout<<"End of the main program.\n";
     return 0;

@@ -73,7 +73,7 @@ int edit_distance_pairedend(pair< string, string> &query, string &ref){
         if(w.qpos == n)
             break;
         ///first case
-        if(/*w.qpos<n &&*/ w.lpos<m && w.rpos<m){
+        if(w.lpos<m && w.rpos<m){
             nb=Nodep(w.qpos+1, w.lpos+1, w.rpos+1, w.cost);
             if(left[w.qpos] != ref[w.lpos])
                 ++nb.cost;
@@ -88,7 +88,7 @@ int edit_distance_pairedend(pair< string, string> &query, string &ref){
         q.push(nb);
         if(w.rpos<m){
             ///third case
-            nb= Nodep(w.qpos, w.lpos, w.rpos, w.cost+1);
+            nb= Nodep(w.qpos, w.lpos, w.rpos+1, w.cost+1);
             q.push(nb);
             ///fifth case
             nb= Nodep(w.qpos+1, w.lpos, w.rpos+1, w.cost+1);
