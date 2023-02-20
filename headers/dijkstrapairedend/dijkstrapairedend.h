@@ -112,5 +112,6 @@ int edit_distance_pairedend(pair< string, string> &query, string &ref){
         }
     }
     //cout<<"end of the dijkstra\n";
+    //cout<<w.qpos<<" "<<w.lpos<<" "<<w.rpos<<" "<<w.cost<<endl;
     return w.cost;
 }

@@ -52,7 +52,7 @@ int main(){
         /*rezult = edit_distance_dijkstratrienew(query, ref, T, last, prevpos);
         cout<<rezult<<"\n";*/
         rezult = edit_distance_dijkstra_paired_end_trie(query, ref, T, last, prevpos);
-        cout<<rezult<<" ";
+        cout<<rezult<<"\n";
         rezult = edit_distance_pairedend(query, ref);
         cout<<rezult<<"\n";
     }

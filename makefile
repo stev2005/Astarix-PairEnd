@@ -14,6 +14,17 @@ test:
 	done
 	echo "Testing done"
 
+testp:
+	for file in $$(ls tests-paired-end); do \
+		ext="$${file##*.}"; \
+		if [ "$$ext" = "in" ]; then \
+			./main.exe <tests-paired-end/$$file >output.out; \
+		else \
+			diff -q output.out tests-paired-end/$$file; \
+		fi \
+	done
+	echo "Testing done"
+
 test1:
 	./main.exe <tests-paired-end/1.in
 

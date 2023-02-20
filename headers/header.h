@@ -2,3 +2,5 @@
 
 #define NDEBUG
 char base[4] = {'A', 'C', 'G', 'T'};
+
+typedef int cost_t;
