@@ -21,3 +21,5 @@ testout.txt
 generated-tests/gen_test.exe
 generate_paired-end_tests/testgen.exe
 output.out
+dmain.exe
+a.out

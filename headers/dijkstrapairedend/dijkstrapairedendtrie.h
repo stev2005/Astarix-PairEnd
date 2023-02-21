@@ -6,14 +6,21 @@
 
 using namespace std;
 
-struct  RefTrieptr{
-    int rpos;
-    ///rpos - points to the linier reference
-    Trie *u;
-    ///u - points to the Trie tree
-    RefTrieptr(){}
-    RefTrieptr(int _rpos, Trie *_u){
+struct  Node{
+    int rpos;///position of the linier reference
+    Trie *u;///position of the Trie tree
+    Node(){}
+    Node(int _rpos, Trie *_u){
         rpos = _rpos;
+        u = _u;
+    }
+    Node(int _rpos){
+        rpos = _rpos;
+        u = nullptr;
+    }
+
+    Node(Trie *_u){
+        rpos = -1;
         u = _u;
     }
     
@@ -21,92 +28,54 @@ struct  RefTrieptr{
         return (u == nullptr)? false: true;
     }
     
-    bool operator<(const RefTrieptr &p)const{
-        if (u == nullptr){
-            if (p.u == nullptr)
-                return rpos < p.rpos;
-            return true;
-        }
-        else if (p.u == nullptr)
-            return false;
-        else return rpos < p.rpos;
+    bool operator<(const Node &p)const{
+        if (u != p.u) return u < p.u;
+        return rpos < p.rpos;
     }
 
-    bool operator==(const RefTrieptr &p)const{
-        if (rpos == p.rpos && u == p.u)
-            return true;
-        return false;
+    bool operator==(const Node &p)const{
+        return (rpos == p.rpos && u == p.u)?true:false;
+    }
+
+    bool operator!=(const Node &p)const{
+        return (rpos != p.rpos || u != p.u)?true:false;
     }
 
 };
 
-struct nextstate{
-    RefTrieptr state;
-    cost_t add;
-    int qpos;
-    ///next - the next pointer to the graph
-    ///add - the additional cost
-    nextstate(){}
-    nextstate(int _qpos, RefTrieptr _state, cost_t _add){
+struct NodeWithCost{
+    Node node;///pointer to a vertex of the graph
+    cost_t edit_cost;///the additional edit_cost
+    int qpos;///pointer to the query
+
+    NodeWithCost(){}
+
+    NodeWithCost(int _qpos, Node _node, cost_t _edit_cost){
         qpos = _qpos;
-        state = _state;
-        add = _add;
+        node = _node;
+        edit_cost = _edit_cost;
     }
+
     void print(){
-        cout<<state.rpos<<" "<<state.u<<" "<<add<<" "<<qpos<<"\n";
+        cout<<node.rpos<<" "<<node.u<<" "<<edit_cost<<" "<<qpos<<"\n";
     }
+
 };
 
-vector <nextstate> getnextstate(char c,string &ref, RefTrieptr par, int qpos){
-    vector <nextstate> v;
-    nextstate cur;
-    cur = nextstate(qpos, par, 0);
-    assert(cout<<"The same state as the one from which we go to others\n");
-    v.push_back(cur);
-    cur = nextstate(qpos+1, par, 1);
-    v.push_back(cur);
-    ///indel
-    if (par.is_in_trie()){
-        for (int i = 0; i < 4; ++i)
-            if (par.u->child[i] != nullptr){
-                cur = nextstate(qpos, RefTrieptr(-1, par.u->child[i]), 1);
-                v.push_back(cur);
-                ///indel
-                cur = nextstate(qpos+1, RefTrieptr(-1, par.u->child[i]), 0);
-                if (c != base[i])
-                    cur.add++;
-                v.push_back(cur);
-                ///match/subtitution
-            }
-    }
-    else if(par.rpos < ref.size()){
-        cur = nextstate(qpos, RefTrieptr(par.rpos+1, nullptr), 1);
-        v.push_back(cur);
-        ///indel
-        cur = nextstate(qpos+1, RefTrieptr(par.rpos+1, nullptr), 0);
-        if (c != ref[par.rpos])
-            cur.add++;
-        v.push_back(cur);
-        ///match/substition
-    }
-    return v;
-}
-
-struct Nodeptr{
-    RefTrieptr p1, p2;
-    /// p1 - the left alignment
-    /// p2 - the right alignment
+struct State{
+    Node p1;///node of the left alignment
+    Node p2;///node of the right alignment
     int qpos;
     cost_t cost;
-    Nodeptr(){}
-    Nodeptr(int _qpos, RefTrieptr _p1, RefTrieptr _p2, cost_t _cost){
+    State(){}
+    State(int _qpos, Node _p1, Node _p2, cost_t _cost){
         qpos = _qpos;
         p1 = _p1;
         p2 = _p2;
         cost = _cost;
     }
     
-    bool operator<(Nodeptr const &state)const{
+    bool operator<(State const &state)const{
         return cost > state.cost;
     }
 
@@ -116,83 +85,80 @@ struct Nodeptr{
 
 };
 
-auto setNodeptrcmp = [](Nodeptr c, Nodeptr d){
-    if (c.qpos == d.qpos){
-        if (c.p1 == d.p1)
-            return c.p2 < d.p2;
-        return c.p1 < d.p1;
+vector <NodeWithCost> getNextNodeWithCost(char c,string &ref, Node ver, int qpos, vector<int> &last, vector<int> &prevpos){
+    ///c - value of query[qpos] (no matter wheather left or right one)
+    ///ref - the reference 
+    ///ver - vertex of the graph
+    ///qpos - pointer to the query
+    ///last and prevpos: help arrays
+    vector <NodeWithCost> inheritors;
+    inheritors.push_back(NodeWithCost(qpos, ver, 0));
+    inheritors.push_back(NodeWithCost(qpos+1, ver, 1));///insertion
+    if (ver.is_in_trie()){
+        if (ver.u->num != -1)
+            for (int i = last[ver.u->num]; i != -1; i = prevpos[i])
+                inheritors.push_back(NodeWithCost(qpos, Node(i+1), 0));
+        for (int i = 0; i < 4; ++i)
+            if (ver.u->child[i] != nullptr){
+                inheritors.push_back(NodeWithCost(qpos, Node(ver.u->child[i]), 1));///deletion
+                inheritors.push_back(NodeWithCost(qpos+1, Node(ver.u->child[i]), 0));///match/substitution
+                if (base[i] != c) inheritors.back().edit_cost++;
+            }
     }
-    return c.qpos < d.qpos;
+    else if (ver.rpos < ref.size()){
+        inheritors.push_back(NodeWithCost(qpos, Node(ver.rpos+1), 1));///deletion
+        inheritors.push_back(NodeWithCost(qpos+1, Node(ver.rpos+1), 0));///match/substitution
+        if (ref[ver.rpos] != c) inheritors.back().edit_cost++;
+    }
+    return inheritors;
+}
+
+auto setStatecmp = [](State c, State d){
+    if (c.qpos != d.qpos) return c.qpos < d.qpos;
+    if (!(c.p1 == d.p1)) return c.p1 < d.p1;
+    return c.p2 < d.p2;
 };
 
-int edit_distance_dijkstra_paired_end_trie(pair<string, string> &query, string &ref, Trie *T, vector<int>&last, vector<int>&prevpos){
-    string left = query.first;
-    string right = query.second;
-    int n = left.size();
+int edit_distance_dijkstrapairedend_trie(pair<string, string> &query, string &ref, Trie *root, vector<int>&last, vector<int>&prevpos){
+    ///root - root of the trie tree
+    ///last and prevpos: help arrays
+    string q1 = query.first;///left query alignment
+    string q2 = query.second;///right query alignment
+    int n = q1.size();
     int m = ref.size();
-    priority_queue<Nodeptr> q;
-    set <Nodeptr, decltype(setNodeptrcmp)> visited(setNodeptrcmp);
-    Nodeptr w, nb;
-    w = Nodeptr(0, RefTrieptr(-1, T), RefTrieptr(-1, T), 0);
-    q.push(w);
-    bool flag=true;
-    ///next1 - states from the left alignment
-    ///next2 - states from the right alignment
+    priority_queue<State> q;
+    set <State, decltype(setStatecmp)> visited(setStatecmp);
+    State cur(0, Node(root), Node(root), 0);
+    q.push(cur);
+    //set<int>reachedqpos;
     while (!q.empty()){
-        w = q.top();
+        cur = q.top();
         q.pop();
-        //w.print();
-        if (visited.find(w) == visited.end())
-            visited.insert(w);
-        else{
-            assert(cout<<"Previously poped out state\n");
-            /*auto it=visited.find(w);
-            nb=*it;
-            nb.print();*/
-            continue;
-        }
-        if (w.qpos == n)
+        //cur.print();
+        if (visited.find(cur) == visited.end()){
+            visited.insert(cur);
+            if (cur.qpos == n)
             break;
-        vector<nextstate> next1, next2;
-        next1 = getnextstate(left[w.qpos], ref, w.p1, w.qpos);
-        next2 = getnextstate(right[w.qpos], ref, w.p2, w.qpos);
-        if (!w.p1.is_in_trie() && !w.p2.is_in_trie()){
-            if (w.p1.rpos < m && w.p2.rpos < m){
-                if (left[w.qpos] == ref[w.p1.rpos] &&
-                    right[w.qpos] == ref[w.p2.rpos]){
-                        nb = Nodeptr(w.qpos+1, RefTrieptr(w.p1.rpos+1, nullptr), RefTrieptr(w.p2.rpos+1, nullptr), w.cost);
-                        q.push(nb);
-                        continue;
-                    }
-            }
-        }
-        if (w.p1.is_in_trie() && w.p1.u->num!=-1){
-            for (int i = last[w.p1.u->num]; i != -1; i = prevpos[i]){
-                nb = Nodeptr(w.qpos, RefTrieptr(i+1, nullptr), w.p2, w.cost);
-                q.push(nb);
-            }
-            /*if (w.p1.u->is_leaf())
-                continue;*/
-            ///if the optimizated build of the trie is used one of the k-mers has lenght less than k
-        }
-
-        if (w.p2.is_in_trie() && w.p2.u->num!=-1){
-            for (int i = last[w.p2.u->num]; i != -1; i = prevpos[i]){
-                nb = Nodeptr(w.qpos, w.p1, RefTrieptr(i+1, nullptr), w.cost);
-                q.push(nb);
-            }
-            /*if (w.p2.u->is_leaf())
-                continue;*/
-        }
-
-        for (auto i:next1)
-            for (auto j:next2)
-                if (i.qpos == j.qpos){
-                    nb = Nodeptr(i.qpos, i.state, j.state, w.cost);
-                    nb.cost += i.add + j.add;
-                    q.push(nb);
+            if (!cur.p1.is_in_trie() && !cur.p2.is_in_trie()){
+                if (cur.p1.rpos < m && cur.p2.rpos < m){
+                    if (q1[cur.qpos] == ref[cur.p1.rpos] &&
+                        q2[cur.qpos] == ref[cur.p2.rpos]){
+                            q.push(State(cur.qpos+1, Node(cur.p1.rpos+1), Node(cur.p2.rpos+1), cur.cost));
+                            continue;
+                        }
                 }
+            }
+            vector<NodeWithCost>next1;///following nodes from the left alignment node
+            vector<NodeWithCost>next2;///following nodes from the right alignment node
+            next1 = getNextNodeWithCost(q1[cur.qpos], ref, cur.p1, cur.qpos, last, prevpos);
+            //assert(cout<<"got the left alignment nodes\n");
+            next2 = getNextNodeWithCost(q2[cur.qpos], ref, cur.p2, cur.qpos, last, prevpos);
+            //assert(cout<<"got the right alignment nodes\n");
+            for (auto i1:next1)
+                for (auto i2:next2)
+                    if (i1.qpos == i2.qpos)
+                        q.push(State(i1.qpos, i1.node, i2.node, cur.cost+i1.edit_cost+i2.edit_cost));
+        }
     }
-    //w.print();
-    return w.cost;
+    return cur.cost;
 }

@@ -100,14 +100,14 @@ inline void construct_trie_simple(string &ref, Trie *&T, vector<int>&last, vecto
     int cntkmer=0, prevcnt;
     string::iterator st,fi;
     for(int i=0;i<m-k+1;++i){
-        assert(cout<<"kmer with beign i=="<<i<<"\n");
+        //assert(cout<<"kmer with beign i=="<<i<<"\n");
         st = ref.begin()+i;
         fi = st+k;
         prevcnt=cntkmer;
         sz = k;
         insert_kmer(T, st, fi, cntkmer);
-        assert(cout<<"inserted kmer\n");
-        assert(cout<<"cntkmer=="<<cntkmer<<"\n");
+        //assert(cout<<"inserted kmer\n");
+        //assert(cout<<"cntkmer=="<<cntkmer<<"\n");
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;
         if(prevcnt==cntkmer)

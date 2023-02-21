@@ -51,10 +51,10 @@ int main(){
         int rezult;
         /*rezult = edit_distance_dijkstratrienew(query, ref, T, last, prevpos);
         cout<<rezult<<"\n";*/
-        rezult = edit_distance_dijkstra_paired_end_trie(query, ref, T, last, prevpos);
+        rezult = edit_distance_dijkstrapairedend_trie(query, ref, T, last, prevpos);
         cout<<rezult<<"\n";
-        rezult = edit_distance_pairedend(query, ref);
-        cout<<rezult<<"\n";
+        /*rezult = edit_distance_pairedend(query, ref);
+        cout<<rezult<<"\n";*/
     }
     //cout<<"End of the main program.\n";
     return 0;
