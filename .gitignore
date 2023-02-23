@@ -11,15 +11,12 @@ testshand/input102.in
 testshand/input101.in
 testshand/output101.txt
 dpalignment.h
-main.cpp
 makefile
 Generated-tests/gen_test.cpp
-Just-cmp-files/f1.txt
-Just-cmp-files/f2.txt
-Just-cmp-files/makecmp
-testout.txt
 generated-tests/gen_test.exe
 generate_paired-end_tests/testgen.exe
 output.out
 dmain.exe
 a.out
+headers/dijkstrapairedend/dijkstrapairedendtrie.h
+output.out

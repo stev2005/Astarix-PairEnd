@@ -24,6 +24,9 @@ using namespace std;
 }*/
 
 int main(){
+    /*ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);*/
     //DNA ref ,  query;
     string ref;
     //string query;
@@ -39,10 +42,11 @@ int main(){
     //init_dp_table ( dp ,  ref ) ;
     //Vital for Trie 
     vector<int>last, prevpos;
-    Trie *T=new Trie();
+    Trie *root=new Trie();
     //construct_trie(ref, T, last, prevpos);
-    construct_trie_simple(ref, T, last, prevpos);
+    construct_trie_simple(ref, root, last, prevpos);
     assert(cout<<"inited kmers\n");
+    //printout_kmers(T, "");
     for (int testcase=1; testcase<=testcases; ++testcase){
         assert(cout<<"Enter the queries\n");
         cin>>query.first>>query.second;
@@ -51,10 +55,10 @@ int main(){
         int rezult;
         /*rezult = edit_distance_dijkstratrienew(query, ref, T, last, prevpos);
         cout<<rezult<<"\n";*/
-        rezult = edit_distance_dijkstrapairedend_trie(query, ref, T, last, prevpos);
-        cout<<rezult<<"\n";
-        /*rezult = edit_distance_pairedend(query, ref);
+        /*rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
         cout<<rezult<<"\n";*/
+        rezult = edit_distance_pairedend(query, ref);
+        cout<<rezult<<"\n";
     }
     //cout<<"End of the main program.\n";
     return 0;

@@ -22,7 +22,7 @@ struct Nodep{
     }
 
     bool operator<(const Nodep &state)const{
-        return cost < state.cost;
+        return cost > state.cost;
     }
 };
 
@@ -60,8 +60,8 @@ int edit_distance_pairedend(pair< string, string> &query, string &ref){
     Expanded state;
     int n= left.size();
     int m= ref.size();
-    for (int i=0;i<m;++i)
-        for (int j=0;j<m;++j)
+    for (int i=0;i<=m;++i)
+        for (int j=0;j<=m;++j)
             q.push(Nodep(0,i,j,0));
     while (!q.empty()){
         w= q.top();
@@ -113,5 +113,6 @@ int edit_distance_pairedend(pair< string, string> &query, string &ref){
     }
     //cout<<"end of the dijkstra\n";
     //cout<<w.qpos<<" "<<w.lpos<<" "<<w.rpos<<" "<<w.cost<<endl;
+    //cout<<"Expanded states == "<<visited.size()<<" "; 
     return w.cost;
 }
