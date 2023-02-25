@@ -16,6 +16,7 @@ test:
 
 testp:
 	for file in $$(ls tests-paired-end); do \
+		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
 			./main.exe <tests-paired-end/$$file >output.out; \

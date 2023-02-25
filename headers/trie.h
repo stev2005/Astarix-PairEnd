@@ -46,24 +46,7 @@ void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
         }
 }
 
-/*void insert_kmer(Trie *&T, string::iterator it, string::iterator bound, int &num){
-    if (it == bound){
-        if(T->num == -1)
-            T->num = num;
-        else num = T->num;
-        return ;
-    }
-    for (int i = 0; i < 4; ++i)
-        if (*it == base[i]){
-            if (T->child[i] == nullptr){
-                T->child[i] = new Trie();
-                T->child[i]->bp = base[i];
-            }
-            insert_kmer(T->child[i], it+1, bound, num);
-        }
-}*/
-
-/*inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
+inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m=ref.size();
     int k=log2(m);
     int sz;
@@ -71,33 +54,22 @@ void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
     last.resize(m, -1);
     int cntkmer=0, prevcnt;
     string kmer;
-    string::iterator st,fi;
     for(int i=0;i<m;i+=k){
         kmer=ref.substr(i, k);
         sz=kmer.size();
-        /*st=ref.begin()+i;
-        if(i+k>=m){
-            fi=ref.end();
-            sz=m-i;
-        }
-        else{
-            fi=st+k;
-            sz=k;
-        }//
         prevcnt=cntkmer;
         insert_kmer(T, kmer, 0, cntkmer);
-        //insert_kmer(T,st,fi,cntkmer);
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;
         if(prevcnt==cntkmer)
             ++cntkmer;
         else cntkmer=prevcnt;
     }
-}*/
+}
 
 inline void construct_trie_simple(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m = ref.size();
-    //int k=log2(m);
+    //int k=log2(m)/2;
     int k = 1;
     int sz;
     prevpos.resize(m, -1);

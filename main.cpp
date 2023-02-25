@@ -43,7 +43,7 @@ int main(){
     //Vital for Trie 
     vector<int>last, prevpos;
     Trie *root=new Trie();
-    //construct_trie(ref, T, last, prevpos);
+    //construct_trie(ref, root, last, prevpos);
     construct_trie_simple(ref, root, last, prevpos);
     assert(cout<<"inited kmers\n");
     //printout_kmers(T, "");
@@ -53,12 +53,12 @@ int main(){
         //cin>>query;
         assert(cout<<"testcase=="<<testcase<<" entered\n");
         int rezult;
-        /*rezult = edit_distance_dijkstratrienew(query, ref, T, last, prevpos);
-        cout<<rezult<<"\n";*/
-        /*rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
-        cout<<rezult<<"\n";*/
-        rezult = edit_distance_pairedend(query, ref);
+        /*rezult = edit_distance_dijkstratrienew(query, ref, root, last, prevpos);
+        cout<<rezult<<" ";*/
+        rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
         cout<<rezult<<"\n";
+        /*rezult = edit_distance_pairedend(query, ref);
+        cout<<rezult<<"\n";*/
     }
     //cout<<"End of the main program.\n";
     return 0;
