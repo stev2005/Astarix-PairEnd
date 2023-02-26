@@ -27,6 +27,9 @@ testp:
 	echo "Testing done"
 
 test1:
+	./main.exe <tests/1.in
+
+testp1:
 	./main.exe <tests-paired-end/1.in
 
 writeanswers:

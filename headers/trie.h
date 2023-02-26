@@ -48,7 +48,7 @@ void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
 
 inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m=ref.size();
-    int k=log2(m);
+    int k=log2(m)/2;///log with base = 4
     int sz;
     prevpos.resize(m, -1);
     last.resize(m, -1);
@@ -95,6 +95,29 @@ inline void construct_trie_simple(string &ref, Trie *&T, vector<int>&last, vecto
             ++cntkmer;
         else cntkmer=prevcnt;
     }
+}
+
+int kmer_exists(string &seed, int pos, Trie *T){
+    if (pos == seed.size())
+        return T->num;
+    for (int i = 0; i < 4; ++i)
+        if (seed[pos] == base [i]){
+            if (T->child[i] == nullptr)
+                return -1;
+            else return kmer_exists(seed, pos+1, T->child[i]);
+        }
+}
+
+vector<int> query_into_seeds(string &query, int k, Trie *root){
+    vector<int>seeds;
+    int n = query.size(), num;
+    string seed;
+    for (int i = 0; i < n; i+=k){
+        seed = query.substr(i, k);
+        num = kmer_exists(seed, 0, root);
+        seed.push_back(num);
+    }
+    return seeds;
 }
 
 inline void print_out_last_prevpos(vector<int>&last, vector<int>&prevpos){
