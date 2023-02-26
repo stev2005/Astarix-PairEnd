@@ -54,10 +54,10 @@ cost_t edit_distance_AstarixSH(string &query, string &ref, vector<int> &seeds, v
             visited.insert(cur);
             if (cur.rpos < m){
                 if (query[cur.qpos] == ref[cur.rpos]){
-                    q.push(State(cur.qpos+1, cur.rpos+1, cur.cost, heuristic(cur.qpos, cur.rpos, log2(m)/2, seeds, last)));
+                    q.push(State(cur.qpos+1, cur.rpos+1, cur.cost, heuristic(cur.qpos+1, cur.rpos+1, log2(m)/2, seeds, last)));
                     continue;
                 }
-                else q.push(State(cur.qpos+1, cur.rpos+1, cur.cost+1, heuristic(cur.qpos, cur.rpos, log2(m)/2, seeds, last)));
+                else q.push(State(cur.qpos+1, cur.rpos+1, cur.cost+1, heuristic(cur.qpos+1, cur.rpos+1, log2(m)/2, seeds, last)));
                 q.push(State(cur.qpos, cur.rpos+1, cur.cost+1, heuristic(cur.qpos, cur.rpos+1, log2(m)/2, seeds, last)));
             }
             q.push(State(cur.qpos+1, cur.rpos, cur.cost+1, heuristic(cur.qpos+1, cur.rpos, log2(m)/2, seeds, last)));
