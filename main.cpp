@@ -8,7 +8,8 @@
 #include "headers/trie.h"
 //#include "headers/dijkstrapairedend/dijkstrapairedend.h"
 //#include "headers/dijkstrapairedend/dijkstrapairedendtrie.h"
-#include "headers/Astarix/AstarixSH.h"
+//#include "headers/Astarix/AstarixSH.h"
+#include "headers/Astarix/AstarixSH_TrieStart.h"
 using namespace std;
 
 /*void seqalignment(){
@@ -56,13 +57,11 @@ int main(){
         cin>>query;
         assert(cout<<"testcase=="<<testcase<<" entered\n");
         int rezult;
-        /*rezult = edit_distance_dijkstratrienew(query, ref, root, last, prevpos);
-        cout<<rezult<<" ";*/
-        /*rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
-        cout<<rezult<<"\n";*/
-        /*rezult = edit_distance_pairedend(query, ref);
-        cout<<rezult<<"\n";*/
-        rezult = edit_distance_AstarixSH(query, ref, seeds, last);
+        //rezult = edit_distance_dijkstratrienew(query, ref, root, last, prevpos);
+        //rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
+        //rezult = edit_distance_pairedend(query, ref);
+        //rezult = edit_distance_AstarixSH(query, ref, seeds, last);
+        rezult = edit_distance_AstarixSH_TrieStart(query, ref, root, seeds, last, prevpos);
         cout<<rezult<<"\n";
     }
     //cout<<"End of the main program.\n";
