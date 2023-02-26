@@ -45,7 +45,7 @@ cost_t edit_distance_AstarixSH(string &query, string &ref, vector<int> &seeds, v
     int n = query.size();
     int m = ref.size();
     for (int i = 0; i <= m; ++i)
-        q.push(State(0, i, 0, 0));
+        q.push(State(0, i, 0, heuristic(0, i, log2(m)/2, seeds, last)));
     while (!q.empty()){
         cur = q.top();
         q.pop();
