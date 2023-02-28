@@ -81,32 +81,36 @@ int seed_heuristic(State cur, int k,const vector<int> &seeds,const vector<int> &
 }
 
 vector<State> getNextStates(State cur, char c, int k,const string &ref, const vector<int> &seeds, const vector<int> &last, const vector<int> &prevpos){
-    vector<State>ineritors;
+    vector<State>inheritors;
     if (cur.p.is_in_trie()){
         if (cur.p.u->is_leaf()){
             for (int i = last[cur.p.u->num]; i != -1; i = prevpos[i])
                 inheritors.push_back(State(cur.qpos, Node(i+1), cur.cost, cur.h));
             return inheritors;
         }
-        inheritors.push_back(State(cur.qpos+1, cur.p, cur.cost+1, seed_heuristic(State(cur.qpos+1, cur.p), k, seeds, last)))
+        if (cur.qpos == 0 && cur.cost == 0)
+            for (int i = 0; i < 4; ++i)
+                if (cur.p.u->child[i] != nullptr)
+                    inheritors.push_back(State(cur.qpos, Node(cur.p.u->child[i]), cur.cost, seed_heuristic(State(cur.qpos, cur.p.u->child[i]), k, seeds, last)));
+        inheritors.push_back(State(cur.qpos+1, cur.p, cur.cost+1, seed_heuristic(State(cur.qpos+1, cur.p), k, seeds, last)));
         for (int i = 0; i < 4; ++i)
-            if (cur.p->[i] != nullptr){
-                inheritors.push_back(State(cur.qpos+1, Node(cur.p.u->child), cur.cost, seed_heuristic(State(cur.qpos+1, cur.p.u->child[i]), k, seeds, last)));
+            if (cur.p.u->child[i] != nullptr){
+                inheritors.push_back(State(cur.qpos+1, Node(cur.p.u->child[i]), cur.cost, seed_heuristic(State(cur.qpos+1, cur.p.u->child[i]), k, seeds, last)));
                 if (base[i] != c)inheritors.back().cost++;
-                inheritors.push_back(State(cur.qpos, Node(cur.p.u->child), cur.cost+1, seed_heuristic(State(cur.qpos, cur.p.u->child[i]), k, seeds, last)));
+                inheritors.push_back(State(cur.qpos, Node(cur.p.u->child[i]), cur.cost+1, seed_heuristic(State(cur.qpos, cur.p.u->child[i]), k, seeds, last)));
             }
     }
     else{
         if (cur.p.rpos < ref.size()){
-            inheritors.push_back(State(cur.qpos+1, Node(cur.p.rpos+1), cur.cost, seed_heuristic(State(cur.qpos+1, Node(cur.p.rpos+1)), k, seeds, last));
+            inheritors.push_back(State(cur.qpos+1, Node(cur.p.rpos+1), cur.cost, seed_heuristic(State(cur.qpos+1, Node(cur.p.rpos+1)), k, seeds, last)));
             if (c == ref[cur.p.rpos])
                 return inheritors;
-            else inhetiros.back().cost++;
-            inheritors.push_back(State.cur.qpos, Node(cur.p.rpos+1), cur.cost, seed_heuristic(State(cur.qpos, Node(cur.p.rpos)), k, seeds, last));
+            else inheritors.back().cost++;
+            inheritors.push_back(State(cur.qpos, Node(cur.p.rpos+1), cur.cost+1, seed_heuristic(State(cur.qpos, Node(cur.p.rpos)), k, seeds, last)));
         }
         inheritors.push_back(State(cur.qpos+1, cur.p, cur.cost+1, seed_heuristic(State(cur.qpos+1, cur.p), k, seeds, last)));
     }
-    return inheritorts;
+    return inheritors;
 }
 
 cost_t align_astar_TrieStart(string &query, string &ref, Trie *root, const vector<int> &seeds, const vector<int> &last, const vector<int> &prevpos){
@@ -128,5 +132,6 @@ cost_t align_astar_TrieStart(string &query, string &ref, Trie *root, const vecto
                 q.push(i);
         }
     }
+    //cout<<"Count of Explored states: "<<visited.size()+1<<"\n";/// +1 last state not inserted
     return cur.cost;
 }
