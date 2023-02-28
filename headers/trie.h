@@ -6,13 +6,15 @@ using namespace std;
 
 struct Trie{
     Trie *child[4];
-    int num;
-    char bp;
+    int num;///the number of this kmer
+    //char bp;
+    int firstapp;///first position fo ending of kmers got from childs of this Trie vertex
     Trie(){
         for (int i = 0; i < 4; ++i)
-            child[i]=nullptr;
-        num=-1;
-        bp='\0';
+            child[i] = nullptr;
+        num = -1;
+        firstapp = -1;
+        //bp='\0';
     }
     
     bool is_leaf(){
@@ -31,18 +33,24 @@ struct Trie{
 
 };
 
-void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num){
+void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num, int posapp){
     if (pos == s.size()){
-        if(T->num == -1)
+        if(T->num == -1){
             T->num = num;
+            T->firstapp = posapp;
+        }
+            
         else num = T->num;
         return ;
     }
     for(int i = 0; i<4; ++i)
         if (s[pos] == base[i]){
-            if(T->child[i]==nullptr)
+            if (T->child[i]==nullptr)
                 T->child[i]=new Trie();
-            insert_kmer(T->child[i], s, pos+1, num);
+            insert_kmer(T->child[i], s, pos+1, num, posapp);
+            if (T->firstapp == -1)
+                T->firstapp = T->child[i]->firstapp;
+            else T->firstapp = min(T->firstapp, T->child[i]->firstapp);
         }
 }
 
@@ -58,7 +66,7 @@ inline void construct_trie(string &ref, Trie *&T, vector<int>&last, vector<int>&
         kmer=ref.substr(i, k);
         sz=kmer.size();
         prevcnt=cntkmer;
-        insert_kmer(T, kmer, 0, cntkmer);
+        insert_kmer(T, kmer, 0, cntkmer, i+sz-1);
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;
         if(prevcnt==cntkmer)
@@ -86,7 +94,7 @@ inline void construct_trie_simple(string &ref, Trie *&T, vector<int>&last, vecto
         prevcnt=cntkmer;
         kmer = ref.substr(i, k);
         sz = kmer.size();
-        insert_kmer(T, kmer, 0, cntkmer);
+        insert_kmer(T, kmer, 0, cntkmer, sz);
         //assert(cout<<"inserted kmer\n");
         //assert(cout<<"cntkmer=="<<cntkmer<<"\n");
         prevpos[i+sz-1]=last[cntkmer];

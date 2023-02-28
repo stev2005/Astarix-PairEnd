@@ -8,8 +8,8 @@
 #include "headers/trie.h"
 //#include "headers/dijkstrapairedend/dijkstrapairedend.h"
 //#include "headers/dijkstrapairedend/dijkstrapairedendtrie.h"
-//#include "headers/Astarix/AstarixSH.h"
-#include "headers/Astarix/AstarixSH_TrieStart.h"
+//#include "headers/astar/astar.h"
+#include "headers/astar/astar_TrieStart.h"
 using namespace std;
 
 /*void seqalignment(){
@@ -43,12 +43,10 @@ int main(){
     //vector < vector < int > > dp ;
     //init_dp_table ( dp ,  ref ) ;
     //Vital for Trie 
-    vector<int>last, prevpos;
+    MatchingKmers info;
     Trie *root=new Trie();
-    construct_trie(ref, root, last, prevpos);
+    construct_trie(ref, root, info.last, info.prevpos);
     assert(cout<<"inited kmers\n");
-    vector<int> seeds = query_into_seeds(query, log2(ref.size())/2, root);
-    assert(cout<<"inited seeds\n");
     //construct_trie_simple(ref, root, last, prevpos);
     //printout_kmers(T, "");
     for (int testcase=1; testcase<=testcases; ++testcase){
@@ -56,12 +54,15 @@ int main(){
         //cin>>query.first>>query.second;
         cin>>query;
         assert(cout<<"testcase=="<<testcase<<" entered\n");
+        info.seeds = query_into_seeds(query, log2(ref.size())/2, root);
+        assert(cout<<"inited seeds\n");
+        ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
         int rezult;
         //rezult = edit_distance_dijkstratrienew(query, ref, root, last, prevpos);
         //rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
         //rezult = edit_distance_pairedend(query, ref);
-        //rezult = edit_distance_AstarixSH(query, ref, seeds, last);
-        rezult = edit_distance_AstarixSH_TrieStart(query, ref, root, seeds, last, prevpos);
+        //rezult = align_astar(query, ref, seeds, last);
+        rezult = align_astar_TrieStart(query, ref, root, info.seeds, info.last, info.prevpos);
         cout<<rezult<<"\n";
     }
     //cout<<"End of the main program.\n";
