@@ -88,10 +88,10 @@ vector<State> getNextStates(State cur, char c, int k,const string &ref, const ve
                 inheritors.push_back(State(cur.qpos, Node(i+1), cur.cost, cur.h));
             return inheritors;
         }
-        if (cur.qpos == 0 && cur.cost == 0)
+        /*if (cur.qpos == 0 && cur.cost == 0)
             for (int i = 0; i < 4; ++i)
                 if (cur.p.u->child[i] != nullptr)
-                    inheritors.push_back(State(cur.qpos, Node(cur.p.u->child[i]), cur.cost, seed_heuristic(State(cur.qpos, cur.p.u->child[i]), k, seeds, last)));
+                    inheritors.push_back(State(cur.qpos, Node(cur.p.u->child[i]), cur.cost, seed_heuristic(State(cur.qpos, cur.p.u->child[i]), k, seeds, last)));*/
         inheritors.push_back(State(cur.qpos+1, cur.p, cur.cost+1, seed_heuristic(State(cur.qpos+1, cur.p), k, seeds, last)));
         for (int i = 0; i < 4; ++i)
             if (cur.p.u->child[i] != nullptr){

@@ -29,8 +29,23 @@ testp:
 test1:
 	./main.exe <tests/1.in
 
+testche:
+	./main.exe <testche.txt
+
 testp1:
 	./main.exe <tests-paired-end/1.in
+
+printexplstates:
+	for file in $$(ls tests); do \
+		ext="$${file##*.}"; \
+		if [ "$$ext" = "in" ]; then \
+			./main.exe <tests/$$file >output.out; \
+		else \
+			filename="$${file%%.*}"; \
+			echo "Test $$filename:" >> stats.out; \
+			cat output.out >> stats.out; \
+		fi \
+	done
 
 writeanswers:
 	for file in $$(ls tests); do\

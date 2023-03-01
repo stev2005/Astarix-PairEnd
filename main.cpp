@@ -26,9 +26,9 @@ using namespace std;
 }*/
 
 int main(){
-    /*ios_base::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    cout.tie(NULL);*/
+    cout.tie(NULL);
     //DNA ref ,  query;
     string ref;
     string query;
@@ -45,9 +45,9 @@ int main(){
     //Vital for Trie 
     MatchingKmers info;
     Trie *root=new Trie();
-    construct_trie(ref, root, info.last, info.prevpos);
+    //construct_trie(ref, root, info.last, info.prevpos);
     assert(cout<<"inited kmers\n");
-    //construct_trie_simple(ref, root, last, prevpos);
+    construct_trie_simple(ref, root, info.last, info.prevpos);
     //printout_kmers(T, "");
     for (int testcase=1; testcase<=testcases; ++testcase){
         assert(cout<<"Enter the queries\n");
@@ -61,7 +61,7 @@ int main(){
         //rezult = edit_distance_dijkstratrienew(query, ref, root, last, prevpos);
         //rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
         //rezult = edit_distance_pairedend(query, ref);
-        //rezult = align_astar(query, ref, seeds, last);
+        //rezult = align_astar(query, ref, info.seeds, info.last);
         rezult = align_astar_TrieStart(query, ref, root, info.seeds, info.last, info.prevpos);
         cout<<rezult<<"\n";
     }
