@@ -5,9 +5,10 @@ main:
 
 test:
 	for file in $$(ls tests); do \
+		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			./main.exe <tests/$$file >output.out; \
+			time ./main.exe single-read 4 seed_heuristic <tests/$$file >output.out; \
 		else \
 			diff -q output.out tests/$$file; \
 		fi \
@@ -19,7 +20,7 @@ testp:
 		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			./main.exe <tests-paired-end/$$file >output.out; \
+			./main.exe single-read 4 <tests-paired-end/$$file >output.out; \
 		else \
 			diff -q output.out tests-paired-end/$$file; \
 		fi \
@@ -27,7 +28,7 @@ testp:
 	echo "Testing done"
 
 test1:
-	./main.exe <tests/1.in
+	./main.exe single-read 4 seed_heuristic <tests/1.in
 
 testche:
 	./main.exe <testche.txt
