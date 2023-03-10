@@ -1,0 +1,3008 @@
+Test 1:
+Count of Explored states: 6835
+27
+Count of Explored states: 2957
+12
+Count of Explored states: 4114
+18
+Count of Explored states: 6627
+27
+Count of Explored states: 2874
+11
+Count of Explored states: 2
+0
+Count of Explored states: 5694
+23
+Count of Explored states: 7385
+31
+Count of Explored states: 95
+2
+Count of Explored states: 9421
+41
+Count of Explored states: 5631
+22
+Count of Explored states: 6154
+25
+Count of Explored states: 8971
+38
+Count of Explored states: 3088
+13
+Count of Explored states: 6537
+28
+Test 10:
+Count of Explored states: 9378
+27
+Count of Explored states: 18181
+53
+Count of Explored states: 15726
+45
+Count of Explored states: 15437
+44
+Count of Explored states: 13457
+39
+Count of Explored states: 3382
+10
+Count of Explored states: 4755
+14
+Count of Explored states: 4638
+12
+Count of Explored states: 1803
+5
+Count of Explored states: 18
+1
+Count of Explored states: 1607
+4
+Count of Explored states: 19237
+57
+Count of Explored states: 14914
+43
+Count of Explored states: 20172
+61
+Count of Explored states: 15712
+45
+Test 100:
+Count of Explored states: 247
+2
+Count of Explored states: 13022
+25
+Count of Explored states: 45195
+97
+Count of Explored states: 24952
+50
+Count of Explored states: 31675
+66
+Count of Explored states: 12621
+25
+Count of Explored states: 9067
+18
+Count of Explored states: 26393
+53
+Count of Explored states: 28958
+58
+Count of Explored states: 14055
+27
+Count of Explored states: 15520
+31
+Count of Explored states: 37933
+80
+Count of Explored states: 42866
+92
+Count of Explored states: 23157
+45
+Count of Explored states: 10515
+21
+Test 101:
+Count of Explored states: 1053
+4
+Count of Explored states: 2989
+13
+Count of Explored states: 3722
+19
+Count of Explored states: 2088
+9
+Count of Explored states: 64
+0
+Count of Explored states: 5391
+25
+Count of Explored states: 6646
+40
+Test 102:
+Count of Explored states: 2514
+4
+Count of Explored states: 33660
+45
+Count of Explored states: 67434
+97
+Count of Explored states: 31979
+44
+Count of Explored states: 70554
+101
+Count of Explored states: 55415
+79
+Test 103:
+Count of Explored states: 41644
+32
+Count of Explored states: 117065
+90
+Count of Explored states: 290199
+243
+Count of Explored states: 221810
+179
+Count of Explored states: 193254
+154
+Count of Explored states: 30969
+23
+Count of Explored states: 237814
+195
+Test 104:
+Count of Explored states: 4150175
+858
+ount of Explored states: 915885
+323
+Count of Explored states: 1327698
+482
+Count of Explored states: 1356653
+491
+Count of Explored states: 2262
+3
+Count of Explored states: 237910
+79
+Count of Explored states: 994076
+351
+Count of Explored states: 720501
+248
+Test 105:
+Count of Explored states: 50783
+67
+Count of Explored states: 57916
+76
+Count of Explored states: 77895
+105
+Count of Explored states: 31921
+41
+Count of Explored states: 88
+1
+Count of Explored states: 69215
+91
+Count of Explored states: 69897
+93
+Count of Explored states: 90075
+122
+Count of Explored states: 49422
+63
+Count of Explored states: 1Count of Explored states: 4166329
+860
+7
+19
+Count of Explored states: 17
+1
+Test 11:
+Count of Explored states: 1319
+14
+Count of Explored states: 3
+0
+Count of Explored states: 1057
+11
+Count of Explored states: 1155
+12
+Count of Explored states: 391
+4
+Count of Explored states: 566
+6
+Count of Explored states: 352
+3
+Count of Explored states: 1221
+13
+Count of Explored states: 1201
+12
+Count of Explored states: 822
+9
+Count of Explored states: 32
+1
+Count of Explored states: 1227
+13
+Count of Explored states: 3
+0
+Count of Explored states: 1235
+12
+Count of Explored states: 1231
+13
+Test 12:
+Count of Explored states: 32773
+41
+Count of Explored states: 6610
+7
+Count of Explored states: 36499
+46
+Count of Explored states: 27751
+36
+Count of Explored states: 85843
+117
+Count of Explored states: 79287
+106
+Count of Explored states: 30866
+39
+Count of Explored states: 14560
+18
+Count of Explored states: 30455
+39
+Count of Explored states: 14328
+18
+Count of Explored states: 34633
+72
+Count of Explored states: 31782
+65
+Count of Explored states: 19723
+38
+Count of Explored states: 10704
+22
+Count of Explored states: 46898
+100
+Test 13:
+Count of Explored states: 8533
+38
+Count of Explored states: 5063
+21
+Count of Explored states: 2595
+10
+Count of Explored states: 1985
+8
+Count of Explored states: 8404
+38
+Count of Explored states: 8562
+39
+Count of Explored states: 3610
+15
+Count of Explored states: 481
+3
+Count of Explored states: 2059
+9
+Count of Explored states: 7018
+30
+Count of Explored states: 6749
+29
+Count of Explored states: 6681
+29
+Count of Explored states: 7846
+35
+Count of Explored states: 2932
+13
+Count of Explored states: 4235
+19
+Test 14:
+Count of Explored states: 1265
+12
+Count of Explored states: 593
+6
+Count of Explored states: 1214
+11
+Count of Explored states: 101
+2
+Count of Explored states: 1581
+15
+Count of Explored states: 1343
+13
+Count of Explored states: 1681
+15
+Count of Explored states: 2
+0
+Count of Explored states: 1627
+14
+Count of Explored states: 11
+1
+Count of Explored states: 1509
+14
+Count of Explored states: 745
+7
+Count of Explored states: 1672
+16
+Count of Explored states: 11
+1
+Count of Explored states: 726
+7
+Test 15:
+Count of Explored states: 1142
+13
+Count of Explored states: 1044
+12
+Count of Explored states: 2
+0
+Count of Explored states: 3
+0
+Count of Explored states: 398
+4
+Count of Explored states: 130
+2
+Count of Explored states: 290
+3
+Count of Explored states: 995
+11
+Count of Explored states: 1251
+14
+Count of Explored states: 1237
+14
+Count of Explored states: 1037
+11
+Count of Explored states: 1071
+11
+Count of Explored states: 871
+9
+Count of Explored states: 778
+9
+Count of Explored states: 3
+0
+Test 16:
+Count of Explored states: 2923
+12
+Count of Explored states: 8427
+36
+Count of Explored states: 8899
+38
+Count of Explored states: 955
+4
+Count of Explored states: 478
+3
+Count of Explored states: 6129
+26
+Count of Explored states: 7455
+32
+Count of Explored states: 6812
+29
+Count of Explored states: 4885
+20
+Count of Explored states: 4121
+16
+Count of Explored states: 7653
+31
+Count of Explored states: 2
+0
+Count of Explored states: 3161
+12
+Count of Explored states: 6873
+29
+Count of Explored states: 1345
+5
+Test 17:
+Count of Explored states: 4018
+15
+Count of Explored states: 10500
+41
+Count of Explored states: 9591
+37
+Count of Explored states: 1731
+6
+Count of Explored states: 1088
+4
+Count of Explored states: 3400
+11
+Count of Explored states: 2193
+7
+Count of Explored states: 8292
+31
+Count of Explored states: 286
+2
+Count of Explored states: 1010
+4
+Count of Explored states: 12539
+48
+Count of Explored states: 3977
+14
+Count of Explored states: 10624
+40
+Count of Explored states: 2956
+10
+Count of Explored states: 6625
+24
+Test 18:
+Count of Explored states: 14194
+49
+Count of Explored states: 2938
+9
+Count of Explored states: 10414
+35
+Count of Explored states: 6071
+20
+Count of Explored states: 4687
+15
+Count of Explored states: 2891
+9
+Count of Explored states: 13216
+44
+Count of Explored states: 5646
+18
+Count of Explored states: 13820
+48
+Count of Explored states: 6156
+20
+Count of Explored states: 7934
+26
+ount of Explored states: 12469
+36
+Count of Explored states: 3458
+9
+Count of Explored states: 16225
+48
+Count of Explored states: 3835
+10
+Test 19:
+Count of Explored states: 48417
+97
+Count of Explored states: 23270
+44
+Count of Explored states: 43405
+84
+Count of Explored states: 49103
+98
+Count of Explored states: 48398
+95
+Count of Explored states: 14164
+26
+Count of Explored states: 15834
+30
+Count of Explored states: 29396
+54
+Count of Explored states: 28402
+53
+Count of Explored states: 12163
+22
+Count of Explored states: 46297
+92
+Count of Explored states: 21538
+39
+Count of Explored states: 20264
+38
+Count of Explored states: 4849
+9
+Count of Explored states: 45726
+90
+Test 2:
+Count of Explored states: 23
+1
+Count of Explored states: 134
+2
+Count of Explored states: 1023
+14
+Count of Explored states: 422
+5
+Count of Explored states: 38
+1
+Count of Explored states: 372
+4
+Count of Explored states: 2
+0
+Count of Explored states: 7
+0
+Count of Explored states: 2
+0
+Count of Explored states: 234
+3
+Count of Explored states: 14
+1
+Count of Explored states: 664
+9
+Count of Explored states: 20
+1
+Count of Explored states: 718
+9
+Count of Explored states: 649
+8
+Test 20:
+Count of Explored states: 19723
+34
+Count of Explored states: 47451
+88
+Count of Explored states: 2
+0
+Count of Explored states: 10629
+18
+Count of Explored states: 4781
+9
+                                                                                                                                             Count of Explored states: 21250
+38
+Count of Explored states: 21258
+38
+Count of Explored states: 31106
+56
+Count of Explored states: 26318
+46
+Count of Explored states: 49695
+92
+Count of Explored states: 434
+2
+Test 21:
+Count of Explored states: 12676
+49
+Count of Explored states: 2708
+9
+Count of Explored states: 4227
+15
+Count of Explored states: 126
+2
+Count of Explored states: 3122
+11
+Count of Explored states: 9701
+36
+Count of Explored states: 2412
+8
+CoCount of Explored states: 58513
+112
+f Explored states: 3448
+12
+Count of Explored states: 7209
+26
+Count of Explored states: 5151
+18
+Count of Explored states: 7973
+29
+Count of Explored states: 2475
+9
+Count of Explored states: 8013
+29
+Count of Explored states: 5936
+22
+Test 22:
+Count of Explored states: 28539
+77
+Count of Explored states: 28266
+77
+Count of Explored states: 21812
+57
+Count of Explored states: 21869
+58
+Count of Explored states: 18426
+48
+Count of Explored states: 27748
+74
+Count of Explored states: 14
+0
+Count of Explored states: 10107
+26
+Count of Explored states: 2050
+5
+Count of Explored states: 1509
+4
+Count of Explored states: 257
+2
+Count of Explored states: 16427
+43
+Count of Explored states: 58606
+113
+unt of Explored states: 18325
+48
+Count of Explored states: 10531
+28
+Test 23:
+                                                                                                                                                                                                                                                                                                                                                                                   Count of Explored states: 10074
+39
+Count of Explored states: 6521
+24
+Count of Explored states: 1374
+5
+Count of Explored states: 3453
+12
+Test 24:
+Count of Explored states: 51954
+70
+Count of Explored states: 6392
+7
+Count of Explored states: 50487
+68
+Count of Explored states: 18581
+23
+Count of Explored states: 83741
+117
+Count of Explored states: 52904
+71
+Count of Explored states: 25325
+33
+Count of Explored states: 63837
+87
+ount of Explored states: 32679
+68
+Count of Explored states: 20250
+42
+Count of Explored states: 30198
+62
+Count of Explored states: 28664
+59
+Count of Explored states: 32595
+68
+Count of Explored states: 4442
+9
+Count of Explored states: 19434
+40
+Test 25:
+Count of Explored states: 2652
+21
+Count of Explored states: 442
+3
+Count of Explored states: 1508
+12
+Count of Explored states: 1349
+10
+Count of Explored states: 2663
+20
+Count of Explored states: 734
+6
+Count of Explored states: 2323
+19
+Count of Explored states: 1906
+15
+Count of Explored states: 2703
+21
+Count of Explored states: 967
+7
+Count of Explored states: 1310
+9
+Count of Explored states: 1042
+8
+Count of Explored states: 2614
+21
+Count of Explored states: 1259
+9
+Count of Explored states: 935
+8
+Test 26:
+Count of Explored states: 85887
+125
+Count of Explored states: 33261
+45
+Count of Explored states: 83269
+121
+                                                                                                                                                                                                                Count of Explored states: 13064
+23
+Count of Explored states: 45982
+88
+Count of Explored states: 49210
+95
+Count of Explored states: 33990
+65
+Count of Explored states: 56739
+113
+Count of Explored states: 53281
+106
+Test 27:
+Count of Explored states: 22941
+46
+Count of Explored states: 43655
+93
+Count of Explored states: 3048
+6
+Count of Explored states: 9369
+18
+Count of Explored states: 6013
+12
+Count Count of Explored states: 67Count oCount of Explored states: 58608
+81
+Count of Explored states: 51228
+72
+Explored states: 48756
+105
+Count of Explored states: 4815
+10
+Count of Explored states: 263
+2
+Count of Explored states: 1211
+3
+Count of Explored states: 44175
+95
+Count of Explored states: 32473
+68
+Count of Explored states: 12497
+24
+Test 28:
+Count of Explored states: 1847
+8
+Count of Explored states: 1140
+5
+Count of Explored states: 3778
+17
+Count of Explored states: 7300
+34
+Count of Explored states: 12
+1
+Count of Explored states: 7071
+33
+Count of Explored states: 3472
+16
+Count of Explored states: 7853
+38
+Count of Explored states: 3813
+17
+Count of Explored states: 125
+2
+Count of Explored states: 77
+1
+Count of Explored states: 2
+0
+Count of Explored states: 2162
+9
+Count of Explored states: 3628
+16
+Count of Explored states: 1195
+5
+Test 29:
+Count of Explored states: 21404
+44
+Count of Explored states: 6401
+13
+Count of Explored states: 27026
+56
+Count of Explored states: 10795
+22
+Count of Explored states: 41675
+93
+Count of Explored states: 37194
+82
+Count of Explored states: 39621
+87
+Count of Explored states: 33766
+74
+Count of Explored states: 709
+2
+Count of Explored states: 3
+0
+Count of Explored states: 30538
+66
+Count of Explored states: 43252
+97
+: 49497
+68
+Count of Explored states: 65901
+94
+Count of Explored states: 35778
+48
+Count of Explored states: 80744
+116
+Test 3:
+Count of Explored states: 26918
+51
+Count of Explored states: 21801
+42
+                                                                                                                                                                                                         Count of Explored states: 16040
+45
+Count of Explored states: 7265
+20
+Count of Explored states: 11145
+31
+Count of Explored states: 8652
+24
+Count of Explored states: 2202
+6
+Count of Explored states: 15062
+42
+Count of Explored states: 3442
+9
+Test 30:
+Count of Explored states: 1746
+9
+Count of Explored states: 1350
+6
+CounCount of Explored states: 25992
+49
+Count of Explored states: 5745
+10
+ Explored states: 182
+2
+Count of Explored states: 4756
+22
+Count of Explored states: 1910
+9
+Count of Explored states: 1287
+6
+Count of Explored states: 4848
+24
+Count of Explored states: 171
+2
+Count of Explored states: 6057
+30
+Count of Explored states: 2
+0
+Count of Explored states: 2108
+9
+Count of Explored states: 2548
+12
+Count of Explored states: 2765
+13
+Test 31:
+Count of Explored states: 10345
+25
+Count of Explored states: 10960
+27
+Count of Explored states: 8514
+21
+Count of Explored states: 10158
+26
+Count of Explored states: 25360
+66
+Count of Explored states: 49541
+100
+Count of Explored states: 27345
+52
+Count of Explored states: 27192
+54
+Count of Explored states: 31399
+60
+plored states: 4650
+11
+Count of Explored states: 16433
+42
+Count of Explored states: 16210
+42
+Count of Explored states: 23609
+61
+Count of Explored states: 4485
+11
+Count of Explored states: 9570
+23
+Test 32:
+Count of Explored states: 6145
+28
+Count of Explored states: 4296
+18
+Count of Explored states: 2496
+10
+Count of Explored states: 3289
+14
+Count of Explored states: 3487
+14
+Count of Explored states: 2184
+10
+Count of Explored states: 5593
+25
+Count of Explored states: 5007
+21
+Count of Explored states: 7212
+32
+Count of Explored states: 3594
+15
+Count of ECount of Explored states: 31599
+62
+Count of Explored states: 2
+0
+f Explored states: 4540
+19
+Count of Explored states: 2375
+9
+Count of Explored states: 4334
+18
+Test 33:
+Count of Explored states: 6795
+14
+Count of Explored states: 17288
+41
+                                                                                                                                                                                                                                                                                                                                                                                             Count of Explored states: 38466
+81
+Count of Explored states: 47146
+101
+Test 34:
+Count of Explored states: 2
+0
+Count of Explored states: 2231
+18
+CountCount of Explored states: 33859
+84
+Count of Explored states: 11849
+27
+Explored states: 2223
+18
+Count of Explored states: 512
+3
+Count of Explored states: 2033
+16
+Count of Explored states: 1845
+15
+Count of Explored states: 2694
+24
+Count of Explored states: 2164
+18
+Count of Explored states: 2285
+19
+Count of Explored states: 927
+8
+Count of Explored states: 1800
+16
+Count of Explored states: 1289
+10
+Count of Explored states: 1899
+15
+Test 35:
+Count of Explored states: 26384
+34
+Count of Explored states: 47885
+63
+Count of Explored states: 56754
+76
+Count of Explored states: 48
+1
+Count of Explored states: 31295
+41
+Count of Explored states: 55043
+73
+                                                                                                                                                                                    Count of Explored states: 65975
+90
+Count of Explored states: 67718
+91
+Count of Explored states: 57058
+77
+Count of Explored states: 46137
+63
+Test 36:
+Count of Explored states: 4586
+13
+Count of Explored states: 5118
+15
+Count of Explored states: 16402
+47
+Count of Explored states: 190
+2
+Count of Explored states: 11700
+33
+Count of Explored states: 16733
+48
+Count of Explored states: 30
+1
+Count of Explored states: 17508
+50
+Count of Explored states: 21999
+66
+Count of Explored states: 89230
+125
+Count of Explored states: 2
+0
+Count of Explored states: 3741
+4
+87
+52
+Count of Explored states: 19229
+57
+Count of Explored states: 20674
+62
+Count of Explored states: 5643
+15
+Test 37:
+Count of Explored states: 4953
+10
+Count of Explored states: 21314
+46
+Count of Explored states: 39758
+90
+Count of Explored states: 16063
+34
+Count of Explored states: 39236
+89
+Count of Explored states: 2394
+5
+Count of Explored states: 30077
+65
+Count of Explored states: 30635
+67
+Count of Explored states: 34282
+77
+unt of Explored states: 25816
+55
+Count of Explored states: 36871
+80
+Count of Explored states: 4475
+9
+Count of Explored states: 34364
+74
+Count of Explored states: 29463
+62
+Count of Explored states: 14330
+30
+Test 38:
+Count of Explored states: 1474
+7
+Count of Explored states: 4673
+25
+Count of Explored states: 1244
+6
+Count of Explored states: 4482
+24
+Count of Explored states: 1026
+5
+Count of Explored states: 4042
+20
+Count of Explored states: 2097
+11
+Count of Explored states: 784
+4
+Count of Explored states: 2427
+12
+Count of Explored states: 1782
+9
+Count of Explored states: 4228
+22
+Count of Explored states: 4474
+24
+Count of Explored states: 955
+4
+Count of Explored states: 1336
+7
+Count of Explored states: 331
+2
+Test 39:
+Count of Explored states: 52162
+72
+Count of Explored states: 17198
+22
+Count of Explored states: 17029
+22
+Count of Explored states: 16874
+23
+Count of Explored states: 41675
+57
+Count of Explored states: 45392
+63
+Count of Explored states: 280
+2
+Count of Explored states: 9774
+13
+Count of Explored states: 15018
+19
+Count of Explored states: 18677
+45
+Count of Explored states: 30606
+74
+Count of Explored states: 27584
+68
+Count of Explored states: 3274
+7
+Count of Explored states: 16729
+41
+Count of Explored states: 25097
+60
+Test 4:
+Count of Explored states: 27571
+75
+Count of Explored states: 9241
+22
+Count of Explored states: 21776
+57
+Count of Explored states: 5870
+15
+Count of Explored states: 2
+0
+Count of Explored states: 29006
+78
+Count of Explored states: 21179
+56
+Count of Explored states: 3992
+10
+Count of Explored states: 22706
+61
+Count of Explored states: 13954
+35
+Count of Explored states: 23976
+63
+Count of Explored states: 19437
+52
+Count of Explored states: 12791
+32
+Count of Explored states: 24630
+65
+Count of Explored states: 9262
+23
+Test 40:
+Count of Explored states: 21697
+58
+Count of Explored states: 24436
+66
+Count of Explored states: 19365
+52
+Count of Explored states: 13
+1
+Count of Explored states: 11796
+30
+Count of Explored states: 25320
+68
+                                                              Count of Explored states: 20926
+47
+Count of Explored states: 29757
+68
+Count of Explored states: 274
+2
+Count of Explored states: 3430
+7
+Count of Explored states: 31225
+74
+Count of Explored states: 35123
+82
+Count of Explored states: 6300
+14
+Test 41:
+Count of Explored states: 29115
+55
+Count of Explored states: 1206
+3
+Count of Explored states: 42857
+83
+Count of Explored states: 15821
+30
+Count of Explored states: 39244
+77
+Count of Explored states: 38549
+74
+nt of Explored states: 25781
+68
+Count of Explored states: 8672
+21
+Count of Explored states: 14126
+35
+Count of Explored states: 17005
+44
+Count of Explored states: 14385
+36
+Count of Explored states: 20209
+51
+Count of Explored states: 24709
+63
+Count of Explored states: 12686
+32
+Count of Explored states: 24839
+64
+Test 42:
+Count of Explored states: 6670
+26
+Count of Explored states: 10412
+43
+Count of Explored states: 1275
+4
+Count of Explored states: 8397
+35
+Count of Explored states: 9219
+37
+Count of Explored states: 5390
+20
+CounCount of Explored states: Count of Explored states: 2881
+10
+Count of Explored states: 9202
+37
+Count of Explored states: 8832
+36
+Count of Explored states: 4326
+16
+Count of Explored states: 2575
+10
+Count of Explored states: 2671
+10
+Count of Explored states: 3
+0
+Count of Explored states: 10416
+44
+Test 43:
+Count of Explored states: 8157
+10
+                                                                                                                                                                                                                                                                                                                                                                                           Count of Explored states: 12561
+26
+Count of Explored states: 38350
+88
+Count of Explored states: 21525
+47
+Test 44:
+Count of Explored states: 319
+2
+CoCount of Explored states: 72158
+98
+Count of Explored states: 10732
+13
+Count of Explored states: 47479
+63
+Count of Explored states: 62264
+84
+t of Explored states: 5223
+13
+Count of Explored states: 14800
+37
+Count of Explored states: 24574
+64
+Count of Explored states: 22564
+58
+Count of Explored states: 8859
+22
+Count of Explored states: 14266
+35
+Count of Explored states: 5639
+13
+Count of Explored states: 18198
+46
+Count of Explored states: 4258
+10
+Count of Explored states: 22899
+59
+Test 45:
+Count of Explored states: 8113
+31
+Count of Explored states: 10203
+39
+Count of Explored states: 6999
+26
+Count of Explored states: 1909
+7
+Count of Explored states: 2321
+8
+Count of Explored states: 439
+2
+Count ofCount of Explored states: 40111
+52
+Count of Explored states: 14114
+17
+Count of Explored states: 18933
+23
+lored states: 1272
+4
+Count of Explored states: 11350
+44
+Count of Explored states: 9829
+38
+Count of Explored states: 8031
+31
+Count of Explored states: 2076
+8
+Count of Explored states: 10674
+41
+Test 46:
+Count of Explored states: 506
+3
+Count of Explored states: 6587
+22
+Count of Explored states: 8037
+28
+Count of Explored states: 5539
+18
+Count of Explored states: 13157
+48
+                                                                                                                                                                                                                                                          Count of Explored states: 26954
+53
+Count of Explored states: 4
+0
+Count of Explored states: 40318
+82
+Test 47:
+Count of Explored states: 243
+3
+Count of Explored states: 312
+4
+Count of Explored states: 375
+5
+Count of Explored states: 14
+1
+Count of Explored states: 544
+7
+Count of ECount of Explored states: 6605
+22
+red states: 305
+4
+Count of Explored states: 77
+2
+Count of Explored states: 415
+6
+Count of Explored states: 605
+8
+Count of Explored states: 231
+3
+Count of Explored states: 432
+6
+Count of Explored states: 54
+1
+Count of Explored states: 2
+0
+Count of Explored states: 302
+4
+Test 48:
+Count of Explored states: 4206
+11
+Count of Explored states: 23685
+67
+Count of Explored states: 8008
+21
+Count of Explored states: 10868
+29
+Count of Explored states: 8106
+21
+Count of Explored states: 22500
+64
+Count of Explored states: 24110
+68
+Count of Explored states: 25415
+71
+Count of Explored states: 11692
+32
+Count of Explored states: 16616
+46
+Count of Explored states: 17679
+49
+1
+Count of Explored states: 28168
+60
+Count of Explored states: 9405
+19
+Count of Explored states: 23149
+47
+Count of Explored states: 28333
+59
+Test 49:
+Count of Explored states: 7419
+18
+Count of Explored states: 19598
+50
+Count of Explored states: 24787
+64
+Count of Explored states: 5852
+14
+Count of Explored states: 8210
+19
+Count of Explored states: 24825
+65
+Count of Explored states: 7980
+19
+Count of Explored states: 21304
+55
+Count of Explored states: 24299
+62
+Count of Explored states: 3280
+8
+25
+Count of Explored states: 5127
+12
+Count of Explored states: 27493
+68
+Count of Explored states: 18124
+43
+Count of Explored states: 22444
+54
+Count of Explored states: 31437
+77
+Test 5:
+Count of Explored states: 23926
+32
+                                                                                                                                                                                                                                                                                                                    Count of Explored states: 30500
+80
+Count of Explored states: 3080
+7
+Count of Explored states: 3414
+8
+Count of Explored states: 22530
+57
+Count of Explored states: 2589
+6
+Test 50:
+Count of Explored states: 15737
+47
+Count of Explored states: 11197
+33
+Count of Explored states: 10201
+30
+Count of Explored states: 64705
+92
+Count of Explored states: 53455
+75
+ of Explored states: 19111
+58
+Count of Explored states: 795
+3
+Count of Explored states: 20151
+61
+Count of Explored states: 8112
+22
+Count of Explored states: 21059
+65
+Count of Explored states: 2065
+6
+Count of Explored states: 13744
+40
+Count of Explored states: 4803
+14
+Count of Explored states: 15443
+45
+Count of Explored states: 16613
+49
+Test 51:
+Count of Explored states: 4639
+16
+Count of Explored states: 4779
+16
+Count of Explored states: 13356
+48
+Count of Explored states: 8592
+30
+Count of Explored states: 1647
+5
+CountCount of Explored states: 62315
+89
+Count of Explored states: 10687
+14
+of Explored states: 2355
+7
+Count of Explored states: 2927
+10
+Count of Explored states: 5576
+19
+Count of Explored states: 13170
+47
+Count of Explored states: 6599
+22
+Count of Explored states: 8458
+29
+Count of Explored states: 10083
+35
+Count of Explored states: 8264
+28
+Test 52:
+Count of Explored states: 525
+7
+Count of Explored states: 47
+1
+Count of Explored states: 2
+0
+Count of Explored states: 2
+0
+Count of Explored states: 489
+6
+Count of Explored states: 75
+2
+Count of Explored states: 2
+0
+Count of Explored states: 72
+2
+Count of Explored states: 447
+6
+Count of Explored states: 486
+6
+Count of Explored states: 6
+0
+Count of Explored states: 333
+4
+Count of Explored states: 704
+10
+Count of Explored states: 2
+0
+Count of Explored states: 517
+7
+Test 53:
+Count of Explored states: 3549
+20
+Count of Explored states: 1120
+6
+Count of Explored states: 3996
+23
+Count of Explored states: 1097
+6
+Count of Explored states: 3145
+18
+Count of Explored states: 4
+0
+Count of Explored states: 3674
+21
+Count of ExplCount of Explored stCount of Explored states: 3181
+17
+Count of Explored states: 921
+5
+Count of Explored states: 2307
+12
+Count of Explored states: 3773
+21
+Count of Explored states: 2807
+15
+Count of Explored states: 1877
+10
+Count of Explored states: 2006
+11
+Test 54:
+Count of Explored states: 213
+3
+Count of Explored states: 15
+1
+Count of Explored states: 667
+8
+Count of Explored states: 663
+8
+Count of Explored states: 523
+7
+Count of Explored states: 566
+8
+Count of Explored states: 842
+12
+Count of Explored states: 736
+10
+Count of Explored states: 328
+4
+Count of Explored states: 648
+9
+Count of Explored states: 654
+10
+Count of Explored states: 14
+1
+Count of Explored states: 358
+4
+Count of Explored states: 603
+8
+Count of Explored states: 545
+7
+Test 55:
+Count of Explored states: 4520
+19
+Count of Explored states: 2103
+8
+Count of Explored states: 4848
+19
+Count of Explored states: 720
+3
+Count of Explored states: 8282
+36
+Count of Explored states: 7600
+32
+Count of Explored states: 1594
+6
+Count of Explored states: 994
+4
+Count of Explored states: 6941
+29
+                                                                                                                  Count of Explored states: 60810
+80
+Count of Explored states: 26738
+33
+Count of Explored states: 19575
+24
+Test 56:
+Count of Explored states: 8
+0
+Count of Explored states: 712
+7
+Count of Explored states: 1406
+15
+Count of Explored states: 3
+0
+Count of Explored states: 2
+0
+Count of Explored states: 1295
+13
+Count of Explored states: 1051
+11
+Count of Explored states: 2
+0
+Count of Explored states: 428
+4
+Count of ExploCount of Explored states: 6815
+28
+d states: 8
+0
+Count of Explored states: 723
+7
+Count of Explored states: 17
+1
+Count of Explored states: 691
+7
+Count of Explored states: 993
+10
+Test 57:
+Count of Explored states: 25803
+58
+Count of Explored states: 728
+2
+Count of Explored states: 41649
+94
+Count of Explored states: 37542
+85
+Count of Explored states: 4032
+8
+Count of Explored states: 11747
+25
+Count of Explored states: 13103
+27
+Count of Explored states: 28813
+62
+Count of Explored states: 13002
+29
+                                        Count of Explored states: 79804
+107
+Count of Explored states: 24423
+31
+Count of Explored states: 87615
+119
+Count of Explored states: 8672
+10
+Count of Explored states: 65916
+88
+Test 58:
+                                                                                                                                                                                                                                                                                                                                                                                                                          Count of Explored states: 11851
+41
+Count of Explored states: 3056
+10
+Count of Explored states: 8573
+28
+Test 59:
+Count of Explored states: 14546
+49
+Count of Explored states: 8091
+26
+Count of Explored states: 15684
+52
+Count of Explored states: 14792
+48
+Count of Explored states: 14503
+47
+Count of Explored states: 1328
+Count of Explored states: 45527
+95
+Count of Explored states: 10684
+20
+Count of Explored states: 16809
+33
+Count of Explored states: 6368
+20
+Count of Explored states: 2662
+8
+Count of Explored states: 2636
+8
+Count of Explored states: 6871
+21
+Count of Explored states: 12458
+39
+Count of Explored states: 8533
+27
+Test 6:
+Count of Explored states: 48417
+97
+Count of Explored states: 23270
+44
+Count of Explored states: 43405
+84
+Count of Explored states: 49103
+98
+Count of Explored states: 48398
+95
+Count of Explored states: 14164
+26
+Count of Explored states: 15834
+30
+Count of Explored states: 38863
+74
+Count of Explored states: 28203
+53
+Count of Explored states: 32678
+62
+Count of Explored states: 10656
+19
+Count of Explored states: 40651
+78
+Count of Explored states: 42220
+80
+Count of Explored states: 17625
+32
+Count of Explored states: 22754
+41
+Test 60:
+Count of Explored states: 3056
+17
+Count of Explored states: 3989
+23
+Count of Explored states: 1088
+6
+Count of Explored states: 1579
+9
+Count of Explored states: 2689
+14
+Count of Explored states: 3902
+22
+Count of Explored states: 1154
+6
+Count of Explored states: 3065
+17
+Count of Explored states: 2
+0
+Count of Explored states: 2479
+14
+Count of Explored states: 4146
+24
+Count of Explored states: 1311
+6
+Count of Explored states: 868
+5
+Count of Explored states: 1453
+8
+Count of Explored states: 4354
+24
+Test 61:
+Count of Explored states: 19723
+34
+Count of Explored states: 47451
+88
+Count of Explored states: 2
+0
+Count of Explored states: 10629
+18
+Count of Explored states: 4781
+9
+Count of Explored states: 61683
+120
+Count of Explored states: 2314
+4
+Count of Explored states: 58513
+112
+Count of Explored states: 41072
+75
+Count of Explored states: 42504
+78
+Count of Explored states: 59239
+114
+Count of Explored states: 2
+0
+Count of Explored states: 58606
+113
+Count of Explored states: 21171
+38
+Count of Explored states: 37066
+66
+Test 62:
+Count of Explored states: 51954
+70
+Count of Explored states: 6392
+7
+Count of Explored states: 50487
+68
+Count of Explored states: 18581
+23
+Count of Explored states: 83741
+117
+Count of Explored states: 52904
+71
+Count of Explored states: 25325
+33
+Count of Explored states: 63837
+87
+Count of Explored states: 68791
+94
+Count of Explored states: 66457
+91
+Count of Explored states: 2406
+4
+Count of Explored states: 87140
+126
+Count of Explored states: 3907
+5
+Count of Explored states: 7789
+10
+Count of Explored states: 68903
+94
+Test 63:
+Count of Explored states: 85887
+125
+Count of Explored states: 33261
+45
+Count of Explored states: 83269
+121
+Count of Explored states: 45060
+61
+Count of Explored states: 29579
+39
+Count of Explored states: 67593
+95
+Count of Explored states: 58608
+81
+Count of Explored states: 51228
+72
+Count of Explored states: 66813
+95
+Count of Explored states: 9706
+12
+Count of Explored states: 2
+0
+Count of Explored states: 24110
+32
+Count of Explored states: 12911
+17
+Count of Explored states: 56052
+78
+Count of Explored states: 24495
+32
+Test 64:
+Count of Explored states: 38961
+75
+Count of Explored states: 27709
+52
+Count of Explored states: 27807
+51
+Count of Explored states: 8908
+16
+Count of Explored states: 14507
+27
+Count of Explored states: 10300
+18
+Count of Explored states: 18114
+34
+Count of Explored states: 17581
+32
+Count of Explored states: 20579
+38
+Count of Explored states: 51322
+104
+Count of Explored states: 32968
+63
+Count of Explored states: 38484
+75
+Count of Explored states: 2
+0
+Count of Explored states: 5858
+10
+Count of Explored states: 9574
+17
+Test 65:
+Count of Explored states: 1861
+9
+Count of Explored states: 1029
+5
+Count of Explored states: 2735
+15
+Count of Explored states: 1020
+5
+Count of Explored states: 2636
+14
+Count of Explored states: 2347
+12
+Count of Explored states: 3537
+19
+Count of Explored states: 3506
+19
+Count of Explored states: 7
+0
+Count of Explored states: 2539
+13
+Count of Explored states: 12
+1
+Count of Explored states: 2045
+11
+Count of Explored states: 4
+0
+Count of Explored states: 717
+4
+Count of Explored states: 3052
+16
+Test 66:
+Count of Explored states: 77
+1
+Count of Explored states: 4338
+20
+Count of Explored states: 5787
+27
+Count of Explored states: 3126
+14
+Count of Explored states: 5238
+26
+Count of Explored states: 4112
+19
+Count of Explored states: 1941
+8
+Count of Explored states: 2
+0
+Count of Explored states: 12
+1
+Count of Explored states: 1044
+5
+Count of Explored states: 4613
+23
+Count of Explored states: 6629
+33
+Count of Explored states: 2366
+11
+Count of Explored states: 1064
+5
+Count of Explored states: 4
+0
+Test 67:
+Count of Explored states: 21404
+44
+Count of Explored states: 6401
+13
+Count of Explored states: 27026
+56
+Count of Explored states: 10795
+22
+Count of Explored states: 41675
+93
+Count of Explored states: 37194
+82
+Count of Explored states: 39621
+87
+Count of Explored states: 33766
+74
+Count of Explored states: 709
+2
+Count of Explored states: 3
+0
+Count of Explored states: 30538
+66
+Count of Explored states: 43252
+97
+Count of Explored states: 22814
+48
+Count of Explored states: 16973
+35
+Count of Explored states: 29565
+62
+Test 68:
+Count of Explored states: 2
+0
+Count of Explored states: 1221
+13
+Count of Explored states: 1460
+15
+Count of Explored states: 363
+3
+Count of Explored states: 1189
+12
+Count of Explored states: 540
+6
+Count of Explored states: 831
+8
+Count of Explored states: 1176
+12
+Count of Explored states: 607
+6
+Count of Explored states: 934
+10
+Count of Explored states: 1034
+10
+Count of Explored states: 522
+5
+Count of Explored states: 1016
+10
+Count of Explored states: 1120
+11
+Count of Explored states: 437
+4
+Test 69:
+Count of Explored states: 26918
+51
+Count of Explored states: 21801
+42
+Count of Explored states: 25992
+49
+Count of Explored states: 5745
+10
+Count of Explored states: 48657
+98
+Count of Explored states: 49541
+100
+Count of Explored states: 27345
+52
+Count of Explored states: 27192
+54
+Count of Explored states: 31399
+60
+Count of Explored states: 27876
+53
+Count of Explored states: 31599
+62
+Count of Explored states: 2
+0
+Count of Explored states: 30247
+57
+Count of Explored states: 39170
+77
+Count of Explored states: 16658
+31
+Test 7:
+Count of Explored states: 8729
+21
+Count of Explored states: 15409
+37
+Count of Explored states: 22101
+57
+Count of Explored states: 19954
+51
+Count of Explored states: 27424
+70
+Count of Explored states: 21485
+54
+Count of Explored states: 14610
+35
+Count of Explored states: 24328
+62
+Count of Explored states: 26856
+69
+Count of Explored states: 4
+0
+Count of Explored states: 169
+2
+Count of Explored states: 3976
+10
+Count of Explored states: 28134
+73
+Count of Explored states: 29511
+78
+Count of Explored states: 29408
+76
+Test 70:
+Count of Explored states: 6795
+14
+Count of Explored states: 17288
+41
+Count of Explored states: 33859
+84
+Count of Explored states: 11849
+27
+Count of Explored states: 19517
+46
+Count of Explored states: 18786
+44
+Count of Explored states: 12694
+29
+Count of Explored states: 141
+1
+Count of Explored states: 28536
+68
+Count of Explored states: 10867
+25
+Count of Explored states: 2070
+5
+Count of Explored states: 26194
+63
+Count of Explored states: 29451
+72
+Count of Explored states: 14535
+33
+Count of Explored states: 19064
+45
+Test 71:
+Count of Explored states: 2779
+9
+Count of Explored states: 9332
+31
+Count of Explored states: 14994
+53
+Count of Explored states: 4656
+15
+Count of Explored states: 7139
+24
+Count of Explored states: 6829
+23
+Count of Explored states: 12406
+43
+Count of Explored states: 11594
+39
+Count of Explored states: 4262
+14
+Count of Explored states: 12726
+44
+Count of Explored states: 21
+1
+Count of Explored states: 5331
+17
+Count of Explored states: 12493
+42
+Count of Explored states: 6944
+23
+Count of Explored states: 7896
+28
+Test 72:
+Count of Explored states: 6223
+22
+Count of Explored states: 2335
+8
+Count of Explored states: 6488
+23
+Count of Explored states: 5912
+21
+Count of Explored states: 9402
+35
+Count of Explored states: 9601
+38
+Count of Explored states: 10865
+40
+Count of Explored states: 2
+0
+Count of Explored states: 144
+2
+Count of Explored states: 2446
+9
+Count of Explored states: 8342
+31
+Count of Explored states: 1675
+6
+Count of Explored states: 9235
+35
+Count of Explored states: 10929
+41
+Count of Explored states: 3720
+13
+Test 73:
+Count of Explored states: 3555
+12
+Count of Explored states: 8279
+30
+Count of Explored states: 4696
+16
+Count of Explored states: 186
+2
+Count of Explored states: 11956
+44
+Count of Explored states: 12548
+46
+Count of Explored states: 7438
+27
+Count of Explored states: 10582
+39
+Count of Explored states: 5283
+19
+Count of Explored states: 7403
+26
+Count of Explored states: 10392
+38
+Count of Explored states: 7867
+28
+Count of Explored states: 12854
+49
+Count of Explored states: 4861
+17
+Count of Explored states: 12
+1
+Test 74:
+Count of Explored states: 1523
+16
+Count of Explored states: 478
+4
+Count of Explored states: 549
+5
+Count of Explored states: 951
+10
+Count of Explored states: 800
+8
+Count of Explored states: 1103
+11
+Count of Explored states: 80
+2
+Count of Explored states: 331
+3
+Count of Explored states: 886
+8
+Count of Explored states: 888
+8
+Count of Explored states: 1005
+9
+Count of Explored states: 2
+0
+Count of Explored states: 1259
+12
+Count of Explored states: 1025
+10
+Count of Explored states: 742
+7
+Test 75:
+Count of Explored states: 787
+4
+Count of Explored states: 4612
+20
+Count of Explored states: 3808
+17
+Count of Explored states: 3779
+17
+Count of Explored states: 4984
+22
+Count of Explored states: 6046
+28
+Count of Explored states: 3232
+13
+Count of Explored states: 4860
+22
+Count of Explored states: 4217
+18
+Count of Explored states: 1114
+5
+Count of Explored states: 2928
+13
+Count of Explored states: 2373
+10
+Count of Explored states: 2129
+9
+Count of Explored states: 4023
+18
+Count of Explored states: 4615
+20
+Test 76:
+Count of Explored states: 615
+6
+Count of Explored states: 678
+7
+Count of Explored states: 9
+1
+Count of Explored states: 410
+4
+Count of Explored states: 552
+6
+Count of Explored states: 405
+4
+Count of Explored states: 258
+3
+Count of Explored states: 435
+5
+Count of Explored states: 1062
+12
+Count of Explored states: 682
+7
+Count of Explored states: 8
+0
+Count of Explored states: 1370
+16
+Count of Explored states: 388
+4
+Count of Explored states: 1329
+15
+Count of Explored states: 330
+3
+Test 77:
+Count of Explored states: 26384
+34
+Count of Explored states: 47885
+63
+Count of Explored states: 56754
+76
+Count of Explored states: 48
+1
+Count of Explored states: 31295
+41
+Count of Explored states: 55043
+73
+Count of Explored states: 42423
+56
+Count of Explored states: 9
+0
+Count of Explored states: 19510
+24
+Count of Explored states: 89230
+125
+Count of Explored states: 2
+0
+Count of Explored states: 3741
+4
+Count of Explored states: 26912
+34
+Count of Explored states: 7792
+10
+Count of Explored states: 39710
+52
+Test 78:
+Count of Explored states: 4953
+10
+Count of Explored states: 21314
+46
+Count of Explored states: 39758
+90
+Count of Explored states: 16063
+34
+Count of Explored states: 39236
+89
+Count of Explored states: 2394
+5
+Count of Explored states: 30077
+65
+Count of Explored states: 30635
+67
+Count of Explored states: 34282
+77
+Count of Explored states: 34239
+77
+Count of Explored states: 22
+1
+Count of Explored states: 9347
+20
+Count of Explored states: 12328
+25
+Count of Explored states: 23563
+51
+Count of Explored states: 8
+0
+Test 79:
+Count of Explored states: 340
+3
+Count of Explored states: 792
+7
+Count of Explored states: 1867
+16
+Count of Explored states: 1075
+9
+Count of Explored states: 144
+2
+Count of Explored states: 1259
+10
+Count of Explored states: 2043
+17
+Count of Explored states: 1370
+11
+Count of Explored states: 2187
+17
+Count of Explored states: 1845
+15
+Count of Explored states: 1994
+17
+Count of Explored states: 2512
+21
+Count of Explored states: 629
+5
+Count of Explored states: 638
+5
+Count of Explored states: 7
+0
+Test 8:
+Count of Explored states: 52162
+72
+Count of Explored states: 17198
+22
+Count of Explored states: 17029
+22
+Count of Explored states: 16874
+23
+Count of Explored states: 41675
+57
+Count of Explored states: 45392
+63
+Count of Explored states: 280
+2
+Count of Explored states: 9774
+13
+Count of Explored states: 15018
+19
+Count of Explored states: 80816
+116
+Count of Explored states: 8699
+11
+Count of Explored states: 32244
+44
+Count of Explored states: 80099
+114
+Count of Explored states: 38608
+52
+Count of Explored states: 78024
+113
+Test 80:
+Count of Explored states: 5172
+21
+Count of Explored states: 16
+1
+Count of Explored states: 1220
+4
+Count of Explored states: 3296
+13
+Count of Explored states: 8593
+36
+Count of Explored states: 2355
+10
+Count of Explored states: 5163
+22
+Count of Explored states: 3337
+13
+Count of Explored states: 4396
+18
+Count of Explored states: 6261
+27
+Count of Explored states: 3779
+15
+Count of Explored states: 6054
+25
+Count of Explored states: 3
+0
+Count of Explored states: 8535
+37
+Count of Explored states: 6150
+26
+Test 81:
+Count of Explored states: 21697
+58
+Count of Explored states: 24436
+66
+Count of Explored states: 19365
+52
+Count of Explored states: 13
+1
+Count of Explored states: 11796
+30
+Count of Explored states: 25320
+68
+Count of Explored states: 21355
+57
+Count of Explored states: 21198
+59
+Count of Explored states: 18783
+49
+Count of Explored states: 25710
+70
+Count of Explored states: 2834
+7
+Count of Explored states: 1625
+4
+Count of Explored states: 4442
+11
+Count of Explored states: 7376
+19
+Count of Explored states: 10135
+26
+Test 82:
+Count of Explored states: 29115
+55
+Count of Explored states: 1206
+3
+Count of Explored states: 42857
+83
+Count of Explored states: 15821
+30
+Count of Explored states: 39244
+77
+Count of Explored states: 38549
+74
+Count of Explored states: 41599
+81
+Count of Explored states: 51707
+103
+Count of Explored states: 42850
+84
+Count of Explored states: 16102
+29
+Count of Explored states: 57924
+116
+Count of Explored states: 46253
+90
+Count of Explored states: 19659
+35
+Count of Explored states: 4935
+9
+Count of Explored states: 55938
+112
+Test 83:
+Count of Explored states: 8157
+10
+Count of Explored states: 72158
+98
+Count of Explored states: 10732
+13
+Count of Explored states: 47479
+63
+Count of Explored states: 62264
+84
+Count of Explored states: 37052
+48
+Count of Explored states: 40111
+52
+Count of Explored states: 14114
+17
+Count of Explored states: 18933
+23
+Count of Explored states: 75261
+104
+Count of Explored states: 69793
+94
+Count of Explored states: 69534
+95
+Count of Explored states: 52991
+70
+Count of Explored states: 37946
+49
+Count of Explored states: 65717
+89
+Test 84:
+Count of Explored states: 506
+3
+Count of Explored states: 6587
+22
+Count of Explored states: 8037
+28
+Count of Explored states: 5539
+18
+Count of Explored states: 13157
+48
+Count of Explored states: 6605
+22
+Count of Explored states: 12354
+44
+Count of Explored states: 10553
+37
+Count of Explored states: 2063
+7
+Count of Explored states: 4324
+14
+Count of Explored states: 1792
+6
+Count of Explored states: 2661
+9
+Count of Explored states: 12343
+44
+Count of Explored states: 4
+0
+Count of Explored states: 11388
+39
+Test 85:
+Count of Explored states: 14289
+42
+Count of Explored states: 5532
+14
+Count of Explored states: 9778
+28
+Count of Explored states: 18181
+53
+Count of Explored states: 11746
+34
+Count of Explored states: 10648
+30
+Count of Explored states: 5286
+15
+Count of Explored states: 5637
+16
+Count of Explored states: 4550
+13
+Count of Explored states: 12806
+37
+Count of Explored states: 2083
+6
+Count of Explored states: 5296
+14
+Count of Explored states: 18777
+57
+Count of Explored states: 8671
+24
+Count of Explored states: 14356
+42
+Test 86:
+Count of Explored states: 4206
+11
+Count of Explored states: 23685
+67
+Count of Explored states: 8008
+21
+Count of Explored states: 10868
+29
+Count of Explored states: 8106
+21
+Count of Explored states: 22500
+64
+Count of Explored states: 24110
+68
+Count of Explored states: 25415
+71
+Count of Explored states: 11692
+32
+Count of Explored states: 16616
+46
+Count of Explored states: 17679
+49
+Count of Explored states: 12972
+34
+Count of Explored states: 18197
+50
+Count of Explored states: 18622
+52
+Count of Explored states: 19066
+53
+Test 87:
+Count of Explored states: 6376
+26
+Count of Explored states: 3
+0
+Count of Explored states: 6562
+26
+Count of Explored states: 3524
+13
+Count of Explored states: 9280
+38
+Count of Explored states: 4916
+18
+Count of Explored states: 5534
+21
+Count of Explored states: 1775
+7
+Count of Explored states: 5426
+21
+Count of Explored states: 546
+3
+Count of Explored states: 4140
+16
+Count of Explored states: 7563
+30
+Count of Explored states: 3475
+13
+Count of Explored states: 8045
+33
+Count of Explored states: 5357
+20
+Test 88:
+Count of Explored states: 7419
+18
+Count of Explored states: 19598
+50
+Count of Explored states: 24787
+64
+Count of Explored states: 5852
+14
+Count of Explored states: 8210
+19
+Count of Explored states: 24825
+65
+Count of Explored states: 7980
+19
+Count of Explored states: 21304
+55
+Count of Explored states: 24299
+62
+Count of Explored states: 3280
+8
+Count of Explored states: 29327
+76
+Count of Explored states: 5523
+13
+Count of Explored states: 25726
+67
+Count of Explored states: 20586
+52
+Count of Explored states: 20918
+54
+Test 89:
+Count of Explored states: 3
+0
+Count of Explored states: 10999
+42
+Count of Explored states: 236
+2
+Count of Explored states: 3689
+13
+Count of Explored states: 6953
+26
+Count of Explored states: 5825
+22
+Count of Explored states: 3796
+14
+Count of Explored states: 10944
+41
+Count of Explored states: 8793
+33
+Count of Explored states: 10659
+40
+Count of Explored states: 3179
+11
+Count of Explored states: 7423
+27
+Count of Explored states: 2945
+11
+Count of Explored states: 1595
+6
+Count of Explored states: 10286
+40
+Test 9:
+Count of Explored states: 23926
+32
+Count of Explored states: 33739
+45
+Count of Explored states: 12195
+16
+Count of Explored states: 64705
+92
+Count of Explored states: 53455
+75
+Count of Explored states: 62315
+89
+Count of Explored states: 10687
+14
+Count of Explored states: 42912
+59
+Count of Explored states: 78697
+111
+Count of Explored states: 32263
+42
+Count of Explored states: 16555
+21
+Count of Explored states: 39018
+54
+Count of Explored states: 85173
+124
+Count of Explored states: 82960
+120
+Count of Explored states: 23012
+30
+Test 90:
+Count of Explored states: 13690
+37
+Count of Explored states: 10864
+31
+Count of Explored states: 19556
+56
+Count of Explored states: 12911
+37
+Count of Explored states: 5696
+15
+Count of Explored states: 4171
+11
+Count of Explored states: 22003
+65
+Count of Explored states: 15604
+43
+Count of Explored states: 9
+0
+Count of Explored states: 17815
+49
+Count of Explored states: 8105
+22
+Count of Explored states: 7119
+19
+Count of Explored states: 9298
+25
+Count of Explored states: 9095
+25
+Count of Explored states: 3169
+8
+Test 91:
+Count of Explored states: 674
+8
+Count of Explored states: 732
+10
+Count of Explored states: 37
+1
+Count of Explored states: 11
+1
+Count of Explored states: 571
+7
+Count of Explored states: 670
+8
+Count of Explored states: 60
+1
+Count of Explored states: 455
+5
+Count of Explored states: 6
+1
+Count of Explored states: 379
+4
+Count of Explored states: 637
+7
+Count of Explored states: 796
+10
+Count of Explored states: 168
+2
+Count of Explored states: 381
+4
+Count of Explored states: 85
+2
+Test 92:
+Count of Explored states: 1229
+6
+Count of Explored states: 470
+3
+Count of Explored states: 5132
+27
+Count of Explored states: 2979
+15
+Count of Explored states: 1984
+10
+Count of Explored states: 2520
+12
+Count of Explored states: 4125
+22
+Count of Explored states: 760
+4
+Count of Explored states: 1029
+5
+Count of Explored states: 1941
+10
+Count of Explored states: 2752
+14
+Count of Explored states: 4612
+23
+Count of Explored states: 5255
+28
+Count of Explored states: 4625
+24
+Count of Explored states: 3926
+20
+Test 93:
+Count of Explored states: 2587
+15
+Count of Explored states: 3509
+20
+Count of Explored states: 4054
+24
+Count of Explored states: 3198
+19
+Count of Explored states: 4325
+26
+Count of Explored states: 3579
+21
+Count of Explored states: 2871
+16
+Count of Explored states: 1523
+9
+Count of Explored states: 2355
+13
+Count of Explored states: 3239
+19
+Count of Explored states: 1893
+11
+Count of Explored states: 1936
+11
+Count of Explored states: 119
+2
+Count of Explored states: 720
+4
+Count of Explored states: 1925
+10
+Test 94:
+Count of Explored states: 4520
+19
+Count of Explored states: 2103
+8
+Count of Explored states: 4848
+19
+Count of Explored states: 720
+3
+Count of Explored states: 8282
+36
+Count of Explored states: 7600
+32
+Count of Explored states: 1594
+6
+Count of Explored states: 994
+4
+Count of Explored states: 6941
+29
+Count of Explored states: 6815
+28
+Count of Explored states: 7906
+33
+Count of Explored states: 8240
+35
+Count of Explored states: 2939
+12
+Count of Explored states: 5916
+24
+Count of Explored states: 1426
+5
+Test 95:
+Count of Explored states: 15836
+42
+Count of Explored states: 2872
+7
+Count of Explored states: 12157
+31
+Count of Explored states: 23475
+66
+Count of Explored states: 11834
+32
+Count of Explored states: 22136
+60
+Count of Explored states: 25397
+68
+Count of Explored states: 21708
+59
+Count of Explored states: 25157
+70
+Count of Explored states: 2878
+7
+Count of Explored states: 9595
+25
+Count of Explored states: 5386
+14
+Count of Explored states: 16470
+44
+Count of Explored states: 1379
+4
+Count of Explored states: 15944
+42
+Test 96:
+Count of Explored states: 23373
+67
+Count of Explored states: 19608
+53
+Count of Explored states: 2023
+5
+Count of Explored states: 2951
+8
+Count of Explored states: 16111
+43
+Count of Explored states: 25
+1
+Count of Explored states: 23203
+67
+Count of Explored states: 20204
+55
+Count of Explored states: 755
+3
+Count of Explored states: 23013
+65
+Count of Explored states: 5932
+15
+Count of Explored states: 14335
+37
+Count of Explored states: 23244
+64
+Count of Explored states: 21557
+61
+Count of Explored states: 11161
+29
+Test 97:
+Count of Explored states: 1027
+10
+Count of Explored states: 299
+3
+Count of Explored states: 571
+6
+Count of Explored states: 757
+7
+Count of Explored states: 1432
+14
+Count of Explored states: 700
+7
+Count of Explored states: 605
+6
+Count of Explored states: 1230
+13
+Count of Explored states: 16
+1
+Count of Explored states: 341
+3
+Count of Explored states: 3
+0
+Count of Explored states: 549
+5
+Count of Explored states: 279
+3
+Count of Explored states: 553
+5
+Count of Explored states: 2
+0
+Test 98:
+Count of Explored states: 25803
+58
+Count of Explored states: 728
+2
+Count of Explored states: 41649
+94
+Count of Explored states: 37542
+85
+Count of Explored states: 4032
+8
+Count of Explored states: 11747
+25
+Count of Explored states: 13103
+27
+Count of Explored states: 28813
+62
+Count of Explored states: 13002
+29
+Count of Explored states: 40491
+92
+Count of Explored states: 2
+0
+Count of Explored states: 23689
+51
+Count of Explored states: 20560
+43
+Count of Explored states: 38415
+85
+Count of Explored states: 5006
+10
+Test 99:
+Count of Explored states: 9887
+20
+Count of Explored states: 2049
+4
+Count of Explored states: 10470
+20
+Count of Explored states: 18518
+36
+Count of Explored states: 11736
+23
+Count of Explored states: 2594
+5
+Count of Explored states: 45527
+95
+Count of Explored states: 10684
+20
+Count of Explored states: 16809
+33
+Count of Explored states: 38728
+81
+Count of Explored states: 42128
+87
+Count of Explored states: 21373
+42
+Count of Explored states: 19185
+39
+Count of Explored states: 6502
+12
+Count of Explored states: 11102
+21

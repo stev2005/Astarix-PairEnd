@@ -40,6 +40,8 @@ int main(int argc, char *argv[]){
     ///first argument: aligning single reads or paired-end
     ///second argument: value of k
     ///third argument: used heuristic
+    ///fourth argument: show or not chow explored states
+    ///fifth argument: triestart: Yes or No
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);*/
@@ -54,7 +56,7 @@ int main(int argc, char *argv[]){
     int testcases, k = charstring_to_int(argv[2]);
     assert(cout<<"int k has a value equal to "<<k<<"\n");
     cin >> ref ;
-     assert(cout<<"entered reference\n");
+    assert(cout<<"entered reference\n");
     cin >> testcases ;
     assert(cout<<"entered num of tescases\n");
     ///Vital for dp seq approach
@@ -76,7 +78,7 @@ int main(int argc, char *argv[]){
             assert("Entered a query\n");
             info.seeds = query_into_seeds(query, k, root);
             assert(cout<<"inited seeds\n");
-            rezult = align_astar_TrieStart(query, ref, k, root, info, argv[3]);
+            rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
         }
         else cin>>queryp.first>>queryp.second;/*To do astar for paired end*/

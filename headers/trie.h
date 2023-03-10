@@ -39,7 +39,6 @@ void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num, int posapp){
             T->num = num;
             T->firstapp = posapp;
         }
-            
         else num = T->num;
         return ;
     }
@@ -48,8 +47,7 @@ void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num, int posapp){
             if (T->child[i]==nullptr){
                 T->child[i]=new Trie();
                 //T->child[i]->bp=base[i];
-            }
-                
+            }    
             insert_kmer(T->child[i], s, pos+1, num, posapp);
             if (T->firstapp == -1)
                 T->firstapp = T->child[i]->firstapp;
@@ -86,11 +84,6 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int>&last
     //string::iterator st,fi;
     string kmer;
     for(int i=0;i<m-k+1;++i){
-        //assert(cout<<"kmer with beign i=="<<i<<"\n");
-        /*st = ref.begin()+i;
-        fi = st+k;
-        sz = k;
-        insert_kmer(T, st, fi, cntkmer);*/
         prevcnt=cntkmer;
         kmer = ref.substr(i, k);
         sz = kmer.size();

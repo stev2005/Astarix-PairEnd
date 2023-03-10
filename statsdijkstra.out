@@ -1,4 +1,10 @@
 Test 1:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 8885
 27
 Count of Explored states: 3994
@@ -30,6 +36,12 @@ Count of Explored states: 4341
 Count of Explored states: 8677
 28
 Test 10:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 13092
 27
 Count of Explored states: 24464
@@ -61,6 +73,12 @@ Count of Explored states: 27896
 Count of Explored states: 21254
 45
 Test 100:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 169
 2
 Count of Explored states: 16933
@@ -92,6 +110,12 @@ Count of Explored states: 30186
 Count of Explored states: 13944
 21
 Test 101:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 1447
 4
 Count of Explored states: 3975
@@ -107,6 +131,12 @@ Count of Explored states: 7008
 Count of Explored states: 9193
 40
 Test 102:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2521
 4
 Count of Explored states: 33561
@@ -120,6 +150,12 @@ Count of Explored states: 70360
 Count of Explored states: 55114
 79
 Test 103:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 41029
 32
 Count of Explored states: 117260
@@ -135,6 +171,12 @@ Count of Explored states: 31199
 Count of Explored states: 237411
 195
 Test 104:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 248430
 108
 Count of Explored states: 701483
@@ -152,6 +194,12 @@ Count of Explored states: 760068
 Count of Explored states: 553075
 248
 Test 105:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 3377150
 858
 Count of Explored states: 3665113
@@ -173,6 +221,12 @@ Count of Explored states: 1024847
 Count of Explored states: 3391859
 860
 Test 11:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2414
 14
 Count of Explored states: 9
@@ -204,6 +258,12 @@ Count of Explored states: 2256
 Count of Explored states: 2260
 13
 Test 12:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 20366
 30
 Count of Explored states: 33944
@@ -235,6 +295,12 @@ Count of Explored states: 14539
 Count of Explored states: 62329
 100
 Test 13:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 11552
 38
 Count of Explored states: 6772
@@ -266,6 +332,12 @@ Count of Explored states: 4104
 Count of Explored states: 6037
 19
 Test 14:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2351
 12
 Count of Explored states: 1103
@@ -297,6 +369,12 @@ Count of Explored states: 13
 Count of Explored states: 1390
 7
 Test 15:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2144
 13
 Count of Explored states: 1966
@@ -328,6 +406,12 @@ Count of Explored states: 1428
 Count of Explored states: 10
 0
 Test 16:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 4053
 12
 Count of Explored states: 11267
@@ -359,6 +443,12 @@ Count of Explored states: 9148
 Count of Explored states: 1773
 5
 Test 17:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 5705
 15
 Count of Explored states: 14488
@@ -390,6 +480,12 @@ Count of Explored states: 4366
 Count of Explored states: 8954
 24
 Test 18:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 16173
 35
 Count of Explored states: 7078
@@ -421,6 +517,12 @@ Count of Explored states: 21815
 Count of Explored states: 5670
 10
 Test 19:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 57729
 86
 Count of Explored states: 13100
@@ -452,6 +554,12 @@ Count of Explored states: 6662
 Count of Explored states: 59475
 90
 Test 2:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 25
 1
 Count of Explored states: 132
@@ -483,6 +591,12 @@ Count of Explored states: 1333
 Count of Explored states: 1262
 8
 Test 20:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 68934
 99
 Count of Explored states: 35639
@@ -514,6 +628,12 @@ Count of Explored states: 65858
 Count of Explored states: 237
 2
 Test 21:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 17382
 49
 Count of Explored states: 3750
@@ -545,6 +665,12 @@ Count of Explored states: 10976
 Count of Explored states: 8339
 22
 Test 22:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 38600
 77
 Count of Explored states: 38701
@@ -576,6 +702,12 @@ Count of Explored states: 24924
 Count of Explored states: 14400
 28
 Test 23:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 12415
 36
 Count of Explored states: 2000
@@ -607,6 +739,12 @@ Count of Explored states: 1955
 Count of Explored states: 4474
 12
 Test 24:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 5468
 7
 Count of Explored states: 48416
@@ -638,6 +776,12 @@ Count of Explored states: 6136
 Count of Explored states: 25998
 40
 Test 25:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 4734
 21
 Count of Explored states: 747
@@ -669,6 +813,12 @@ Count of Explored states: 2331
 Count of Explored states: 1878
 8
 Test 26:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 12361
 17
 Count of Explored states: 25426
@@ -700,6 +850,12 @@ Count of Explored states: 75473
 Count of Explored states: 70837
 106
 Test 27:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 29760
 46
 Count of Explored states: 57555
@@ -731,6 +887,12 @@ Count of Explored states: 42583
 Count of Explored states: 16530
 24
 Test 28:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2613
 8
 Count of Explored states: 1627
@@ -762,6 +924,12 @@ Count of Explored states: 5035
 Count of Explored states: 1733
 5
 Test 29:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 65075
 93
 Count of Explored states: 67178
@@ -793,6 +961,12 @@ Count of Explored states: 35952
 Count of Explored states: 80731
 116
 Test 3:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 20969
 44
 Count of Explored states: 13739
@@ -824,6 +998,12 @@ Count of Explored states: 20190
 Count of Explored states: 4693
 9
 Test 30:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2711
 9
 Count of Explored states: 1778
@@ -855,6 +1035,12 @@ Count of Explored states: 3458
 Count of Explored states: 3797
 13
 Test 31:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 13655
 25
 Count of Explored states: 14723
@@ -886,6 +1072,12 @@ Count of Explored states: 6420
 Count of Explored states: 12649
 23
 Test 32:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 8230
 28
 Count of Explored states: 5976
@@ -917,6 +1109,12 @@ Count of Explored states: 3264
 Count of Explored states: 5936
 18
 Test 33:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 23223
 34
 Count of Explored states: 29451
@@ -948,6 +1146,12 @@ Count of Explored states: 51459
 Count of Explored states: 62758
 101
 Test 34:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 4
 0
 Count of Explored states: 4058
@@ -979,6 +1183,12 @@ Count of Explored states: 2390
 Count of Explored states: 3401
 15
 Test 35:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 5622
 7
 Count of Explored states: 39358
@@ -1010,6 +1220,12 @@ Count of Explored states: 56889
 Count of Explored states: 46063
 63
 Test 36:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 6523
 13
 Count of Explored states: 7127
@@ -1041,6 +1257,12 @@ Count of Explored states: 27492
 Count of Explored states: 7634
 15
 Test 37:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 19701
 30
 Count of Explored states: 45436
@@ -1072,6 +1294,12 @@ Count of Explored states: 39290
 Count of Explored states: 19408
 30
 Test 38:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2075
 7
 Count of Explored states: 6467
@@ -1103,6 +1331,12 @@ Count of Explored states: 1896
 Count of Explored states: 151
 2
 Test 39:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 44774
 84
 Count of Explored states: 11930
@@ -1134,6 +1368,12 @@ Count of Explored states: 22553
 Count of Explored states: 33105
 60
 Test 4:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 36991
 75
 Count of Explored states: 12261
@@ -1165,6 +1405,12 @@ Count of Explored states: 32779
 Count of Explored states: 12510
 23
 Test 40:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 7051
 11
 Count of Explored states: 42954
@@ -1196,6 +1442,12 @@ Count of Explored states: 47217
 Count of Explored states: 8820
 14
 Test 41:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 14141
 26
 Count of Explored states: 33276
@@ -1227,6 +1479,12 @@ Count of Explored states: 17106
 Count of Explored states: 33034
 64
 Test 42:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 8978
 26
 Count of Explored states: 13979
@@ -1258,6 +1516,12 @@ Count of Explored states: 7
 Count of Explored states: 14056
 44
 Test 43:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 3473
 5
 Count of Explored states: 16978
@@ -1289,6 +1553,12 @@ Count of Explored states: 50628
 Count of Explored states: 28487
 47
 Test 44:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 349
 2
 Count of Explored states: 9613
@@ -1320,6 +1590,12 @@ Count of Explored states: 5999
 Count of Explored states: 30178
 59
 Test 45:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 11079
 31
 Count of Explored states: 13668
@@ -1351,6 +1627,12 @@ Count of Explored states: 2961
 Count of Explored states: 14512
 41
 Test 46:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 40217
 60
 Count of Explored states: 40406
@@ -1382,6 +1664,12 @@ Count of Explored states: 8
 Count of Explored states: 53253
 82
 Test 47:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 261
 3
 Count of Explored states: 452
@@ -1413,6 +1701,12 @@ Count of Explored states: 4
 Count of Explored states: 541
 4
 Test 48:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 47035
 75
 Count of Explored states: 43577
@@ -1444,6 +1738,12 @@ Count of Explored states: 30575
 Count of Explored states: 37219
 59
 Test 49:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 34345
 62
 Count of Explored states: 11955
@@ -1475,6 +1775,12 @@ Count of Explored states: 29796
 Count of Explored states: 41886
 77
 Test 5:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 41440
 82
 Count of Explored states: 34827
@@ -1506,6 +1812,12 @@ Count of Explored states: 29641
 Count of Explored states: 3612
 6
 Test 50:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 21471
 47
 Count of Explored states: 15095
@@ -1537,6 +1849,12 @@ Count of Explored states: 20831
 Count of Explored states: 22447
 49
 Test 51:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 6631
 16
 Count of Explored states: 6501
@@ -1568,6 +1886,12 @@ Count of Explored states: 13600
 Count of Explored states: 11203
 28
 Test 52:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 966
 7
 Count of Explored states: 36
@@ -1599,6 +1923,12 @@ Count of Explored states: 6
 Count of Explored states: 941
 7
 Test 53:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 4810
 20
 Count of Explored states: 1585
@@ -1630,6 +1960,12 @@ Count of Explored states: 2595
 Count of Explored states: 2738
 11
 Test 54:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 206
 3
 Count of Explored states: 17
@@ -1661,6 +1997,12 @@ Count of Explored states: 1160
 Count of Explored states: 1024
 7
 Test 55:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 50512
 67
 Count of Explored states: 57879
@@ -1692,6 +2034,12 @@ Count of Explored states: 27162
 Count of Explored states: 19602
 24
 Test 56:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 10
 0
 Count of Explored states: 1338
@@ -1723,6 +2071,12 @@ Count of Explored states: 1249
 Count of Explored states: 1754
 10
 Test 57:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 32546
 41
 Count of Explored states: 6598
@@ -1754,6 +2108,12 @@ Count of Explored states: 8944
 Count of Explored states: 66208
 88
 Test 58:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 19080
 49
 Count of Explored states: 4366
@@ -1785,6 +2145,12 @@ Count of Explored states: 4475
 Count of Explored states: 11634
 28
 Test 59:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 19999
 49
 Count of Explored states: 11420
@@ -1816,6 +2182,12 @@ Count of Explored states: 16659
 Count of Explored states: 11609
 27
 Test 6:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 64693
 97
 Count of Explored states: 30644
@@ -1847,6 +2219,12 @@ Count of Explored states: 23101
 Count of Explored states: 29561
 41
 Test 60:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 4150
 17
 Count of Explored states: 5417
@@ -1878,6 +2256,12 @@ Count of Explored states: 2017
 Count of Explored states: 5752
 24
 Test 61:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 25849
 34
 Count of Explored states: 62905
@@ -1909,6 +2293,12 @@ Count of Explored states: 28288
 Count of Explored states: 48951
 66
 Test 62:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 52002
 70
 Count of Explored states: 6460
@@ -1940,6 +2330,12 @@ Count of Explored states: 7921
 Count of Explored states: 69118
 94
 Test 63:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 85882
 125
 Count of Explored states: 33197
@@ -1971,6 +2367,12 @@ Count of Explored states: 56039
 Count of Explored states: 24371
 32
 Test 64:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 51345
 75
 Count of Explored states: 36621
@@ -2002,6 +2404,12 @@ Count of Explored states: 7567
 Count of Explored states: 12851
 17
 Test 65:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2702
 9
 Count of Explored states: 1479
@@ -2033,6 +2441,12 @@ Count of Explored states: 841
 Count of Explored states: 4259
 16
 Test 66:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 30
 1
 Count of Explored states: 5783
@@ -2064,6 +2478,12 @@ Count of Explored states: 1527
 Count of Explored states: 9
 0
 Test 67:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 28338
 44
 Count of Explored states: 8872
@@ -2095,6 +2515,12 @@ Count of Explored states: 23180
 Count of Explored states: 39607
 62
 Test 68:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 4
 0
 Count of Explored states: 2342
@@ -2126,6 +2552,12 @@ Count of Explored states: 2128
 Count of Explored states: 651
 4
 Test 69:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 34809
 51
 Count of Explored states: 28508
@@ -2157,6 +2589,12 @@ Count of Explored states: 50657
 Count of Explored states: 21556
 31
 Test 7:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 11986
 21
 Count of Explored states: 20413
@@ -2188,6 +2626,12 @@ Count of Explored states: 39757
 Count of Explored states: 39247
 76
 Test 70:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 8850
 14
 Count of Explored states: 23385
@@ -2219,6 +2663,12 @@ Count of Explored states: 19250
 Count of Explored states: 25523
 45
 Test 71:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 3934
 9
 Count of Explored states: 12868
@@ -2250,6 +2700,12 @@ Count of Explored states: 9702
 Count of Explored states: 11046
 28
 Test 72:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 8312
 22
 Count of Explored states: 3248
@@ -2281,6 +2737,12 @@ Count of Explored states: 14588
 Count of Explored states: 5079
 13
 Test 73:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 4846
 12
 Count of Explored states: 11315
@@ -2312,6 +2774,12 @@ Count of Explored states: 6713
 Count of Explored states: 16
 1
 Test 74:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 2831
 16
 Count of Explored states: 758
@@ -2343,6 +2811,12 @@ Count of Explored states: 1916
 Count of Explored states: 1334
 7
 Test 75:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 884
 4
 Count of Explored states: 6383
@@ -2374,6 +2848,12 @@ Count of Explored states: 5388
 Count of Explored states: 6383
 20
 Test 76:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 1222
 6
 Count of Explored states: 1232
@@ -2405,6 +2885,12 @@ Count of Explored states: 2449
 Count of Explored states: 438
 3
 Test 77:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 26484
 34
 Count of Explored states: 48079
@@ -2436,6 +2922,12 @@ Count of Explored states: 8328
 Count of Explored states: 39530
 52
 Test 78:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 7144
 10
 Count of Explored states: 28475
@@ -2467,6 +2959,12 @@ Count of Explored states: 31573
 Count of Explored states: 10
 0
 Test 79:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 323
 3
 Count of Explored states: 1628
@@ -2498,6 +2996,12 @@ Count of Explored states: 1426
 Count of Explored states: 10
 0
 Test 8:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 52268
 72
 Count of Explored states: 17054
@@ -2529,6 +3033,12 @@ Count of Explored states: 38833
 Count of Explored states: 77850
 113
 Test 80:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 7023
 21
 Count of Explored states: 16
@@ -2560,6 +3070,12 @@ Count of Explored states: 11740
 Count of Explored states: 8422
 26
 Test 81:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 28706
 58
 Count of Explored states: 32692
@@ -2591,6 +3107,12 @@ Count of Explored states: 9965
 Count of Explored states: 13394
 26
 Test 82:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 37996
 55
 Count of Explored states: 1195
@@ -2622,6 +3144,12 @@ Count of Explored states: 6807
 Count of Explored states: 74101
 112
 Test 83:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 8316
 10
 Count of Explored states: 72204
@@ -2653,6 +3181,12 @@ Count of Explored states: 37466
 Count of Explored states: 66122
 89
 Test 84:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 480
 3
 Count of Explored states: 9246
@@ -2684,6 +3218,12 @@ Count of Explored states: 8
 Count of Explored states: 15718
 39
 Test 85:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 19573
 42
 Count of Explored states: 7552
@@ -2715,6 +3255,12 @@ Count of Explored states: 11744
 Count of Explored states: 19783
 42
 Test 86:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 5738
 11
 Count of Explored states: 31677
@@ -2746,6 +3292,12 @@ Count of Explored states: 25221
 Count of Explored states: 25560
 53
 Test 87:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 8607
 26
 Count of Explored states: 7
@@ -2777,6 +3329,12 @@ Count of Explored states: 11096
 Count of Explored states: 7154
 20
 Test 88:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 10142
 18
 Count of Explored states: 26463
@@ -2808,6 +3366,12 @@ Count of Explored states: 27521
 Count of Explored states: 28195
 54
 Test 89:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 7
 0
 Count of Explored states: 14379
@@ -2839,6 +3403,12 @@ Count of Explored states: 2403
 Count of Explored states: 13696
 40
 Test 9:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 24057
 32
 Count of Explored states: 33669
@@ -2870,6 +3440,12 @@ Count of Explored states: 82921
 Count of Explored states: 22513
 30
 Test 90:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 18081
 37
 Count of Explored states: 14517
@@ -2901,6 +3477,12 @@ Count of Explored states: 12194
 Count of Explored states: 4312
 8
 Test 91:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 1277
 8
 Count of Explored states: 1370
@@ -2932,6 +3514,12 @@ Count of Explored states: 731
 Count of Explored states: 80
 2
 Test 92:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 1816
 6
 Count of Explored states: 432
@@ -2963,6 +3551,12 @@ Count of Explored states: 6436
 Count of Explored states: 5491
 20
 Test 93:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 3552
 15
 Count of Explored states: 4856
@@ -2994,6 +3588,12 @@ Count of Explored states: 907
 Count of Explored states: 2553
 10
 Test 94:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 6242
 19
 Count of Explored states: 2950
@@ -3025,6 +3625,12 @@ Count of Explored states: 8315
 Count of Explored states: 2127
 5
 Test 95:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 21019
 42
 Count of Explored states: 3817
@@ -3056,6 +3662,12 @@ Count of Explored states: 2260
 Count of Explored states: 21480
 42
 Test 96:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 31528
 67
 Count of Explored states: 26127
@@ -3087,6 +3699,12 @@ Count of Explored states: 28919
 Count of Explored states: 14902
 29
 Test 97:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 1936
 10
 Count of Explored states: 373
@@ -3118,6 +3736,12 @@ Count of Explored states: 1108
 Count of Explored states: 5
 0
 Test 98:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 34260
 58
 Count of Explored states: 195
@@ -3149,6 +3773,12 @@ Count of Explored states: 50671
 Count of Explored states: 6879
 10
 Test 99:
+arguments:
+./main.exe
+single-read
+4
+dijkstra_heuristic
+Yes
 Count of Explored states: 12979
 20
 Count of Explored states: 2453

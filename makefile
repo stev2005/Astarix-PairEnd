@@ -3,12 +3,36 @@ default: main
 main:
 	g++ main.cpp -o main.exe
 
+testtrie:
+	for file in $$(ls tests); do \
+		echo $$file; \
+		ext="$${file##*.}"; \
+		if [ "$$ext" = "in" ]; then \
+			time ./main.exe single-read 4 seed_heuristic No Yes <tests/$$file >output.out; \
+		else \
+			diff -q output.out tests/$$file; \
+		fi \
+	done
+	echo "Testing done"
+
 test:
 	for file in $$(ls tests); do \
 		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			time ./main.exe single-read 4 seed_heuristic <tests/$$file >output.out; \
+			time ./main.exe single-read 4 seed_heuristic No No <tests/$$file >output.out; \
+		else \
+			diff -q output.out tests/$$file; \
+		fi \
+	done
+	echo "Testing done"
+
+testdijkstra:
+	for file in $$(ls tests); do \
+		echo $$file; \
+		ext="$${file##*.}"; \
+		if [ "$$ext" = "in" ]; then \
+			time ./main.exe single-read 4 dijkstra_heuristic No <tests/$$file >output.out; \
 		else \
 			diff -q output.out tests/$$file; \
 		fi \
@@ -28,7 +52,7 @@ testp:
 	echo "Testing done"
 
 test1:
-	./main.exe single-read 4 seed_heuristic <tests/1.in
+	./main.exe single-read 4 dijkstra_heuristic Yes No <tests/1.in
 
 testche:
 	./main.exe <testche.txt
@@ -36,11 +60,35 @@ testche:
 testp1:
 	./main.exe <tests-paired-end/1.in
 
-printexplstates:
+printexplstatesastartrie:
 	for file in $$(ls tests); do \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			./main.exe <tests/$$file >output.out; \
+			./main.exe single-read 4 seed_heuristic Yes Yes <tests/$$file >output.out; \
+		else \
+			filename="$${file%%.*}"; \
+			echo "Test $$filename:" >> stats.out; \
+			cat output.out >> stats.out; \
+		fi \
+	done
+
+printexplstatesastar:
+	for file in $$(ls tests); do \
+		ext="$${file##*.}"; \
+		if [ "$$ext" = "in" ]; then \
+			./main.exe single-read 4 seed_heuristic Yes No <tests/$$file >output.out; \
+		else \
+			filename="$${file%%.*}"; \
+			echo "Test $$filename:" >> stats.out; \
+			cat output.out >> stats.out; \
+		fi \
+	done
+
+printexplstatesdijktratrie:
+	for file in $$(ls tests); do \
+		ext="$${file##*.}"; \
+		if [ "$$ext" = "in" ]; then \
+			./main.exe single-read 4 dijkstra_heuristic Yes <tests/$$file >output.out; \
 		else \
 			filename="$${file%%.*}"; \
 			echo "Test $$filename:" >> stats.out; \
