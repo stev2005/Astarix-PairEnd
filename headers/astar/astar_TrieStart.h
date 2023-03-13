@@ -62,20 +62,6 @@ struct  Statesr{
         h = 0;
         stepcost = 0;
     }
-    Statesr(int _qpos, Node _p, cost_t _stepcost){
-        qpos = _qpos;
-        p = _p;
-        g = 0;
-        h = 0;
-        stepcost = _stepcost;
-    }
-    Statesr(int _qpos, Node _p, cost_t _g, cost_t _h){
-        qpos = _qpos;
-        p = _p;
-        g = _g;
-        h = _h;
-        stepcost = 0;
-    }
     Statesr(int _qpos, Node _p, cost_t _g, cost_t _h, cost_t _stepcost){
         qpos = _qpos;
         p = _p;
@@ -131,9 +117,9 @@ map <Node, bitset<64> > getcrumbs(const string &ref, int k, const MatchingKmers 
                     crumbs[Node(rpos)] |= (1 << i);
                     Trie *cur = connection[rpos];
                     while (cur != nullptr){
-                        if (crumbs[Node(cur)][i])
-                            break;
-                        crumbs[Node(cur)] |= (1 << i);
+                        /*if (crumbs[Node(cur)][i])
+                            break;*/
+                        crumbs[Node(cur)][i] = true;
                         cur = cur->parent;
                     }
                 }
@@ -144,15 +130,12 @@ map <Node, bitset<64> > getcrumbs(const string &ref, int k, const MatchingKmers 
 }
 
 cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info){
-    int remaining_seeds = info.seeds.size() - ceil((double)cur.qpos/k);
-    if (remaining_seeds < 0) return 0; ///almost nothing more to align, only bps' count < k
-    int rez = remaining_seeds - info.crumbs[cur.p].count();
-    if (rez < 0) rez = 0;
-    return rez;
-    /*int misses = info.seeds.size() - info.crumbs[cur.p].count();
-    int rez = info.qsize - cur.qpos + misses;
-    if (rez < 0) rez = 0;
-    return rez;*/
+    int h = 0;
+    vector<int> seeds = info.seeds;
+    map <Node, bitset<64> > crumbs = info.crumbs;
+    for (int i = ceil ((double) cur.qpos / k); i < seeds.size(); ++i)
+        if (crumbs[cur.p][i] == false) h++;
+    return h;
 }
 
 cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method){
@@ -172,16 +155,15 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
             vector <int> prevpos = info.prevpos;
             for (int i = last[cur.p.u->num]; i != -1; i = prevpos[i]){
                 next.push_back(CreateStatesr(Statesr(cur.qpos, Node(i+1)), k, info, heuristic_method, 0));
-                //next.back().g--;
             }
         }
         else{
             next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1));
             for (int i = 0; i < 4; ++i)
                 if (cur.p.u->child[i] != nullptr){
-                    next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 1));
                     if (base[i] == curqbp)
-                        next.back().stepcost--;
+                        next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 0));
+                    else next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 1));
                     next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.u->child[i])), k, info, heuristic_method, 1));
                 }
         }
@@ -189,7 +171,6 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
     else{
         if (cur.p.rpos < ref.size() && ref[cur.p.rpos] == curqbp){
             next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0));
-            //next.back().g--;
         }
         else{
             if (cur.p.rpos < ref.size()){
@@ -202,50 +183,35 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
     return next;
 }
 
-/*auto setStatesrCmp = [](Statesr c, Statesr d){
-    if (c.qpos != d.qpos)return c.qpos < d.qpos;
-    return c.p < d.p;
-};*/
-
 cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart){
     int n = query.size();
     int m = ref.size();
     priority_queue<Statesr> q;
     set<explstatesr>visited;
-    //set<Statesr, decltype(setStatesrCmp)> visited;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0);
-        //cur.g--;
         q.push(cur);
         for (int i = m - k + 1; i <= m; ++i){
             cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0);
-            //cur.g--;
             q.push(cur);
         }
     }
     else{
         for (int i = 0; i <= m; ++i){
             cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0);
-            //cur.g--;
             q.push(cur);
         }
     }
     while(!q.empty()){
         cur = q.top();
         q.pop();
-        //assert(cur.print());
         if (cur.qpos == n)
             break;
         if (visited.find(explstatesr(cur)) == visited.end()){
             visited.insert(explstatesr(cur));
-        /*if (visited.find(cur) == visited.end()){
-            visited.insert(cur);*/
             vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method);
-            //assert(cout << "size of next == "<< next.size() << endl);
             for (auto i:next){
-                //assert(cout<<"Inheritor: ");
-                //assert(i.print());
                 i.g = cur.g + i.stepcost;
                 q.push(i);
             }
