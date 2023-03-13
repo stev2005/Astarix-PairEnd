@@ -6,15 +6,17 @@ using namespace std;
 
 struct Trie{
     Trie *child[4];
+    Trie *parent;
     int num;///the number of this kmer
-    char bp;
-    int firstapp;///first position fo ending of kmers got from childs of this Trie vertex
+    //char bp;
+    //int firstapp;///first position fo ending of kmers got from childs of this Trie vertex
     Trie(){
         for (int i = 0; i < 4; ++i)
             child[i] = nullptr;
+        parent = nullptr;
         num = -1;
-        firstapp = -1;
-        bp='\0';
+        //firstapp = -1;
+        //bp='\0';
     }
     
     bool is_leaf(){
@@ -33,25 +35,26 @@ struct Trie{
 
 };
 
-void insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num, int posapp){
+Trie* insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num, int posapp){
     if (pos == s.size()){
         if(T->num == -1){
             T->num = num;
-            T->firstapp = posapp;
+            //T->firstapp = posapp;
         }
         else num = T->num;
-        return ;
+        return T;
     }
     for(int i = 0; i<4; ++i)
         if (s[pos] == base[i]){
-            if (T->child[i]==nullptr){
-                T->child[i]=new Trie();
+            if (T->child[i] == nullptr){
+                T->child[i] = new Trie();
+                T->child[i]->parent = T;
                 //T->child[i]->bp=base[i];
             }    
             insert_kmer(T->child[i], s, pos+1, num, posapp);
-            if (T->firstapp == -1)
+            /*if (T->firstapp == -1)
                 T->firstapp = T->child[i]->firstapp;
-            else T->firstapp = min(T->firstapp, T->child[i]->firstapp);
+            else T->firstapp = min(T->firstapp, T->child[i]->firstapp);*/
         }
 }
 
@@ -75,19 +78,20 @@ inline void construct_trie(string &ref, int k, Trie *&T, vector<int>&last, vecto
     }
 }
 
-inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int>&last, vector<int>&prevpos){
+inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &connection){
     int m = ref.size();
     int sz;
     prevpos.resize(m, -1);
     last.resize(m, -1);
-    int cntkmer=0, prevcnt;
+    int cntkmer = 0, prevcnt;
     //string::iterator st,fi;
     string kmer;
-    for(int i=0;i<m-k+1;++i){
+    for(int i = 0; i < m - k + 1; ++i){
         prevcnt=cntkmer;
         kmer = ref.substr(i, k);
         sz = kmer.size();
-        insert_kmer(T, kmer, 0, cntkmer, i);
+        Trie *con = insert_kmer(T, kmer, 0, cntkmer, i);
+        connection.push_back(con);
         //assert(cout<<"inserted kmer\n");
         //assert(cout<<"cntkmer=="<<cntkmer<<"\n");
         prevpos[i+sz-1]=last[cntkmer];
@@ -96,6 +100,8 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int>&last
             ++cntkmer;
         else cntkmer=prevcnt;
     }
+    for (int i = m - k + 1; i < m; ++i)///the last suffixes of the reference have length < k 
+        connection.push_back(nullptr);
 }
 
 int kmer_exists(string &seed, int pos, Trie *T){

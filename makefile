@@ -51,11 +51,14 @@ testp:
 	done
 	echo "Testing done"
 
-test1:
-	./main.exe single-read 4 dijkstra_heuristic Yes No <tests/1.in
+test1dijkstra:
+	./main.exe single-read 10 dijkstra_heuristic Yes No <tests/1.in
+
+testcheseed_heuristic:
+	./main.exe single-read 6 seed_heuristic Yes Yes <testche.in
 
 testche:
-	./main.exe <testche.txt
+	./main.exe single-read <testche.txt
 
 testp1:
 	./main.exe <tests-paired-end/1.in

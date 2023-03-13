@@ -46,9 +46,7 @@ int main(int argc, char *argv[]){
     cin.tie(NULL);
     cout.tie(NULL);*/
     //DNA ref ,  query;
-    /*cout<<"arguments:\n";
-    for (int i = 0; i< argc; ++i)
-        cout<<argv[i]<<endl;*/
+    clock_t t;
     assert(cout<<"Start of the program\n");
     string ref;
     string query;
@@ -58,6 +56,8 @@ int main(int argc, char *argv[]){
     cin >> ref ;
     assert(cout<<"entered reference\n");
     cin >> testcases ;
+    t = clock();
+    cout << "reading reference: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
     assert(cout<<"entered num of tescases\n");
     ///Vital for dp seq approach
     //vector < vector < int > > dp ;
@@ -66,7 +66,9 @@ int main(int argc, char *argv[]){
     MatchingKmers info;
     Trie *root=new Trie();
     //construct_trie(ref, root, info.last, info.prevpos);
-    construct_trie_simple(ref, k, root, info.last, info.prevpos);
+    construct_trie_simple(ref, k, root, info.last, info.prevpos, info.connection);
+    t = clock() - t;
+    cout << "constructing trie: "<< (float) t / CLOCKS_PER_SEC << "s.\n"; 
     assert(cout<<"inited kmers\n");
     //printout_kmers(T, "");
     for (int testcase=1; testcase<=testcases; ++testcase){
@@ -75,11 +77,22 @@ int main(int argc, char *argv[]){
         int rezult;
         if (strcmp(argv[1], "single-read") == 0){
             cin>>query;
+            info.qsize = query.size();
             assert("Entered a query\n");
-            info.seeds = query_into_seeds(query, k, root);
-            assert(cout<<"inited seeds\n");
-            rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5]);
+            map <Node, bitset<64> > crumbs;
+            if (strcmp(argv[3], "seed_heuristic") == 0){
+                info.seeds = query_into_seeds(query, k, root);
+                t = clock() - t;
+                cout << "breaking query into seeds: "<< (float) t / CLOCKS_PER_SEC << "s.\n"; 
+                assert(cout<<"inited seeds\n");
+                crumbs = getcrumbs(ref, k, info);
+                t = clock() - t;
+                cout << "Precompute of crumbs: " << (float) t / CLOCKS_PER_SEC << "s.\n";
+            }
+            rezult = astar_single_read_alignment(query, ref, k, root, info, crumbs, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
+            t = clock() - t;
+            cout << "Alignment: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
         }
         else cin>>queryp.first>>queryp.second;/*To do astar for paired end*/
         ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
