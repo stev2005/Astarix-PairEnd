@@ -100,9 +100,10 @@ map <Node, bitset<64> > getcrumbs(const string &ref, int k, const MatchingKmers 
     for (int i = 0; i < seeds.size(); ++i){
         if (seeds[i] == -1)
             continue;
-        int qpos = (i + 1) * k - 1;///the end position of the current seed
+        int qpos = i * k ;///the start position of the current seed
         for (int j = last[seeds[i]]; j != -1; prevpos[j]){
             for (int k = 0; k < qpos; ++k){
+                int st = j - k + 1; ///start of the kmer matched with the current seed
                 crumbs[Node(j - k)] |= (1 << seeds[i]);
                 Trie *cur = connection[j-k];
                 while (cur != nullptr){
