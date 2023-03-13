@@ -36,6 +36,29 @@ int charstring_to_int(char *num){
     return n;
 }
 
+void printtriecrumbs(map <Node, bitset<64> > &crumbs, Trie *T, string s){
+    cout << "string s: "<< s << " crumbs: ";
+    for (int i = 0; i < 4; ++i)
+        cout << crumbs[Node(T)][i] << " ";
+    cout << endl;
+    for (int i = 0; i < 4; ++i)
+        if (T->child[i] != nullptr)
+            printtriecrumbs(crumbs, T->child[i], s + base[i]);
+}
+
+void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
+    for (auto it = crumbs.begin(); it != crumbs.end(); ++it){
+        Node cur = it->first;
+        if (cur.is_in_trie() == false){
+            cout << "Node in the reference "<<cur.rpos<<"\n";
+            for (int i = 0; i < 4; ++i)
+                cout << it->second[i] << " ";
+            cout << endl;
+        }
+    }
+    printtriecrumbs(crumbs, root, "");
+}
+
 int main(int argc, char *argv[]){
     ///first argument: aligning single reads or paired-end
     ///second argument: value of k
@@ -88,11 +111,16 @@ int main(int argc, char *argv[]){
                 info.crumbs = getcrumbs(ref, k, info);
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (float) t / CLOCKS_PER_SEC << "s.\n";
+                //printoutcrumbs(info.crumbs, root);
             }
             rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
+            info.seeds.clear();
+            info.crumbs.clear();
+            t = clock() - t;
+            cout << "Cleaning help vectors: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
         }
         else cin>>queryp.first>>queryp.second;/*To do astar for paired end*/
         ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer

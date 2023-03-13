@@ -97,35 +97,44 @@ struct explstatesr{
 };
 
 map <Node, bitset<64> > getcrumbs(const string &ref, int k, const MatchingKmers &info){
-    map <Node, bitset<64> >crumbs;
-    vector <int> seeds = info.seeds;
-    vector <int> last = info.last;
-    vector <int> prevpos = info.prevpos;
-    vector <Trie*> connection = info.connection;
-    cout << "checking if (seeds.size() <= 64) : ";
-    if (seeds.size() <= 64)
-        cout << "yes\n";
-    else cout << "no\n";
-    assert(seeds.size() <= 64);
+    map <Node, bitset<64> > crumbs;
+    vector<int> seeds = info.seeds;
+    vector<int> last = info.last;
+    vector<int> prevpos = info.prevpos;
+    vector<Trie*> connection = info.connection;
+    //cout << "seeds.size == " <<seeds.size()<<endl;
+    //cout << "last.size == "<<last.size()<<endl;
     for (int i = 0; i < seeds.size(); ++i){
-        if (seeds[i] >= 0){
-            int qpos = i * k ;///the start position of the current seed
-            for (int j = last[seeds[i]]; j != -1; prevpos[j]){
-                for (int x = 0; x < qpos; ++x){
-                    int st = j - k + 1; ///start of the kmer matched with the current seed
-                    int rpos = st - x; ///position where to add crumb;
-                    crumbs[Node(rpos)] |= (1 << i);
-                    Trie *cur = connection[rpos];
-                    while (cur != nullptr){
-                        /*if (crumbs[Node(cur)][i])
-                            break;*/
-                        crumbs[Node(cur)][i] = true;
-                        cur = cur->parent;
+        //cout << "i == "<< i << " " << seeds[i] << endl;
+        if (seeds[i]>=0){
+            //cout <<"A match\n";
+            int seedpos = i * k;///start of the seed
+            for (int j = last[seeds[i]]; j != -1; j = prevpos[j]){
+                for (int back = 0; back <= seedpos; ++back){
+                    int rpos = j - k + 1 - back;
+                    if (rpos >= 0){
+                        crumbs[Node(rpos)][i] = true;
+                        Trie *cur = connection[rpos];
+                        while (cur != nullptr){
+                            if (crumbs[Node(cur)][i] == true)
+                                break;
+                                
+                            crumbs[Node(cur)][i] = true;
+                            cur = cur->parent; 
+                        }
                     }
                 }
-            }
+            }      
         }
     }
+    /*cout << "printing crumbs\n";
+    for (auto it = crumbs.begin(); it != crumbs.end(); it++){
+        Node cur = it -> first;
+        cout << cur.is_in_trie() << endl;
+        for (int i = 0; i < 4; ++i)
+            cout << it->second[i] << ' ';
+        cout << endl;
+    }*/
     return crumbs;
 }
 
@@ -135,6 +144,7 @@ cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info){
     map <Node, bitset<64> > crumbs = info.crumbs;
     for (int i = ceil ((double) cur.qpos / k); i < seeds.size(); ++i)
         if (crumbs[cur.p][i] == false) h++;
+    //cout <<"Heuristic for the state: "<< cur.qpos << " " << cur.p.u << " "<<cur.p.rpos << " " << h << endl; 
     return h;
 }
 
@@ -187,10 +197,12 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     int n = query.size();
     int m = ref.size();
     priority_queue<Statesr> q;
-    set<explstatesr>visited;
+    //set<explstatesr>visited;
+    set<pair<int, Node> >visited;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0);
+        cout <<cur.h << endl;
         q.push(cur);
         for (int i = m - k + 1; i <= m; ++i){
             cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0);
@@ -208,8 +220,10 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
         q.pop();
         if (cur.qpos == n)
             break;
-        if (visited.find(explstatesr(cur)) == visited.end()){
-            visited.insert(explstatesr(cur));
+        /*if (visited.find(explstatesr(cur)) == visited.end()){
+            visited.insert(explstatesr(cur));*/
+        if (visited.find({cur.qpos, cur.p}) == visited.end()){
+            visited.insert({cur.qpos, cur.p});
             vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method);
             for (auto i:next){
                 i.g = cur.g + i.stepcost;

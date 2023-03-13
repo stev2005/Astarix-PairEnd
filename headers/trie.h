@@ -113,17 +113,21 @@ int kmer_exists(string &seed, int pos, Trie *T){
                 return -1;
             else return kmer_exists(seed, pos+1, T->child[i]);
         }
+    return -1;
 }
 
 vector<int> query_into_seeds(string &query, int k, Trie *root){
+    //cout <<"Trie.h query in seeds: query == " << query << endl;
     vector<int>seeds;
     int n = query.size(), num;
     string seed;
-    for (int i = 0; i < n; i+=k){
+    for (int i = 0; i < n - k + 1; i+=k){
         seed = query.substr(i, k);
+        //cout << "seed == "<<seed;
         num = kmer_exists(seed, 0, root);
-        seed.push_back(num);
+        seeds.push_back(num);
     }
+    //cout <<"Trie.h query in seeds: seeds.size == "<<seeds.size()<<endl; 
     return seeds;
 }
 

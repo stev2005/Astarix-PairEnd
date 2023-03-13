@@ -58,7 +58,10 @@ testcheseed_heuristic:
 	./main.exe single-read 6 seed_heuristic Yes Yes <testche.in
 
 testche:
-	./main.exe single-read <testche.txt
+	time ./main.exe single-read 10 seed_heuristic Yes Yes <testche.in
+
+evaltest:
+	time ./main.exe single-read 11 seed_heuristic Yes Yes <Evaltest.in
 
 testp1:
 	./main.exe <tests-paired-end/1.in
