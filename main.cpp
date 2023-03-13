@@ -79,17 +79,17 @@ int main(int argc, char *argv[]){
             cin>>query;
             info.qsize = query.size();
             assert("Entered a query\n");
-            map <Node, bitset<64> > crumbs;
+            //map <Node, bitset<64> > crumbs;
             if (strcmp(argv[3], "seed_heuristic") == 0){
                 info.seeds = query_into_seeds(query, k, root);
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (float) t / CLOCKS_PER_SEC << "s.\n"; 
                 assert(cout<<"inited seeds\n");
-                crumbs = getcrumbs(ref, k, info);
+                info.crumbs = getcrumbs(ref, k, info);
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (float) t / CLOCKS_PER_SEC << "s.\n";
             }
-            rezult = astar_single_read_alignment(query, ref, k, root, info, crumbs, argv[3], argv[4], argv[5]);
+            rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
