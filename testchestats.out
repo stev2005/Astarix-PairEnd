@@ -1,0 +1,79 @@
+reading reference: 0.027101s.
+constructing trie: 1.02224s.
+
+Query 1:
+Reading query: 0.027194s.
+breaking query into seeds: 1.02283s.
+Precompute of crumbs: 0.058936s.
+Crumbs in the root of the trie tree: 25
+Explored states == 286 6
+Alignment: 1.57718s.
+Cleaning help vectors: 0.059438s.
+
+Query 2:
+Reading query: 1.57728s.
+breaking query into seeds: 0.059632s.
+Precompute of crumbs: 1.59579s.
+Crumbs in the root of the trie tree: 25
+Explored states == 9844 5
+Alignment: 50.8497s.
+Cleaning help vectors: 1.59644s.
+
+Query 3:
+Reading query: 50.8498s.
+breaking query into seeds: 1.59654s.
+Precompute of crumbs: 50.8973s.
+Crumbs in the root of the trie tree: 25
+Explored states == 257 2
+Alignment: 2.02782s.
+Cleaning help vectors: 50.9006s.
+
+Query 4:
+Reading query: 2.028s.
+breaking query into seeds: 50.9007s.
+Precompute of crumbs: 2.05592s.
+Crumbs in the root of the trie tree: 25
+Explored states == 278 4
+Alignment: 51.9113s.
+Cleaning help vectors: 2.05728s.
+
+Query 5:
+Reading query: 51.9117s.
+breaking query into seeds: 2.05743s.
+Precompute of crumbs: 51.9367s.
+Crumbs in the root of the trie tree: 25
+Explored states == 278 6
+Alignment: 2.47542s.
+Cleaning help vectors: 51.9372s.
+
+Query 6:
+Reading query: 2.47567s.
+breaking query into seeds: 51.9374s.
+Precompute of crumbs: 2.49612s.
+Crumbs in the root of the trie tree: 25
+Explored states == 251 0
+Alignment: 52.4872s.
+Cleaning help vectors: 2.49693s.
+
+Query 7:
+Reading query: 52.4873s.
+breaking query into seeds: 2.49702s.
+Precompute of crumbs: 52.4972s.
+Crumbs in the root of the trie tree: 25
+Explored states == 264 3
+Alignment: 2.68133s.
+Cleaning help vectors: 52.4983s.
+
+Query 8:
+Reading query: 2.68142s.
+breaking query into seeds: 52.4984s.
+Precompute of crumbs: 2.70085s.
+Crumbs in the root of the trie tree: 25
+Explored states == 259 3
+Alignment: 53.2998s.
+Cleaning help vectors: 2.70218s.
+
+
+real    0m56.021s
+user    0m55.908s
+sys     0m0.110s

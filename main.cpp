@@ -80,7 +80,7 @@ int main(int argc, char *argv[]){
     assert(cout<<"entered reference\n");
     cin >> testcases ;
     t = clock();
-    cout << "reading reference: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
+    cout << "reading reference: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
     assert(cout<<"entered num of tescases\n");
     ///Vital for dp seq approach
     //vector < vector < int > > dp ;
@@ -91,36 +91,36 @@ int main(int argc, char *argv[]){
     //construct_trie(ref, root, info.last, info.prevpos);
     construct_trie_simple(ref, k, root, info.last, info.prevpos, info.connection);
     t = clock() - t;
-    cout << "constructing trie: "<< (float) t / CLOCKS_PER_SEC << "s.\n"; 
+    cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
+    cout << "\n";
     assert(cout<<"inited kmers\n");
-    //printout_kmers(T, "");
-    for (int testcase=1; testcase<=testcases; ++testcase){
-        assert(cout<<"Enter the queries\n");
-        //cin>>query.first>>query.second;
+    for (int testcase=1; testcase<=testcases; ++testcase, cout<<endl){
+        cout << "Query "<< testcase << ":\n";
         int rezult;
         if (strcmp(argv[1], "single-read") == 0){
             cin>>query;
             info.qsize = query.size();
-            assert("Entered a query\n");
+            t = clock() - t;
+            cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //map <Node, bitset<64> > crumbs;
             if (strcmp(argv[3], "seed_heuristic") == 0){
                 info.seeds = query_into_seeds(query, k, root);
                 t = clock() - t;
-                cout << "breaking query into seeds: "<< (float) t / CLOCKS_PER_SEC << "s.\n"; 
+                cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
                 assert(cout<<"inited seeds\n");
                 info.crumbs = getcrumbs(ref, k, info);
                 t = clock() - t;
-                cout << "Precompute of crumbs: " << (float) t / CLOCKS_PER_SEC << "s.\n";
+                cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);
             }
             rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
             t = clock() - t;
-            cout << "Alignment: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             info.seeds.clear();
             info.crumbs.clear();
             t = clock() - t;
-            cout << "Cleaning help vectors: "<< (float) t / CLOCKS_PER_SEC << "s.\n";
+            cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         else cin>>queryp.first>>queryp.second;/*To do astar for paired end*/
         ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
@@ -128,7 +128,6 @@ int main(int argc, char *argv[]){
         //rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
         //rezult = edit_distance_pairedend(query, ref);
         //rezult = align_astar(query, ref, info.seeds, info.last);
-        
     }
     //cout<<"End of the main program.\n";
     return 0;

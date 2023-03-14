@@ -202,7 +202,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0);
-        cout <<cur.h << endl;
+        cout << "Crumbs in the root of the trie tree: "<< cur.h << endl;
         q.push(cur);
         for (int i = m - k + 1; i <= m; ++i){
             cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0);
