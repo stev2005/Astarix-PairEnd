@@ -9,7 +9,7 @@
 //#include "headers/dijkstrapairedend/dijkstrapairedend.h"
 //#include "headers/dijkstrapairedend/dijkstrapairedendtrie.h"
 //#include "headers/astar/astar.h"
-#include "headers/astar/astar_TrieStart.h"
+#include "headers/astar/astar_single_reads.h"
 using namespace std;
 
 /*void seqalignment(){
@@ -80,7 +80,6 @@ int main(int argc, char *argv[]){
     t = clock() - t;
     assert(cout<<"entered reference\n");
     cin >> testcases ;
-    
     cout << "reading reference: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
     assert(cout<<"entered num of tescases\n");
     ///Vital for dp seq approach
