@@ -69,17 +69,18 @@ int main(int argc, char *argv[]){
     cin.tie(NULL);
     cout.tie(NULL);*/
     //DNA ref ,  query;
-    clock_t t;
     assert(cout<<"Start of the program\n");
     string ref;
     string query;
     pair <string, string> queryp;
     int testcases, k = charstring_to_int(argv[2]);
     assert(cout<<"int k has a value equal to "<<k<<"\n");
+    clock_t t = clock();
     cin >> ref ;
+    t = clock() - t;
     assert(cout<<"entered reference\n");
     cin >> testcases ;
-    t = clock();
+    
     cout << "reading reference: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
     assert(cout<<"entered num of tescases\n");
     ///Vital for dp seq approach
@@ -87,6 +88,7 @@ int main(int argc, char *argv[]){
     //init_dp_table ( dp ,  ref ) ;
     //Vital for Trie 
     MatchingKmers info;
+    t = clock();
     Trie *root=new Trie();
     //construct_trie(ref, root, info.last, info.prevpos);
     construct_trie_simple(ref, k, root, info.last, info.prevpos, info.connection);
@@ -97,6 +99,7 @@ int main(int argc, char *argv[]){
     for (int testcase=1; testcase<=testcases; ++testcase, cout<<endl){
         cout << "Query "<< testcase << ":\n";
         int rezult;
+        t = clock();
         if (strcmp(argv[1], "single-read") == 0){
             cin>>query;
             info.qsize = query.size();
@@ -104,19 +107,23 @@ int main(int argc, char *argv[]){
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //map <Node, bitset<64> > crumbs;
             if (strcmp(argv[3], "seed_heuristic") == 0){
+                t = clock();
                 info.seeds = query_into_seeds(query, k, root);
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
                 assert(cout<<"inited seeds\n");
+                t = clock() - t;
                 info.crumbs = getcrumbs(ref, k, info);
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);
             }
+            t = clock();
             rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            t = clock();
             info.seeds.clear();
             info.crumbs.clear();
             t = clock() - t;
