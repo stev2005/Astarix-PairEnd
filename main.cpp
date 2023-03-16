@@ -2,7 +2,8 @@
 #include<bits/stdc++.h>
 //#include "headers/dp.h"
 #include "headers/trie.h"
-#include "headers/astar/astar_single_reads.h"
+#include "headers/astar/astar_single-reads.h"
+#include "headers/astar/astar"
 using namespace std;
 
 /*void seqalignment(){
