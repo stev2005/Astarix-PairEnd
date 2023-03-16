@@ -35,10 +35,10 @@ struct Node{
 };
 
 struct MatchingKmers{
-    vector <int> seeds, last, prevpos;
+    vector <int> seeds1, seeds2, last, prevpos;
     vector <Trie*> connection;
     int qsize;
-    map<Node, bitset<64> > crumbs;
+    map<Node, bitset<64> > crumbs1, crumbs2;
     ///last: the end position of a last occurance of a kmer in the reference
     ///prevpos: end positions of previous occurances of a kmer in the reference
     ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
@@ -82,23 +82,9 @@ struct  Statesr{
     }
 };
 
-struct explstatesr{
-    int qpos;
-    Node p;
-    explstatesr(){}
-    explstatesr(Statesr cur){
-        qpos = cur.qpos;
-        p = cur.p;
-    }
-    bool operator<(const explstatesr &other)const{
-        if (qpos != other.qpos) return qpos < other.qpos;
-        return p < other.p;
-    }
-};
-
-void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKmers &info){
-    map <Node, bitset<64> > & crumbs = info.crumbs;
-    const vector<int> & seeds = info.seeds;
+void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKmers &info, int alignment){
+    map <Node, bitset<64> > & crumbs = (alignment == 1)?info.crumbs1: info.crumbs2;
+    const vector<int> & seeds = (alignment == 1)?info.seeds1 : info.seeds2;
     const vector<int> & last = info.last;
     const vector<int> & prevpos = info.prevpos;
     const vector<Trie*> & connection = info.connection;
@@ -138,10 +124,10 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
     //return crumbs;
 }
 
-cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info){
+cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info, int alignment){
     int h = 0;
-    vector<int> & seeds = info.seeds;
-    map <Node, bitset<64> > & crumbs = info.crumbs;
+    vector<int> & seeds = (alignment == 1)? info.seeds1: info.seeds2;
+    map <Node, bitset<64> > & crumbs = (alignment == 1)? info.crumbs1: info.crumbs2;
     for (int i = (cur.qpos % k) ? cur.qpos / k + 1: cur.qpos / k; i < seeds.size(); ++i){
         bool check = crumbs[cur.p][i];
         if (check == false) h++;
@@ -150,46 +136,46 @@ cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info){
     return h;
 }
 
-cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method){
+cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, int alignment){
     if (strcmp(heuristic_method, "dijkstra_heuristic") == 0)return 0;
-    if (strcmp(heuristic_method, "seed_heuristic") == 0) return seed_heuristic(cur, k, info);
+    if (strcmp(heuristic_method, "seed_heuristic") == 0) return seed_heuristic(cur, k, info, alignment);
 }
 
-Statesr CreateStatesr(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, cost_t stepcost){
-    return Statesr(cur.qpos, cur.p, 0, heuristic(cur, k, info, heuristic_method), stepcost);
+Statesr CreateStatesr(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, cost_t stepcost, int alignment){
+    return Statesr(cur.qpos, cur.p, 0, heuristic(cur, k, info, heuristic_method, alignment), stepcost);
 }
 
-vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k, MatchingKmers & info, char *heuristic_method){
+vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k, MatchingKmers & info, char *heuristic_method, int alignment){
     vector <Statesr> next;
     if (cur.p.is_in_trie()){
         if (cur.p.u->is_leaf()){
             vector <int> last = info.last;
             vector <int> prevpos = info.prevpos;
             for (int i = last[cur.p.u->num]; i != -1; i = prevpos[i]){
-                next.push_back(CreateStatesr(Statesr(cur.qpos, Node(i+1)), k, info, heuristic_method, 0));
+                next.push_back(CreateStatesr(Statesr(cur.qpos, Node(i+1)), k, info, heuristic_method, 0, alignment));
             }
         }
         else{
-            next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1));
+            next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1, alignment));
             for (int i = 0; i < 4; ++i)
                 if (cur.p.u->child[i] != nullptr){
                     if (base[i] == curqbp)
-                        next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 0));
-                    else next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 1));
-                    next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.u->child[i])), k, info, heuristic_method, 1));
+                        next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 0, alignment));
+                    else next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 1, alignment));
+                    next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.u->child[i])), k, info, heuristic_method, 1, alignment));
                 }
         }
     }
     else{
         if (cur.p.rpos < ref.size() && ref[cur.p.rpos] == curqbp){
-            next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0));
+            next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment));
         }
         else{
             if (cur.p.rpos < ref.size()){
-                next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 1));
-                next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.rpos+1)), k, info, heuristic_method, 1));
+                next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
+                next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
             }
-            next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1));
+            next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1, alignment));
         }
     }
     return next;
@@ -203,17 +189,17 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     set<pair<int, Node> >visited;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
-        cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0);
+        cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 1);
         cout << "Crumbs in the root of the trie tree: "<< cur.h << endl;
         q.push(cur);
         for (int i = m - k + 1; i <= m; ++i){
-            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0);
+            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
             q.push(cur);
         }
     }
     else{
         for (int i = 0; i <= m; ++i){
-            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0);
+            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
             q.push(cur);
         }
     }
@@ -226,7 +212,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
             visited.insert(explstatesr(cur));*/
         if (visited.find({cur.qpos, cur.p}) == visited.end()){
             visited.insert({cur.qpos, cur.p});
-            vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method);
+            vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method, 1);
             for (auto i:next){
                 i.g = cur.g + i.stepcost;
                 q.push(i);

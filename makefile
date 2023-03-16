@@ -54,10 +54,10 @@ testp:
 test1dijkstra:
 	./main.exe single-read 10 dijkstra_heuristic Yes No <tests/1.in
 
-testchedijkstra_heuristic:
+testche_dijkstra_heuristic:
 	time ./main.exe single-read 10 dijkstra_heuristic Yes Yes <testche.in
 
-testcheseed_heuristic:
+testche_seed_heuristic:
 	time ./main.exe single-read 10 seed_heuristic Yes Yes <testche.in
 
 evaltest:

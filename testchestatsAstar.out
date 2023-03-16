@@ -1,84 +1,94 @@
-These stats are about single-reads alignment with
-seed_heuristic, strating from the root of a Trie
-tree build on the kmers of a reference with D = K = 11
-
-
-reading reference: 0.037213s.
-constructing trie: 0.879348s.
+reading reference: 0.033572s.
+constructing trie: 1.08713s.
 
 Query 1:
-Reading query: 1.2e-05s.
-breaking query into seeds: 7.3e-05s.
-Precompute of crumbs: 0.019406s.
+Reading query: 1.7e-05s.
+breaking query into seeds: 3.7e-05s.
+Precompute of crumbs: 0.008999s.
 Crumbs in the root of the trie tree: 25
 Explored states == 286 6
-Alignment: 0.515238s.
-Cleaning help vectors: 0.000824s.
+Alignment: 0.013855s.
+Cleaning help vectors: 0.000891s.
 
 Query 2:
-Reading query: 2.5e-05s.
-breaking query into seeds: 0.000318s.
-Precompute of crumbs: 0.014513s.
+Reading query: 3.2e-05s.
+breaking query into seeds: 0.000199s.
+Precompute of crumbs: 0.009587s.
 Crumbs in the root of the trie tree: 25
 Explored states == 9844 5
-Alignment: 71.4378s.
-Cleaning help vectors: 0.001132s.
+Alignment: 2.48941s.
+Cleaning help vectors: 0.002869s.
 
 Query 3:
-Reading query: 3.3e-05s.
-breaking query into seeds: 7.7e-05s.
-Precompute of crumbs: 0.014637s.
+Reading query: 3.6e-05s.
+breaking query into seeds: 0.000306s.
+Precompute of crumbs: 0.008848s.
 Crumbs in the root of the trie tree: 25
 Explored states == 257 2
-Alignment: 0.438586s.
-Cleaning help vectors: 0.00128s.
+Alignment: 0.011526s.
+Cleaning help vectors: 0.001079s.
 
 Query 4:
-Reading query: 1.7e-05s.
-breaking query into seeds: 0.000232s.
-Precompute of crumbs: 0.018204s.
+Reading query: 1.2e-05s.
+breaking query into seeds: 8.8e-05s.
+Precompute of crumbs: 0.013422s.
 Crumbs in the root of the trie tree: 25
 Explored states == 278 4
-Alignment: 0.86421s.
-Cleaning help vectors: 0.000763s.
+Alignment: 0.007304s.
+Cleaning help vectors: 0.001488s.
 
 Query 5:
-Reading query: 2.4e-05s.
-breaking query into seeds: 0.00011s.
-Precompute of crumbs: 0.011985s.
+Reading query: 1.3e-05s.
+breaking query into seeds: 7e-05s.
+Precompute of crumbs: 0.007907s.
 Crumbs in the root of the trie tree: 25
 Explored states == 278 6
-Alignment: 0.357858s.
-Cleaning help vectors: 0.000415s.
+Alignment: 0.008845s.
+Cleaning help vectors: 0.00124s.
 
 Query 6:
-Reading query: 2.5e-05s.
-breaking query into seeds: 6.4e-05s.
-Precompute of crumbs: 0.01441s.
+Reading query: 2.8e-05s.
+breaking query into seeds: 7e-05s.
+Precompute of crumbs: 0.01205s.
 Crumbs in the root of the trie tree: 25
 Explored states == 251 0
-Alignment: 0.456006s.
-Cleaning help vectors: 0.000784s.
+Alignment: 0.00696s.
+Cleaning help vectors: 0.001329s.
 
 Query 7:
-Reading query: 3.3e-05s.
-breaking query into seeds: 6.2e-05s.
-Precompute of crumbs: 0.010463s.
+Reading query: 4.7e-05s.
+breaking query into seeds: 0.000166s.
+Precompute of crumbs: 0.006404s.
 Crumbs in the root of the trie tree: 25
 Explored states == 264 3
-Alignment: 0.181403s.
-Cleaning help vectors: 0.000192s.
+Alignment: 0.009891s.
+Cleaning help vectors: 0.000414s.
 
 Query 8:
-Reading query: 8.9e-05s.
-breaking query into seeds: 0.000167s.
-Precompute of crumbs: 0.020504s.
+Reading query: 1.4e-05s.
+breaking query into seeds: 6.7e-05s.
+Precompute of crumbs: 0.017408s.
 Crumbs in the root of the trie tree: 25
 Explored states == 259 3
-Alignment: 0.67667s.
-Cleaning help vectors: 0.00104s.
+Alignment: 0.007439s.
+Cleaning help vectors: 0.001914s.
 
+Query 9:
+Reading query: 1.8e-05s.
+breaking query into seeds: 7.1e-05s.
+Precompute of crumbs: 0.014766s.
+Crumbs in the root of the trie tree: 25
+Explored states == 319 7
+Alignment: 0.008947s.
+Cleaning help vectors: 0.00128s.
 
-real    1m16.000s
-user    1m15.792s
-sys     0m0.200s
+Query 10:
+Reading query: 8.6e-05s.
+breaking query into seeds: 0.000141s.
+Precompute of crumbs: 0.005876s.
+Crumbs in the root of the trie tree: 25
+Explored states == 486 12
+Alignment: 0.038521s.
+Cleaning help vectors: 0.000556s.
+
+3.75user 0.09system 0:03.85elapsed
