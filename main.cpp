@@ -112,7 +112,8 @@ int main(int argc, char *argv[]){
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
                 assert(cout<<"inited seeds\n");
                 t = clock() - t;
-                info.crumbs = getcrumbs(ref, k, info);
+                ///info.crumbs = getcrumbs(ref, k, info);
+                getcrumbs(ref, k, info);
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);

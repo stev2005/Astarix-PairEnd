@@ -96,12 +96,12 @@ struct explstatesr{
     }
 };
 
-map <Node, bitset<64> > getcrumbs(const string &ref, int k, const MatchingKmers &info){
-    map <Node, bitset<64> > crumbs;
-    vector<int> seeds = info.seeds;
-    vector<int> last = info.last;
-    vector<int> prevpos = info.prevpos;
-    vector<Trie*> connection = info.connection;
+void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKmers &info){
+    map <Node, bitset<64> > & crumbs = info.crumbs;
+    const vector<int> & seeds = info.seeds;
+    const vector<int> & last = info.last;
+    const vector<int> & prevpos = info.prevpos;
+    const vector<Trie*> & connection = info.connection;
     //cout << "seeds.size == " <<seeds.size()<<endl;
     //cout << "last.size == "<<last.size()<<endl;
     for (int i = 0; i < seeds.size(); ++i){
@@ -135,15 +135,17 @@ map <Node, bitset<64> > getcrumbs(const string &ref, int k, const MatchingKmers 
             cout << it->second[i] << ' ';
         cout << endl;
     }*/
-    return crumbs;
+    //return crumbs;
 }
 
 cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info){
     int h = 0;
-    vector<int> seeds = info.seeds;
-    map <Node, bitset<64> > crumbs = info.crumbs;
-    for (int i = ceil ((double) cur.qpos / k); i < seeds.size(); ++i)
-        if (crumbs[cur.p][i] == false) h++;
+    vector<int> & seeds = info.seeds;
+    map <Node, bitset<64> > & crumbs = info.crumbs;
+    for (int i = (cur.qpos % k) ? cur.qpos / k + 1: cur.qpos / k; i < seeds.size(); ++i){
+        bool check = crumbs[cur.p][i];
+        if (check == false) h++;
+    }
     //cout <<"Heuristic for the state: "<< cur.qpos << " " << cur.p.u << " "<<cur.p.rpos << " " << h << endl; 
     return h;
 }
@@ -157,7 +159,7 @@ Statesr CreateStatesr(Statesr cur, int k, MatchingKmers &info, char *heuristic_m
     return Statesr(cur.qpos, cur.p, 0, heuristic(cur, k, info, heuristic_method), stepcost);
 }
 
-vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k, MatchingKmers &info, char *heuristic_method){
+vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k, MatchingKmers & info, char *heuristic_method){
     vector <Statesr> next;
     if (cur.p.is_in_trie()){
         if (cur.p.u->is_leaf()){

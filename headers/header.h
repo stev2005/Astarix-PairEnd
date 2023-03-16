@@ -6,6 +6,6 @@ using namespace std;
 char base[4] = {'A', 'C', 'G', 'T'};
 
 typedef int cost_t;
-
+cost_t inf = (1<<30);
 
 
