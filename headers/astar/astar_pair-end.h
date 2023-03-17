@@ -87,8 +87,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
             visited.insert({cur.qpos, {cur.p1, cur.p2}});
             if (!cur.p1.is_in_trie() && !cur.p2.is_in_trie() && cur.p1.rpos < m && cur.p2.rpos < m &&
                 ref[cur.p1.rpos] == q1[cur.qpos] && ref[cur.p2.rpos] == q2[cur.qpos]){
-                    Statesr one = CreateStatesr(Statesr(cur.qpos, Node(cur.p1.rpos+1)), k, info, heuristic_method, 0, 1);
-                    Statesr two = CreateStatesr(Statesr(cur.qpos, Node(cur.p2.rpos+1)), k, info, heuristic_method, 0, 2);
+                    Statesr one = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p1.rpos+1)), k, info, heuristic_method, 0, 1);
+                    Statesr two = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p2.rpos+1)), k, info, heuristic_method, 0, 2);
                     Statepr topush = CreateStatepr(one, two, heuristic_method);
                     topush.g += cur.g;
                     q.push(topush); 
@@ -96,6 +96,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
             else{
                 vector next1 = NextStatesr(Statesr(cur.qpos, cur.p1), q1[cur.qpos], ref, k, info, heuristic_method, 1);
                 vector next2 = NextStatesr(Statesr(cur.qpos, cur.p2), q2[cur.qpos], ref, k, info, heuristic_method, 2);
+                next1.push_back(CreateStatesr(Statesr(cur.qpos, cur.p1), k, info, heuristic_method, 0, 1));
+                next2.push_back(CreateStatesr(Statesr(cur.qpos, cur.p2), k, info, heuristic_method, 0, 2));
                 /*cout << "next1.size(): "<< next1.size() << "\n";
                 cout << "next2.size(): "<< next2.size() << "\n";*/
                 for (auto i1: next1)
