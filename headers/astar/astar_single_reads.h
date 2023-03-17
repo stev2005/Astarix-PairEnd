@@ -167,7 +167,7 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
         }
     }
     else{
-        if (cur.p.rpos < ref.size() && ref[cur.p.rpos] == curqbp){
+        /*if (cur.p.rpos < ref.size() && ref[cur.p.rpos] == curqbp){
             next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment));
         }
         else{
@@ -176,7 +176,14 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
                 next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
             }
             next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1, alignment));
+        }*/
+        if (cur.p.rpos < ref.size()){
+            if (ref[cur.p.rpos] == curqbp)
+                next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment));
+            else next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
+            next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
         }
+        next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1, alignment));
     }
     return next;
 }
@@ -212,14 +219,21 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
             visited.insert(explstatesr(cur));*/
         if (visited.find({cur.qpos, cur.p}) == visited.end()){
             visited.insert({cur.qpos, cur.p});
-            vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method, 1);
-            for (auto i:next){
-                i.g = cur.g + i.stepcost;
-                q.push(i);
+            if (!cur.p.is_in_trie() && cur.p.rpos < m && ref[cur.p.rpos] == query[cur.qpos]){
+                Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, 1);
+                topush.g += cur.g;
+                q.push(topush);
+            }
+            else{
+                vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method, 1);
+                for (auto i:next){
+                    i.g = cur.g + i.stepcost;
+                    q.push(i);
+                }
             }
         }
     }
     if (strcmp(showcntexplstates, "Yes") == 0)
-        cout << "Explored states == " << visited.size() << " ";
+        cout << "Expanded states == " << visited.size() << " ";
     return cur.g;
 }

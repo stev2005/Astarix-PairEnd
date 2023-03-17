@@ -2,8 +2,8 @@
 #include<bits/stdc++.h>
 //#include "headers/dp.h"
 #include "headers/trie.h"
-#include "headers/astar/astar_single-reads.h"
-#include "headers/astar/astar"
+#include "headers/astar/astar_single_reads.h"
+#include "headers/astar/astar_pair-end.h"
 using namespace std;
 
 /*void seqalignment(){
@@ -104,8 +104,7 @@ int main(int argc, char *argv[]){
                 info.seeds1 = query_into_seeds(query, k, root);
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
-                t = clock() - t;
-                ///info.crumbs = getcrumbs(ref, k, info);
+                t = clock();
                 getcrumbs(ref, k, info, 1);
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -116,18 +115,43 @@ int main(int argc, char *argv[]){
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            t = clock();
-            info.seeds1.clear();
-            info.crumbs1.clear();
-            t = clock() - t;
-            cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         else{
+            t = clock();
             cin>>queryp.first>>queryp.second;
-            /*To do astar for paired end*/
+            t = t - clock();
+            cout << "Reading query: "<<(double) t / CLOCKS_PER_SEC << "s.\n";
+            if (strcmp(argv[3], "seed_heuristic") == 0){
+                t = clock();
+                info.seeds1 = query_into_seeds(queryp.first, k, root);
+                t = clock() - t;
+                cout << "breaking query1 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
+                t = clock();
+                info.seeds2 = query_into_seeds(queryp.second, k, root);
+                t = clock() - t;
+                cout << "breaking query2 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+                t = clock();
+                getcrumbs(ref, k, info, 1);
+                t = clock() - t;
+                cout << "Precompute of crumbs1: " << (double) t / CLOCKS_PER_SEC << "s.\n";
+                t = clock();
+                getcrumbs(ref, k, info, 2);
+                t = clock() - t;
+                cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
+            }
+            t = clock();
+            rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, argv[3], argv[4], argv[5]);
+            cout<<rezult<<"\n";
+            t = clock() - t;
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
-        
-        
+        t = clock();
+        info.seeds1.clear();
+        info.seeds2.clear();
+        info.crumbs1.clear();
+        info.crumbs2.clear();
+        t = clock() - t;
+        cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
         //rezult = edit_distance_dijkstratrienew(query, ref, root, last, prevpos);
         //rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
