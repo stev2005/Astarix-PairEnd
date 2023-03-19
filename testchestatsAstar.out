@@ -92,3 +92,98 @@ Alignment: 0.038521s.
 Cleaning help vectors: 0.000556s.
 
 3.75user 0.09system 0:03.85elapsed
+
+
+
+Query 1:
+Reading query: 1.1e-05s.
+breaking query into seeds: 2.1e-05s.
+Entering in to the climbing while
+Precompute of crumbs: 0.079598s.
+Missing crumbs in the root of the trie tree: 3
+Expanded states == 778 6
+Alignment: 0.089847s.
+Cleaning help vectors: 0.003561s.
+
+Query 2:
+Reading query: 9e-06s.
+breaking query into seeds: 5.5e-05s.
+Precompute of crumbs: 0.080407s.
+Missing crumbs in the root of the trie tree: 1
+Expanded states == 807 5
+Alignment: 0.089733s.
+Cleaning help vectors: 0.004124s.
+
+Query 3:
+Reading query: 9e-06s.
+breaking query into seeds: 5.3e-05s.
+Precompute of crumbs: 0.076602s.
+Missing crumbs in the root of the trie tree: 1
+Expanded states == 284 2
+Alignment: 0.009903s.
+Cleaning help vectors: 0.004147s.
+
+Query 4:
+Reading query: 1e-05s.
+breaking query into seeds: 6.1e-05s.
+Precompute of crumbs: 0.111382s.
+Missing crumbs in the root of the trie tree: 1
+Expanded states == 602 4
+Alignment: 0.06235s.
+Cleaning help vectors: 0.007697s.
+
+Query 5:
+Reading query: 9e-06s.
+breaking query into seeds: 8.5e-05s.
+Precompute of crumbs: 0.060339s.
+Missing crumbs in the root of the trie tree: 3
+Expanded states == 616 6
+Alignment: 0.064231s.
+Cleaning help vectors: 0.004763s.
+
+Query 6:
+Reading query: 1e-05s.
+breaking query into seeds: 6.5e-05s.
+Precompute of crumbs: 0.098712s.
+Missing crumbs in the root of the trie tree: 0
+Expanded states == 251 0
+Alignment: 0.007624s.
+Cleaning help vectors: 0.004564s.
+
+Query 7:
+Reading query: 8e-06s.
+breaking query into seeds: 5.7e-05s.
+Precompute of crumbs: 0.048123s.
+Missing crumbs in the root of the trie tree: 1
+Expanded states == 379 3
+Alignment: 0.026757s.
+Cleaning help vectors: 0.002476s.
+
+Query 8:
+Reading query: 9e-06s.
+breaking query into seeds: 5.7e-05s.
+Precompute of crumbs: 0.162072s.
+Missing crumbs in the root of the trie tree: 2
+Expanded states == 260 3
+Alignment: 0.008926s.
+Cleaning help vectors: 0.005282s.
+
+Query 9:
+Reading query: 1e-05s.
+breaking query into seeds: 6e-05s.
+Precompute of crumbs: 0.095119s.
+Missing crumbs in the root of the trie tree: 0
+Expanded states == 2252 7
+Alignment: 0.327764s.
+Cleaning help vectors: 0.006406s.
+
+Query 10:
+Reading query: 3.6e-05s.
+breaking query into seeds: 3.9e-05s.
+Precompute of crumbs: 0.061403s.
+Missing crumbs in the root of the trie tree: 1
+Expanded states == 5781 11
+Alignment: 1.18485s.
+Cleaning help vectors: 0.004041s.
+
+3.66user 0.00system 0:03.68elapsed 99%
