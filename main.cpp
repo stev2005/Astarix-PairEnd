@@ -134,6 +134,7 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 filter_matches(info, k);
                 cout << "Filtering matches: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+                //howmanycrumbs_seeds_have(info, k);
                 t = clock();
                 getcrumbs(ref, k, info, 1);
                 t = clock() - t;
@@ -143,7 +144,8 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 cout << "Size of crumbs1 and crumbs2: "<< info.crumbs1.size() << " " << info.crumbs2.size() << "\n";
-                cout << info.crumbs1[root] << " " <<info.crumbs2[root] << "\n"; 
+                //cout << info.crumbs1[root] << " " <<info.crumbs2[root] << "\n"; 
+                //printcountofcrumbs(root, info, k);
             }
             t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, argv[3], argv[4], argv[5]);

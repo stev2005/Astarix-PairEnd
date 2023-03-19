@@ -93,15 +93,17 @@ struct  Statesr{
 bool is_available_to_crumb(int alignment, MatchingKmers &info, int num, int pos){
     if (alignment == 0)
         return true;
-    if (alignment == 1){
+    else if (alignment == 1){
         if (info.seedsph1[num].find(pos) != info.seedsph1[num].end())
             return true;
+        else return false;
     }
-    else{
+    else if (alignment == 2){
         if (info.seedsph2[num].find(pos) != info.seedsph2[num].end())
             return true;
+        else return false;
     }
-    return false;
+    assert(false);
 }
 
 void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKmers &info, int alignment){

@@ -72,8 +72,8 @@ void filter_matches(MatchingKmers &info, int k){
             //last1 = cur.first;
             l++;
             //if (abs(cur.first - last2) <= 10000)
-            if (r > 0 && abs(cur.first - matches2[r-1].first) <= 10000)
-                seedsph1[cur.second].insert(cur.first);
+            /*if (r > 0 && abs(cur.first - matches2[r-1].first) <= 10000)
+                seedsph1[cur.second].insert(cur.first);*/
         }
         else{
             cur = matches2[r];
@@ -84,14 +84,14 @@ void filter_matches(MatchingKmers &info, int k){
                 seedsph2[cur.second].insert(cur.first);
         }
     }
-    while (l < sz1){
+    /*while (l < sz1){
         pair<int, int> cur;
         cur = matches1[l];
         l++;
         if (abs(cur.first - matches2[r-1].first) <= 10000)
             seedsph1[cur.second].insert(cur.first);
         else break;
-    }
+    }*/
     while (r < sz2){
         pair<int, int> cur;
         cur = matches2[r];
@@ -116,9 +116,9 @@ void filter_matches(MatchingKmers &info, int k){
         else{
             cur = matches2[r];
             r--;
-            last2 = cur.second;
+            /*last2 = cur.second;
             if (l + 1 < sz1 && abs(cur.first - matches1[l + 1].first) <= 10000)
-                seedsph2[cur.second].insert(cur.first);
+                seedsph2[cur.second].insert(cur.first);*/
         }
     }
     while (l >= 0){
@@ -129,14 +129,65 @@ void filter_matches(MatchingKmers &info, int k){
             seedsph1[cur.second].insert(cur.first);
         else break;
     }
-    while (r >= 0){
+    /*while (r >= 0){
         pair<int, int> cur;
         cur = matches2[r];
         r--;
         if (abs(cur.first - matches1[l + 1].first) <= 10000)
             seedsph2[cur.second].insert(cur.first);
         else break;
+    }*/
+}
+
+void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
+    vector<int> & last = info.last;
+    vector<int> & prevpos = info.prevpos;
+    vector<int> & seeds1 = info.seeds1;
+    cout <<"first alignmetn: \n";
+    for (int i = 0; i < seeds1.size(); ++i){
+        int cnt = 0;
+        for (int j = last[seeds1[i]]; j != -1; j = prevpos[j])
+            cnt++;
+        cout << "For seed[" << i<<"] there are "<< cnt <<" matches and " <<info.seedsph1[i].size() << "available.\n";
     }
+    cout << endl;
+    vector <int> & seeds2 = info.seeds2;
+    cout <<"second alignmetn: \n";
+    for (int i = 0; i < seeds2.size(); ++i){
+        int cnt = 0;
+        for (int j = last[seeds2[i]]; j != -1; j = prevpos[j])
+            cnt++;
+        cout << "For seed[" << i<<"] there are "<< cnt <<" matches and " <<info.seedsph2[i].size() << "available.\n";
+    }
+    cout << endl;
+}
+
+void printcountofcrumbs(Trie *root, MatchingKmers &info, int k){
+    vector<int> count;
+    count.resize(info.seeds1.size()+1);
+    map<Node, bitset<64> > & crumbs1 = info.crumbs1;
+    for (auto it = crumbs1.begin(); it != crumbs1.end(); ++it){
+        Node cur = it->first;
+        if (cur.is_in_trie()){
+            count[it->second.count()]++;
+        }
+    }
+    cout << "For first alignmet:\n";
+    for (int i = 0; i < count.size(); ++i)
+        cout << i <<" "<< count[i] << endl;
+    cout << "\n";
+    count.resize(info.seeds2.size()+1);
+    map<Node, bitset<64> > & crumbs2 = info.crumbs2;
+    for (auto it = crumbs2.begin(); it != crumbs2.end(); ++it){
+        Node cur = it->first;
+        if (cur.is_in_trie()){
+            count[it->second.count()]++;
+        }
+    }
+    cout << "For second alignmet:\n";
+    for (int i = 0; i < count.size(); ++i)
+        cout << i <<" "<< count[i] << endl;
+    cout << "\n";
 }
 
 cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
@@ -146,7 +197,7 @@ cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
             if (abs(one.p.rpos - two.p.rpos) > 10000)
                 return inf;
         }
-        return (one.h + two.h <= 20)? one.h + two.h: inf;
+        return (one.h >10 || two.h > 10)? inf: one.h + two.h;
     }
     assert(false);
 }
@@ -170,12 +221,14 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
         cur = CreateStatepr(one, two, heuristic_method);
         cout << "heuristic of paired end read: "<<cur.h<<endl;
         q.push(cur);
-        /*for (int i = m - k + 1; i <= m; ++i){
+        for (int i = m - k + 1; i <= m; ++i){
             one = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
             two = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 2);
             cur = CreateStatepr(one, two, heuristic_method);
             q.push(cur);
-            cur = CreateStatepr(two, one, heuristic_method);
+            one = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 1);
+            two = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 2);
+            cur = CreateStatepr(one, two, heuristic_method);
             q.push(cur);
         }
         for (int i = m - k + 1; i <= m; ++i)
@@ -184,7 +237,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                 two = CreateStatesr(Statesr(0, Node(j)), k, info, heuristic_method, 0, 2);
                 cur = CreateStatepr(one, two, heuristic_method);
                 q.push(cur);
-            }*/
+            }
     }
     else{
         for (int i = 0; i <= m; ++i)
@@ -199,11 +252,10 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
         //cout << "q has elements\n";
         cur = q.top();
         q.pop();
+        //cout << "Poping from the queue: " << "cur.qpos == "<< cur.qpos<< " p1.is_in_trie:" << cur.p1.is_in_trie()<< " p2.is_in_trie: "<< cur.p2.is_in_trie() << " " << cur.g << " " << cur.h << " " << cur.h + cur.g << "\n";
         if (cur.qpos == n) break;
         if (visited.find({cur.qpos, {cur.p1, cur.p2}}) == visited.end()){
             visited.insert({cur.qpos, {cur.p1, cur.p2}});
-            /*if (!cur.p1.is_in_trie() && !cur.p2.is_in_trie() && cur.p1.rpos < m && cur.p2.rpos < m &&
-                ref[cur.p1.rpos] == q1[cur.qpos] && ref[cur.p2.rpos] == q2[cur.qpos]){*/
             if (is_greedy_available(Statesr(cur.qpos, cur.p1), q1, ref) && is_greedy_available(Statesr(cur.qpos, cur.p2), q2, ref)){    
                     Statesr one = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p1.rpos+1)), k, info, heuristic_method, 0, 1);
                     Statesr two = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p2.rpos+1)), k, info, heuristic_method, 0, 2);
@@ -218,6 +270,18 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                 next2.push_back(CreateStatesr(Statesr(cur.qpos, cur.p2), k, info, heuristic_method, 0, 2));
                 /*cout << "next1.size(): "<< next1.size() << "\n";
                 cout << "next2.size(): "<< next2.size() << "\n";*/
+                /*static int cnt = 1;
+                if (cnt){
+                    cout << "First alignment:\n";
+                    for (auto i1: next1)
+                        i1.print();
+                    cout << "\n";
+                    cout <<"Second alignment:\n";
+                    for (auto i2 : next2)
+                        i2.print();
+                    cout << "\n";
+                    cnt--;
+                }*/
                 for (auto i1: next1)
                     for (auto i2: next2)
                         if (i1.qpos == i2.qpos){
@@ -234,3 +298,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
         cout << "Explored states == " << visited.size() << " ";
     return cur.g;
 }
+/*cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart){
+    string q1 = query.first;
+    string q2 = query.second;
+
+}*/
