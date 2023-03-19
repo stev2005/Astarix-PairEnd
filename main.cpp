@@ -103,9 +103,9 @@ int main(int argc, char *argv[]){
                 t = clock();
                 info.seeds1 = query_into_seeds(query, k, root);
                 t = clock() - t;
-                cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
+                cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
-                getcrumbs(ref, k, info, 1);
+                getcrumbs(ref, k, info, 0);
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);
@@ -131,6 +131,10 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "breaking query2 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
+                t = clock() - t;
+                filter_matches(info, k);
+                cout << "Filtering matches: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+                t = clock();
                 getcrumbs(ref, k, info, 1);
                 t = clock() - t;
                 cout << "Precompute of crumbs1: " << (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -138,6 +142,8 @@ int main(int argc, char *argv[]){
                 getcrumbs(ref, k, info, 2);
                 t = clock() - t;
                 cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
+                cout << "Size of crumbs1 and crumbs2: "<< info.crumbs1.size() << " " << info.crumbs2.size() << "\n";
+                cout << info.crumbs1[root] << " " <<info.crumbs2[root] << "\n"; 
             }
             t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, argv[3], argv[4], argv[5]);
@@ -148,6 +154,8 @@ int main(int argc, char *argv[]){
         t = clock();
         info.seeds1.clear();
         info.seeds2.clear();
+        info.seedsph1.clear();
+        info.seedsph2.clear();
         info.crumbs1.clear();
         info.crumbs2.clear();
         t = clock() - t;

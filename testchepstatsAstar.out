@@ -82,18 +82,16 @@ Alignment: 192.602s.
 Cleaning help vectors: 0.004583s.
 
 Query 9:
-Reading query: -1.3e-05s.
-breaking query1 into seeds: 4.1e-05s.
-breaking query2 into seeds: 4.3e-05s.
-Precompute of crumbs1: 0.00713s.
-Precompute of crumbs2: 0.009715s.
-insertion and match/substitution:
-<u,v+1,i+1> cost ∈ {1;2} (1 if bp on positions v+1 and i+1 are equal, else 2)
-insertion and match/substitution:
-<u+1,v,i+1> cost ∈ {1;2} (1 if bp on positions u+1 and i+1 are equal, else 2)
-Explored states == 653744 46
-Alignment: 311.96s.
-Cleaning help vectors: 0.0036s.
+Reading query: -9.1e-05s.
+breaking query1 into seeds: 0.000357s.
+breaking query2 into seeds: 0.000204s.
+matches1.size() == 71 matches2.size() == 73
+Filtering matches: 3e-06s.
+Precompute of crumbs1: 0.002924s.
+Precompute of crumbs2: 0.000805s.
+Explored states == 1228029 9
+Alignment: 2025.04s.
+Cleaning help vectors: 0.103564s.
 
 Query 10:
 Reading query: -2.6e-05s.

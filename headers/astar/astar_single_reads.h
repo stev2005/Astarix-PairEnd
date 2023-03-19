@@ -37,14 +37,22 @@ struct Node{
 struct MatchingKmers{
     vector <int> seeds1, seeds2, last, prevpos;
     vector <Trie*> connection;
-    int qsize;
+    //int qsize;
     map<Node, bitset<64> > crumbs1, crumbs2;
+    vector<unordered_set<int> > seedsph1;
+    vector<unordered_set<int> > seedsph2;
+    //bool seedsph[64];
+    /*MatchingKmers(){
+        memset(seedsph, 0, sizeof(seedsph));
+    }*/
     ///last: the end position of a last occurance of a kmer in the reference
     ///prevpos: end positions of previous occurances of a kmer in the reference
     ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
     /*seeds: with which kmere a given seed has a mathc.
     if seeds[i] == -1 there isn't such a kmer, otherwise seeds[i] = to the corresponding kmer*/
-    ///connection: pointer to trie leaf from which a given bp of the ref is accessed  
+    ///connection: pointer to trie leaf from which a given bp of the ref is accessed
+    /*seedsph[i]: is there such a pair <l, r> so that |r-l|<=10000 where l is one of the possible occurance possitions of
+    seed[i] of the first alignment and r is one of the possible occurance positions of seed[i] of the second alignment*/
 };
 
 struct  Statesr{
@@ -82,9 +90,25 @@ struct  Statesr{
     }
 };
 
+bool is_available_to_crumb(int alignment, MatchingKmers &info, int num, int pos){
+    if (alignment == 0)
+        return true;
+    if (alignment == 1){
+        if (info.seedsph1[num].find(pos) != info.seedsph1[num].end())
+            return true;
+    }
+    else{
+        if (info.seedsph2[num].find(pos) != info.seedsph2[num].end())
+            return true;
+    }
+    return false;
+}
+
 void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKmers &info, int alignment){
-    map <Node, bitset<64> > & crumbs = (alignment == 1)?info.crumbs1: info.crumbs2;
-    const vector<int> & seeds = (alignment == 1)?info.seeds1 : info.seeds2;
+    ///alignment: 0 for single reads; 1 or 2 for pair-ends
+    map <Node, bitset<64> > & crumbs = (alignment == 0 || alignment == 1)?info.crumbs1: info.crumbs2;
+    const vector<int> & seeds = (alignment == 0 || alignment == 1)? info.seeds1 : info.seeds2;
+    const vector<unordered_set<int> > & seedsph = (alignment == 0 || alignment == 1)? info.seedsph1 : info.seedsph2;
     const vector<int> & last = info.last;
     const vector<int> & prevpos = info.prevpos;
     const vector<Trie*> & connection = info.connection;
@@ -96,32 +120,31 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
             //cout <<"A match\n";
             int seedpos = i * k;///start of the seed
             for (int j = last[seeds[i]]; j != -1; j = prevpos[j]){
-                for (int back = 0; back <= seedpos; ++back){
-                    int rpos = j - k + 1 - back;
-                    if (rpos >= 0){
-                        crumbs[Node(rpos)][i] = true;
-                        Trie *cur = connection[rpos];
-                        while (cur != nullptr){
-                            if (crumbs[Node(cur)][i] == true)
-                                break;
-                                
-                            crumbs[Node(cur)][i] = true;
-                            cur = cur->parent; 
+                //if (is_available_to_crumb(alignment, info, i, j)){
+                    for (int back = 0; back <= seedpos; ++back){
+                        int rpos = j - k + 1 - back;
+                        if (rpos >= 0){
+                            crumbs[Node(rpos)][i] = true;
+                            if (is_available_to_crumb(alignment, info, i, j)){
+                                Trie *cur = connection[rpos];
+                                while (cur != nullptr){
+                                    /*if (crumbs[Node(cur)][i] == true)
+                                        break;*/
+                                    static int cnt = 1;
+                                    if (cnt){
+                                        cout <<"Entering in to the climbing while\n";
+                                        cnt--;
+                                    }
+                                    crumbs[Node(cur)][i] = true;
+                                    cur = cur->parent; 
+                                }
+                            }
                         }
                     }
-                }
+                //}
             }      
         }
     }
-    /*cout << "printing crumbs\n";
-    for (auto it = crumbs.begin(); it != crumbs.end(); it++){
-        Node cur = it -> first;
-        cout << cur.is_in_trie() << endl;
-        for (int i = 0; i < 4; ++i)
-            cout << it->second[i] << ' ';
-        cout << endl;
-    }*/
-    //return crumbs;
 }
 
 cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info, int alignment){
@@ -188,6 +211,13 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
     return next;
 }
 
+bool is_greedy_available(Statesr cur, string &query, string &ref){
+    if (cur.p.is_in_trie())return false;
+    if (cur.p.rpos < ref.size() && query[cur.qpos] == ref[cur.p.rpos])
+        return true;
+    return false;
+}
+
 cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart){
     int n = query.size();
     int m = ref.size();
@@ -197,7 +227,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 1);
-        cout << "Crumbs in the root of the trie tree: "<< cur.h << endl;
+        cout << "Missing crumbs in the root of the trie tree: "<< cur.h << endl;
         q.push(cur);
         for (int i = m - k + 1; i <= m; ++i){
             cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
@@ -219,7 +249,8 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
             visited.insert(explstatesr(cur));*/
         if (visited.find({cur.qpos, cur.p}) == visited.end()){
             visited.insert({cur.qpos, cur.p});
-            if (!cur.p.is_in_trie() && cur.p.rpos < m && ref[cur.p.rpos] == query[cur.qpos]){
+            //if (!cur.p.is_in_trie() && cur.p.rpos < m && ref[cur.p.rpos] == query[cur.qpos])
+            if (is_greedy_available(cur, query, ref)){
                 Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, 1);
                 topush.g += cur.g;
                 q.push(topush);

@@ -60,6 +60,9 @@ testche_dijkstra_heuristic:
 testche_seed_heuristic:
 	time ./main.exe single-read 10 seed_heuristic Yes Yes <testche.in
 
+testchep_dijkstra_heuristic:
+	time ./main.exe pairend-read 10 dijkstra_heuristic Yes Yes <testchep.in
+
 testchep_seed_heuristic:
 	time ./main.exe pairend-read 10 seed_heuristic Yes Yes <testchep.in
 

@@ -35,14 +35,15 @@ struct Trie{
 
 };
 
-Trie* insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num, int posapp){
+/*Trie*/ void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *&tocon){
     if (pos == s.size()){
         if(T->num == -1){
             T->num = num;
             //T->firstapp = posapp;
         }
         else num = T->num;
-        return T;
+        //return T;
+        tocon = T;
     }
     for(int i = 0; i<4; ++i)
         if (s[pos] == base[i]){
@@ -51,14 +52,14 @@ Trie* insert_kmer( Trie *&T,  string &s ,  int pos ,  int &num, int posapp){
                 T->child[i]->parent = T;
                 //T->child[i]->bp=base[i];
             }    
-            insert_kmer(T->child[i], s, pos+1, num, posapp);
+            insert_kmer(T->child[i], s, pos+1, num, posapp, tocon);
             /*if (T->firstapp == -1)
                 T->firstapp = T->child[i]->firstapp;
             else T->firstapp = min(T->firstapp, T->child[i]->firstapp);*/
         }
 }
 
-inline void construct_trie(string &ref, int k, Trie *&T, vector<int>&last, vector<int>&prevpos){
+/*inline void construct_trie(string &ref, int k, Trie *&T, vector<int>&last, vector<int>&prevpos){
     int m=ref.size();
     int sz;
     prevpos.resize(m, -1);
@@ -76,7 +77,7 @@ inline void construct_trie(string &ref, int k, Trie *&T, vector<int>&last, vecto
             ++cntkmer;
         else cntkmer=prevcnt;
     }
-}
+}*/
 
 inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &connection){
     int m = ref.size();
@@ -90,7 +91,8 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &las
         prevcnt=cntkmer;
         kmer = ref.substr(i, k);
         sz = kmer.size();
-        Trie *con = insert_kmer(T, kmer, 0, cntkmer, i);
+        Trie *con;
+        insert_kmer(T, kmer, 0, cntkmer, i, con);
         connection.push_back(con);
         //assert(cout<<"inserted kmer\n");
         //assert(cout<<"cntkmer=="<<cntkmer<<"\n");
