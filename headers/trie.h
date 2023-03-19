@@ -84,6 +84,7 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &las
     int sz;
     prevpos.resize(m, -1);
     last.resize(m, -1);
+    connection.resize(m, nullptr);
     int cntkmer = 0, prevcnt;
     //string::iterator st,fi;
     string kmer;
@@ -93,7 +94,7 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &las
         sz = kmer.size();
         Trie *con;
         insert_kmer(T, kmer, 0, cntkmer, i, con);
-        connection.push_back(con);
+        connection[i+sz-1] = con;
         //assert(cout<<"inserted kmer\n");
         //assert(cout<<"cntkmer=="<<cntkmer<<"\n");
         prevpos[i+sz-1]=last[cntkmer];

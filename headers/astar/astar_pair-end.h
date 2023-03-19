@@ -69,16 +69,18 @@ void filter_matches(MatchingKmers &info, int k){
         pair<int, int> cur;
         if (matches1[l].first < matches2[r].first){
             cur = matches1[l];
-            last1 = cur.first;
+            //last1 = cur.first;
             l++;
-            if (abs(cur.first - last2) <= 10000)
+            //if (abs(cur.first - last2) <= 10000)
+            if (r > 0 && abs(cur.first - matches2[r-1].first) <= 10000)
                 seedsph1[cur.second].insert(cur.first);
         }
         else{
             cur = matches2[r];
             r++;
-            last2 = cur.first;
-            if (abs(cur.second - last1) <= 10000)
+            //last2 = cur.first;
+            //if (abs(cur.second - last1) <= 10000)
+            if (l > 0 && abs(cur.first - matches1[l-1].first) <= 10000)
                 seedsph2[cur.second].insert(cur.first);
         }
     }
@@ -86,7 +88,7 @@ void filter_matches(MatchingKmers &info, int k){
         pair<int, int> cur;
         cur = matches1[l];
         l++;
-        if (abs(cur.first - last2) <= 10000)
+        if (abs(cur.first - matches2[r-1].first) <= 10000)
             seedsph1[cur.second].insert(cur.first);
         else break;
     }
@@ -94,7 +96,7 @@ void filter_matches(MatchingKmers &info, int k){
         pair<int, int> cur;
         cur = matches2[r];
         r++;
-        if (abs(cur.first - last1) <= 10000)
+        if (abs(cur.first - matches1[l-1].first) <= 10000)
             seedsph2[cur.second].insert(cur.first);
         else break;
     }
@@ -104,18 +106,18 @@ void filter_matches(MatchingKmers &info, int k){
     r = sz2 - 1;
     while(l >= 0 && r >= 0){
         pair<int, int> cur;
-        if (matches1[l].first && matches2[r].first){
+        if (matches1[l].first > matches2[r].first){
             cur = matches1[l];
             l--;
             last1 = cur.first;
-            if (abs(cur.first - last2) <= 10000)
+            if (r + 1 < sz2 && abs(cur.first - matches2[r + 1].first) <= 10000)
                 seedsph1[cur.second].insert(cur.first);
         }
         else{
             cur = matches2[r];
             r--;
             last2 = cur.second;
-            if (abs(cur.first - last1) <= 10000)
+            if (l + 1 < sz1 && abs(cur.first - matches1[l + 1].first) <= 10000)
                 seedsph2[cur.second].insert(cur.first);
         }
     }
@@ -123,7 +125,7 @@ void filter_matches(MatchingKmers &info, int k){
         pair<int, int> cur;
         cur = matches1[l];
         l--;
-        if (abs(cur.first - last2) <= 10000)
+        if (abs(cur.first - matches2[r + 1].first) <= 10000)
             seedsph1[cur.second].insert(cur.first);
         else break;
     }
@@ -131,7 +133,7 @@ void filter_matches(MatchingKmers &info, int k){
         pair<int, int> cur;
         cur = matches2[r];
         r--;
-        if (abs(cur.first - last1) <= 10000)
+        if (abs(cur.first - matches1[l + 1].first) <= 10000)
             seedsph2[cur.second].insert(cur.first);
         else break;
     }
@@ -144,8 +146,9 @@ cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
             if (abs(one.p.rpos - two.p.rpos) > 10000)
                 return inf;
         }
-        return (one.h + two.h <= 47)? one.h + two.h: inf;
+        return (one.h + two.h <= 20)? one.h + two.h: inf;
     }
+    assert(false);
 }
 
 Statepr CreateStatepr(Statesr l, Statesr r, char *heuristic_method){

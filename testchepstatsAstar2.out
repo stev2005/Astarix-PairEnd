@@ -1,0 +1,154 @@
+time ./main.exe pairend-read 10 seed_heuristic Yes Yes <testchep.in
+reading reference: 0.021702s.
+constructing trie: 0.800716s.
+
+Query 1:
+Reading query: -1.8e-05s.
+breaking query1 into seeds: 9.9e-05s.
+breaking query2 into seeds: 4.9e-05s.
+Filtering matches: 2e-06s.
+Entering in to the climbing while
+Precompute of crumbs1: 0.027807s.
+Precompute of crumbs2: 0.036603s.
+Size of crumbs1 and crumbs2: 6058 9782
+0000000000000000000000000000000000000001111111111111111111111011 0000000000000000000000000000000000000001111111111111111111011111
+heuristic of single read: 1
+heuristic of paired end read: 2
+Explored states == 78623 10
+Alignment: 29.5661s.
+Cleaning help vectors: 0.002304s.
+
+Query 2:
+Reading query: -4.8e-05s.
+breaking query1 into seeds: 9.3e-05s.
+breaking query2 into seeds: 8.7e-05s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.081655s.
+Precompute of crumbs2: 0.206052s.
+Size of crumbs1 and crumbs2: 26589 41792
+0000000000000000000000000000000000000001111111111111111111111111 0000000000000000000000000000000000000001111101111111111111111111
+heuristic of single read: 0
+heuristic of paired end read: 1
+Explored states == 2173 4
+Alignment: 0.913737s.
+Cleaning help vectors: 0.0143s.
+
+Query 3:
+Reading query: -2.5e-05s.
+breaking query1 into seeds: 0.000242s.
+breaking query2 into seeds: 0.000241s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.08478s.
+Precompute of crumbs2: 0.051125s.
+Size of crumbs1 and crumbs2: 15331 11546
+0000000000000000000000000000000000000001111111011111111111111111 0000000000000000000000000000000000000001111111010111111111111111
+heuristic of single read: 1
+heuristic of paired end read: 3
+Explored states == 201972 14
+Alignment: 101.478s.
+Cleaning help vectors: 0.022079s.
+
+Query 4:
+Reading query: -0.000141s.
+breaking query1 into seeds: 6.7e-05s.
+breaking query2 into seeds: 6.7e-05s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.160503s.
+Precompute of crumbs2: 0.151766s.
+Size of crumbs1 and crumbs2: 19620 22462
+0000000000000000000000000000000000000001111111111011111111111111 0000000000000000000000000000000000000001111111111111011111111111
+heuristic of single read: 1
+heuristic of paired end read: 2
+Explored states == 26747 8
+Alignment: 12.2022s.
+Cleaning help vectors: 0.014478s.
+
+Query 5:
+Reading query: -2.7e-05s.
+breaking query1 into seeds: 5.9e-05s.
+breaking query2 into seeds: 8.9e-05s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.072759s.
+Precompute of crumbs2: 0.069341s.
+Size of crumbs1 and crumbs2: 15026 22882
+0000000000000000000000000000000000000001111111111011111111111111 0000000000000000000000000000000000000001111111101111111111111111
+heuristic of single read: 1
+heuristic of paired end read: 2
+Explored states == 44923 9
+Alignment: 18.0322s.
+Cleaning help vectors: 0.007928s.
+
+Query 6:
+Reading query: -1.9e-05s.
+breaking query1 into seeds: 2.9e-05s.
+breaking query2 into seeds: 2.6e-05s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.199932s.
+Precompute of crumbs2: 0.089281s.
+Size of crumbs1 and crumbs2: 20696 17581
+0000000000000000000000000000000000000001111111101111111111111010 0000000000000000000000000000000000000001111111111111111111111111
+heuristic of single read: 3
+heuristic of paired end read: 3
+Explored states == 35420 9
+Alignment: 16.415s.
+Cleaning help vectors: 0.014921s.
+
+Query 7:
+Reading query: -3e-05s.
+breaking query1 into seeds: 5.5e-05s.
+breaking query2 into seeds: 0.000121s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.137677s.
+Precompute of crumbs2: 0.083413s.
+Size of crumbs1 and crumbs2: 31474 16086
+0000000000000000000000000000000000000001111111101111111111111111 0000000000000000000000000000000000000000111111111110111111111111
+heuristic of single read: 1
+heuristic of paired end read: 3
+Explored states == 233515 14
+Alignment: 130.518s.
+Cleaning help vectors: 0.01117s.
+
+Query 8:
+Reading query: -7.9e-05s.
+breaking query1 into seeds: 3.9e-05s.
+breaking query2 into seeds: 3.2e-05s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.046087s.
+Precompute of crumbs2: 0.061887s.
+Size of crumbs1 and crumbs2: 13603 19465
+0000000000000000000000000000000000000001111111111111111111111111 0000000000000000000000000000000000000001111111111111111111111110
+heuristic of single read: 0
+heuristic of paired end read: 1
+Explored states == 42571 7
+Alignment: 15.7037s.
+Cleaning help vectors: 0.006193s.
+
+Query 9:
+Reading query: -2.1e-05s.
+breaking query1 into seeds: 4.1e-05s.
+breaking query2 into seeds: 9.5e-05s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.080517s.
+Precompute of crumbs2: 0.076697s.
+Size of crumbs1 and crumbs2: 21388 23381
+0000000000000000000000000000000000000001111111111011111111111111 0000000000000000000000000000000000000001111111111111111111111111
+heuristic of single read: 1
+heuristic of paired end read: 1
+Explored states == 80328 9
+Alignment: 33.8924s.
+Cleaning help vectors: 0.017288s.
+
+Query 10:
+Reading query: -2.4e-05s.
+breaking query1 into seeds: 5e-05s.
+breaking query2 into seeds: 4.3e-05s.
+Filtering matches: 2e-06s.
+Precompute of crumbs1: 0.07064s.
+Precompute of crumbs2: 0.067278s.
+Size of crumbs1 and crumbs2: 17746 19978
+0000000000000000000000000000000000000001111111111111110111111111 0000000000000000000000000000000000000001111111111111111111110111
+heuristic of single read: 1
+heuristic of paired end read: 2
+Explored states == 582639 14
+Alignment: 286.332s.
+Cleaning help vectors: 0.008999s.

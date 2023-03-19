@@ -120,12 +120,12 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
             //cout <<"A match\n";
             int seedpos = i * k;///start of the seed
             for (int j = last[seeds[i]]; j != -1; j = prevpos[j]){
-                //if (is_available_to_crumb(alignment, info, i, j)){
+                if (is_available_to_crumb(alignment, info, i, j)){
                     for (int back = 0; back <= seedpos; ++back){
                         int rpos = j - k + 1 - back;
                         if (rpos >= 0){
                             crumbs[Node(rpos)][i] = true;
-                            if (is_available_to_crumb(alignment, info, i, j)){
+                            //if (is_available_to_crumb(alignment, info, i, j)){
                                 Trie *cur = connection[rpos];
                                 while (cur != nullptr){
                                     /*if (crumbs[Node(cur)][i] == true)
@@ -138,10 +138,10 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
                                     crumbs[Node(cur)][i] = true;
                                     cur = cur->parent; 
                                 }
-                            }
+                            //}
                         }
                     }
-                //}
+                }
             }      
         }
     }
