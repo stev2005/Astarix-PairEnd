@@ -64,34 +64,19 @@ void filter_matches(MatchingKmers &info, int k){
     seedsph1.resize(info.seeds1.size());
     vector <unordered_set<int> > & seedsph2 = info.seedsph2;
     seedsph2.resize(info.seeds2.size());
-    int last1 = -10001, last2 = -10001;///the lastesr occurance of a seed from each alignment
     while (l < sz1 && r < sz2){
         pair<int, int> cur;
         if (matches1[l].first < matches2[r].first){
             cur = matches1[l];
-            //last1 = cur.first;
             l++;
-            //if (abs(cur.first - last2) <= 10000)
-            /*if (r > 0 && abs(cur.first - matches2[r-1].first) <= 10000)
-                seedsph1[cur.second].insert(cur.first);*/
         }
         else{
             cur = matches2[r];
             r++;
-            //last2 = cur.first;
-            //if (abs(cur.second - last1) <= 10000)
             if (l > 0 && abs(cur.first - matches1[l-1].first) <= 10000)
                 seedsph2[cur.second].insert(cur.first);
         }
     }
-    /*while (l < sz1){
-        pair<int, int> cur;
-        cur = matches1[l];
-        l++;
-        if (abs(cur.first - matches2[r-1].first) <= 10000)
-            seedsph1[cur.second].insert(cur.first);
-        else break;
-    }*/
     while (r < sz2){
         pair<int, int> cur;
         cur = matches2[r];
@@ -100,8 +85,6 @@ void filter_matches(MatchingKmers &info, int k){
             seedsph2[cur.second].insert(cur.first);
         else break;
     }
-    last1 = inf;
-    last2 = inf;
     l = sz1 - 1;
     r = sz2 - 1;
     while(l >= 0 && r >= 0){
@@ -109,16 +92,12 @@ void filter_matches(MatchingKmers &info, int k){
         if (matches1[l].first > matches2[r].first){
             cur = matches1[l];
             l--;
-            last1 = cur.first;
             if (r + 1 < sz2 && abs(cur.first - matches2[r + 1].first) <= 10000)
                 seedsph1[cur.second].insert(cur.first);
         }
         else{
             cur = matches2[r];
             r--;
-            /*last2 = cur.second;
-            if (l + 1 < sz1 && abs(cur.first - matches1[l + 1].first) <= 10000)
-                seedsph2[cur.second].insert(cur.first);*/
         }
     }
     while (l >= 0){
@@ -129,14 +108,6 @@ void filter_matches(MatchingKmers &info, int k){
             seedsph1[cur.second].insert(cur.first);
         else break;
     }
-    /*while (r >= 0){
-        pair<int, int> cur;
-        cur = matches2[r];
-        r--;
-        if (abs(cur.first - matches1[l + 1].first) <= 10000)
-            seedsph2[cur.second].insert(cur.first);
-        else break;
-    }*/
 }
 
 void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
@@ -268,27 +239,16 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                 vector next2 = NextStatesr(Statesr(cur.qpos, cur.p2), q2[cur.qpos], ref, k, info, heuristic_method, 2);
                 next1.push_back(CreateStatesr(Statesr(cur.qpos, cur.p1), k, info, heuristic_method, 0, 1));
                 next2.push_back(CreateStatesr(Statesr(cur.qpos, cur.p2), k, info, heuristic_method, 0, 2));
-                /*cout << "next1.size(): "<< next1.size() << "\n";
-                cout << "next2.size(): "<< next2.size() << "\n";*/
-                /*static int cnt = 1;
-                if (cnt){
-                    cout << "First alignment:\n";
-                    for (auto i1: next1)
-                        i1.print();
-                    cout << "\n";
-                    cout <<"Second alignment:\n";
-                    for (auto i2 : next2)
-                        i2.print();
-                    cout << "\n";
-                    cnt--;
-                }*/
                 for (auto i1: next1)
                     for (auto i2: next2)
                         if (i1.qpos == i2.qpos){
                             Statepr next = CreateStatepr(i1, i2, heuristic_method);
                             next.g = cur.g + i1.stepcost + i2.stepcost;
-                            if (next.h != inf)
-                                q.push(next);
+                            if (strcmp(heuristic_method, "seed_heuristic") == 0){
+                                if (next.g + next.h > 20)
+                                    next.h = inf; 
+                            }
+                            q.push(next);
                         }
             }
         }
@@ -298,8 +258,3 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
         cout << "Explored states == " << visited.size() << " ";
     return cur.g;
 }
-/*cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart){
-    string q1 = query.first;
-    string q2 = query.second;
-
-}*/

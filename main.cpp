@@ -131,8 +131,8 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "breaking query2 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
-                t = clock() - t;
                 filter_matches(info, k);
+                t = clock() - t;
                 cout << "Filtering matches: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 //howmanycrumbs_seeds_have(info, k);
                 t = clock();
