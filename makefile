@@ -4,11 +4,11 @@ main:
 	g++ main.cpp -o main.exe
 
 testtrie:
-	for file in $$(ls tests); do \
+	for file in $$(ls tests-single-read_small_length); do \
 		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			time ./main.exe single-read 4 seed_heuristic No Yes <tests/$$file >output.out; \
+			time ./main.exe single-read 4 seed_heuristic No Yes <tests-single-read_small_length/$$file >output.out; \
 		else \
 			diff -q output.out tests/$$file; \
 		fi \
@@ -16,11 +16,11 @@ testtrie:
 	echo "Testing done"
 
 test:
-	for file in $$(ls tests); do \
+	for file in $$(ls tests-single-read_small_length); do \
 		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			time ./main.exe single-read 4 seed_heuristic No No <tests/$$file >output.out; \
+			time ./main.exe single-read 4 seed_heuristic No No <tests-single-read_small_length/$$file >output.out; \
 		else \
 			diff -q output.out tests/$$file; \
 		fi \
@@ -28,11 +28,11 @@ test:
 	echo "Testing done"
 
 testdijkstra:
-	for file in $$(ls tests); do \
+	for file in $$(ls tests-single-read_small_length); do \
 		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			time ./main.exe single-read 4 dijkstra_heuristic No <tests/$$file >output.out; \
+			time ./main.exe single-read 4 dijkstra_heuristic No <tests-single-read_small_length/$$file >output.out; \
 		else \
 			diff -q output.out tests/$$file; \
 		fi \
@@ -40,11 +40,11 @@ testdijkstra:
 	echo "Testing done"
 
 testp:
-	for file in $$(ls tests-paired-end); do \
+	for file in $$(ls tests-paired-end_small_length); do \
 		echo $$file; \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			./main.exe single-read 4 <tests-paired-end/$$file >output.out; \
+			./main.exe single-read 4 <tests-paired-end_small_length/$$file >output.out; \
 		else \
 			diff -q output.out tests-paired-end/$$file; \
 		fi \
@@ -76,10 +76,10 @@ testp1:
 	./main.exe <tests-paired-end/1.in
 
 printexplstatesastartrie:
-	for file in $$(ls tests); do \
+	for file in $$(ls tests-single-read_small_length); do \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			./main.exe single-read 4 seed_heuristic Yes Yes <tests/$$file >output.out; \
+			./main.exe single-read 4 seed_heuristic Yes Yes <tests-single-read_small_length/$$file >output.out; \
 		else \
 			filename="$${file%%.*}"; \
 			echo "Test $$filename:" >> stats.out; \
@@ -88,10 +88,10 @@ printexplstatesastartrie:
 	done
 
 printexplstatesastar:
-	for file in $$(ls tests); do \
+	for file in $$(ls test-single-read_small_length); do \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			./main.exe single-read 4 seed_heuristic Yes No <tests/$$file >output.out; \
+			./main.exe single-read 4 seed_heuristic Yes No <tests-single-read_small_length/$$file >output.out; \
 		else \
 			filename="$${file%%.*}"; \
 			echo "Test $$filename:" >> stats.out; \
@@ -100,10 +100,10 @@ printexplstatesastar:
 	done
 
 printexplstatesdijktratrie:
-	for file in $$(ls tests); do \
+	for file in $$(ls tests-single-read_small_length); do \
 		ext="$${file##*.}"; \
 		if [ "$$ext" = "in" ]; then \
-			./main.exe single-read 4 dijkstra_heuristic Yes <tests/$$file >output.out; \
+			./main.exe single-read 4 dijkstra_heuristic Yes <tests-single-read_small_length/$$file >output.out; \
 		else \
 			filename="$${file%%.*}"; \
 			echo "Test $$filename:" >> stats.out; \
@@ -112,24 +112,24 @@ printexplstatesdijktratrie:
 	done
 
 writeanswers:
-	for file in $$(ls tests); do\
+	for file in $$(ls tests-single-read_small_length); do\
 		ext="$${file##*.}"; \
 		#echo $$ext; \
 		if [ "$$ext" = "in" ]; then \
 			#echo "The value is in"; \
-			./main.exe <tests/$$file >output.out; \
+			./main.exe <tests-single-read_small_length/$$file >output.out; \
 			#echo $$file; \
 			#cat $$file; \
 		else \
 			#echo "The value is out"; \
-			cp output.out tests/$$file; \
+			cp output.out tests-single-read_small_length/$$file; \
 			#echo "this is an out file"; \
 		fi \
 	done
 
 writeanswerspe:
 	dir="tests-paired-end"
-	for file in $$(ls tests-paired-end); do\
+	for file in $$(ls tests-paired_small_length); do\
 		ext="$${file##*.}"; \
 		echo tests-paired-end/$$file; \
 		echo $$ext; \
@@ -141,31 +141,14 @@ writeanswerspe:
 	done
 
  deletion:
-	for file in $$(ls tests-paired-end); do\
+	for file in $$(ls tests-paired-end_small_length); do\
 		ext="$${file##*.}"; \
 		echo $$ext; \
 		if [ "$$ext" = "in "]; then \
 			echo $$ext; \
 		else \
-			rm tests-paired-end/$$file; \
+			rm tests-paired-end_small_length/$$file; \
 		fi \
-	done
-
-printfilesnames:
-	for file in $$(ls /root/serverexample/Astarix-PairEnd/tests/in); do \
-		echo $$file; \
-	done
-
-changeext:
-	for file in $$(ls tests | grep ".out$$"); do \
-		mv -- tests/"$$file" tests/"$${file%.out}.sol"; \
-	done
-
-alltests:
-	for file in $$(ls /root/serverexample/Astarix-PairEnd/tests/in | grep ".txt"); do \
-		#echo $$file; \
-		./main.exe <tests/in/$$file >output.txt; \
-		cat output.txt; \
 	done
 
 clean:
