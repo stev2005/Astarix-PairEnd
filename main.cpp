@@ -111,7 +111,7 @@ int main(int argc, char *argv[]){
                 //printoutcrumbs(info.crumbs, root);
             }
             t = clock();
-            rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5]);
+            rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5], 1);
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -148,10 +148,20 @@ int main(int argc, char *argv[]){
                 //printcountofcrumbs(root, info, k);
             }
             t = clock();
+            rezult = astar_single_read_alignment(queryp.first, ref, k, root, info, argv[3], argv[4], argv[5], 1);
+            cout << rezult << "\n";
+            t = clock() - t;
+            cout << "Alignment first read: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            t = clock();
+            rezult = astar_single_read_alignment(queryp.second, ref, k, root, info, argv[3], argv[4], argv[5], 2);
+            cout << rezult << "\n";
+            t = clock() - t;
+            cout << "Alignment second read: " << (double) t / CLOCKS_PER_SEC << "s.\n";  
+            /*t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
             t = clock() - t;
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";*/
         }
         t = clock();
         info.seeds1.clear();

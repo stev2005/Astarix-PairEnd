@@ -220,7 +220,8 @@ bool is_greedy_available(Statesr cur, string &query, string &ref){
     return false;
 }
 
-cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart){
+cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart, int alignment){
+    ///if there is alignment parameter, it is used to help debuging pair-end alignment
     int n = query.size();
     int m = ref.size();
     priority_queue<Statesr> q;
@@ -228,17 +229,17 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     set<pair<int, Node> >visited;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
-        cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 1);
+        cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, alignment);
         cout << "Missing crumbs in the root of the trie tree: "<< cur.h << endl;
         q.push(cur);
         for (int i = m - k + 1; i <= m; ++i){
-            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
+            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, alignment);
             q.push(cur);
         }
     }
     else{
         for (int i = 0; i <= m; ++i){
-            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
+            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, alignment);
             q.push(cur);
         }
     }
@@ -253,12 +254,12 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
             visited.insert({cur.qpos, cur.p});
             //if (!cur.p.is_in_trie() && cur.p.rpos < m && ref[cur.p.rpos] == query[cur.qpos])
             if (is_greedy_available(cur, query, ref)){
-                Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, 1);
+                Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment);
                 topush.g += cur.g;
                 q.push(topush);
             }
             else{
-                vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method, 1);
+                vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method, alignment);
                 for (auto i:next){
                     i.g = cur.g + i.stepcost;
                     q.push(i);

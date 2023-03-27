@@ -11,25 +11,58 @@ struct Statepr{
     int qpos;
     Node p1;
     Node p2;
-    cost_t g;
-    cost_t h;
+    /*cost_t g;
+    cost_t h;*/
+    cost_t g1, g2;
+    ///g1: cost/edit_distance of read1
+    ///g2: cost/edit_distance of read2
+    ///h1: heuristic function of read1
+    ///h2: heuristic function of read2
+    cost_t h1, h2;
     Statepr(){}
     Statepr(int _qpos, Node _p1, Node _p2){
         qpos = _qpos;
         p1 = _p1;
         p2 = _p2;
-        g = 0;
-        h = 0;
+        /*g = 0;
+        h = 0;*/
+        g1 = 0;
+        h1 = 0;
+        g2 = 0;
+        h2 = 0;
     }
-    Statepr(int _qpos, Node _p1, Node _p2, cost_t _g, cost_t _h){
+    /*Statepr(int _qpos, Node _p1, Node _p2, cost_t _g, cost_t _h){
         qpos = _qpos;
         p1 = _p1;
         p2 = _p2;
         g = _g;
         h = _h;
+    }*/
+    Statepr(int _qpos, Node _p1, Node _p2, cost_t _g1, cost_t _h1, cost_t _g2, cost_t _h2){
+        qpos = _qpos;
+        p1 = _p1;
+        p2 = _p2;
+        g1 = _g1;
+        h1 = _h1;
+        g2 = _g2;
+        h2 = _h2;
     }
-    bool operator<(const Statepr &other) const{
+    Statepr(int _qpos, Node _p1, Node _p2, pair<cost_t, cost_t> h){
+        qpos = _qpos;
+        p1 = _p1;
+        p2 = _p2;
+        g1 = 0;
+        g2 = 0;
+        h1 = h.first;
+        h2 = h.second;
+    }
+    /*bool operator<(const Statepr &other) const{
         return g + h >  other.g + other.h;
+    }*/
+    bool operator<(const Statepr &other) const{
+        if (g1 + h1 != other.g1 + other.h1)
+            return g1 + h1 > other.g1 + other.h1;
+        return g2 + h2 > other.g2 + other.h2;
     }
 };
 
@@ -161,20 +194,35 @@ void printcountofcrumbs(Trie *root, MatchingKmers &info, int k){
     cout << "\n";
 }
 
-cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
+/*cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
     if (strcmp(heuristic_method, "dijkstra_heuristic") == 0) return 0;
     if (strcmp(heuristic_method, "seed_heuristic") == 0){
         if (!one.p.is_in_trie() && !two.p.is_in_trie()){
-            if (abs(one.p.rpos - two.p.rpos) > 10000)
+            //if (abs(one.p.rpos - two.p.rpos) > 10000)
                 return inf;
         }
         return (one.h >10 || two.h > 10)? inf: one.h + two.h;
     }
     assert(false);
+}*/
+
+pair<cost_t, cost_t> pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
+    if (strcmp(heuristic_method, "dijkstra_heuristic") == 0) return {0,0};
+    if (strcmp(heuristic_method, "seed_heuristic") == 0){
+        pair<cost_t, cost_t> h;
+        if (!one.p.is_in_trie() && !two.p.is_in_trie())
+            if (two.p.rpos - one.p.rpos > 10000 && one.p.rpos > two.p.rpos)
+                return {inf, two.h};
+        if (one.h + two.h > 20)
+            return {inf, two.h};
+        return {one.h, two.h};
+    }
+    assert(false);
 }
 
-Statepr CreateStatepr(Statesr l, Statesr r, char *heuristic_method){
-    return Statepr(l.qpos, l.p, r.p, 0, pairend_heuristic(l, r, heuristic_method));
+Statepr CreateStatepr(Statesr one, Statesr two, char *heuristic_method){
+    //return Statepr(l.qpos, l.p, r.p, 0, pairend_heuristic(l, r, heuristic_method));
+    return Statepr(one.qpos, one.p, two.p, pairend_heuristic(one, two, heuristic_method));
 }
 
 cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart){
@@ -188,9 +236,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
     if (strcmp(triestart, "Yes") == 0){
         Statesr one = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 1);
         Statesr two = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 2);
-        cout << "heuristic of single read: "<< one.h << endl;
+        //cout << "heuristic of single read: "<< one.h << endl;
         cur = CreateStatepr(one, two, heuristic_method);
-        cout << "heuristic of paired end read: "<<cur.h<<endl;
+        //cout << "heuristic of paired end read: "<<cur.h<<endl;
         q.push(cur);
         for (int i = m - k + 1; i <= m; ++i){
             one = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
@@ -231,7 +279,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                     Statesr one = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p1.rpos+1)), k, info, heuristic_method, 0, 1);
                     Statesr two = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p2.rpos+1)), k, info, heuristic_method, 0, 2);
                     Statepr topush = CreateStatepr(one, two, heuristic_method);
-                    topush.g += cur.g;
+                    topush.g1 = cur.g1;
+                    topush.g2 = cur.g2;
                     q.push(topush); 
                 }
             else{
@@ -243,11 +292,13 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                     for (auto i2: next2)
                         if (i1.qpos == i2.qpos){
                             Statepr next = CreateStatepr(i1, i2, heuristic_method);
-                            next.g = cur.g + i1.stepcost + i2.stepcost;
+                            /*next.g = cur.g + i1.stepcost + i2.stepcost;
                             if (strcmp(heuristic_method, "seed_heuristic") == 0){
                                 if (next.g + next.h > 20)
                                     next.h = inf; 
-                            }
+                            }*/
+                            next.g1 = cur.g1 + i1.stepcost;
+                            next.g2 = cur.g2 + i2.stepcost;
                             q.push(next);
                         }
             }
@@ -255,6 +306,6 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
     }
     assert (cur.qpos == n);
     if (strcmp(showcntexplstates, "Yes") == 0)
-        cout << "Explored states == " << visited.size() << " ";
-    return cur.g;
+        cout << "Expanded states == " << visited.size() << " ";
+    return cur.g1 + cur.g2;
 }
