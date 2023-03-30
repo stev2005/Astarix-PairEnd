@@ -144,10 +144,10 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 cout << "Size of crumbs1 and crumbs2: "<< info.crumbs1.size() << " " << info.crumbs2.size() << "\n";
-                //cout << info.crumbs1[root] << " " <<info.crumbs2[root] << "\n"; 
+                cout << info.crumbs1[root] << " " <<info.crumbs2[root] << "\n"; 
                 //printcountofcrumbs(root, info, k);
             }
-            t = clock();
+            /*t = clock();
             rezult = astar_single_read_alignment(queryp.first, ref, k, root, info, argv[3], argv[4], argv[5], 1);
             cout << rezult << "\n";
             t = clock() - t;
@@ -156,27 +156,23 @@ int main(int argc, char *argv[]){
             rezult = astar_single_read_alignment(queryp.second, ref, k, root, info, argv[3], argv[4], argv[5], 2);
             cout << rezult << "\n";
             t = clock() - t;
-            cout << "Alignment second read: " << (double) t / CLOCKS_PER_SEC << "s.\n";  
-            /*t = clock();
+            cout << "Alignment second read: " << (double) t / CLOCKS_PER_SEC << "s.\n";  */
+            t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, argv[3], argv[4], argv[5]);
             cout<<rezult<<"\n";
             t = clock() - t;
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";*/
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         t = clock();
-        info.seeds1.clear();
+        /*info.seeds1.clear();
         info.seeds2.clear();
         info.seedsph1.clear();
         info.seedsph2.clear();
         info.crumbs1.clear();
-        info.crumbs2.clear();
+        info.crumbs2.clear();*/
+        info.clearquerydata();
         t = clock() - t;
         cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-        ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
-        //rezult = edit_distance_dijkstratrienew(query, ref, root, last, prevpos);
-        //rezult = edit_distance_dijkstrapairedend_trie(query, ref, root, last, prevpos);
-        //rezult = edit_distance_pairedend(query, ref);
-        //rezult = align_astar(query, ref, info.seeds, info.last);
     }
     //cout<<"End of the main program.\n";
     return 0;

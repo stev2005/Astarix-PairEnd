@@ -11,58 +11,25 @@ struct Statepr{
     int qpos;
     Node p1;
     Node p2;
-    /*cost_t g;
-    cost_t h;*/
-    cost_t g1, g2;
-    ///g1: cost/edit_distance of read1
-    ///g2: cost/edit_distance of read2
-    ///h1: heuristic function of read1
-    ///h2: heuristic function of read2
-    cost_t h1, h2;
+    cost_t g;
+    cost_t h;
     Statepr(){}
     Statepr(int _qpos, Node _p1, Node _p2){
         qpos = _qpos;
         p1 = _p1;
         p2 = _p2;
-        /*g = 0;
-        h = 0;*/
-        g1 = 0;
-        h1 = 0;
-        g2 = 0;
-        h2 = 0;
+        g = 0;
+        h = 0;
     }
-    /*Statepr(int _qpos, Node _p1, Node _p2, cost_t _g, cost_t _h){
+    Statepr(int _qpos, Node _p1, Node _p2, cost_t _g, cost_t _h){
         qpos = _qpos;
         p1 = _p1;
         p2 = _p2;
         g = _g;
         h = _h;
-    }*/
-    Statepr(int _qpos, Node _p1, Node _p2, cost_t _g1, cost_t _h1, cost_t _g2, cost_t _h2){
-        qpos = _qpos;
-        p1 = _p1;
-        p2 = _p2;
-        g1 = _g1;
-        h1 = _h1;
-        g2 = _g2;
-        h2 = _h2;
     }
-    Statepr(int _qpos, Node _p1, Node _p2, pair<cost_t, cost_t> h){
-        qpos = _qpos;
-        p1 = _p1;
-        p2 = _p2;
-        g1 = 0;
-        g2 = 0;
-        h1 = h.first;
-        h2 = h.second;
-    }
-    /*bool operator<(const Statepr &other) const{
-        return g + h >  other.g + other.h;
-    }*/
     bool operator<(const Statepr &other) const{
-        if (g1 + h1 != other.g1 + other.h1)
-            return g1 + h1 > other.g1 + other.h1;
-        return g2 + h2 > other.g2 + other.h2;
+        return g + h >  other.g + other.h;
     }
 };
 
@@ -76,7 +43,7 @@ void get_matches(MatchingKmers &info, vector<pair<int, int> > & matches, int ali
 }
 
 void filter_matches(MatchingKmers &info, int k){
-    vector<pair<int, int> > matches1;
+    vector<pair<int, int> > matches1;///first-position where a match is; second- ith seed 
     get_matches(info, matches1, 1);
     vector<pair<int, int> > matches2;
     get_matches(info, matches2, 2);
@@ -100,7 +67,7 @@ void filter_matches(MatchingKmers &info, int k){
     while (l < sz1 && r < sz2){
         pair<int, int> cur;
         if (matches1[l].first < matches2[r].first){
-            cur = matches1[l];
+            //cur = matches1[l];
             l++;
         }
         else{
@@ -114,7 +81,7 @@ void filter_matches(MatchingKmers &info, int k){
         pair<int, int> cur;
         cur = matches2[r];
         r++;
-        if (abs(cur.first - matches1[l-1].first) <= 10000)
+        if (l > 0 && abs(cur.first - matches1[l-1].first) <= 10000)
             seedsph2[cur.second].insert(cur.first);
         else break;
     }
@@ -129,7 +96,6 @@ void filter_matches(MatchingKmers &info, int k){
                 seedsph1[cur.second].insert(cur.first);
         }
         else{
-            cur = matches2[r];
             r--;
         }
     }
@@ -137,7 +103,7 @@ void filter_matches(MatchingKmers &info, int k){
         pair<int, int> cur;
         cur = matches1[l];
         l--;
-        if (abs(cur.first - matches2[r + 1].first) <= 10000)
+        if (r + 1 < sz2 && abs(cur.first - matches2[r + 1].first) <= 10000)
             seedsph1[cur.second].insert(cur.first);
         else break;
     }
@@ -194,35 +160,21 @@ void printcountofcrumbs(Trie *root, MatchingKmers &info, int k){
     cout << "\n";
 }
 
-/*cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
+cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
     if (strcmp(heuristic_method, "dijkstra_heuristic") == 0) return 0;
     if (strcmp(heuristic_method, "seed_heuristic") == 0){
         if (!one.p.is_in_trie() && !two.p.is_in_trie()){
-            //if (abs(one.p.rpos - two.p.rpos) > 10000)
+            if (abs(one.p.rpos - two.p.rpos) > 10000)
                 return inf;
         }
-        return (one.h >10 || two.h > 10)? inf: one.h + two.h;
-    }
-    assert(false);
-}*/
-
-pair<cost_t, cost_t> pairend_heuristic(Statesr one, Statesr two, char *heuristic_method){
-    if (strcmp(heuristic_method, "dijkstra_heuristic") == 0) return {0,0};
-    if (strcmp(heuristic_method, "seed_heuristic") == 0){
-        pair<cost_t, cost_t> h;
-        if (!one.p.is_in_trie() && !two.p.is_in_trie())
-            if (two.p.rpos - one.p.rpos > 10000 && one.p.rpos > two.p.rpos)
-                return {inf, two.h};
-        if (one.h + two.h > 20)
-            return {inf, two.h};
-        return {one.h, two.h};
+        //return (one.h >10 || two.h > 10)? inf: one.h + two.h;
+        return (one.h + two.h <= 20)? one.h + two.h: inf;
     }
     assert(false);
 }
 
 Statepr CreateStatepr(Statesr one, Statesr two, char *heuristic_method){
-    //return Statepr(l.qpos, l.p, r.p, 0, pairend_heuristic(l, r, heuristic_method));
-    return Statepr(one.qpos, one.p, two.p, pairend_heuristic(one, two, heuristic_method));
+    return Statepr(one.qpos, one.p, two.p, 0, pairend_heuristic(one, two, heuristic_method));
 }
 
 cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart){
@@ -279,8 +231,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                     Statesr one = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p1.rpos+1)), k, info, heuristic_method, 0, 1);
                     Statesr two = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p2.rpos+1)), k, info, heuristic_method, 0, 2);
                     Statepr topush = CreateStatepr(one, two, heuristic_method);
-                    topush.g1 = cur.g1;
-                    topush.g2 = cur.g2;
+                    /*topush.g1 = cur.g1;
+                    topush.g2 = cur.g2;*/
+                    topush.g += cur.g;
                     q.push(topush); 
                 }
             else{
@@ -292,13 +245,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                     for (auto i2: next2)
                         if (i1.qpos == i2.qpos){
                             Statepr next = CreateStatepr(i1, i2, heuristic_method);
-                            /*next.g = cur.g + i1.stepcost + i2.stepcost;
-                            if (strcmp(heuristic_method, "seed_heuristic") == 0){
-                                if (next.g + next.h > 20)
-                                    next.h = inf; 
-                            }*/
-                            next.g1 = cur.g1 + i1.stepcost;
-                            next.g2 = cur.g2 + i2.stepcost;
+                            /*next.g1 = cur.g1 + i1.stepcost;
+                            next.g2 = cur.g2 + i2.stepcost;*/
+                            next.g += cur.g + i1.stepcost + i2.stepcost;
                             q.push(next);
                         }
             }
@@ -307,5 +256,5 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
     assert (cur.qpos == n);
     if (strcmp(showcntexplstates, "Yes") == 0)
         cout << "Expanded states == " << visited.size() << " ";
-    return cur.g1 + cur.g2;
+    return cur.g;
 }

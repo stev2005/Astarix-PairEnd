@@ -41,10 +41,14 @@ struct MatchingKmers{
     map<Node, bitset<64> > crumbs1, crumbs2;
     vector<unordered_set<int> > seedsph1;
     vector<unordered_set<int> > seedsph2;
-    //bool seedsph[64];
-    /*MatchingKmers(){
-        memset(seedsph, 0, sizeof(seedsph));
-    }*/
+    void clearquerydata(){
+        seeds1.clear();
+        seeds2.clear();
+        crumbs1.clear();
+        crumbs2.clear();
+        seedsph1.clear();
+        seedsph2.clear();
+    }
     ///last: the end position of a last occurance of a kmer in the reference
     ///prevpos: end positions of previous occurances of a kmer in the reference
     ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
@@ -127,20 +131,18 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
                         int rpos = j - k + 1 - back;
                         if (rpos >= 0){
                             crumbs[Node(rpos)][i] = true;
-                            //if (is_available_to_crumb(alignment, info, i, j)){
-                                Trie *cur = connection[rpos];
-                                while (cur != nullptr){
-                                    /*if (crumbs[Node(cur)][i] == true)
-                                        break;*/
-                                    static int cnt = 1;
-                                    if (cnt){
-                                        cout <<"Entering in to the climbing while\n";
-                                        cnt--;
-                                    }
-                                    crumbs[Node(cur)][i] = true;
-                                    cur = cur->parent; 
+                            Trie *cur = connection[rpos];
+                            while (cur != nullptr){
+                                /*if (crumbs[Node(cur)][i] == true)
+                                    break;*/
+                                static int cnt = 1;
+                                if (cnt){
+                                    cout <<"Entering in to the climbing while\n";
+                                    cnt--;
                                 }
-                            //}
+                                crumbs[Node(cur)][i] = true;
+                                cur = cur->parent; 
+                            }
                         }
                     }
                 }
@@ -192,16 +194,6 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
         }
     }
     else{
-        /*if (cur.p.rpos < ref.size() && ref[cur.p.rpos] == curqbp){
-            next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment));
-        }
-        else{
-            if (cur.p.rpos < ref.size()){
-                next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
-                next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
-            }
-            next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1, alignment));
-        }*/
         if (cur.p.rpos < ref.size()){
             if (ref[cur.p.rpos] == curqbp)
                 next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment));
@@ -225,7 +217,6 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     int n = query.size();
     int m = ref.size();
     priority_queue<Statesr> q;
-    //set<explstatesr>visited;
     set<pair<int, Node> >visited;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
@@ -248,11 +239,8 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
         q.pop();
         if (cur.qpos == n)
             break;
-        /*if (visited.find(explstatesr(cur)) == visited.end()){
-            visited.insert(explstatesr(cur));*/
         if (visited.find({cur.qpos, cur.p}) == visited.end()){
             visited.insert({cur.qpos, cur.p});
-            //if (!cur.p.is_in_trie() && cur.p.rpos < m && ref[cur.p.rpos] == query[cur.qpos])
             if (is_greedy_available(cur, query, ref)){
                 Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment);
                 topush.g += cur.g;
