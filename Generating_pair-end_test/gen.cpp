@@ -2,10 +2,13 @@
 using namespace std;
 mt19937 rg;
 char base[4] = {'A', 'C', 'G', 'T'};
+int tests, genedub, dublen;
+/// genedub: Gene dublications
+/// dublen: dublicated gene length 
 pair<int, string> getrandomgene(string &ref){
     int sz = ref.size();
-    int pos = rg()%(sz-3001);
-    string ret = ref.substr(pos, 3000);
+    int pos = rg()%(sz-(dublen+1));
+    string ret = ref.substr(pos, dublen);
     return {pos, ret};
 }
 pair<string, string> getquery(string &ref){
@@ -35,6 +38,7 @@ int find_dif(string s1, string s2){
     return cnt;
 }
 int main(){
+    cin >> genedub >> dublen >> tests;
     rg.seed(time(0));
     ifstream fin;
     ofstream fout;
@@ -44,13 +48,12 @@ int main(){
     fin >> ref;
     fin.close();
     refnew = ref;
-    for (int i = 0; i < (1<<7); ++i){
+    for (int i = 0; i < genedub; ++i){
         pair<int, string> snew = getrandomgene(refnew);
         const string s= snew.second;
         refnew.insert(snew.first, s);
     }
     fout<<refnew<<endl;
-    int tests = 10;
     fout << tests << endl;
     while (tests){
         pair<string, string> query = getquery(refnew);
