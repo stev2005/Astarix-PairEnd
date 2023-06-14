@@ -6,19 +6,6 @@
 #include "headers/astar/astar_pair-end.h"
 using namespace std;
 
-/*void seqalignment(){
-    for ( int testcase=1 ; testcase <= testcases ; ++ testcase ) {
-        //query . input();
-        cin >> query ;
-        int rezult;
-        //rezult = minimum_edit_distance_dp ( dp ,  query ,  ref ) ;
-        //rezult = minimum_edit_distance_dijkstranew( query ,  ref ) ;
-        //rezult=minimum_edit_distance_dijkstra_trie(query, ref, T, last, prevpos);
-        rezult=minimum_edit_distance_dijkstratrienew(query, ref, T, last, prevpos);
-        cout << rezult << "\n";
-    }
-}*/
-
 int charstring_to_int(char *num){
     int len = strlen(num);
     int n = 0, digit;
@@ -53,24 +40,32 @@ void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
     printtriecrumbs(crumbs, root, "");
 }
 
-inline void single_read_alignment(){
-
+inline void program_arguments_to_variables(char *argv[], char *&typealignment, int &d, int &k, char *&heuristic, char *&shownexplstates, char *&triestart){
+    ///first argument: aligning single reads or paired-end
+    ///second argument: value of D
+    ///third argument: value of k
+    ///fourth argument: used heuristic
+    ///fifth argument: show or not show explored states
+    ///sixt argument: triestart: Yes or No
+    typealignment = argv[1];
+    d = charstring_to_int(argv[2]);
+    k = charstring_to_int(argv[3]);
+    heuristic_method = argv[4];
+    shownexplstates = argv[5];
+    triestart = argv[6];
 }
 
 int main(int argc, char *argv[]){
-    ///first argument: aligning single reads or paired-end
-    ///second argument: value of k
-    ///third argument: used heuristic
-    ///fourth argument: show or not chow explored states
-    ///fifth argument: triestart: Yes or No
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);*/
-    assert(cout<<"Start of the program\n");
-    string ref;
-    string query;
+    cerr <<"Start of the program\n";
+    int d, k;
+    char *typealignment, *heuristic_method, *shownexplstates, *triestart;
+    program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart);
+    string ref, query;
     pair <string, string> queryp;
-    int testcases, k = charstring_to_int(argv[2]);
+    int testcases;
     cerr << "int k has a value equal to " << k << "\n";
     clock_t t = clock();
     cin >> ref ;
@@ -92,11 +87,11 @@ int main(int argc, char *argv[]){
         cout << "Query "<< testcase << ":\n";
         int rezult;
         t = clock();
-        if (strcmp(argv[1], "single-read") == 0){
+        if (strcmp(aligningreads, "single-read") == 0){
             cin>>query;
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            if (strcmp(argv[3], "seed_heuristic") == 0){
+            if (strcmp(heuristic_method, "seed_heuristic") == 0){
                 t = clock();
                 info.seeds1 = query_into_seeds(query, k, root);
                 t = clock() - t;
@@ -108,7 +103,7 @@ int main(int argc, char *argv[]){
                 //printoutcrumbs(info.crumbs, root);
             }
             t = clock();
-            rezult = astar_single_read_alignment(query, ref, k, root, info, argv[3], argv[4], argv[5], 1);
+            rezult = astar_single_read_alignment(query, ref, k, root, info, heuristic_method, shownexplstates, triestart, 1);
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -118,7 +113,7 @@ int main(int argc, char *argv[]){
             cin>>queryp.first>>queryp.second;
             t = t - clock();
             cout << "Reading query: "<<(double) t / CLOCKS_PER_SEC << "s.\n";
-            if (strcmp(argv[3], "seed_heuristic") == 0){
+            if (strcmp(heuristic_method, "seed_heuristic") == 0){
                 t = clock();
                 info.seeds1 = query_into_seeds(queryp.first, k, root);
                 t = clock() - t;
@@ -155,7 +150,7 @@ int main(int argc, char *argv[]){
             t = clock() - t;
             cout << "Alignment second read: " << (double) t / CLOCKS_PER_SEC << "s.\n";  */
             t = clock();
-            rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, argv[3], argv[4], argv[5]);
+            rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, heuristic_method, shownexplstates, triestart);
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
