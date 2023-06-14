@@ -82,11 +82,12 @@ int main(int argc, char *argv[]){
     MatchingKmers info;
     Trie *root=new Trie();
     t = clock();
-    construct_trie_simple(ref, k, root, info.last, info.prevpos, info.backtotrieconnection);
+    construct_trie(ref, k, root, info.last, info.prevpos, info.backtotrieconnection);
     t = clock() - t;
     cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
     cout << "\n";
-    cer << "inited kmers\n" ;
+    cerr << "inited kmers\n" ;
+    //exit(0);
     for (int testcase=1; testcase<=testcases; ++testcase, cout<<endl){
         cout << "Query "<< testcase << ":\n";
         int rezult;

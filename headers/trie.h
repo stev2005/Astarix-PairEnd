@@ -59,7 +59,7 @@ void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *
         }
 }
 
-inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &backtotrieconnection){
+inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &backtotrieconnection){
     int m = ref.size();
     int sz;
     prevpos.resize(m, -1);
@@ -82,6 +82,38 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &las
     }
     for (int i = m - k + 1; i < m; ++i)///the last suffixes of the reference have length < k 
         backtotrieconnection.push_back(nullptr);
+}
+
+inline void construct_trie_info_about_transitions_into_ref(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &backtotrieconnection){
+    int m = ref.size();
+    int sz;
+    prevpos.resize(m, -1);
+    last.resize(m, -1);
+    backtotrieconnection.resize(m, nullptr);
+    int cntkmer = 0, prevcnt;
+    string kmer;
+    unordered_map<Trie*, int> timesexitleaf;
+    for(int i = 0; i < m - k + 1; ++i){
+        prevcnt=cntkmer;
+        kmer = ref.substr(i, k);
+        sz = kmer.size();
+        Trie *con;
+        insert_kmer(T, kmer, 0, cntkmer, i, con);
+        backtotrieconnection[i+sz-1] = con;
+        prevpos[i+sz-1]=last[cntkmer];
+        last[cntkmer]=i+sz-1;
+        if(prevcnt==cntkmer)
+            ++cntkmer;
+        else cntkmer=prevcnt;
+        timesexitleaf[con]++;
+    }
+    for (int i = m - k + 1; i < m; ++i)///the last suffixes of the reference have length < k 
+        backtotrieconnection.push_back(nullptr);
+    map<int, int> numofleafsperexitcnt;
+    for (auto it = timesexitleaf.begin(); it !=  timesexitleaf.end(); ++it)
+        numofleafsperexitcnt[it->second]++;
+    for (auto it = numofleafsperexitcnt.begin(); it != numofleafsperexitcnt.end(); ++it)
+        cout << "exits in the reference: " << it-> first << ", number of leaf: " << it -> second << endl;
 }
 
 int kmer_exists(string &seed, int pos, Trie *T){
