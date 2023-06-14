@@ -35,7 +35,7 @@ struct Trie{
 
 };
 
-/*Trie*/ void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *&tocon){
+void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *&tocon){
     if (pos == s.size()){
         if(T->num == -1){
             T->num = num;
@@ -59,34 +59,13 @@ struct Trie{
         }
 }
 
-/*inline void construct_trie(string &ref, int k, Trie *&T, vector<int>&last, vector<int>&prevpos){
-    int m=ref.size();
-    int sz;
-    prevpos.resize(m, -1);
-    last.resize(m, -1);
-    int cntkmer=0, prevcnt;
-    string kmer;
-    for(int i=0;i<m;i+=k){
-        kmer=ref.substr(i, k);
-        sz=kmer.size();
-        prevcnt=cntkmer;
-        insert_kmer(T, kmer, 0, cntkmer, i+sz-1);
-        prevpos[i+sz-1]=last[cntkmer];
-        last[cntkmer]=i+sz-1;
-        if(prevcnt==cntkmer)
-            ++cntkmer;
-        else cntkmer=prevcnt;
-    }
-}*/
-
-inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &connection){
+inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &backtotrieconnection){
     int m = ref.size();
     int sz;
     prevpos.resize(m, -1);
     last.resize(m, -1);
-    connection.resize(m, nullptr);
+    backtotrieconnection.resize(m, nullptr);
     int cntkmer = 0, prevcnt;
-    //string::iterator st,fi;
     string kmer;
     for(int i = 0; i < m - k + 1; ++i){
         prevcnt=cntkmer;
@@ -94,9 +73,7 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &las
         sz = kmer.size();
         Trie *con;
         insert_kmer(T, kmer, 0, cntkmer, i, con);
-        connection[i+sz-1] = con;
-        //assert(cout<<"inserted kmer\n");
-        //assert(cout<<"cntkmer=="<<cntkmer<<"\n");
+        backtotrieconnection[i+sz-1] = con;
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;
         if(prevcnt==cntkmer)
@@ -104,7 +81,7 @@ inline void construct_trie_simple(string &ref, int k, Trie *&T, vector<int> &las
         else cntkmer=prevcnt;
     }
     for (int i = m - k + 1; i < m; ++i)///the last suffixes of the reference have length < k 
-        connection.push_back(nullptr);
+        backtotrieconnection.push_back(nullptr);
 }
 
 int kmer_exists(string &seed, int pos, Trie *T){

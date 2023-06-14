@@ -53,6 +53,10 @@ void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
     printtriecrumbs(crumbs, root, "");
 }
 
+inline void single_read_alignment(){
+
+}
+
 int main(int argc, char *argv[]){
     ///first argument: aligning single reads or paired-end
     ///second argument: value of k
@@ -62,43 +66,35 @@ int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);*/
-    //DNA ref ,  query;
     assert(cout<<"Start of the program\n");
     string ref;
     string query;
     pair <string, string> queryp;
     int testcases, k = charstring_to_int(argv[2]);
-    assert(cout<<"int k has a value equal to "<<k<<"\n");
+    cerr << "int k has a value equal to " << k << "\n";
     clock_t t = clock();
     cin >> ref ;
     t = clock() - t;
-    assert(cout<<"entered reference\n");
-    cin >> testcases ;
+    cerr << "entered reference\n";
     cout << "reading reference: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-    assert(cout<<"entered num of tescases\n");
-    ///Vital for dp seq approach
-    //vector < vector < int > > dp ;
-    //init_dp_table ( dp ,  ref ) ;
-    //Vital for Trie 
+    cin >> testcases ;
+    cerr << "entered num of tescases\n" ;
     MatchingKmers info;
-    t = clock();
     Trie *root=new Trie();
-    //construct_trie(ref, root, info.last, info.prevpos);
-    construct_trie_simple(ref, k, root, info.last, info.prevpos, info.connection);
+    t = clock();
+    construct_trie_simple(ref, k, root, info.last, info.prevpos, info.backtotrieconnection);
     t = clock() - t;
     cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
     cout << "\n";
-    assert(cout<<"inited kmers\n");
+    cer << "inited kmers\n" ;
     for (int testcase=1; testcase<=testcases; ++testcase, cout<<endl){
         cout << "Query "<< testcase << ":\n";
         int rezult;
         t = clock();
         if (strcmp(argv[1], "single-read") == 0){
             cin>>query;
-            //info.qsize = query.size();
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            //map <Node, bitset<64> > crumbs;
             if (strcmp(argv[3], "seed_heuristic") == 0){
                 t = clock();
                 info.seeds1 = query_into_seeds(query, k, root);
@@ -164,12 +160,6 @@ int main(int argc, char *argv[]){
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         t = clock();
-        /*info.seeds1.clear();
-        info.seeds2.clear();
-        info.seedsph1.clear();
-        info.seedsph2.clear();
-        info.crumbs1.clear();
-        info.crumbs2.clear();*/
         info.clearquerydata();
         t = clock() - t;
         cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";

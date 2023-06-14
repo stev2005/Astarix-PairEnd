@@ -36,8 +36,7 @@ struct Node{
 
 struct MatchingKmers{
     vector <int> seeds1, seeds2, last, prevpos;
-    vector <Trie*> connection;
-    //int qsize;
+    vector <Trie*> backtotrieconnection;
     map<Node, bitset<64> > crumbs1, crumbs2;
     vector<unordered_set<int> > seedsph1;
     vector<unordered_set<int> > seedsph2;
@@ -54,7 +53,7 @@ struct MatchingKmers{
     ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
     /*seeds: with which kmere a given seed has a mathc.
     if seeds[i] == -1 there isn't such a kmer, otherwise seeds[i] = to the corresponding kmer*/
-    ///connection: pointer to trie leaf from which a given bp of the ref is accessed
+    ///backtotrieconnection: pointer to trie leaf from which a given bp of the ref is accessed
     /*seedsph[i]: is there such a pair <l, r> so that |r-l|<=10000 where l is one of the possible occurance possitions of
     seed[i] of the first alignment and r is one of the possible occurance positions of seed[i] of the second alignment*/
 };
@@ -117,7 +116,7 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
     const vector<unordered_set<int> > & seedsph = (alignment == 0 || alignment == 1)? info.seedsph1 : info.seedsph2;
     const vector<int> & last = info.last;
     const vector<int> & prevpos = info.prevpos;
-    const vector<Trie*> & connection = info.connection;
+    const vector<Trie*> & backtotrieconnection = info.backtotrieconnection;
     //cout << "seeds.size == " <<seeds.size()<<endl;
     //cout << "last.size == "<<last.size()<<endl;
     for (int i = 0; i < seeds.size(); ++i){
@@ -131,7 +130,7 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
                         int rpos = j - k + 1 - back;
                         if (rpos >= 0){
                             crumbs[Node(rpos)][i] = true;
-                            Trie *cur = connection[rpos];
+                            Trie *cur = backtotrieconnection[rpos];
                             while (cur != nullptr){
                                 /*if (crumbs[Node(cur)][i] == true)
                                     break;*/
