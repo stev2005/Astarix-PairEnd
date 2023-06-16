@@ -41,18 +41,12 @@ void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
 }
 
 inline void program_arguments_to_variables(char *argv[], char *&typealignment, int &d, int &k, char *&heuristic, char *&shownexplstates, char *&triestart){
-    ///first argument: aligning single reads or paired-end
-    ///second argument: value of D
-    ///third argument: value of k
-    ///fourth argument: used heuristic
-    ///fifth argument: show or not show explored states
-    ///sixt argument: triestart: Yes or No
-    typealignment = argv[1];
-    d = charstring_to_int(argv[2]);
-    k = charstring_to_int(argv[3]);
-    heuristic_method = argv[4];
-    shownexplstates = argv[5];
-    triestart = argv[6];
+    typealignment = argv[1];///first argument: aligning single reads or paired-end
+    d = charstring_to_int(argv[2]);///second argument: value of D
+    k = charstring_to_int(argv[3]);///third argument: value of k
+    heuristic_method = argv[4];///fourth argument: used heuristic
+    shownexplstates = argv[5];///fifth argument: show or not show explored states
+    triestart = argv[6];///sixt argument: triestart: Yes or No
 }
 
 int main(int argc, char *argv[]){
@@ -63,6 +57,7 @@ int main(int argc, char *argv[]){
     int d, k;
     char *typealignment, *heuristic_method, *shownexplstates, *triestart;
     program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart);
+    
     string ref, query;
     pair <string, string> queryp;
     int testcases;

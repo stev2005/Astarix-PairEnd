@@ -35,8 +35,12 @@ struct Node{
 };
 
 struct MatchingKmers{
-    vector <int> seeds1, seeds2, last, prevpos;
-    vector <Trie*> backtotrieconnection;
+    vector <int> seeds1, seeds2;
+    /*seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer;
+    1 for the first alignment, 2 for the second alignment*/
+    vector <int> last;///last: the end position of a last occurance of a dmer in the reference
+    vector <int> prevpos;///prevpos: end positions of previous occurances of a dmer in the reference
+    vector <Trie*> backtotrieconnection;///backtotrieconnection: pointer to trie leaf from which a given bp of the ref is accessed (for dmers)
     map<Node, bitset<64> > crumbs1, crumbs2;
     vector<unordered_set<int> > seedsph1;
     vector<unordered_set<int> > seedsph2;
@@ -48,12 +52,12 @@ struct MatchingKmers{
         seedsph1.clear();
         seedsph2.clear();
     }
-    ///last: the end position of a last occurance of a kmer in the reference
-    ///prevpos: end positions of previous occurances of a kmer in the reference
-    ///seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer
+
+    
+    
     /*seeds: with which kmere a given seed has a mathc.
     if seeds[i] == -1 there isn't such a kmer, otherwise seeds[i] = to the corresponding kmer*/
-    ///backtotrieconnection: pointer to trie leaf from which a given bp of the ref is accessed
+    
     /*seedsph[i]: is there such a pair <l, r> so that |r-l|<=10000 where l is one of the possible occurance possitions of
     seed[i] of the first alignment and r is one of the possible occurance positions of seed[i] of the second alignment*/
 };
