@@ -41,6 +41,9 @@ struct MatchingKmers{
     vector <int> last;///last: the end position of a last occurance of a dmer in the reference
     vector <int> prevpos;///prevpos: end positions of previous occurances of a dmer in the reference
     vector <Trie*> backtotrieconnection;///backtotrieconnection: pointer to trie leaf from which a given bp of the ref is accessed (for dmers)
+    vector <int> lastkmer;///same definition as last but for kmers instead of dmers
+    vector <int> prevposkmer; ///same definition as prevpos but for kmers instead of dmers
+    vector <Trie*> backtotrieconnectionkmer;///same definition as backtotrieconnection but for kmers instead of dmers
     map<Node, bitset<64> > crumbs1, crumbs2;
     vector<unordered_set<int> > seedsph1;
     vector<unordered_set<int> > seedsph2;

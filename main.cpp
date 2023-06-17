@@ -44,9 +44,17 @@ inline void program_arguments_to_variables(char *argv[], char *&typealignment, i
     typealignment = argv[1];///first argument: aligning single reads or paired-end
     d = charstring_to_int(argv[2]);///second argument: value of D
     k = charstring_to_int(argv[3]);///third argument: value of k
-    heuristic_method = argv[4];///fourth argument: used heuristic
+    heuristic = argv[4];///fourth argument: used heuristic
     shownexplstates = argv[5];///fifth argument: show or not show explored states
     triestart = argv[6];///sixt argument: triestart: Yes or No
+}
+
+inline void building_tries(string &ref, int d, int k, Trie *&rootdmer, Trie *&rootkmer, MatchingKmers &info){
+    clock_t t = clock();
+    construct_trie(ref, d, rootdmer, info.last, info.prevpos, info.backtotrieconnection);
+    construct_trie(ref, k, rootkmer, info.lastkmer, info.prevposkmer, info.backtotrieconnectionkmer);
+    t = clock() - t;
+    cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
 }
 
 int main(int argc, char *argv[]){
@@ -70,25 +78,22 @@ int main(int argc, char *argv[]){
     cin >> testcases ;
     cerr << "entered num of tescases\n" ;
     MatchingKmers info;
-    Trie *root=new Trie();
-    t = clock();
-    construct_trie(ref, k, root, info.last, info.prevpos, info.backtotrieconnection);
-    t = clock() - t;
-    cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
+    Trie *rootdmer = new Trie();
+    Trie *rootkmer = new Trie();
+    building_tries(ref, d, k, rootdmer, rootkmer, info);
     cout << "\n";
     cerr << "inited kmers\n" ;
-    //exit(0);
     for (int testcase=1; testcase<=testcases; ++testcase, cout<<endl){
         cout << "Query "<< testcase << ":\n";
         int rezult;
         t = clock();
-        if (strcmp(aligningreads, "single-read") == 0){
+        if (strcmp(typealignment, "single-read") == 0){
             cin>>query;
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             if (strcmp(heuristic_method, "seed_heuristic") == 0){
                 t = clock();
-                info.seeds1 = query_into_seeds(query, k, root);
+                info.seeds1 = query_into_seeds(query, k, rootdmer);
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
@@ -98,7 +103,7 @@ int main(int argc, char *argv[]){
                 //printoutcrumbs(info.crumbs, root);
             }
             t = clock();
-            rezult = astar_single_read_alignment(query, ref, k, root, info, heuristic_method, shownexplstates, triestart, 1);
+            rezult = astar_single_read_alignment(query, ref, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 1);
             cout<<rezult<<"\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -108,13 +113,13 @@ int main(int argc, char *argv[]){
             cin>>queryp.first>>queryp.second;
             t = t - clock();
             cout << "Reading query: "<<(double) t / CLOCKS_PER_SEC << "s.\n";
-            if (strcmp(heuristic_method, "seed_heuristic") == 0){
+            /*if (strcmp(heuristic_method, "seed_heuristic") == 0){
                 t = clock();
-                info.seeds1 = query_into_seeds(queryp.first, k, root);
+                info.seeds1 = query_into_seeds(queryp.first, k, rootdmer);
                 t = clock() - t;
                 cout << "breaking query1 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
                 t = clock();
-                info.seeds2 = query_into_seeds(queryp.second, k, root);
+                info.seeds2 = query_into_seeds(queryp.second, k, rootdmer);
                 t = clock() - t;
                 cout << "breaking query2 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
@@ -131,9 +136,9 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 cout << "Size of crumbs1 and crumbs2: "<< info.crumbs1.size() << " " << info.crumbs2.size() << "\n";
-                cout << info.crumbs1[root] << " " <<info.crumbs2[root] << "\n"; 
+                cout << info.crumbs1[rootd] << " " <<info.crumbs2[root] << "\n"; 
                 //printcountofcrumbs(root, info, k);
-            }
+            }*/
             /*t = clock();
             rezult = astar_single_read_alignment(queryp.first, ref, k, root, info, argv[3], argv[4], argv[5], 1);
             cout << rezult << "\n";
@@ -144,11 +149,11 @@ int main(int argc, char *argv[]){
             cout << rezult << "\n";
             t = clock() - t;
             cout << "Alignment second read: " << (double) t / CLOCKS_PER_SEC << "s.\n";  */
-            t = clock();
-            rezult = astar_pairend_read_alignment(queryp, ref, k, root, info, heuristic_method, shownexplstates, triestart);
+            /*t = clock();
+            rezult = astar_pairend_read_alignment(queryp, ref, k, rootdmer, info, heuristic_method, shownexplstates, triestart);
             cout<<rezult<<"\n";
             t = clock() - t;
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";*/
         }
         t = clock();
         info.clearquerydata();
