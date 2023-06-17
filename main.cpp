@@ -104,7 +104,7 @@ int main(int argc, char *argv[]){
             }
             t = clock();
             rezult = astar_single_read_alignment(query, ref, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 1);
-            cout<<rezult<<"\n";
+            cout << "Cost: " << rezult << "\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }

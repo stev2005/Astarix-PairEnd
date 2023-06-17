@@ -211,6 +211,19 @@ vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k,
     return next;
 }
 
+bool toexplore(map<pair<int, Node>, int> &expandedstates, Statesr &cur){
+    auto it = expandedstates.find({cur.qpos, cur.p});
+    if (it == expandedstates.end()){
+        expandedstates[{cur.qpos, cur.p}] = cur.g;
+        return true;
+    }
+    else if (cur.g < it->second){
+        it -> second = cur.g;
+        return true;
+    }
+    return false;
+}
+
 bool is_greedy_available(Statesr cur, string &query, string &ref){
     if (cur.p.is_in_trie())return false;
     if (cur.p.rpos < ref.size() && query[cur.qpos] == ref[cur.p.rpos])
@@ -223,7 +236,9 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     int n = query.size();
     int m = ref.size();
     priority_queue<Statesr> q;
-    set<pair<int, Node> >visited;
+    //set<pair<int, Node> >visited;
+    map<pair<int, Node>, cost_t> expandedstates;
+    int cntexpansions = 0;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, alignment);
@@ -243,10 +258,12 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
     while(!q.empty()){
         cur = q.top();
         q.pop();
+        cntexpansions++;
         if (cur.qpos == n)
             break;
-        if (visited.find({cur.qpos, cur.p}) == visited.end()){
-            visited.insert({cur.qpos, cur.p});
+        /*if (visited.find({cur.qpos, cur.p}) == visited.end()){
+            visited.insert({cur.qpos, cur.p});*/
+        if (toexplore(expandedstates, cur)){
             if (is_greedy_available(cur, query, ref)){
                 Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment);
                 topush.g += cur.g;
@@ -262,6 +279,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
         }
     }
     if (strcmp(showcntexplstates, "Yes") == 0)
-        cout << "Expanded states == " << visited.size() << " ";
+        //cout << "Expanded states == " << visited.size() << " ";
+        cout << "Expanded states: " << cntexpansions << "\n";
     return cur.g;
 }
