@@ -142,17 +142,6 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
                             Trie *cur = backtotrieconnection[rpos];
                             tuple<Trie*, int, int> topushq = make_tuple(cur, climb, i);
                             q.push(topushq);
-                            /*while (cur != nullptr){
-                                /*if (crumbs[Node(cur)][i] == true)
-                                    break;
-                                static int cnt = 1;
-                                if (cnt){
-                                    cout <<"Entering in to the climbing while\n";
-                                    cnt--;
-                                }
-                                crumbs[Node(cur)][i] = true;
-                                cur = cur->parent; 
-                            }*/
                         }
                     }
                 }
@@ -274,6 +263,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
         cur = q.top();
         q.pop();
         cntexpansions++;
+        cout << "cntexpansions == " << cntexpansions << " qpos == " << cur.qpos << " g == " << cur.g << " h == " << cur.h << " f == " << cur.g + cur.h << "\n";
         if (cur.qpos == n)
             break;
         if (toexplore(expandedstates, cur)){
