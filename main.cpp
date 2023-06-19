@@ -93,7 +93,7 @@ int main(int argc, char *argv[]){
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             if (strcmp(heuristic_method, "seed_heuristic") == 0){
                 t = clock();
-                info.seeds1 = query_into_seeds(query, k, rootdmer);
+                info.seeds1 = query_into_seeds(query, k, rootkmer);
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();

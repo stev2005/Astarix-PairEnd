@@ -126,13 +126,15 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
     const vector<Trie*> & backtotrieconnection = info.backtotrieconnection;
     //cout << "seeds.size == " <<seeds.size()<<endl;
     //cout << "last.size == "<<last.size()<<endl;
+    const vector<int> & lastkmer = info.lastkmer;
+    const vector<int> & prevposkmer = info.prevposkmer;
     queue<tuple<Trie*, int, int>> q;
     for (int i = 0; i < seeds.size(); ++i){
         //cout << "i == "<< i << " " << seeds[i] << endl;
         if (seeds[i]>=0){
             //cout <<"A match\n";
             int seedpos = i * k;///start of the seed
-            for (int j = last[seeds[i]]; j != -1; j = prevpos[j]){
+            for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
                 if (is_available_to_crumb(alignment, info, i, j)){
                     for (int back = 0; back < seedpos; ++back){
                         int rpos = j - k - back;
