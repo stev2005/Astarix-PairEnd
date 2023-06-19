@@ -126,6 +126,7 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
     const vector<Trie*> & backtotrieconnection = info.backtotrieconnection;
     //cout << "seeds.size == " <<seeds.size()<<endl;
     //cout << "last.size == "<<last.size()<<endl;
+    queue<tuple<Trie*, int, int>> q;
     for (int i = 0; i < seeds.size(); ++i){
         //cout << "i == "<< i << " " << seeds[i] << endl;
         if (seeds[i]>=0){
@@ -133,14 +134,17 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
             int seedpos = i * k;///start of the seed
             for (int j = last[seeds[i]]; j != -1; j = prevpos[j]){
                 if (is_available_to_crumb(alignment, info, i, j)){
-                    for (int back = 0; back <= seedpos; ++back){
-                        int rpos = j - k + 1 - back;
+                    for (int back = 0; back < seedpos; ++back){
+                        int rpos = j - k - back;
                         if (rpos >= 0){
                             crumbs[Node(rpos)][i] = true;
+                            int climb = seedpos - back;
                             Trie *cur = backtotrieconnection[rpos];
-                            while (cur != nullptr){
+                            tuple<Trie*, int, int> topushq = make_tuple(cur, climb, i);
+                            q.push(topushq);
+                            /*while (cur != nullptr){
                                 /*if (crumbs[Node(cur)][i] == true)
-                                    break;*/
+                                    break;
                                 static int cnt = 1;
                                 if (cnt){
                                     cout <<"Entering in to the climbing while\n";
@@ -148,11 +152,23 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
                                 }
                                 crumbs[Node(cur)][i] = true;
                                 cur = cur->parent; 
-                            }
+                            }*/
                         }
                     }
                 }
             }      
+        }
+    }
+    while (!q.empty()){
+        tuple<Trie*, int, int> current = q.front();
+        q.pop();
+        Trie *cur = get<0>(current);
+        int climb = get<1>(current);
+        int seed = get<2>(current);
+        while (climb > 0 && cur != nullptr){
+            crumbs[Node(cur)][seed] = true;
+            cur = cur->parent;
+            climb--;
         }
     }
 }
@@ -231,12 +247,11 @@ bool is_greedy_available(Statesr cur, string &query, string &ref){
     return false;
 }
 
-cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart, int alignment){
+cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart, int alignment){
     ///if there is alignment parameter, it is used to help debuging pair-end alignment
     int n = query.size();
     int m = ref.size();
     priority_queue<Statesr> q;
-    //set<pair<int, Node> >visited;
     map<pair<int, Node>, cost_t> expandedstates;
     int cntexpansions = 0;
     Statesr cur;
@@ -244,7 +259,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, alignment);
         cout << "Missing crumbs in the root of the trie tree: "<< cur.h << endl;
         q.push(cur);
-        for (int i = m - k + 1; i <= m; ++i){
+        for (int i = m - d + 1; i <= m; ++i){
             cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, alignment);
             q.push(cur);
         }
@@ -261,8 +276,6 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
         cntexpansions++;
         if (cur.qpos == n)
             break;
-        /*if (visited.find({cur.qpos, cur.p}) == visited.end()){
-            visited.insert({cur.qpos, cur.p});*/
         if (toexplore(expandedstates, cur)){
             if (is_greedy_available(cur, query, ref)){
                 Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment);
@@ -279,7 +292,6 @@ cost_t astar_single_read_alignment(string &query, string &ref, int k, Trie *root
         }
     }
     if (strcmp(showcntexplstates, "Yes") == 0)
-        //cout << "Expanded states == " << visited.size() << " ";
         cout << "Expanded states: " << cntexpansions << "\n";
     return cur.g;
 }

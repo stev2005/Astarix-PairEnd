@@ -103,7 +103,7 @@ int main(int argc, char *argv[]){
                 //printoutcrumbs(info.crumbs, root);
             }
             t = clock();
-            rezult = astar_single_read_alignment(query, ref, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 1);
+            rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 1);
             cout << "Cost: " << rezult << "\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
