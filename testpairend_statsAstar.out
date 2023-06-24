@@ -1,0 +1,5 @@
+time ./main.exe pairend-read 10 25 seed_heuristic Yes Yes 10000 <testpairend.in
+reading reference: 0.022755s.
+constructing trie: 3.50519s.
+
+Query 1:

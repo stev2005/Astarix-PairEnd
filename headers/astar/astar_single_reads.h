@@ -45,19 +45,16 @@ struct MatchingKmers{
     vector <int> prevposkmer; ///same definition as prevpos but for kmers instead of dmers
     vector <Trie*> backtotrieconnectionkmer;///same definition as backtotrieconnection but for kmers instead of dmers
     map<Node, bitset<64> > crumbs1, crumbs2;
-    vector<unordered_set<int> > seedsph1;
-    vector<unordered_set<int> > seedsph2;
+    vector<unordered_set<int> > crumbseeds1;
+    vector<unordered_set<int> > crumbseeds2;
     void clearquerydata(){
         seeds1.clear();
         seeds2.clear();
         crumbs1.clear();
         crumbs2.clear();
-        seedsph1.clear();
-        seedsph2.clear();
+        crumbseeds1.clear();
+        crumbseeds2.clear();
     }
-
-    
-    
     /*seeds: with which kmere a given seed has a mathc.
     if seeds[i] == -1 there isn't such a kmer, otherwise seeds[i] = to the corresponding kmer*/
     
@@ -103,24 +100,17 @@ struct  Statesr{
 bool is_available_to_crumb(int alignment, MatchingKmers &info, int num, int pos){
     if (alignment == 0)
         return true;
-    else if (alignment == 1){
-        if (info.seedsph1[num].find(pos) != info.seedsph1[num].end())
-            return true;
-        else return false;
-    }
-    else if (alignment == 2){
-        if (info.seedsph2[num].find(pos) != info.seedsph2[num].end())
-            return true;
-        else return false;
-    }
-    assert(false);
+    vector<unordered_set<int> > & crumbseeds = (alignment == 1)? info.crumbseeds1: info.crumbseeds2;
+    if (crumbseeds[num].find(pos) != crumbseeds[num].end())
+        return true;
+    else return false;
 }
 
 void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKmers &info, int alignment){
     ///alignment: 0 for single reads; 1 or 2 for pair-ends
     map <Node, bitset<64> > & crumbs = (alignment == 0 || alignment == 1)?info.crumbs1: info.crumbs2;
     const vector<int> & seeds = (alignment == 0 || alignment == 1)? info.seeds1 : info.seeds2;
-    const vector<unordered_set<int> > & seedsph = (alignment == 0 || alignment == 1)? info.seedsph1 : info.seedsph2;
+    //const vector<unordered_set<int> > & seedsph = (alignment == 0 || alignment == 1)? info.seedsph1 : info.seedsph2;
     const vector<int> & last = info.last;
     const vector<int> & prevpos = info.prevpos;
     const vector<Trie*> & backtotrieconnection = info.backtotrieconnection;
@@ -179,6 +169,7 @@ cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info, int alignment){
 cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, int alignment){
     if (strcmp(heuristic_method, "dijkstra_heuristic") == 0)return 0;
     if (strcmp(heuristic_method, "seed_heuristic") == 0) return seed_heuristic(cur, k, info, alignment);
+    assert(false);
 }
 
 Statesr CreateStatesr(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, cost_t stepcost, int alignment){
@@ -265,7 +256,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
         cur = q.top();
         q.pop();
         cntexpansions++;
-        cout << "cntexpansions == " << cntexpansions << " qpos == " << cur.qpos << " g == " << cur.g << " h == " << cur.h << " f == " << cur.g + cur.h << "\n";
+        //cout << "cntexpansions == " << cntexpansions << " qpos == " << cur.qpos << " g == " << cur.g << " h == " << cur.h << " f == " << cur.g + cur.h << "\n";
         if (cur.qpos == n)
             break;
         if (toexplore(expandedstates, cur)){
