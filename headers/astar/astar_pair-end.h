@@ -55,11 +55,13 @@ vector<unordered_set<int> > &crumbseeds, int dmatch, bool leftdir, bool rightdir
             pair<int, int> cur2 = matches2[pos2];
             if (cur1.first > cur2.first)
                 pos2++;
-            else if (cur2.first - cur1.first <= dmatch){
-                crumbseeds[cur1.second].insert(cur1.first);
+            else{
+                if (cur2.first - cur1.first <= dmatch){
+                    crumbseeds[cur1.second].insert(cur1.first);
+                    //cerr << "crumbseed match found\n";
+                }
                 pos1++;
             }
-            else pos1++;
         }
     }
     if (leftdir == true){
@@ -70,23 +72,30 @@ vector<unordered_set<int> > &crumbseeds, int dmatch, bool leftdir, bool rightdir
             pair<int, int> cur2 = matches2[pos2];
             if (cur1 < cur2)
                 pos2--;
-            else if (cur1.first - cur2.first <= dmatch){
-                crumbseeds[cur1.second].insert(cur1.first);
+            else{
+                if (cur1.first - cur2.first <= dmatch){
+                    crumbseeds[cur1.second].insert(cur1.first);
+                    //cerr << "crumbseed match found\n";
+                }
                 pos1--;
             }
-            else pos1--;
         }
     }
 }
 
 
 void filter_matches(MatchingKmers &info, int k, int dmatch){
+    cerr << "in filter matches\n";
+    info.crumbseeds1.resize(info.seeds1.size());
+    info.crumbseeds2.resize(info.seeds2.size());
     vector<pair<int, int> > matches1;///first-position where a match is; second- num of order of a seed
     get_matches(info, matches1, 1);
+    cerr << "seed1 matches got\n";
     vector<pair<int, int> > matches2;
     get_matches(info, matches2, 2);
     sort(matches1.begin(), matches1.end());
     sort(matches2.begin(), matches2.end());
+    cerr << "matches both seeds sorted\n";
     /*cout << "matches1.size() == "<<matches1.size() << " matches2.size() == "<< matches2.size() << "\n";
     cout << "mathces1:\n";
     for (auto i: matches1)
@@ -101,6 +110,7 @@ void filter_matches(MatchingKmers &info, int k, int dmatch){
 }
 
 void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
+    cout << "In howmanycrumbs_seeds_have:\n";
     vector<int> & last = info.last;
     vector<int> & prevpos = info.prevpos;
     vector<int> & seeds1 = info.seeds1;
@@ -123,7 +133,7 @@ void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
     cout << endl;
 }
 
-void printcountofcrumbs(Trie *root, MatchingKmers &info, int k){
+void printcountofcrumbs(MatchingKmers &info, int k){
     vector<int> count;
     count.resize(info.seeds1.size()+1);
     map<Node, bitset<64> > & crumbs1 = info.crumbs1;
@@ -174,7 +184,7 @@ bool toexplorepairend(map<Statepr, cost_t> & expandedstatespr, Statepr cur){
         expandedstatespr[mapchech] = cur.g;
         return true;
     }
-    else if (it->second < cur.g){
+    else if (it->second > cur.g){
         it->second = cur.g;
         return true;
     }

@@ -90,6 +90,7 @@ int main(int argc, char *argv[]){
         int rezult;
         t = clock();
         if (strcmp(typealignment, "single-read") == 0){
+            cerr << "If for single read alingment";
             cin>>query;
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -112,53 +113,7 @@ int main(int argc, char *argv[]){
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         else{
-            t = clock();
-            cin >> queryp.first >> queryp.second;
-            t = t - clock();
-            cout << "Reading query: "<<(double) t / CLOCKS_PER_SEC << "s.\n";
-            maximum_edit_cost = max(queryp.first.size(), queryp.second.size()) + 1;
-            if (strcmp(heuristic_method, "seed_heuristic") == 0){
-                t = clock();
-                info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
-                t = clock() - t;
-                cout << "breaking query1 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
-                t = clock();
-                info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-                t = clock() - t;
-                cout << "breaking query2 into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-                t = clock();
-                filter_matches(info, k, dmatch);
-                t = clock() - t;
-                cout << "Filtering matches: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-                //howmanycrumbs_seeds_have(info, k);
-                t = clock();
-                getcrumbs(ref, k, info, 1);
-                t = clock() - t;
-                cout << "Precompute of crumbs1: " << (double) t / CLOCKS_PER_SEC << "s.\n";
-                t = clock();
-                getcrumbs(ref, k, info, 2);
-                t = clock() - t;
-                cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
-                cout << "Size of crumbs1 and crumbs2: "<< info.crumbs1.size() << " " << info.crumbs2.size() << "\n";
-                cout << info.crumbs1[rootdmer] << " " <<info.crumbs2[rootdmer] << "\n"; 
-                //printcountofcrumbs(root, info, k);
-            }
-            /*t = clock();
-            rezult = astar_single_read_alignment(queryp.first, ref, d, k, root, info, argv[3], argv[4], argv[5], 1);
-            cout << rezult << "\n";
-            t = clock() - t;
-            cout << "Alignment first read: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            t = clock();
-            rezult = astar_single_read_alignment(queryp.second, ref, d, k, root, info, argv[3], argv[4], argv[5], 2);
-            cout << rezult << "\n";
-            t = clock() - t;
-            cout << "Alignment second read: " << (double) t / CLOCKS_PER_SEC << "s.\n";*/
-            t = clock();
-            rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
-            cout<<rezult<<"\n";
-            t = clock() - t;
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-        }
+            
         t = clock();
         info.clearquerydata();
         t = clock() - t;
