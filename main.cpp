@@ -67,7 +67,6 @@ int main(int argc, char *argv[]){
     int d, k, dmatch;
     char *typealignment, *heuristic_method, *shownexplstates, *triestart;
     program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart, dmatch);
-    
     string ref, query;
     pair <string, string> queryp;
     int testcases;
@@ -113,7 +112,18 @@ int main(int argc, char *argv[]){
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         else{
-            
+            cin >> queryp.first >> queryp.second;
+            info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
+            info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
+            filter_matches(info, k, dmatch);
+            //howmanycrumbs_seeds_have(info, k);
+            getcrumbs_pairend(ref, k, info);
+            t = clock();
+            rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
+            t = clock() - t;
+            cout << "Cost: " << rezult << "\n"; 
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+        }
         t = clock();
         info.clearquerydata();
         t = clock() - t;

@@ -28,18 +28,20 @@ struct Statepr{
         g = _g;
         h = _h;
     }
-    bool operator<(const Statepr &other) const{
+    bool operator<(const Statepr &other) const{//only for priority_queue
         return g + h >  other.g + other.h;
     }
 };
 
 void get_matches(MatchingKmers &info, vector<pair<int, int> > & matches, int alignment){
-    vector<int> & last = info.last;
-    vector<int> & prevpos = info.prevpos;
+    vector<int> & lastkmer = info.lastkmer;
+    vector<int> & prevposkmer = info.prevposkmer;
     vector<int> seeds = (alignment == 1)? info.seeds1: info.seeds2;
-    for (int i = 0; i < seeds.size(); ++i)
-        for (int j = last[seeds[i]]; j != -1; j = prevpos[j])
+    for (int i = 0; i < seeds.size(); ++i){
+        if (seeds[i] == -1) continue;
+        for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j])
             matches.push_back({j, i});
+    }
 }
 
 void filter_matches_a_seed(vector<pair<int, int> > &matches1, vector<pair<int, int> > &matches2,
@@ -85,18 +87,18 @@ vector<unordered_set<int> > &crumbseeds, int dmatch, bool leftdir, bool rightdir
 
 
 void filter_matches(MatchingKmers &info, int k, int dmatch){
-    cerr << "in filter matches\n";
+    //cerr << "in filter matches\n";
     info.crumbseeds1.resize(info.seeds1.size());
     info.crumbseeds2.resize(info.seeds2.size());
     vector<pair<int, int> > matches1;///first-position where a match is; second- num of order of a seed
     get_matches(info, matches1, 1);
-    cerr << "seed1 matches got\n";
+    //cerr << "seed1 matches got\n";
     vector<pair<int, int> > matches2;
     get_matches(info, matches2, 2);
     sort(matches1.begin(), matches1.end());
     sort(matches2.begin(), matches2.end());
-    cerr << "matches both seeds sorted\n";
-    /*cout << "matches1.size() == "<<matches1.size() << " matches2.size() == "<< matches2.size() << "\n";
+    /*cerr << "matches both seeds sorted\n";
+    cout << "matches1.size() == "<<matches1.size() << " matches2.size() == "<< matches2.size() << "\n";
     cout << "mathces1:\n";
     for (auto i: matches1)
         cout << i.first << " " << i.second << "\n";
@@ -111,8 +113,8 @@ void filter_matches(MatchingKmers &info, int k, int dmatch){
 
 void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
     cout << "In howmanycrumbs_seeds_have:\n";
-    vector<int> & last = info.last;
-    vector<int> & prevpos = info.prevpos;
+    vector<int> & last = info.lastkmer;
+    vector<int> & prevpos = info.prevposkmer;
     vector<int> & seeds1 = info.seeds1;
     cout <<"first alignmetn: \n";
     for (int i = 0; i < seeds1.size(); ++i){
@@ -133,32 +135,16 @@ void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
     cout << endl;
 }
 
-void printcountofcrumbs(MatchingKmers &info, int k){
-    vector<int> count;
-    count.resize(info.seeds1.size()+1);
-    map<Node, bitset<64> > & crumbs1 = info.crumbs1;
-    for (auto it = crumbs1.begin(); it != crumbs1.end(); ++it){
-        Node cur = it->first;
-        if (cur.is_in_trie()){
-            count[it->second.count()]++;
-        }
-    }
-    cout << "For first alignmet:\n";
-    for (int i = 0; i < count.size(); ++i)
-        cout << i <<" "<< count[i] << endl;
-    cout << "\n";
-    count.resize(info.seeds2.size()+1);
-    map<Node, bitset<64> > & crumbs2 = info.crumbs2;
-    for (auto it = crumbs2.begin(); it != crumbs2.end(); ++it){
-        Node cur = it->first;
-        if (cur.is_in_trie()){
-            count[it->second.count()]++;
-        }
-    }
-    cout << "For second alignmet:\n";
-    for (int i = 0; i < count.size(); ++i)
-        cout << i <<" "<< count[i] << endl;
-    cout << "\n";
+inline void getcrumbs_pairend(string &ref, int k, MatchingKmers &info){
+    clock_t t;
+    t = clock();
+    getcrumbs(ref, k, info, 1);
+    t = clock() - t;
+    cout << "Precompute of crumbs1: " << (double) t / CLOCKS_PER_SEC << "s.\n";
+    t = clock();
+    getcrumbs(ref, k, info, 2);
+    t = clock() - t;
+    cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
 }
 
 cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method, int dmatch){
@@ -177,7 +163,13 @@ Statepr CreateStatepr(Statesr one, Statesr two, char *heuristic_method, int dmat
     return Statepr(one.qpos, one.p, two.p, 0, pairend_heuristic(one, two, heuristic_method, dmatch));
 }
 
-bool toexplorepairend(map<Statepr, cost_t> & expandedstatespr, Statepr cur){
+auto mapcmpStatepr = [] (Statepr cur, Statepr other){
+    if (cur.qpos != other.qpos) return cur.qpos < other.qpos;
+    if (!(cur.p1 == other.p1)) return cur.p1 < other.p1;
+    return cur.p2 < other.p2;
+};
+
+bool toexplorepairend(map<Statepr, cost_t, decltype(mapcmpStatepr)> & expandedstatespr, Statepr cur){
     Statepr mapchech = Statepr(cur.qpos, cur.p1, cur.p2);
     auto it = expandedstatespr.find(mapchech);
     if (it == expandedstatespr.end()){
@@ -189,6 +181,15 @@ bool toexplorepairend(map<Statepr, cost_t> & expandedstatespr, Statepr cur){
         return true;
     }
     return false;
+}
+
+void print_memory(){
+    static ofstream 
+    static clock_t prev = clock();
+    clock_t cur = clock();
+    clock_t cldiff = cur - prev;
+    double diff = diff / CLOCKS_PER_SEC;
+    if (diff > 10 )
 }
 
 cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int d, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart, int dmatch){
@@ -204,7 +205,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
         Statesr two = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, 2);
         //cout << "heuristic of single read: "<< one.h << endl;
         cur = CreateStatepr(one, two, heuristic_method, dmatch);
-        //cout << "heuristic of paired end read: "<<cur.h<<endl;
+        cout << "heuristic of paired end state<0, rootdmer, rootdmer>: "<<cur.h<<endl;
         q.push(cur);
         for (int i = m - d + 1; i <= m; ++i){
             one = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, 1);
@@ -233,8 +234,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                 q.push(cur);
             }
     }
-    
-    map<Statepr, cost_t> expandedstatespr;
+    map<Statepr, cost_t, decltype(mapcmpStatepr)> expandedstatespr (mapcmpStatepr);
     int cntexpansions;
     while (!q.empty()){
         //cout << "q has elements\n";
@@ -244,6 +244,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
         //cout << "Poping from the queue: " << "cur.qpos == "<< cur.qpos<< " p1.is_in_trie:" << cur.p1.is_in_trie()<< " p2.is_in_trie: "<< cur.p2.is_in_trie() << " " << cur.g << " " << cur.h << " " << cur.h + cur.g << "\n";
         if (cur.qpos == n) break;
         if (toexplorepairend(expandedstatespr, cur)){
+            //cout << "Exploring this state\n";
             //visited.insert({cur.qpos, {cur.p1, cur.p2}});
             if (is_greedy_available(Statesr(cur.qpos, cur.p1), q1, ref) && is_greedy_available(Statesr(cur.qpos, cur.p2), q2, ref)){    
                     Statesr one = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p1.rpos+1)), k, info, heuristic_method, 0, 1);
@@ -259,6 +260,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                 vector<Statesr> next2 = NextStatesr(Statesr(cur.qpos, cur.p2), q2[cur.qpos], ref, k, info, heuristic_method, 2);
                 next1.push_back(CreateStatesr(Statesr(cur.qpos, cur.p1), k, info, heuristic_method, 0, 1));
                 next2.push_back(CreateStatesr(Statesr(cur.qpos, cur.p2), k, info, heuristic_method, 0, 2));
+                //cout << "next1.size() = " << next1.size() << " next2.size() = " << next2.size() << endl; 
                 for (auto i1: next1)
                     for (auto i2: next2)
                         if (i1.qpos == i2.qpos){
@@ -271,8 +273,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
             }
         }
     }
+    cout << cur.qpos << " n = " << n << " q.size() = " << q.size() << endl;
     assert (cur.qpos == n);
     if (strcmp(showcntexplstates, "Yes") == 0)
-        cout << "Expanded states == " << cntexpansions << " ";
+        cout << "Expanded states == " << cntexpansions << "\n";
     return cur.g;
 }

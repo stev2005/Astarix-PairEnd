@@ -69,6 +69,9 @@ testchep_dijkstra_heuristic:
 testpairend_seed_heuristic:
 	time ./main.exe pairend-read 10 25 seed_heuristic Yes Yes 10000 <testpairend.in >testpairend_statsAstar.out 
 
+test10pairend_seed_heuristic:
+	time ./main.exe pairend-read 10 25 seed_heuristic Yes Yes 10000 <onlytest10.in >onlytest10.out
+
 test_try_pe1024:
 	time ./main.exe pairend-read 11 seed_heuristic Yes Yes <tests_try_pair-end/test1024.in >tests_try_pair-end/rezult1024.out
 
