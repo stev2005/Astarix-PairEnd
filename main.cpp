@@ -89,8 +89,11 @@ int main(int argc, char *argv[]){
         int rezult;
         t = clock();
         if (strcmp(typealignment, "single-read") == 0){
-            cerr << "If for single read alingment";
+            cerr << "If for single read alingment\n";
             cin>>query;
+            nindel = query.size() / k;
+            if (query.size() % k != 0)
+                nindel++;
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             maximum_edit_cost = query.size() + 1;
@@ -100,7 +103,7 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
-                getcrumbs(ref, k, info, 0);
+                getcrumbs(ref, d, k, info, 0);
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);
@@ -117,7 +120,7 @@ int main(int argc, char *argv[]){
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
             filter_matches(info, k, dmatch);
             //howmanycrumbs_seeds_have(info, k);
-            getcrumbs_pairend(ref, k, info);
+            getcrumbs_pairend(ref, d, k, info);
             t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
             t = clock() - t;

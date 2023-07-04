@@ -106,7 +106,7 @@ bool is_available_to_crumb(int alignment, MatchingKmers &info, int num, int pos)
     else return false;
 }
 
-void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKmers &info, int alignment){
+void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int d, int k, MatchingKmers &info, int alignment){
     ///alignment: 0 for single reads; 1 or 2 for pair-ends
     map <Node, bitset<64> > & crumbs = (alignment == 0 || alignment == 1)?info.crumbs1: info.crumbs2;
     const vector<int> & seeds = (alignment == 0 || alignment == 1)? info.seeds1 : info.seeds2;
@@ -118,7 +118,7 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
     //cout << "last.size == "<<last.size()<<endl;
     const vector<int> & lastkmer = info.lastkmer;
     const vector<int> & prevposkmer = info.prevposkmer;
-    queue<tuple<Trie*, int, int>> q;
+    ///queue<tuple<Trie*, int, int>> q;
     for (int i = 0; i < seeds.size(); ++i){
         //cout << "i == "<< i << " " << seeds[i] << endl;
         if (seeds[i]>=0){
@@ -126,21 +126,28 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
             int seedpos = i * k;///start of the seed
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
                 if (is_available_to_crumb(alignment, info, i, j)){
-                    for (int back = 0; back < seedpos; ++back){
+                    for (int back = 0; back < seedpos + nindel; ++back){
                         int rpos = j - k - back;
                         if (rpos >= 0){
                             crumbs[Node(rpos)][i] = true;
-                            int climb = seedpos - back;
-                            Trie *cur = backtotrieconnection[rpos];
+                            ///int climb = seedpos - back;
+                            /*Trie *cur = backtotrieconnection[rpos];
                             tuple<Trie*, int, int> topushq = make_tuple(cur, climb, i);
-                            q.push(topushq);
+                            q.push(topushq);*/
+                        }
+                        for (int rpos = j - seedpos + nindel + k /*- 1*/; rpos >= j - seedpos - nindel; rpos--){
+                            Trie *cur = backtotrieconnection[rpos];
+                            while (cur != nullptr){
+                                crumbs[Node(cur)][i] = true;
+                                cur = cur->parent;
+                            }
                         }
                     }
                 }
-            }      
+            }
         }
     }
-    while (!q.empty()){
+    /*while (!q.empty()){
         tuple<Trie*, int, int> current = q.front();
         q.pop();
         Trie *cur = get<0>(current);
@@ -151,7 +158,7 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int k, MatchingKme
             cur = cur->parent;
             climb--;
         }
-    }
+    }*/
 }
 
 cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info, int alignment){
@@ -276,5 +283,6 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
     }
     if (strcmp(showcntexplstates, "Yes") == 0)
         cout << "Expanded states: " << cntexpansions << "\n";
+    cout << "Band: " << cntexpansions / n << "(fraction floored)\n";
     return cur.g;
 }
