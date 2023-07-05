@@ -34,8 +34,8 @@ struct Node{
     }
 };
 
-struct MatchingKmers{
-    vector <int> seeds1, seeds2;
+struct MatchingKmers{///fast and convinient way to pass a lot of data structures as parameters to functions
+    vector <int> seeds, seeds1, seeds2;
     /*seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer;
     1 for the first alignment, 2 for the second alignment*/
     vector <int> last;///last: the end position of a last occurance of a dmer in the reference
@@ -44,12 +44,14 @@ struct MatchingKmers{
     vector <int> lastkmer;///same definition as last but for kmers instead of dmers
     vector <int> prevposkmer; ///same definition as prevpos but for kmers instead of dmers
     vector <Trie*> backtotrieconnectionkmer;///same definition as backtotrieconnection but for kmers instead of dmers
-    map<Node, bitset<64> > crumbs1, crumbs2;
+    map<Node, bitset<64> > crumbs, crumbs1, crumbs2;
     vector<unordered_set<int> > crumbseeds1;
     vector<unordered_set<int> > crumbseeds2;
     void clearquerydata(){
+        seeds.clear();
         seeds1.clear();
         seeds2.clear();
+        crumbs.clear();
         crumbs1.clear();
         crumbs2.clear();
         crumbseeds1.clear();
@@ -97,27 +99,21 @@ struct  Statesr{
     }
 };
 
-bool is_available_to_crumb(int alignment, MatchingKmers &info, int num, int pos){
-    if (alignment == 0)
-        return true;
-    vector<unordered_set<int> > & crumbseeds = (alignment == 1)? info.crumbseeds1: info.crumbseeds2;
+bool is_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, int pos){
     if (crumbseeds[num].find(pos) != crumbseeds[num].end())
         return true;
     else return false;
 }
 
-void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int d, int k, MatchingKmers &info, int alignment){
-    ///alignment: 0 for single reads; 1 or 2 for pair-ends
-    map <Node, bitset<64> > & crumbs = (alignment == 0 || alignment == 1)?info.crumbs1: info.crumbs2;
-    const vector<int> & seeds = (alignment == 0 || alignment == 1)? info.seeds1 : info.seeds2;
-    //const vector<unordered_set<int> > & seedsph = (alignment == 0 || alignment == 1)? info.seedsph1 : info.seedsph2;
-    const vector<int> & last = info.last;
-    const vector<int> & prevpos = info.prevpos;
-    const vector<Trie*> & backtotrieconnection = info.backtotrieconnection;
-    //cout << "seeds.size == " <<seeds.size()<<endl;
-    //cout << "last.size == "<<last.size()<<endl;
-    const vector<int> & lastkmer = info.lastkmer;
-    const vector<int> & prevposkmer = info.prevposkmer;
+void getcrumbs(const string &ref, const int d, const int k, map <Node, bitset<64> > &crumbs,
+                const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
+                const vector<int> &prevposkmer, int alignment, vector<unordered_set<int> > & crumbseeds){
+    /*alignment: what type of alignment is used
+    values to receive:
+        - 0 when single read has its crumbs set on he Gr+
+        - 1 when first read of pair-end has its crumbs set on he Gr+
+        - 2 when second read of pair-end has its crumbs set on he Gr+
+    */
     ///queue<tuple<Trie*, int, int>> q;
     for (int i = 0; i < seeds.size(); ++i){
         //cout << "i == "<< i << " " << seeds[i] << endl;
@@ -125,7 +121,7 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int d, int k, Matc
             //cout <<"A match\n";
             int seedpos = i * k;///start of the seed
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
-                if (is_available_to_crumb(alignment, info, i, j)){
+                if (alignment == 0 || is_available_to_crumb(crumbseeds, i, j)){
                     for (int back = 0; back < seedpos + nindel; ++back){
                         int rpos = j - k - back;
                         if (rpos >= 0){
@@ -161,10 +157,8 @@ void /*map <Node, bitset<64> >*/ getcrumbs(const string &ref, int d, int k, Matc
     }*/
 }
 
-cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info, int alignment){
+cost_t seed_heuristic(Statesr cur, int k, vector<int> &seeds, map<Node, bitset<64> > &crumbs){
     int h = 0;
-    vector<int> & seeds = (alignment == 1)? info.seeds1: info.seeds2;
-    map <Node, bitset<64> > & crumbs = (alignment == 1)? info.crumbs1: info.crumbs2;
     for (int i = (cur.qpos % k) ? cur.qpos / k + 1: cur.qpos / k; i < seeds.size(); ++i){
         bool check = crumbs[cur.p][i];
         if (check == false) h++;
@@ -175,7 +169,14 @@ cost_t seed_heuristic(Statesr cur, int k, MatchingKmers &info, int alignment){
 
 cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, int alignment){
     if (strcmp(heuristic_method, "dijkstra_heuristic") == 0)return 0;
-    if (strcmp(heuristic_method, "seed_heuristic") == 0) return seed_heuristic(cur, k, info, alignment);
+    if (strcmp(heuristic_method, "seed_heuristic") == 0){
+        if (alignment == 0)
+            return seed_heuristic(cur, k, info.seeds, info.crumbs);
+        else if (alignment == 1)
+            return seed_heuristic(cur, k, info.seeds1, info.crumbs1);
+        else if (alignment == 2) seed_heuristic(cur, k, info.seeds2, info.crumbs2);
+        assert(false);
+    }
     assert(false);
 }
 
@@ -237,7 +238,6 @@ bool is_greedy_available(Statesr cur, string &query, string &ref){
 }
 
 cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart, int alignment){
-    ///if there is alignment parameter, it is used to help debuging pair-end alignment
     int n = query.size();
     int m = ref.size();
     priority_queue<Statesr> q;

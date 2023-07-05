@@ -1,113 +1,113 @@
-reading reference: 0.025107s.
-constructing trie: 2.41753s.
+reading reference: 0.022358s.
+constructing trie: 2.47901s.
 
 Query 1:
-Reading query: 6.1e-05s.
-breaking query into seeds: 4.2e-05s.
-Precompute of crumbs: 0.519287s.
+Reading query: 5.9e-05s.
+breaking query into seeds: 3.5e-05s.
+Precompute of crumbs: 0.516194s.
 Missing crumbs in the root of the trie tree: 3
 Expanded states: 3376
 Band: 13(fraction floored)
 Cost: 6
-Alignment: 0.243263s.
-Cleaning help vectors: 0.000156s.
+Alignment: 0.171914s.
+Cleaning help vectors: 9.4e-05s.
 
 Query 2:
-Reading query: 7.6e-05s.
+Reading query: 4.8e-05s.
 breaking query into seeds: 3.2e-05s.
-Precompute of crumbs: 0.505522s.
+Precompute of crumbs: 0.391548s.
 Missing crumbs in the root of the trie tree: 3
 Expanded states: 2162
 Band: 8(fraction floored)
 Cost: 5
-Alignment: 0.126793s.
-Cleaning help vectors: 0.000119s.
+Alignment: 0.11564s.
+Cleaning help vectors: 0.000142s.
 
 Query 3:
-Reading query: 4.2e-05s.
-breaking query into seeds: 3.7e-05s.
-Precompute of crumbs: 0.519219s.
+Reading query: 5e-05s.
+breaking query into seeds: 3.6e-05s.
+Precompute of crumbs: 0.487174s.
 Missing crumbs in the root of the trie tree: 2
 Expanded states: 307
 Band: 1(fraction floored)
 Cost: 2
-Alignment: 0.00793s.
-Cleaning help vectors: 5.5e-05s.
+Alignment: 0.007763s.
+Cleaning help vectors: 5e-05s.
 
 Query 4:
-Reading query: 4.2e-05s.
-breaking query into seeds: 3.7e-05s.
-Precompute of crumbs: 0.528971s.
+Reading query: 5.4e-05s.
+breaking query into seeds: 2.7e-05s.
+Precompute of crumbs: 0.49813s.
 Missing crumbs in the root of the trie tree: 2
 Expanded states: 2889
 Band: 11(fraction floored)
 Cost: 4
-Alignment: 0.218376s.
-Cleaning help vectors: 0.000172s.
+Alignment: 0.125831s.
+Cleaning help vectors: 0.000151s.
 
 Query 5:
-Reading query: 5.8e-05s.
-breaking query into seeds: 0.000102s.
-Precompute of crumbs: 0.469255s.
+Reading query: 4.9e-05s.
+breaking query into seeds: 4.3e-05s.
+Precompute of crumbs: 0.424826s.
 Missing crumbs in the root of the trie tree: 4
 Expanded states: 1481
 Band: 5(fraction floored)
 Cost: 6
-Alignment: 0.075643s.
-Cleaning help vectors: 0.000112s.
+Alignment: 0.09116s.
+Cleaning help vectors: 7.8e-05s.
 
 Query 6:
-Reading query: 4.5e-05s.
-breaking query into seeds: 3.2e-05s.
-Precompute of crumbs: 0.542465s.
+Reading query: 3.2e-05s.
+breaking query into seeds: 3.8e-05s.
+Precompute of crumbs: 0.59587s.
 Missing crumbs in the root of the trie tree: 0
 Expanded states: 305
 Band: 1(fraction floored)
 Cost: 0
-Alignment: 0.009778s.
-Cleaning help vectors: 9.4e-05s.
+Alignment: 0.014757s.
+Cleaning help vectors: 8.7e-05s.
 
 Query 7:
-Reading query: 3.3e-05s.
-breaking query into seeds: 4e-05s.
-Precompute of crumbs: 0.477648s.
+Reading query: 3.8e-05s.
+breaking query into seeds: 3.2e-05s.
+Precompute of crumbs: 0.622995s.
 Missing crumbs in the root of the trie tree: 2
 Expanded states: 384
 Band: 1(fraction floored)
 Cost: 3
-Alignment: 0.016356s.
-Cleaning help vectors: 5.7e-05s.
+Alignment: 0.014464s.
+Cleaning help vectors: 5.9e-05s.
 
 Query 8:
-Reading query: 3.8e-05s.
-breaking query into seeds: 5.2e-05s.
-Precompute of crumbs: 1.44369s.
+Reading query: 4.1e-05s.
+breaking query into seeds: 3.4e-05s.
+Precompute of crumbs: 1.49129s.
 Missing crumbs in the root of the trie tree: 1
 Expanded states: 386
 Band: 1(fraction floored)
 Cost: 3
-Alignment: 0.018539s.
-Cleaning help vectors: 0.000438s.
+Alignment: 0.015621s.
+Cleaning help vectors: 0.00053s.
 
 Query 9:
-Reading query: 4.1e-05s.
-breaking query into seeds: 2.5e-05s.
-Precompute of crumbs: 0.526606s.
+Reading query: 2.7e-05s.
+breaking query into seeds: 3.4e-05s.
+Precompute of crumbs: 0.509469s.
 Missing crumbs in the root of the trie tree: 0
 Expanded states: 9150
 Band: 36(fraction floored)
 Cost: 7
-Alignment: 0.713039s.
-Cleaning help vectors: 0.00015s.
+Alignment: 0.699549s.
+Cleaning help vectors: 0.000202s.
 
 Query 10:
-Reading query: 7.4e-05s.
-breaking query into seeds: 2.3e-05s.
-Precompute of crumbs: 0.504746s.
+Reading query: 5.7e-05s.
+breaking query into seeds: 3.6e-05s.
+Precompute of crumbs: 0.518158s.
 Missing crumbs in the root of the trie tree: 3
 Expanded states: 18616
 Band: 74(fraction floored)
 Cost: 11
-Alignment: 1.78695s.
-Cleaning help vectors: 0.000115s.
+Alignment: 1.88036s.
+Cleaning help vectors: 0.000116s.
 

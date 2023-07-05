@@ -99,17 +99,19 @@ int main(int argc, char *argv[]){
             maximum_edit_cost = query.size() + 1;
             if (strcmp(heuristic_method, "seed_heuristic") == 0){
                 t = clock();
-                info.seeds1 = query_into_seeds(query, k, rootkmer);
+                info.seeds = query_into_seeds(query, k, rootkmer);
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
-                getcrumbs(ref, d, k, info, 0);
+                //getcrumbs(ref, d, k, info, 0);
+                getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
+                info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);
             }
             t = clock();
-            rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 1);
+            rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 0);
             cout << "Cost: " << rezult << "\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
