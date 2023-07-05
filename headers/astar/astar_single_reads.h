@@ -167,6 +167,11 @@ cost_t seed_heuristic(Statesr cur, int k, vector<int> &seeds, map<Node, bitset<6
     return h;
 }
 
+/*bool error(int alignment){
+    cerr << "error alignment == " << alignment << endl;
+    return false;
+}*/
+
 cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, int alignment){
     if (strcmp(heuristic_method, "dijkstra_heuristic") == 0)return 0;
     if (strcmp(heuristic_method, "seed_heuristic") == 0){
@@ -174,7 +179,8 @@ cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method
             return seed_heuristic(cur, k, info.seeds, info.crumbs);
         else if (alignment == 1)
             return seed_heuristic(cur, k, info.seeds1, info.crumbs1);
-        else if (alignment == 2) seed_heuristic(cur, k, info.seeds2, info.crumbs2);
+        else if (alignment == 2) return seed_heuristic(cur, k, info.seeds2, info.crumbs2);
+        //assert(error(alignment));
         assert(false);
     }
     assert(false);
