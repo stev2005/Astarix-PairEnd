@@ -135,14 +135,14 @@ void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
     cout << endl;
 }
 
-inline void getcrumbs_pairend(string &ref, int k, MatchingKmers &info){
+inline void getcrumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
     clock_t t;
     t = clock();
-    getcrumbs(ref, k, info, 1);
+    getcrumbs(ref, d, k, info, 1);
     t = clock() - t;
     cout << "Precompute of crumbs1: " << (double) t / CLOCKS_PER_SEC << "s.\n";
     t = clock();
-    getcrumbs(ref, k, info, 2);
+    getcrumbs(ref, d, k, info, 2);
     t = clock() - t;
     cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
 }
@@ -183,14 +183,14 @@ bool toexplorepairend(map<Statepr, cost_t, decltype(mapcmpStatepr)> & expandedst
     return false;
 }
 
-void print_memory(){
+/*void print_memory(){
     static ofstream 
     static clock_t prev = clock();
     clock_t cur = clock();
     clock_t cldiff = cur - prev;
     double diff = diff / CLOCKS_PER_SEC;
     if (diff > 10 )
-}
+}*/
 
 cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int d, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart, int dmatch){
     string q1 = query.first;///left end of query;
@@ -235,7 +235,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
             }
     }
     map<Statepr, cost_t, decltype(mapcmpStatepr)> expandedstatespr (mapcmpStatepr);
-    int cntexpansions;
+    int cntexpansions = 0;
+    int cntreturninf = 0;
     while (!q.empty()){
         //cout << "q has elements\n";
         cur = q.top();
@@ -267,15 +268,22 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
                             Statepr next = CreateStatepr(i1, i2, heuristic_method, dmatch);
                             /*next.g1 = cur.g1 + i1.stepcost;
                             next.g2 = cur.g2 + i2.stepcost;*/
-                            next.g += cur.g + i1.stepcost + i2.stepcost;
-                            q.push(next);
+                            if (next.h == inf)
+                                cntreturninf++;
+                            else{
+                                next.g += cur.g + i1.stepcost + i2.stepcost;
+                                q.push(next);
+                            }
                         }
             }
         }
     }
     cout << cur.qpos << " n = " << n << " q.size() = " << q.size() << endl;
     assert (cur.qpos == n);
+    cout << "Number of heuristic funct. returning inf: " << cntreturninf << "\n";
     if (strcmp(showcntexplstates, "Yes") == 0)
         cout << "Expanded states == " << cntexpansions << "\n";
+    cout << "Band: " << cntexpansions / n << "(fraction floored)\n";
+
     return cur.g;
 }

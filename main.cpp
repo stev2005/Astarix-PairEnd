@@ -116,6 +116,9 @@ int main(int argc, char *argv[]){
         }
         else{
             cin >> queryp.first >> queryp.second;
+            nindel = queryp.first.size() / k;
+            if (queryp.first.size() % k != 0)
+                nindel++;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
             filter_matches(info, k, dmatch);

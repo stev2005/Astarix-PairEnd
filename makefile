@@ -58,7 +58,7 @@ testche_dijkstra_heuristic:
 	time ./main.exe single-read 10 10 dijkstra_heuristic Yes Yes <testche.in
 
 testsingleread_seed_heuristic:
-	time ./main.exe single-read 10 10 seed_heuristic Yes Yes <testsingleread.in >testsingleread_statsAstar.out
+	time ./main.exe single-read 10 15 seed_heuristic Yes Yes <testsingleread.in >testsingleread_statsAstar.out
 
 problemtest:
 	time ./main.exe single-read 10 20 seed_heuristic Yes Yes <problemtest.in >problemtest.out
@@ -67,7 +67,7 @@ testchep_dijkstra_heuristic:
 	time ./main.exe pairend-read 10 dijkstra_heuristic Yes Yes <testchep.in
 
 testpairend_seed_heuristic:
-	time ./main.exe pairend-read 10 25 seed_heuristic Yes Yes 10000 <testpairend.in >testpairend_statsAstar.out 
+	time ./main.exe pairend-read 10 15 seed_heuristic Yes Yes 10000 <testpairend.in >testpairend_statsAstar.out 
 
 test10pairend_seed_heuristic:
 	time ./main.exe pairend-read 10 25 seed_heuristic Yes Yes 10000 <onlytest10.in >onlytest10.out
