@@ -87,6 +87,8 @@ vector<unordered_set<int> > &crumbseeds, int dmatch, bool leftdir, bool rightdir
 
 
 void filter_matches(MatchingKmers &info, int k, int dmatch){
+    clock_t t;
+    t = clock();
     //cerr << "in filter matches\n";
     info.crumbseeds1.resize(info.seeds1.size());
     info.crumbseeds2.resize(info.seeds2.size());
@@ -97,6 +99,8 @@ void filter_matches(MatchingKmers &info, int k, int dmatch){
     get_matches(info, matches2, 2);
     sort(matches1.begin(), matches1.end());
     sort(matches2.begin(), matches2.end());
+    t = clock() - t;
+    cout << "Getting matches of both seeds and sorting them: " << (double) t / CLOCKS_PER_SEC << ".s\n";
     /*cerr << "matches both seeds sorted\n";
     cout << "matches1.size() == "<<matches1.size() << " matches2.size() == "<< matches2.size() << "\n";
     cout << "mathces1:\n";
@@ -107,8 +111,11 @@ void filter_matches(MatchingKmers &info, int k, int dmatch){
     for (auto i: matches2)
         cout << i.first << " "<< i.second <<"\n";
     cout << "\n";*/
+    t = clock();
     filter_matches_a_seed(matches1, matches2, info.crumbseeds1, dmatch, true, true);
     filter_matches_a_seed(matches2, matches1, info.crumbseeds2, dmatch, true, true);
+    t = clock() - t;
+    cout << "Filtering matches: " << (double) t / CLOCKS_PER_SEC << ".s\n";
 }
 
 void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
@@ -136,15 +143,18 @@ void howmanycrumbs_seeds_have(MatchingKmers & info, int k){
 }
 
 inline void getcrumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
-    clock_t t;
-    t = clock();
-    getcrumbs(ref, d, k, info, 1);
-    t = clock() - t;
-    cout << "Precompute of crumbs1: " << (double) t / CLOCKS_PER_SEC << "s.\n";
-    t = clock();
-    getcrumbs(ref, d, k, info, 2);
-    t = clock() - t;
-    cout << "Precompute of crumbs2: " << (double) t / CLOCKS_PER_SEC << "s.\n";
+    clock_t t1, t2;
+    t1 = clock();
+    //getcrumbs(ref, d, k, info, 1);
+    getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
+    t1 = clock() - t1;
+    t2 = clock();
+    //getcrumbs(ref, d, k, info, 2);
+    getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
+    t2 = clock() - t2;
+    cout << "Precompute of crumbs1: " << (double) t1 / CLOCKS_PER_SEC << "s.\n";
+    cout << "Precompute of crumbs2: " << (double) t2 / CLOCKS_PER_SEC << "s.\n";
+    cout << "Precompute of both crumbs: " << (double) (t1 + t2) / CLOCKS_PER_SEC << "s.\n";
 }
 
 cost_t pairend_heuristic(Statesr one, Statesr two, char *heuristic_method, int dmatch){
