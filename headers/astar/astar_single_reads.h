@@ -57,11 +57,6 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
         crumbseeds1.clear();
         crumbseeds2.clear();
     }
-    /*seeds: with which kmere a given seed has a mathc.
-    if seeds[i] == -1 there isn't such a kmer, otherwise seeds[i] = to the corresponding kmer*/
-    
-    /*seedsph[i]: is there such a pair <l, r> so that |r-l|<=10000 where l is one of the possible occurance possitions of
-    seed[i] of the first alignment and r is one of the possible occurance positions of seed[i] of the second alignment*/
 };
 
 struct  Statesr{
@@ -167,11 +162,6 @@ cost_t seed_heuristic(Statesr cur, int k, vector<int> &seeds, map<Node, bitset<6
     return h;
 }
 
-/*bool error(int alignment){
-    cerr << "error alignment == " << alignment << endl;
-    return false;
-}*/
-
 cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, int alignment){
     if (strcmp(heuristic_method, "dijkstra_heuristic") == 0)return 0;
     if (strcmp(heuristic_method, "seed_heuristic") == 0){
@@ -180,7 +170,6 @@ cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method
         else if (alignment == 1)
             return seed_heuristic(cur, k, info.seeds1, info.crumbs1);
         else if (alignment == 2) return seed_heuristic(cur, k, info.seeds2, info.crumbs2);
-        //assert(error(alignment));
         assert(false);
     }
     assert(false);
@@ -249,6 +238,8 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
     priority_queue<Statesr> q;
     map<pair<int, Node>, cost_t> expandedstates;
     int cntexpansions = 0;
+    int cntexpansionsTrie = 0;
+    int cntexpansionsref = 0;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, alignment);
@@ -268,11 +259,14 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
     while(!q.empty()){
         cur = q.top();
         q.pop();
-        cntexpansions++;
         //cout << "cntexpansions == " << cntexpansions << " qpos == " << cur.qpos << " g == " << cur.g << " h == " << cur.h << " f == " << cur.g + cur.h << "\n";
         if (cur.qpos == n)
             break;
         if (toexplore(expandedstates, cur)){
+            cntexpansions++;
+            if (cur.p.is_in_trie())
+                cntexpansionsTrie++;
+            else cntexpansionsref++;
             if (is_greedy_available(cur, query, ref)){
                 Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment);
                 topush.g += cur.g;
@@ -287,8 +281,13 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
             }
         }
     }
-    if (strcmp(showcntexplstates, "Yes") == 0)
+    if (strcmp(showcntexplstates, "Yes") == 0){
         cout << "Expanded states: " << cntexpansions << "\n";
-    cout << "Band: " << cntexpansions / n << "(fraction floored)\n";
+        cout << "Expanded trie states: " << cntexpansionsTrie << "\n";
+        cout << "Expanded trie states (%): " << (double) cntexpansionsTrie / (double) cntexpansions * (double) 100 << "%\n";
+        cout << "Expanded ref states: " << cntexpansionsref << "\n";
+        cout << "Expanded ref states (%): " << (double) cntexpansionsref / (double) cntexpansions * (double) 100 << "%\n";
+    }
+    cout << "Band: " << (double) cntexpansions / (double) n << "\n";
     return cur.g;
 }
