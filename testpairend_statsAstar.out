@@ -1,153 +1,153 @@
-reading reference: 0.022283s.
-constructing trie: 1.96782s.
+reading reference: 0.046952s.
+constructing trie: 2.62381s.
 
 Query 1:
-Getting matches of both seeds and sorting them: 2.2e-05.s
-Filtering matches: 2.4e-05.s
-Precompute of crumbs1: 0.507849s.
-Precompute of crumbs2: 0.493359s.
-Precompute of both crumbs: 1.00121s.
+Getting matches of both seeds and sorting them: 2.4e-05.s
+Filtering matches: 3e-05.s
+Precompute of crumbs1: 0.535801s.
+Precompute of crumbs2: 0.405073s.
+Precompute of both crumbs: 0.940874s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 3
-250 n = 250 q.size() = 21673247
-Number of heuristic funct. returning inf: 15035
-Expanded states == 2514129
+250 n = 250 q.size() = 21674869
+Number of heuristic funct. returning inf: 15111
+Expanded states == 2514240
 Band: 10056(fraction floored)
 Cost: 10
-Alignment: 163.518s.
-Cleaning help vectors: 0.000399s.
+Alignment: 145.992s.
+Cleaning help vectors: 0.000359s.
 
 Query 2:
-Getting matches of both seeds and sorting them: 1.8e-05.s
-Filtering matches: 2e-05.s
-Precompute of crumbs1: 0.47851s.
-Precompute of crumbs2: 0.422924s.
-Precompute of both crumbs: 0.901434s.
+Getting matches of both seeds and sorting them: 2e-05.s
+Filtering matches: 2.1e-05.s
+Precompute of crumbs1: 0.463185s.
+Precompute of crumbs2: 0.396777s.
+Precompute of both crumbs: 0.859962s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 1
-250 n = 250 q.size() = 2167103
-Number of heuristic funct. returning inf: 3062
-Expanded states == 140195
+250 n = 250 q.size() = 2165611
+Number of heuristic funct. returning inf: 3063
+Expanded states == 140130
 Band: 560(fraction floored)
 Cost: 4
-Alignment: 10.2692s.
-Cleaning help vectors: 0.000338s.
+Alignment: 9.53655s.
+Cleaning help vectors: 0.000337s.
 
 Query 3:
-Getting matches of both seeds and sorting them: 1.9e-05.s
-Filtering matches: 1.9e-05.s
-Precompute of crumbs1: 0.428309s.
-Precompute of crumbs2: 0.379024s.
-Precompute of both crumbs: 0.807333s.
+Getting matches of both seeds and sorting them: 2.3e-05.s
+Filtering matches: 2.8e-05.s
+Precompute of crumbs1: 0.422439s.
+Precompute of crumbs2: 0.367345s.
+Precompute of both crumbs: 0.789784s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 5
-250 n = 250 q.size() = 47800722
-Number of heuristic funct. returning inf: 207734
-Expanded states == 8533974
-Band: 34135(fraction floored)
+250 n = 250 q.size() = 47889516
+Number of heuristic funct. returning inf: 222965
+Expanded states == 8695946
+Band: 34783(fraction floored)
 Cost: 14
-Alignment: 674.62s.
-Cleaning help vectors: 0.001058s.
+Alignment: 530.853s.
+Cleaning help vectors: 0.000479s.
 
 Query 4:
-Getting matches of both seeds and sorting them: 0.000249.s
-Filtering matches: 2.5e-05.s
-Precompute of crumbs1: 0.535701s.
-Precompute of crumbs2: 0.530524s.
-Precompute of both crumbs: 1.06622s.
+Getting matches of both seeds and sorting them: 2.7e-05.s
+Filtering matches: 1.6e-05.s
+Precompute of crumbs1: 0.42157s.
+Precompute of crumbs2: 0.423165s.
+Precompute of both crumbs: 0.844735s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 2
-250 n = 250 q.size() = 15579294
-Number of heuristic funct. returning inf: 9029
-Expanded states == 1799942
-Band: 7199(fraction floored)
+250 n = 250 q.size() = 15570691
+Number of heuristic funct. returning inf: 9110
+Expanded states == 1799028
+Band: 7196(fraction floored)
 Cost: 8
-Alignment: 97.7169s.
-Cleaning help vectors: 0.000445s.
+Alignment: 81.5746s.
+Cleaning help vectors: 0.000451s.
 
 Query 5:
-Getting matches of both seeds and sorting them: 0.000306.s
-Filtering matches: 1.9e-05.s
-Precompute of crumbs1: 0.502124s.
-Precompute of crumbs2: 0.449621s.
-Precompute of both crumbs: 0.951745s.
+Getting matches of both seeds and sorting them: 1.7e-05.s
+Filtering matches: 1.5e-05.s
+Precompute of crumbs1: 0.417195s.
+Precompute of crumbs2: 0.376354s.
+Precompute of both crumbs: 0.793549s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 4
-250 n = 250 q.size() = 10659694
-Number of heuristic funct. returning inf: 3851
-Expanded states == 999955
-Band: 3999(fraction floored)
+250 n = 250 q.size() = 10658816
+Number of heuristic funct. returning inf: 3891
+Expanded states == 1000004
+Band: 4000(fraction floored)
 Cost: 9
-Alignment: 56.6715s.
-Cleaning help vectors: 0.001093s.
+Alignment: 50.5045s.
+Cleaning help vectors: 0.000426s.
 
 Query 6:
-Getting matches of both seeds and sorting them: 0.000254.s
-Filtering matches: 1.9e-05.s
-Precompute of crumbs1: 0.403236s.
-Precompute of crumbs2: 0.553863s.
-Precompute of both crumbs: 0.957099s.
+Getting matches of both seeds and sorting them: 1.7e-05.s
+Filtering matches: 1.5e-05.s
+Precompute of crumbs1: 0.388908s.
+Precompute of crumbs2: 0.455177s.
+Precompute of both crumbs: 0.844085s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 5
-250 n = 250 q.size() = 4134066
-Number of heuristic funct. returning inf: 4292
-Expanded states == 407845
+250 n = 250 q.size() = 4133037
+Number of heuristic funct. returning inf: 4320
+Expanded states == 407799
 Band: 1631(fraction floored)
 Cost: 9
-Alignment: 21.1775s.
-Cleaning help vectors: 0.000666s.
+Alignment: 19.3096s.
+Cleaning help vectors: 0.000406s.
 
 Query 7:
-Getting matches of both seeds and sorting them: 0.000252.s
-Filtering matches: 2e-05.s
-Precompute of crumbs1: 0.671679s.
-Precompute of crumbs2: 0.423292s.
-Precompute of both crumbs: 1.09497s.
+Getting matches of both seeds and sorting them: 1.7e-05.s
+Filtering matches: 1.5e-05.s
+Precompute of crumbs1: 0.418221s.
+Precompute of crumbs2: 0.410242s.
+Precompute of both crumbs: 0.828463s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 4
-250 n = 250 q.size() = 33740142
-Number of heuristic funct. returning inf: 29755
-Expanded states == 5051363
-Band: 20205(fraction floored)
+250 n = 250 q.size() = 31876036
+Number of heuristic funct. returning inf: 28373
+Expanded states == 4470446
+Band: 17881(fraction floored)
 Cost: 14
-Alignment: 308.055s.
-Cleaning help vectors: 0.000408s.
+Alignment: 248.597s.
+Cleaning help vectors: 0.00041s.
 
 Query 8:
-Getting matches of both seeds and sorting them: 0.000374.s
-Filtering matches: 2e-05.s
-Precompute of crumbs1: 0.665222s.
-Precompute of crumbs2: 0.453096s.
-Precompute of both crumbs: 1.11832s.
+Getting matches of both seeds and sorting them: 2.2e-05.s
+Filtering matches: 4.7e-05.s
+Precompute of crumbs1: 0.472313s.
+Precompute of crumbs2: 0.436015s.
+Precompute of both crumbs: 0.908328s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 2
-250 n = 250 q.size() = 15199501
-Number of heuristic funct. returning inf: 9407
-Expanded states == 1756844
-Band: 7027(fraction floored)
+250 n = 250 q.size() = 15203174
+Number of heuristic funct. returning inf: 9884
+Expanded states == 1757638
+Band: 7030(fraction floored)
 Cost: 7
-Alignment: 82.8468s.
-Cleaning help vectors: 0.000596s.
+Alignment: 76.8873s.
+Cleaning help vectors: 0.000444s.
 
 Query 9:
-Getting matches of both seeds and sorting them: 0.000474.s
-Filtering matches: 1.9e-05.s
-Precompute of crumbs1: 0.479847s.
-Precompute of crumbs2: 0.504138s.
-Precompute of both crumbs: 0.983985s.
+Getting matches of both seeds and sorting them: 1.8e-05.s
+Filtering matches: 1.6e-05.s
+Precompute of crumbs1: 0.392256s.
+Precompute of crumbs2: 0.468462s.
+Precompute of both crumbs: 0.860718s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 3
-250 n = 250 q.size() = 18007113
-Number of heuristic funct. returning inf: 12522
-Expanded states == 2248716
-Band: 8994(fraction floored)
+250 n = 250 q.size() = 25106512
+Number of heuristic funct. returning inf: 21305
+Expanded states == 3351149
+Band: 13404(fraction floored)
 Cost: 9
-Alignment: 118.427s.
-Cleaning help vectors: 0.000448s.
+Alignment: 180.021s.
+Cleaning help vectors: 0.00046s.
 
 Query 10:
-Getting matches of both seeds and sorting them: 0.000405.s
-Filtering matches: 2e-05.s
-Precompute of crumbs1: 0.459632s.
-Precompute of crumbs2: 0.469363s.
-Precompute of both crumbs: 0.928995s.
+Getting matches of both seeds and sorting them: 1.8e-05.s
+Filtering matches: 1.7e-05.s
+Precompute of crumbs1: 0.468415s.
+Precompute of crumbs2: 0.458084s.
+Precompute of both crumbs: 0.926499s.
 heuristic of paired end state<0, rootdmer, rootdmer>: 2
-250 n = 250 q.size() = 58036309
-Number of heuristic funct. returning inf: 196198
-Expanded states == 13974700
-Band: 55898(fraction floored)
+250 n = 250 q.size() = 58067681
+Number of heuristic funct. returning inf: 198425
+Expanded states == 13858374
+Band: 55433(fraction floored)
 Cost: 14
-Alignment: 910.061s.
-Cleaning help vectors: 0.000483s.
+Alignment: 848.915s.
+Cleaning help vectors: 0.000424s.
 
