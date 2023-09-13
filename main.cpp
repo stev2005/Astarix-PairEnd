@@ -59,6 +59,23 @@ inline void building_tries(string &ref, int d, int k, Trie *&rootdmer, Trie *&ro
     cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
 }
 
+inline void printmatches(MatchingKmers &info){
+    vector<pair<int, int> > matches;
+    vector<int> & lastkmer = info.lastkmer;
+    vector<int> & prevposkmer = info.prevposkmer;
+    vector<int> & seeds = info.seeds;
+    for (int i = 0; i < seeds.size(); ++i){
+        if (seeds[i] == -1) continue;
+        for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j])
+            matches.push_back({j, i});
+    }
+    sort(matches.begin(), matches.end());
+    cout << "mathces1:\n";
+    for (auto i: matches)
+        cout << i.first << " " << i.second << "\n";
+    cout << "\n";
+}
+
 int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -67,6 +84,7 @@ int main(int argc, char *argv[]){
     int d, k, dmatch;
     char *typealignment, *heuristic_method, *shownexplstates, *triestart;
     program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart, dmatch);
+    cout << "D: " << d << " k: " << k << endl;
     string ref, query;
     pair <string, string> queryp;
     int testcases;
@@ -91,15 +109,13 @@ int main(int argc, char *argv[]){
         if (strcmp(typealignment, "single-read") == 0){
             cerr << "If for single read alingment\n";
             cin>>query;
-            nindel = query.size() / k;
-            if (query.size() % k != 0)
-                nindel++;
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             maximum_edit_cost = query.size() + 1;
             if (strcmp(heuristic_method, "seed_heuristic") == 0){
                 t = clock();
                 info.seeds = query_into_seeds(query, k, rootkmer);
+                nindel = info.seeds.size();
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
@@ -109,6 +125,7 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);
+                printmatches(info);
             }
             t = clock();
             rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 0);

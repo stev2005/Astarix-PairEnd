@@ -104,52 +104,41 @@ void getcrumbs(const string &ref, const int d, const int k, map <Node, bitset<64
                 const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
                 const vector<int> &prevposkmer, int alignment, vector<unordered_set<int> > & crumbseeds){
     /*alignment: what type of alignment is used
-    values to receive:
-        - 0 when single read has its crumbs set on he Gr+
-        - 1 when first read of pair-end has its crumbs set on he Gr+
-        - 2 when second read of pair-end has its crumbs set on he Gr+
-    */
-    ///queue<tuple<Trie*, int, int>> q;
+    valuews to receive:
+        - 0 when single read has its crumbs set on the Gr+
+        - 1 when first read of pair-end has its crumbs set on the Gr+
+        - 2 when second read of pair-end has its crumbs set on the Gr+
+        */
+    set<Trie*> trienodescrumbed;
+    
     for (int i = 0; i < seeds.size(); ++i){
-        //cout << "i == "<< i << " " << seeds[i] << endl;
-        if (seeds[i]>=0){
-            //cout <<"A match\n";
-            int seedpos = i * k;///start of the seed
-            for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
+        int cntappofseedinref = 0;
+        if (seeds[i] >= 0){
+            int seedpos = i * k; ///begining of a seed in the query;
+            int crumbtriedist = seedpos - nindel - d;
+            for (int j = lastkmer [seeds[i]]; j != -1; j = prevposkmer[j],  cntappofseedinref++){
                 if (alignment == 0 || is_available_to_crumb(crumbseeds, i, j)){
+                    int seedstartinref = j - k + 1;///begining of a seed in the reference
                     for (int back = 0; back < seedpos + nindel; ++back){
-                        int rpos = j - k - back;
-                        if (rpos >= 0){
-                            crumbs[Node(rpos)][i] = true;
-                            ///int climb = seedpos - back;
-                            /*Trie *cur = backtotrieconnection[rpos];
-                            tuple<Trie*, int, int> topushq = make_tuple(cur, climb, i);
-                            q.push(topushq);*/
-                        }
-                        for (int rpos = j - seedpos + nindel + k /*- 1*/; rpos >= j - seedpos - nindel; rpos--){
-                            Trie *cur = backtotrieconnection[rpos];
-                            while (cur != nullptr){
-                                crumbs[Node(cur)][i] = true;
-                                cur = cur->parent;
+                        int crumbpos = seedstartinref - back;
+                        if (crumbpos >= 0){
+                            crumbs[Node(crumbpos)][i] = true;
+                            if (seedstartinref - crumbpos > crumbtriedist){
+                                Trie* crumbtrie = backtotrieconnection[crumbpos];
+                                while (crumbtrie != nullptr){
+                                    crumbs[Node(crumbtrie)][i] = true;
+                                    crumbtrie = crumbtrie->parent;
+                                    trienodescrumbed.insert(crumbtrie);
+                                }
                             }
                         }
                     }
                 }
             }
         }
+        cout << "Seed number: " << i << " has " << cntappofseedinref << " appereances in the reference\n";
     }
-    /*while (!q.empty()){
-        tuple<Trie*, int, int> current = q.front();
-        q.pop();
-        Trie *cur = get<0>(current);
-        int climb = get<1>(current);
-        int seed = get<2>(current);
-        while (climb > 0 && cur != nullptr){
-            crumbs[Node(cur)][seed] = true;
-            cur = cur->parent;
-            climb--;
-        }
-    }*/
+    cout << "Number of trie nodes with at least one crumb: " << trienodescrumbed.size() << endl;
 }
 
 cost_t seed_heuristic(Statesr cur, int k, vector<int> &seeds, map<Node, bitset<64> > &crumbs){
@@ -240,6 +229,9 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
     int cntexpansions = 0;
     int cntexpansionsTrie = 0;
     int cntexpansionsref = 0;
+    int cntTrienodeswithoutcrumbs = 0;
+    int cntreexpandedTrienodes = 0;
+    int cntreexpandedrefnodes = 0;
     Statesr cur;
     if (strcmp(triestart, "Yes") == 0){
         cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, alignment);
@@ -259,14 +251,25 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
     while(!q.empty()){
         cur = q.top();
         q.pop();
+        cntexpansions++;
+        if (cur.p.is_in_trie()){
+            cntexpansionsTrie++;
+            if (info.crumbs[cur.p].count() == 0)
+                cntTrienodeswithoutcrumbs++;
+            auto it = expandedstates.find({cur.qpos, cur.p});
+            if (it != expandedstates.end())
+                cntreexpandedTrienodes++;
+        }
+        else{
+            cntexpansionsref++;
+            auto it = expandedstates.find({cur.qpos, cur.p});
+            if (it != expandedstates.end())
+                cntreexpandedrefnodes++;
+        }
         //cout << "cntexpansions == " << cntexpansions << " qpos == " << cur.qpos << " g == " << cur.g << " h == " << cur.h << " f == " << cur.g + cur.h << "\n";
         if (cur.qpos == n)
             break;
         if (toexplore(expandedstates, cur)){
-            cntexpansions++;
-            if (cur.p.is_in_trie())
-                cntexpansionsTrie++;
-            else cntexpansionsref++;
             if (is_greedy_available(cur, query, ref)){
                 Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment);
                 topush.g += cur.g;
@@ -285,9 +288,15 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
         cout << "Expanded states: " << cntexpansions << "\n";
         cout << "Expanded trie states: " << cntexpansionsTrie << "\n";
         cout << "Expanded trie states (%): " << (double) cntexpansionsTrie / (double) cntexpansions * (double) 100 << "%\n";
+        cout << "Expanded trie states without any crumb: " << cntTrienodeswithoutcrumbs << endl;
+        cout << "Expanded trie states without any crumb (% Trie expansions): " << (double) cntTrienodeswithoutcrumbs / (double) cntexpansionsTrie * (double) 100 << "%\n";
+        cout << "Expanded trie states reexpanded: " << cntreexpandedTrienodes << endl;
+        cout << "Expanded trie states reexpanded (% Trie expansions): " << (double) cntreexpandedTrienodes / (double) cntexpansionsTrie * (double) 100 << "%\n";
         cout << "Expanded ref states: " << cntexpansionsref << "\n";
         cout << "Expanded ref states (%): " << (double) cntexpansionsref / (double) cntexpansions * (double) 100 << "%\n";
+        cout << "Expanded ref states reexpanded (% ref expansions): " << (double) cntreexpandedrefnodes / (double) cntexpansionsref * (double) 100 << "%\n";
     }
     cout << "Band: " << (double) cntexpansions / (double) n << "\n";
+    cout << "End reference position of optimal alignment: " << cur.p.rpos << "\n";
     return cur.g;
 }

@@ -1,0 +1,39 @@
+D: 10 k: 20
+reading reference: 0.028535s.
+constructing trie: 2.51959s.
+
+Query 1:
+Reading query: 3.1e-05s.
+breaking query into seeds: 3.1e-05s.
+Seed number: 1 has 1 appereances in the reference
+Seed number: 2 has 1 appereances in the reference
+Seed number: 3 has 1 appereances in the reference
+Seed number: 4 has 1 appereances in the reference
+Seed number: 5 has 1 appereances in the reference
+Seed number: 8 has 1 appereances in the reference
+Seed number: 9 has 1 appereances in the reference
+Seed number: 10 has 1 appereances in the reference
+Seed number: 11 has 1 appereances in the reference
+Precompute of crumbs: 0.002494s.
+mathces1:
+122809 1
+122829 2
+122849 3
+122869 4
+122889 5
+122949 8
+122969 9
+122989 10
+123009 11
+
+Missing crumbs in the root of the trie tree: 3
+Expanded states: 11410
+Expanded trie states: 9553
+Expanded trie states (%): 83.7248%
+Expanded ref states: 1857
+Expanded ref states (%): 16.2752%
+Band: 45.64
+Cost: 11
+Alignment: 0.80637s.
+Cleaning help vectors: 9.4e-05s.
+

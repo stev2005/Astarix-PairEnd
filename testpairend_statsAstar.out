@@ -1,153 +1,134 @@
-reading reference: 0.046952s.
-constructing trie: 2.62381s.
+D: 10 k: 15
+reading reference: 0.023985s.
+constructing trie: 1.93205s.
 
 Query 1:
-Getting matches of both seeds and sorting them: 2.4e-05.s
-Filtering matches: 3e-05.s
-Precompute of crumbs1: 0.535801s.
-Precompute of crumbs2: 0.405073s.
-Precompute of both crumbs: 0.940874s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 3
-250 n = 250 q.size() = 21674869
-Number of heuristic funct. returning inf: 15111
-Expanded states == 2514240
-Band: 10056(fraction floored)
+Getting matches of both seeds and sorting them: 2.7e-05.s
+Filtering matches: 2.8e-05.s
+Seed number: 0 has 1 appereances in the reference
+Seed number: 2 has 1 appereances in the reference
+Seed number: 3 has 1 appereances in the reference
+Seed number: 4 has 1 appereances in the reference
+Seed number: 5 has 1 appereances in the reference
+Seed number: 6 has 1 appereances in the reference
+Seed number: 7 has 1 appereances in the reference
+Seed number: 8 has 1 appereances in the reference
+Seed number: 9 has 1 appereances in the reference
+Seed number: 10 has 1 appereances in the reference
+Seed number: 11 has 1 appereances in the reference
+Seed number: 12 has 1 appereances in the reference
+Seed number: 13 has 1 appereances in the reference
+Seed number: 14 has 1 appereances in the reference
+Seed number: 15 has 1 appereances in the reference
+Number of leaves with at least one crumb: 1346
+Seed number: 0 has 1 appereances in the reference
+Seed number: 1 has 1 appereances in the reference
+Seed number: 2 has 1 appereances in the reference
+Seed number: 4 has 1 appereances in the reference
+Seed number: 5 has 1 appereances in the reference
+Seed number: 6 has 1 appereances in the reference
+Seed number: 7 has 1 appereances in the reference
+Seed number: 8 has 1 appereances in the reference
+Seed number: 9 has 1 appereances in the reference
+Seed number: 10 has 1 appereances in the reference
+Seed number: 11 has 1 appereances in the reference
+Seed number: 13 has 1 appereances in the reference
+Seed number: 14 has 1 appereances in the reference
+Seed number: 15 has 1 appereances in the reference
+Number of leaves with at least one crumb: 1332
+Precompute of crumbs1: 0.015817s.
+Precompute of crumbs2: 0.01634s.
+Precompute of both crumbs: 0.032157s.
+heuristic of paired end state<0, rootdmer, rootdmer>: 6
+250 n = 250 q.size() = 745969
+Number of heuristic funct. returning inf: 1033
+Expanded states == 67018
+Band: 268(fraction floored)
 Cost: 10
-Alignment: 145.992s.
-Cleaning help vectors: 0.000359s.
+Alignment: 3.74675s.
+Cleaning help vectors: 0.000438s.
 
 Query 2:
-Getting matches of both seeds and sorting them: 2e-05.s
-Filtering matches: 2.1e-05.s
-Precompute of crumbs1: 0.463185s.
-Precompute of crumbs2: 0.396777s.
-Precompute of both crumbs: 0.859962s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 1
-250 n = 250 q.size() = 2165611
-Number of heuristic funct. returning inf: 3063
-Expanded states == 140130
-Band: 560(fraction floored)
+Getting matches of both seeds and sorting them: 1.7e-05.s
+Filtering matches: 1.7e-05.s
+Seed number: 0 has 1 appereances in the reference
+Seed number: 1 has 1 appereances in the reference
+Seed number: 2 has 1 appereances in the reference
+Seed number: 3 has 1 appereances in the reference
+Seed number: 4 has 1 appereances in the reference
+Seed number: 5 has 1 appereances in the reference
+Seed number: 6 has 1 appereances in the reference
+Seed number: 7 has 1 appereances in the reference
+Seed number: 8 has 1 appereances in the reference
+Seed number: 9 has 1 appereances in the reference
+Seed number: 10 has 1 appereances in the reference
+Seed number: 11 has 1 appereances in the reference
+Seed number: 12 has 1 appereances in the reference
+Seed number: 13 has 1 appereances in the reference
+Seed number: 14 has 1 appereances in the reference
+Seed number: 15 has 1 appereances in the reference
+Number of leaves with at least one crumb: 1388
+Seed number: 0 has 1 appereances in the reference
+Seed number: 1 has 1 appereances in the reference
+Seed number: 2 has 1 appereances in the reference
+Seed number: 3 has 1 appereances in the reference
+Seed number: 4 has 1 appereances in the reference
+Seed number: 5 has 1 appereances in the reference
+Seed number: 6 has 1 appereances in the reference
+Seed number: 7 has 1 appereances in the reference
+Seed number: 8 has 1 appereances in the reference
+Seed number: 9 has 1 appereances in the reference
+Seed number: 10 has 1 appereances in the reference
+Seed number: 11 has 1 appereances in the reference
+Seed number: 13 has 1 appereances in the reference
+Seed number: 14 has 1 appereances in the reference
+Seed number: 15 has 2 appereances in the reference
+Number of leaves with at least one crumb: 1286
+Precompute of crumbs1: 0.015545s.
+Precompute of crumbs2: 0.013588s.
+Precompute of both crumbs: 0.029133s.
+heuristic of paired end state<0, rootdmer, rootdmer>: 5
+250 n = 250 q.size() = 3766
+Number of heuristic funct. returning inf: 16
+Expanded states == 731
+Band: 2(fraction floored)
 Cost: 4
-Alignment: 9.53655s.
-Cleaning help vectors: 0.000337s.
+Alignment: 0.026834s.
+Cleaning help vectors: 0.0003s.
 
 Query 3:
-Getting matches of both seeds and sorting them: 2.3e-05.s
-Filtering matches: 2.8e-05.s
-Precompute of crumbs1: 0.422439s.
-Precompute of crumbs2: 0.367345s.
-Precompute of both crumbs: 0.789784s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 5
-250 n = 250 q.size() = 47889516
-Number of heuristic funct. returning inf: 222965
-Expanded states == 8695946
-Band: 34783(fraction floored)
-Cost: 14
-Alignment: 530.853s.
-Cleaning help vectors: 0.000479s.
-
-Query 4:
-Getting matches of both seeds and sorting them: 2.7e-05.s
-Filtering matches: 1.6e-05.s
-Precompute of crumbs1: 0.42157s.
-Precompute of crumbs2: 0.423165s.
-Precompute of both crumbs: 0.844735s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 2
-250 n = 250 q.size() = 15570691
-Number of heuristic funct. returning inf: 9110
-Expanded states == 1799028
-Band: 7196(fraction floored)
-Cost: 8
-Alignment: 81.5746s.
-Cleaning help vectors: 0.000451s.
-
-Query 5:
-Getting matches of both seeds and sorting them: 1.7e-05.s
-Filtering matches: 1.5e-05.s
-Precompute of crumbs1: 0.417195s.
-Precompute of crumbs2: 0.376354s.
-Precompute of both crumbs: 0.793549s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 4
-250 n = 250 q.size() = 10658816
-Number of heuristic funct. returning inf: 3891
-Expanded states == 1000004
-Band: 4000(fraction floored)
-Cost: 9
-Alignment: 50.5045s.
-Cleaning help vectors: 0.000426s.
-
-Query 6:
-Getting matches of both seeds and sorting them: 1.7e-05.s
-Filtering matches: 1.5e-05.s
-Precompute of crumbs1: 0.388908s.
-Precompute of crumbs2: 0.455177s.
-Precompute of both crumbs: 0.844085s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 5
-250 n = 250 q.size() = 4133037
-Number of heuristic funct. returning inf: 4320
-Expanded states == 407799
-Band: 1631(fraction floored)
-Cost: 9
-Alignment: 19.3096s.
-Cleaning help vectors: 0.000406s.
-
-Query 7:
-Getting matches of both seeds and sorting them: 1.7e-05.s
-Filtering matches: 1.5e-05.s
-Precompute of crumbs1: 0.418221s.
-Precompute of crumbs2: 0.410242s.
-Precompute of both crumbs: 0.828463s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 4
-250 n = 250 q.size() = 31876036
-Number of heuristic funct. returning inf: 28373
-Expanded states == 4470446
-Band: 17881(fraction floored)
-Cost: 14
-Alignment: 248.597s.
-Cleaning help vectors: 0.00041s.
-
-Query 8:
-Getting matches of both seeds and sorting them: 2.2e-05.s
-Filtering matches: 4.7e-05.s
-Precompute of crumbs1: 0.472313s.
-Precompute of crumbs2: 0.436015s.
-Precompute of both crumbs: 0.908328s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 2
-250 n = 250 q.size() = 15203174
-Number of heuristic funct. returning inf: 9884
-Expanded states == 1757638
-Band: 7030(fraction floored)
-Cost: 7
-Alignment: 76.8873s.
-Cleaning help vectors: 0.000444s.
-
-Query 9:
-Getting matches of both seeds and sorting them: 1.8e-05.s
-Filtering matches: 1.6e-05.s
-Precompute of crumbs1: 0.392256s.
-Precompute of crumbs2: 0.468462s.
-Precompute of both crumbs: 0.860718s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 3
-250 n = 250 q.size() = 25106512
-Number of heuristic funct. returning inf: 21305
-Expanded states == 3351149
-Band: 13404(fraction floored)
-Cost: 9
-Alignment: 180.021s.
-Cleaning help vectors: 0.00046s.
-
-Query 10:
-Getting matches of both seeds and sorting them: 1.8e-05.s
-Filtering matches: 1.7e-05.s
-Precompute of crumbs1: 0.468415s.
-Precompute of crumbs2: 0.458084s.
-Precompute of both crumbs: 0.926499s.
-heuristic of paired end state<0, rootdmer, rootdmer>: 2
-250 n = 250 q.size() = 58067681
-Number of heuristic funct. returning inf: 198425
-Expanded states == 13858374
-Band: 55433(fraction floored)
-Cost: 14
-Alignment: 848.915s.
-Cleaning help vectors: 0.000424s.
-
+Getting matches of both seeds and sorting them: 1.6e-05.s
+Filtering matches: 2.4e-05.s
+Seed number: 0 has 1 appereances in the reference
+Seed number: 1 has 1 appereances in the reference
+Seed number: 3 has 1 appereances in the reference
+Seed number: 4 has 1 appereances in the reference
+Seed number: 5 has 1 appereances in the reference
+Seed number: 6 has 1 appereances in the reference
+Seed number: 7 has 1 appereances in the reference
+Seed number: 8 has 1 appereances in the reference
+Seed number: 9 has 1 appereances in the reference
+Seed number: 10 has 1 appereances in the reference
+Seed number: 12 has 1 appereances in the reference
+Seed number: 13 has 1 appereances in the reference
+Seed number: 14 has 1 appereances in the reference
+Seed number: 15 has 1 appereances in the reference
+Number of leaves with at least one crumb: 1362
+Seed number: 0 has 2 appereances in the reference
+Seed number: 1 has 1 appereances in the reference
+Seed number: 2 has 1 appereances in the reference
+Seed number: 3 has 1 appereances in the reference
+Seed number: 4 has 1 appereances in the reference
+Seed number: 5 has 1 appereances in the reference
+Seed number: 6 has 1 appereances in the reference
+Seed number: 7 has 1 appereances in the reference
+Seed number: 8 has 1 appereances in the reference
+Seed number: 12 has 1 appereances in the reference
+Seed number: 13 has 1 appereances in the reference
+Seed number: 14 has 1 appereances in the reference
+Seed number: 15 has 1 appereances in the reference
+Number of leaves with at least one crumb: 1352
+Precompute of crumbs1: 0.013939s.
+Precompute of crumbs2: 0.012306s.
+Precompute of both crumbs: 0.026245s.
+heuristic of paired end state<0, rootdmer, rootdmer>: 9
