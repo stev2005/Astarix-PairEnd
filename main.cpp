@@ -3,7 +3,7 @@
 //#include "headers/dp.h"
 #include "headers/trie.h"
 #include "headers/astar/astar_single_reads.h"
-#include "headers/astar/astar_pair-end.h"
+//#include "headers/astar/astar_pair-end.h"
 using namespace std;
 
 int charstring_to_int(char *num){
@@ -85,8 +85,7 @@ int main(int argc, char *argv[]){
     char *typealignment, *heuristic_method, *shownexplstates, *triestart;
     program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart, dmatch);
     cout << "D: " << d << " k: " << k << endl;
-    string ref, query;
-    pair <string, string> queryp;
+    string ref;
     int testcases;
     cerr << "int k has a value equal to " << k << "\n";
     clock_t t = clock();
@@ -108,6 +107,7 @@ int main(int argc, char *argv[]){
         t = clock();
         if (strcmp(typealignment, "single-read") == 0){
             cerr << "If for single read alingment\n";
+            string query;
             cin>>query;
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -125,15 +125,17 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 //printoutcrumbs(info.crumbs, root);
-                printmatches(info);
+                //printmatches(info);
             }
             t = clock();
-            rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 0);
+            //rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 0);
+            rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info);
             cout << "Cost: " << rezult << "\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
-        else{
+        /*else{
+            pair <string, string> queryp;
             cin >> queryp.first >> queryp.second;
             nindel = queryp.first.size() / k;
             if (queryp.first.size() % k != 0)
@@ -148,7 +150,7 @@ int main(int argc, char *argv[]){
             t = clock() - t;
             cout << "Cost: " << rezult << "\n"; 
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-        }
+        }*/
         t = clock();
         info.clearquerydata();
         t = clock() - t;

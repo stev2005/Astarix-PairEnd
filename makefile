@@ -4,7 +4,10 @@ main:
 	g++ main.cpp -o main.exe
 
 testsingleread_seed_heuristic:
-	time ./main.exe single-read 10 8 seed_heuristic Yes Yes <testsingleread.in >testsingleread_statsAstar.out
+	time ./main.exe single-read 10 12 seed_heuristic Yes Yes <testsingleread.in >testsingleread_statsAstar.out
+
+exptestsingleread_seed_heuristic:
+	time ./main.exe single-read 10 12 seed_heuristic Yes Yes <testsingleread.in >exptestsingleread_statsAstar.out
 
 problemtest:
 	time ./main.exe single-read 10 20 seed_heuristic Yes Yes <problemtest.in >problemtest.out

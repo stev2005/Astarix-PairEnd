@@ -34,6 +34,8 @@ struct Node{
     }
 };
 
+typedef map<Node, bitset<64> > crumbs_t;
+
 struct MatchingKmers{///fast and convinient way to pass a lot of data structures as parameters to functions
     vector <int> seeds, seeds1, seeds2;
     /*seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer;
@@ -44,7 +46,8 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
     vector <int> lastkmer;///same definition as last but for kmers instead of dmers
     vector <int> prevposkmer; ///same definition as prevpos but for kmers instead of dmers
     vector <Trie*> backtotrieconnectionkmer;///same definition as backtotrieconnection but for kmers instead of dmers
-    map<Node, bitset<64> > crumbs, crumbs1, crumbs2;
+    //map<Node, bitset<64> > crumbs, crumbs1, crumbs2;
+    crumbs_t crumbs, crumbs1, crumbs2;
     vector<unordered_set<int> > crumbseeds1;
     vector<unordered_set<int> > crumbseeds2;
     void clearquerydata(){
@@ -56,6 +59,9 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
         crumbs2.clear();
         crumbseeds1.clear();
         crumbseeds2.clear();
+        lastkmer.clear();//not done in the old
+        prevposkmer.clear();//not done in the old
+        backtotrieconnectionkmer.clear();//not done in the old
     }
 };
 
@@ -65,42 +71,47 @@ struct  Statesr{
     Node p;
     cost_t g;///edit distance of alignment of using qpos and p
     cost_t h;///value of heuristic function of using qpos and p
-    cost_t stepcost;///what to add to the already achived cost of the previous of state <qpos, p>
+    //cost_t stepcost;///what to add to the already achived cost of the previous of state <qpos, p>
     Statesr(){}
     Statesr(int _qpos, Node _p){
         qpos = _qpos;
         p = _p;
         g = 0;
         h = 0;
-        stepcost = 0;
+        //stepcost = 0;
     }
-    Statesr(int _qpos, Node _p, cost_t _g, cost_t _h, cost_t _stepcost){
+    Statesr(int _qpos, Node _p, cost_t _g, cost_t _h){
+        qpos = _qpos;
+        p = _p;
+        g = _g;
+        h = _h;
+    }
+    /*Statesr(int _qpos, Node _p, cost_t _g, cost_t _h, cost_t _stepcost){
         qpos = _qpos;
         p = _p;
         g = _g;
         h = _h;
         stepcost = _stepcost;
-    }
+    }*/
     bool operator<(const Statesr &other)const{
         return g + h > other.g + other.h;
     }
-    bool print(){
+    void print(){
         cout << "Statesr: "<< qpos<< " "; 
         if (p.is_in_trie())
             cout << p.u ;
         else cout << p.rpos;
         cout<< " " << g << " " << h << endl;
-        return true;
     }
 };
 
-bool is_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, int pos){
+bool is_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, int pos){///needed for pair-end
     if (crumbseeds[num].find(pos) != crumbseeds[num].end())
         return true;
     else return false;
 }
 
-void getcrumbs(const string &ref, const int d, const int k, map <Node, bitset<64> > &crumbs,
+void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                 const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
                 const vector<int> &prevposkmer, int alignment, vector<unordered_set<int> > & crumbseeds){
     /*alignment: what type of alignment is used
@@ -108,151 +119,165 @@ void getcrumbs(const string &ref, const int d, const int k, map <Node, bitset<64
         - 0 when single read has its crumbs set on the Gr+
         - 1 when first read of pair-end has its crumbs set on the Gr+
         - 2 when second read of pair-end has its crumbs set on the Gr+
+        crumbseeds are needed for pairend getting of crumbs
         */
-    set<Trie*> trienodescrumbed;
-    
+    set<Node> st;
+    set<Node> trienodes;
+    int ndel = seeds.size();
+    int nins = seeds.size();
     for (int i = 0; i < seeds.size(); ++i){
-        int cntappofseedinref = 0;
         if (seeds[i] >= 0){
-            int seedpos = i * k; ///begining of a seed in the query;
-            int crumbtriedist = seedpos - nindel - d;
-            for (int j = lastkmer [seeds[i]]; j != -1; j = prevposkmer[j],  cntappofseedinref++){
-                if (alignment == 0 || is_available_to_crumb(crumbseeds, i, j)){
-                    int seedstartinref = j - k + 1;///begining of a seed in the reference
-                    for (int back = 0; back < seedpos + nindel; ++back){
-                        int crumbpos = seedstartinref - back;
-                        if (crumbpos >= 0){
-                            crumbs[Node(crumbpos)][i] = true;
-                            if (seedstartinref - crumbpos > crumbtriedist){
-                                Trie* crumbtrie = backtotrieconnection[crumbpos];
-                                while (crumbtrie != nullptr){
-                                    crumbs[Node(crumbtrie)][i] = true;
-                                    crumbtrie = crumbtrie->parent;
-                                    trienodescrumbed.insert(crumbtrie);
-                                }
-                            }
+            int seedpos = i * k;
+            for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
+                int seedstart = j - k + 1;///start of a seed in the reference;
+                for (int back = 0; back < seedpos + ndel; ++back){
+                    int rpos = seedstart - back;
+                    if (rpos >= 0){
+                        crumbs[Node(rpos)][i] = true;
+                        st.insert(Node(rpos));
+                    }
+                    if (seedstart - rpos > seedpos - nins - d){
+                        Trie* cur = backtotrieconnection[rpos];
+                        while (cur != nullptr){
+                            crumbs[Node(cur)][i] = true;
+                            trienodes.insert(Node(cur));
+                            st.insert(Node(cur));
+                            cur = cur->parent;
                         }
                     }
                 }
             }
         }
-        cout << "Seed number: " << i << " has " << cntappofseedinref << " appereances in the reference\n";
     }
-    cout << "Number of trie nodes with at least one crumb: " << trienodescrumbed.size() << endl;
+    cout << "Number of Nodes with at least one crumb: " << st.size() << endl;
+    cout << "Number of Trie Nodes with at least one crumb: " << trienodes.size() << endl;
+    cout << "Number of Ref Nodes with at least one crumb: " << st.size() - trienodes.size() << endl;
 }
 
-cost_t seed_heuristic(Statesr cur, int k, vector<int> &seeds, map<Node, bitset<64> > &crumbs){
-    int h = 0;
-    for (int i = (cur.qpos % k) ? cur.qpos / k + 1: cur.qpos / k; i < seeds.size(); ++i){
-        bool check = crumbs[cur.p][i];
-        if (check == false) h++;
-    }
-    //cout <<"Heuristic for the state: "<< cur.qpos << " " << cur.p.u << " "<<cur.p.rpos << " " << h << endl; 
-    return h;
+cost_t seed_heuristic(int qpos, Node p, int k, vector<int> &seeds, crumbs_t & crumbs){
+    cost_t hvalue = 0;
+    int i = (qpos % k)? qpos / k + 1: qpos / k;
+    for (; i < seeds.size(); ++i)
+        if (crumbs[p][i] == false)
+            ++hvalue;
+    return hvalue;
 }
 
-cost_t heuristic(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, int alignment){
-    if (strcmp(heuristic_method, "dijkstra_heuristic") == 0)return 0;
-    if (strcmp(heuristic_method, "seed_heuristic") == 0){
-        if (alignment == 0)
-            return seed_heuristic(cur, k, info.seeds, info.crumbs);
-        else if (alignment == 1)
-            return seed_heuristic(cur, k, info.seeds1, info.crumbs1);
-        else if (alignment == 2) return seed_heuristic(cur, k, info.seeds2, info.crumbs2);
-        assert(false);
+Statesr createStatesr(int qpos, Node p, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
+    return Statesr(qpos, p, g, seed_heuristic(qpos, p, k, seeds, crumbs));
+}
+
+Statesr createStatesr(int qpos, int rpos, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
+    return createStatesr(qpos, Node(rpos), g, k, seeds, crumbs);
+}
+
+Statesr createStatesr(int qpos, Trie *u, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
+    return createStatesr(qpos, Node(u), g, k, seeds, crumbs);
+}
+
+inline void push_first_states_in_q(priority_queue<Statesr> &q, int m, int d, int k, Trie *rootdmer, vector<int> &seeds, crumbs_t &crumbs){
+    q.push(createStatesr(0, rootdmer, 0, k, seeds, crumbs));
+    cout << "Missing crumbs in the Trie root: " << q.top().h << endl;
+    if (rootdmer->is_leaf())
+        cout << "The root is a leaf\n";
+    else cout << "The root is not a leaf\n";
+    for (int i = m - d + 1; i <= m; ++i)
+        q.push(createStatesr(0, i, 0, k, seeds, crumbs));
+}
+
+map<pair<int, Node>, cost_t>& get_expanded_states(bool del = false){
+    static map<pair<int, Node>, cost_t> expanded_states;
+    if (del == true)
+        expanded_states.clear();
+    return expanded_states;
+}
+
+bool to_explore(int qpos, Node p, cost_t g){
+    //static map<pair<int, Node>, cost_t> expanded_states;
+    map<pair<int, Node>, cost_t> & expanded_states = get_expanded_states();
+    if (expanded_states.find({qpos, p}) == expanded_states.end()){
+        expanded_states[{qpos, p}] = g;
+        return true;
+    }
+    else{
+        if (expanded_states[{qpos, p}] > g){
+            expanded_states[{qpos, p}] = g;
+            return true;
+        }
+        return false;
     }
     assert(false);
 }
 
-Statesr CreateStatesr(Statesr cur, int k, MatchingKmers &info, char *heuristic_method, cost_t stepcost, int alignment){
-    return Statesr(cur.qpos, cur.p, 0, heuristic(cur, k, info, heuristic_method, alignment), stepcost);
+bool gready_available(string &query, string &ref, int qpos, Node p){
+    if (!p.is_in_trie())
+        return false;
+    if (ref.size() > p.rpos && query[qpos] == ref[p.rpos])
+        return true;
+    return false;
 }
 
-vector <Statesr> NextStatesr(Statesr cur, char curqbp, const string &ref, int k, MatchingKmers & info, char *heuristic_method, int alignment){
-    vector <Statesr> next;
-    if (cur.p.is_in_trie()){
-        if (cur.p.u->is_leaf()){
-            vector <int> last = info.last;
-            vector <int> prevpos = info.prevpos;
-            for (int i = last[cur.p.u->num]; i != -1; i = prevpos[i]){
-                next.push_back(CreateStatesr(Statesr(cur.qpos, Node(i+1)), k, info, heuristic_method, 0, alignment));
-            }
+vector<Statesr> & get_next_states_sr(int qpos, Node p, char cqpos, string &ref, int k, vector<int> &last, vector<int> &prevpos, vector<int> &seeds, crumbs_t &crumbs){
+    static vector<Statesr> next;
+    next.clear();
+    if (p.is_in_trie()){
+        if (p.u->is_leaf()){
+            for (int i = last[p.u->num]; i != -1;  i = prevpos[i])
+                next.push_back(createStatesr(qpos, i + 1, 0, k, seeds, crumbs));
         }
         else{
-            next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1, alignment));
-            for (int i = 0; i < 4; ++i)
-                if (cur.p.u->child[i] != nullptr){
-                    if (base[i] == curqbp)
-                        next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 0, alignment));
-                    else next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.u->child[i])), k, info, heuristic_method, 1, alignment));
-                    next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.u->child[i])), k, info, heuristic_method, 1, alignment));
+            next.push_back(createStatesr(qpos + 1, p.u, 1, k, seeds, crumbs));
+            for (int i = 0; i < 4; ++i){
+                if (p.u->child[i] != nullptr){
+                    if (base[i] == cqpos)
+                        next.push_back(createStatesr(qpos + 1, p.u->child[i], 0, k, seeds, crumbs));
+                    else next.push_back(createStatesr(qpos + 1, p.u->child[i], 1, k, seeds, crumbs));
+                    next.push_back(createStatesr(qpos, p.u->child[i], 1, k, seeds, crumbs));
                 }
+            }
         }
     }
     else{
-        if (cur.p.rpos < ref.size()){
-            if (ref[cur.p.rpos] == curqbp)
-                next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment));
-            else next.push_back(CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
-            next.push_back(CreateStatesr(Statesr(cur.qpos, Node(cur.p.rpos+1)), k, info, heuristic_method, 1, alignment));
+        next.push_back(createStatesr(qpos + 1, p.rpos, 1, k, seeds, crumbs));
+        if (p.rpos < ref.size()){
+            next.push_back(createStatesr(qpos, p.rpos + 1, 1, k, seeds, crumbs));
+            if (cqpos == ref[p.rpos])
+                next.push_back(createStatesr(qpos + 1, p.rpos + 1, 0, k, seeds, crumbs));
+            else next.push_back(createStatesr(qpos + 1, p.rpos + 1, 1, k, seeds, crumbs));
         }
-        next.push_back(CreateStatesr(Statesr(cur.qpos+1, cur.p), k, info, heuristic_method, 1, alignment));
     }
     return next;
 }
 
-bool toexplore(map<pair<int, Node>, int> &expandedstates, Statesr &cur){
-    auto it = expandedstates.find({cur.qpos, cur.p});
-    if (it == expandedstates.end()){
-        expandedstates[{cur.qpos, cur.p}] = cur.g;
-        return true;
-    }
-    else if (cur.g < it->second){
-        it -> second = cur.g;
-        return true;
-    }
-    return false;
-}
-
-bool is_greedy_available(Statesr cur, string &query, string &ref){
-    if (cur.p.is_in_trie())return false;
-    if (cur.p.rpos < ref.size() && query[cur.qpos] == ref[cur.p.rpos])
-        return true;
-    return false;
-}
-
-cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *root, MatchingKmers &info, char *heuristic_method, char *showcntexplstates, char *triestart, int alignment){
+cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info){
     int n = query.size();
     int m = ref.size();
-    priority_queue<Statesr> q;
-    map<pair<int, Node>, cost_t> expandedstates;
     int cntexpansions = 0;
     int cntexpansionsTrie = 0;
     int cntexpansionsref = 0;
     int cntTrienodeswithoutcrumbs = 0;
     int cntreexpandedTrienodes = 0;
     int cntreexpandedrefnodes = 0;
+    map<pair<int, Node>, cost_t> & expandedstates = get_expanded_states();
+    priority_queue<Statesr> q;
+    push_first_states_in_q(q, m, d, k, rootdmer, info.seeds, info.crumbs);
     Statesr cur;
-    if (strcmp(triestart, "Yes") == 0){
-        cur = CreateStatesr(Statesr(0, Node(root)), k, info, heuristic_method, 0, alignment);
-        cout << "Missing crumbs in the root of the trie tree: "<< cur.h << endl;
-        q.push(cur);
-        for (int i = m - d + 1; i <= m; ++i){
-            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, alignment);
-            q.push(cur);
-        }
-    }
-    else{
-        for (int i = 0; i <= m; ++i){
-            cur = CreateStatesr(Statesr(0, Node(i)), k, info, heuristic_method, 0, alignment);
-            q.push(cur);
-        }
-    }
-    while(!q.empty()){
+    bool showninheritorsfirsttime = false;
+    int cntshow = 0;
+    int cntswitchfromtrietoline = 0;
+    bool istrie = true;
+    while (!q.empty()){
         cur = q.top();
-        q.pop();
         cntexpansions++;
+        q.pop();
+        if (cntshow < 10){
+            cout << "Number of missing crumbs of Node: " << info.crumbs[cur.p].count() << " ";
+            cur.print();
+        }
+            
         if (cur.p.is_in_trie()){
+            if (istrie == false)
+                istrie = true;
             cntexpansionsTrie++;
             if (info.crumbs[cur.p].count() == 0)
                 cntTrienodeswithoutcrumbs++;
@@ -261,42 +286,65 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
                 cntreexpandedTrienodes++;
         }
         else{
+            istrie = true;
+            cntswitchfromtrietoline++;
             cntexpansionsref++;
             auto it = expandedstates.find({cur.qpos, cur.p});
             if (it != expandedstates.end())
                 cntreexpandedrefnodes++;
         }
-        //cout << "cntexpansions == " << cntexpansions << " qpos == " << cur.qpos << " g == " << cur.g << " h == " << cur.h << " f == " << cur.g + cur.h << "\n";
         if (cur.qpos == n)
             break;
-        if (toexplore(expandedstates, cur)){
-            if (is_greedy_available(cur, query, ref)){
-                Statesr topush = CreateStatesr(Statesr(cur.qpos+1, Node(cur.p.rpos+1)), k, info, heuristic_method, 0, alignment);
-                topush.g += cur.g;
-                q.push(topush);
+        if (to_explore(cur.qpos, cur.p, cur.g)){
+            /*while (to_explore(cur.qpos, cur.p, cur.g) && gready_available(query, ref, cur.qpos, cur.p) && cur.qpos < n ){
+                cur.qpos++;
+                cur.p.rpos++;
+                cntexpansions++;
+            }
+            if (cur.qpos == n)
+                break;*/
+            if (gready_available(query, ref, cur.qpos, cur.p)){
+                cur.qpos++;
+                cur.p.rpos++;
+                q.push(cur);
             }
             else{
-                vector <Statesr> next = NextStatesr(cur, query[cur.qpos], ref, k, info, heuristic_method, alignment);
-                for (auto i:next){
-                    i.g = cur.g + i.stepcost;
+                vector<Statesr> & nextst = get_next_states_sr(cur.qpos, cur.p, query[cur.qpos], ref, k, info.last, info.prevpos, info.seeds, info.crumbs);
+                if (cntshow < 10){
+                    cntshow++;
+                    //cout << "Inheritors of the root:\n";
+                    cout << "Inheritor of the root with minimum f:\n";
+                    /*for (auto i: nextst)
+                        i.print();*/
+                    Statesr minf(-1, Node(0), 1000, 1000);
+                    for (auto i: nextst)
+                        if (i.g + i.h < minf.g + minf.h)
+                            minf = i;
+                    cout << "Number of missing crumbs of Node: " << info.crumbs[minf.p].count() << " ";
+                    minf.print();
+                    cout << endl;
+                }
+                for (auto i: nextst){
+                    i.g += cur.g;
                     q.push(i);
                 }
             }
+            
         }
     }
-    if (strcmp(showcntexplstates, "Yes") == 0){
-        cout << "Expanded states: " << cntexpansions << "\n";
-        cout << "Expanded trie states: " << cntexpansionsTrie << "\n";
-        cout << "Expanded trie states (%): " << (double) cntexpansionsTrie / (double) cntexpansions * (double) 100 << "%\n";
-        cout << "Expanded trie states without any crumb: " << cntTrienodeswithoutcrumbs << endl;
-        cout << "Expanded trie states without any crumb (% Trie expansions): " << (double) cntTrienodeswithoutcrumbs / (double) cntexpansionsTrie * (double) 100 << "%\n";
-        cout << "Expanded trie states reexpanded: " << cntreexpandedTrienodes << endl;
-        cout << "Expanded trie states reexpanded (% Trie expansions): " << (double) cntreexpandedTrienodes / (double) cntexpansionsTrie * (double) 100 << "%\n";
-        cout << "Expanded ref states: " << cntexpansionsref << "\n";
-        cout << "Expanded ref states (%): " << (double) cntexpansionsref / (double) cntexpansions * (double) 100 << "%\n";
-        cout << "Expanded ref states reexpanded (% ref expansions): " << (double) cntreexpandedrefnodes / (double) cntexpansionsref * (double) 100 << "%\n";
-    }
+    
+    cout << "Expanded states: " << cntexpansions << "\n";
+    cout << "Expanded trie states: " << cntexpansionsTrie << "\n";
+    cout << "Expanded trie states (%): " << (double) cntexpansionsTrie / (double) cntexpansions * (double) 100 << "%\n";
+    cout << "Expanded trie states without any crumb: " << cntTrienodeswithoutcrumbs << endl;
+    cout << "Expanded trie states without any crumb (% Trie expansions): " << (double) cntTrienodeswithoutcrumbs / (double) cntexpansionsTrie * (double) 100 << "%\n";
+    cout << "Expanded trie states reexpanded: " << cntreexpandedTrienodes << endl;
+    cout << "Expanded trie states reexpanded (% Trie expansions): " << (double) cntreexpandedTrienodes / (double) cntexpansionsTrie * (double) 100 << "%\n";
+    cout << "Expanded ref states: " << cntexpansionsref << "\n";
+    cout << "Expanded ref states (%): " << (double) cntexpansionsref / (double) cntexpansions * (double) 100 << "%\n";
+    cout << "Expanded ref states reexpanded (% ref expansions): " << (double) cntreexpandedrefnodes / (double) cntexpansionsref * (double) 100 << "%\n";
+    cout << "Times switching from trie to linear search: " << cntswitchfromtrietoline << "\n";
     cout << "Band: " << (double) cntexpansions / (double) n << "\n";
-    cout << "End reference position of optimal alignment: " << cur.p.rpos << "\n";
+    get_expanded_states(true);
     return cur.g;
 }

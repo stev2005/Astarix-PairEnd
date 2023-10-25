@@ -1,0 +1,654 @@
+D: 10 k: 12
+reading reference: 0.010491s.
+constructing trie: 0.894549s.
+
+Query 1:
+Reading query: 3.5e-05s.
+breaking query into seeds: 4e-05s.
+Number of Nodes with at least one crumb: 963
+Number of Trie Nodes with at least one crumb: 675
+Number of Ref Nodes with at least one crumb: 288
+Precompute of crumbs: 0.007117s.
+Missing crumbs in the Trie root: 4
+The root is not a leaf
+Number of missing crumbs of Node: 16 Statesr: 0 0x555701c5daa0 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 1 0x555701c5e020 0 4
+
+Number of missing crumbs of Node: 16 Statesr: 1 0x555701c5e020 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 2 0x555701c60820 0 4
+
+Number of missing crumbs of Node: 16 Statesr: 2 0x555701c60820 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 3 0x555701c6e620 0 4
+
+Number of missing crumbs of Node: 16 Statesr: 3 0x555701c6e620 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 15 Statesr: 4 0x555701c89960 0 4
+
+Number of missing crumbs of Node: 15 Statesr: 4 0x555701c89960 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 15 Statesr: 5 0x555701c899a0 0 4
+
+Number of missing crumbs of Node: 15 Statesr: 5 0x555701c899a0 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 15 Statesr: 6 0x555701dd1ea0 0 4
+
+Number of missing crumbs of Node: 15 Statesr: 6 0x555701dd1ea0 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 15 Statesr: 7 0x555701dd1ee0 0 4
+
+Number of missing crumbs of Node: 15 Statesr: 7 0x555701dd1ee0 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 15 Statesr: 8 0x555701dd2760 0 4
+
+Number of missing crumbs of Node: 15 Statesr: 8 0x555701dd2760 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 15 Statesr: 9 0x5557026d59a0 0 4
+
+Number of missing crumbs of Node: 15 Statesr: 9 0x5557026d59a0 0 4
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 15 Statesr: 10 0x5557026d59e0 0 4
+
+Expanded states: 964
+Expanded trie states: 516
+Expanded trie states (%): 53.527%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 144
+Expanded trie states reexpanded (% Trie expansions): 27.907%
+Expanded ref states: 448
+Expanded ref states (%): 46.473%
+Expanded ref states reexpanded (% ref expansions): 22.9911%
+Times switching from trie to linear search: 448
+Band: 3.856
+Cost: 6
+Alignment: 0.0155s.
+Cleaning help vectors: 3.6e-05s.
+
+Query 2:
+Reading query: 1.2e-05s.
+breaking query into seeds: 2.6e-05s.
+Number of Nodes with at least one crumb: 1184
+Number of Trie Nodes with at least one crumb: 700
+Number of Ref Nodes with at least one crumb: 484
+Precompute of crumbs: 0.007825s.
+Missing crumbs in the Trie root: 3
+The root is not a leaf
+Number of missing crumbs of Node: 17 Statesr: 0 0x555701c5daa0 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c5dda0 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c5dda0 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c60a60 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c60a60 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c66e20 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c66e20 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 4 0x555701c66e20 1 2
+
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c5e020 1 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c5e020 1 2
+
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c61c20 1 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c67020 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c61c20 1 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c61c20 1 2
+
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c60a60 1 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 4 0x555701c60a60 1 2
+
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c67020 1 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 4 0x555701c67020 1 2
+
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c66e20 1 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c66e60 0 2
+
+Expanded states: 1489
+Expanded trie states: 834
+Expanded trie states (%): 56.0107%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 312
+Expanded trie states reexpanded (% Trie expansions): 37.4101%
+Expanded ref states: 655
+Expanded ref states (%): 43.9893%
+Expanded ref states reexpanded (% ref expansions): 15.4198%
+Times switching from trie to linear search: 655
+Band: 5.956
+Cost: 5
+Alignment: 0.022562s.
+Cleaning help vectors: 4e-05s.
+
+Query 3:
+Reading query: 1.1e-05s.
+breaking query into seeds: 3e-05s.
+Number of Nodes with at least one crumb: 2216
+Number of Trie Nodes with at least one crumb: 1576
+Number of Ref Nodes with at least one crumb: 640
+Precompute of crumbs: 0.0105s.
+Missing crumbs in the Trie root: 1
+The root is not a leaf
+Number of missing crumbs of Node: 19 Statesr: 0 0x555701c5daa0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5db20 0 1
+
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5db20 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c603e0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c603e0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c603e0 1 1
+
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5e020 1 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 2 0x555701c5eb20 0 1
+
+Number of missing crumbs of Node: 19 Statesr: 0 0x555701c5e020 1 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5eb20 0 1
+
+Number of missing crumbs of Node: 19 Statesr: 0 0x555701c5e2a0 1 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 1 0x555701c615e0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 1 0x555701c5ed60 1 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c5ed60 1 1
+
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c63820 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 4 0x555701c72720 0 2
+
+Number of missing crumbs of Node: 19 Statesr: 0 0x555701c5db20 1 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 1 0x555701c603e0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c5ed60 1 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c5ed60 1 1
+
+Expanded states: 301
+Expanded trie states: 33
+Expanded trie states (%): 10.9635%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 3
+Expanded trie states reexpanded (% Trie expansions): 9.09091%
+Expanded ref states: 268
+Expanded ref states (%): 89.0365%
+Expanded ref states reexpanded (% ref expansions): 1.1194%
+Times switching from trie to linear search: 268
+Band: 1.204
+Cost: 2
+Alignment: 0.002998s.
+Cleaning help vectors: 6e-05s.
+
+Query 4:
+Reading query: 1.1e-05s.
+breaking query into seeds: 3e-05s.
+Number of Nodes with at least one crumb: 1496
+Number of Trie Nodes with at least one crumb: 1128
+Number of Ref Nodes with at least one crumb: 368
+Precompute of crumbs: 0.009424s.
+Missing crumbs in the Trie root: 2
+The root is not a leaf
+Number of missing crumbs of Node: 18 Statesr: 0 0x555701c5daa0 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 1 0x555701c5dda0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 1 0x555701c5dda0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c60a60 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c60a60 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c66e20 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c66e20 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 4 0x555701c766a0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 4 0x555701c766a0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 5 0x555701cdea60 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 5 0x555701cdea60 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 6 0x555701f03aa0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 6 0x555701f03aa0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 7 0x555701f03ae0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 7 0x555701f03ae0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 8 0x5557021eb560 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 8 0x5557021eb560 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 9 0x555704e7e760 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 9 0x555704e7e760 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 10 0x555704e7e7a0 0 1
+
+Expanded states: 2272
+Expanded trie states: 1313
+Expanded trie states (%): 57.7905%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 578
+Expanded trie states reexpanded (% Trie expansions): 44.0213%
+Expanded ref states: 959
+Expanded ref states (%): 42.2095%
+Expanded ref states reexpanded (% ref expansions): 41.293%
+Times switching from trie to linear search: 959
+Band: 9.088
+Cost: 4
+Alignment: 0.030184s.
+Cleaning help vectors: 6.1e-05s.
+
+Query 5:
+Reading query: 1.4e-05s.
+breaking query into seeds: 2.8e-05s.
+Number of Nodes with at least one crumb: 1088
+Number of Trie Nodes with at least one crumb: 748
+Number of Ref Nodes with at least one crumb: 340
+Precompute of crumbs: 0.007799s.
+Missing crumbs in the Trie root: 3
+The root is not a leaf
+Number of missing crumbs of Node: 17 Statesr: 0 0x555701c5daa0 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c5db20 0 3
+
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c5db20 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 2 0x555701c5f9e0 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 2 0x555701c5f9e0 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 3 0x555701c60620 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 3 0x555701c60620 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 4 0x555701c72a60 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 4 0x555701c72a60 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 5 0x555701d02e20 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 5 0x555701d02e20 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 6 0x555701d2a0a0 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 6 0x555701d2a0a0 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 7 0x555701ecd1e0 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 7 0x555701ecd1e0 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 8 0x555702877a60 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 8 0x555702877a60 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 9 0x555702877aa0 0 3
+
+Number of missing crumbs of Node: 16 Statesr: 9 0x555702877aa0 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 16 Statesr: 10 0x555702877ae0 0 3
+
+Expanded states: 3163
+Expanded trie states: 1522
+Expanded trie states (%): 48.1189%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 672
+Expanded trie states reexpanded (% Trie expansions): 44.1524%
+Expanded ref states: 1641
+Expanded ref states (%): 51.8811%
+Expanded ref states reexpanded (% ref expansions): 42.8397%
+Times switching from trie to linear search: 1641
+Band: 12.652
+Cost: 6
+Alignment: 0.037051s.
+Cleaning help vectors: 4e-05s.
+
+Query 6:
+Reading query: 1.3e-05s.
+breaking query into seeds: 2.2e-05s.
+Number of Nodes with at least one crumb: 1060
+Number of Trie Nodes with at least one crumb: 732
+Number of Ref Nodes with at least one crumb: 328
+Precompute of crumbs: 0.00892s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Number of missing crumbs of Node: 20 Statesr: 0 0x555701c5daa0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 20 Statesr: 1 0x555701c5e020 0 0
+
+Number of missing crumbs of Node: 20 Statesr: 1 0x555701c5e020 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 20 Statesr: 2 0x555701c5e060 0 0
+
+Number of missing crumbs of Node: 20 Statesr: 2 0x555701c5e060 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 3 0x555701c5f360 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 3 0x555701c5f360 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 4 0x555701c5fc20 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 4 0x555701c5fc20 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 5 0x555701c67a20 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 5 0x555701c67a20 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 6 0x555701c67a60 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 6 0x555701c67a60 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 7 0x555701d2f6e0 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 7 0x555701d2f6e0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 8 0x555701d2f720 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 8 0x555701d2f720 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 9 0x555702683fe0 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 9 0x555702683fe0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 10 0x555702bbaae0 0 0
+
+Expanded states: 252
+Expanded trie states: 11
+Expanded trie states (%): 4.36508%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 241
+Expanded ref states (%): 95.6349%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 241
+Band: 1.008
+Cost: 0
+Alignment: 0.00205s.
+Cleaning help vectors: 4e-05s.
+
+Query 7:
+Reading query: 2.1e-05s.
+breaking query into seeds: 2.8e-05s.
+Number of Nodes with at least one crumb: 1438
+Number of Trie Nodes with at least one crumb: 1030
+Number of Ref Nodes with at least one crumb: 408
+Precompute of crumbs: 0.009347s.
+Missing crumbs in the Trie root: 1
+The root is not a leaf
+Number of missing crumbs of Node: 19 Statesr: 0 0x555701c5daa0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5e020 0 1
+
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5e020 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c677e0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c677e0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c67f60 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c67f60 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 4 0x555701c67fa0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 4 0x555701c67fa0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 5 0x555701c67fe0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 5 0x555701c67fe0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 6 0x555701c68020 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 6 0x555701c68020 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 7 0x555701d605e0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 7 0x555701d605e0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 8 0x5557021b72a0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 8 0x5557021b72a0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 9 0x555702c87fa0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 9 0x555702c87fa0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 10 0x5557036fc8a0 0 1
+
+Expanded states: 1786
+Expanded trie states: 345
+Expanded trie states (%): 19.3169%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 96
+Expanded trie states reexpanded (% Trie expansions): 27.8261%
+Expanded ref states: 1441
+Expanded ref states (%): 80.6831%
+Expanded ref states reexpanded (% ref expansions): 44.3442%
+Times switching from trie to linear search: 1441
+Band: 7.144
+Cost: 3
+Alignment: 0.015571s.
+Cleaning help vectors: 4.3e-05s.
+
+Query 8:
+Reading query: 1e-05s.
+breaking query into seeds: 2.2e-05s.
+Number of Nodes with at least one crumb: 15261
+Number of Trie Nodes with at least one crumb: 9154
+Number of Ref Nodes with at least one crumb: 6107
+Precompute of crumbs: 0.04203s.
+Missing crumbs in the Trie root: 1
+The root is not a leaf
+Number of missing crumbs of Node: 19 Statesr: 0 0x555701c5daa0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5e2a0 0 1
+
+Number of missing crumbs of Node: 19 Statesr: 1 0x555701c5e2a0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c5f560 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 2 0x555701c5f560 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c62c60 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 3 0x555701c62c60 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 4 0x555701c66c60 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 4 0x555701c66c60 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 5 0x555701c66ca0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 5 0x555701c66ca0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 6 0x555701c66ce0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 6 0x555701c66ce0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 7 0x555701d33aa0 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 7 0x555701d33aa0 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 8 0x555701fe3420 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 8 0x555701fe3420 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 9 0x555701fe3460 0 1
+
+Number of missing crumbs of Node: 18 Statesr: 9 0x555701fe3460 0 1
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 18 Statesr: 10 0x5557041ac260 0 1
+
+Expanded states: 918
+Expanded trie states: 82
+Expanded trie states (%): 8.93246%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 10
+Expanded trie states reexpanded (% Trie expansions): 12.1951%
+Expanded ref states: 836
+Expanded ref states (%): 91.0675%
+Expanded ref states reexpanded (% ref expansions): 14.2344%
+Times switching from trie to linear search: 836
+Band: 3.672
+Cost: 3
+Alignment: 0.008916s.
+Cleaning help vectors: 0.000442s.
+
+Query 9:
+Reading query: 1.4e-05s.
+breaking query into seeds: 2.6e-05s.
+Number of Nodes with at least one crumb: 1116
+Number of Trie Nodes with at least one crumb: 740
+Number of Ref Nodes with at least one crumb: 376
+Precompute of crumbs: 0.00891s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Number of missing crumbs of Node: 20 Statesr: 0 0x555701c5daa0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 20 Statesr: 1 0x555701c5e2a0 0 0
+
+Number of missing crumbs of Node: 20 Statesr: 1 0x555701c5e2a0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 20 Statesr: 2 0x555701c5e2e0 0 0
+
+Number of missing crumbs of Node: 20 Statesr: 2 0x555701c5e2e0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 20 Statesr: 3 0x555701c5e320 0 0
+
+Number of missing crumbs of Node: 20 Statesr: 3 0x555701c5e320 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 20 Statesr: 4 0x555701c5e360 0 0
+
+Number of missing crumbs of Node: 20 Statesr: 4 0x555701c5e360 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 20 Statesr: 5 0x555701c91060 0 0
+
+Number of missing crumbs of Node: 20 Statesr: 5 0x555701c91060 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 6 0x555701d6a9e0 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 6 0x555701d6a9e0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 7 0x555701f080a0 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 7 0x555701f080a0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 8 0x555703b15620 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 8 0x555703b15620 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 9 0x5557047b61a0 0 0
+
+Number of missing crumbs of Node: 19 Statesr: 9 0x5557047b61a0 0 0
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 19 Statesr: 10 0x5557047b61e0 0 0
+
+Expanded states: 16862
+Expanded trie states: 7607
+Expanded trie states (%): 45.1133%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 4392
+Expanded trie states reexpanded (% Trie expansions): 57.7363%
+Expanded ref states: 9255
+Expanded ref states (%): 54.8867%
+Expanded ref states reexpanded (% ref expansions): 61.4371%
+Times switching from trie to linear search: 9255
+Band: 67.448
+Cost: 7
+Alignment: 0.139942s.
+Cleaning help vectors: 6.4e-05s.
+
+Query 10:
+Reading query: 2.2e-05s.
+breaking query into seeds: 2.9e-05s.
+Number of Nodes with at least one crumb: 624
+Number of Trie Nodes with at least one crumb: 376
+Number of Ref Nodes with at least one crumb: 248
+Precompute of crumbs: 0.00724s.
+Missing crumbs in the Trie root: 3
+The root is not a leaf
+Number of missing crumbs of Node: 17 Statesr: 0 0x555701c5daa0 0 3
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c5e2a0 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 1 0x555701c5e2a0 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c5e2e0 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 2 0x555701c5e2e0 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c63420 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 3 0x555701c63420 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 4 0x555701c69d60 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 4 0x555701c69d60 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 5 0x555701ca4620 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 5 0x555701ca4620 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 6 0x555701ca4660 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 6 0x555701ca4660 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 7 0x555701ca46a0 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 7 0x555701ca46a0 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 8 0x555701cebf60 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 8 0x555701cebf60 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 9 0x555701cebfa0 0 2
+
+Number of missing crumbs of Node: 17 Statesr: 9 0x555701cebfa0 0 2
+Inheritor of the root with minimum f:
+Number of missing crumbs of Node: 17 Statesr: 10 0x555701cebfa0 1 2
+
+Expanded states: 18988
+Expanded trie states: 14099
+Expanded trie states (%): 74.2522%
+Expanded trie states without any crumb: 0
+Expanded trie states without any crumb (% Trie expansions): 0%
+Expanded trie states reexpanded: 8667
+Expanded trie states reexpanded (% Trie expansions): 61.4724%
+Expanded ref states: 4889
+Expanded ref states (%): 25.7478%
+Expanded ref states reexpanded (% ref expansions): 62.5486%
+Times switching from trie to linear search: 4889
+Band: 75.952
+Cost: 11
+Alignment: 0.20223s.
+Cleaning help vectors: 5e-05s.
+
