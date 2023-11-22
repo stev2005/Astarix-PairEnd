@@ -62,6 +62,7 @@ int main(int argc, char *argv[]){
     cerr <<"Start of the program\n";
     int d, k, insdist, drange;
     string typealignment, heuristic;
+    string fileref, file;
     parameters_default_values(d, k, typealignment, heuristic, insdist, drange);
     read_parameters(argc, argv, d, k, typealignment, heuristic, insdist, drange);
     //char *typealignment, *heuristic_method, *shownexplstates, *triestart;
