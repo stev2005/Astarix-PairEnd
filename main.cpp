@@ -4,18 +4,8 @@
 #include "headers/trie.h"
 #include "headers/astar/astar_single_reads.h"
 //#include "headers/astar/astar_pair-end.h"
+#include "headers/readparameters.h"
 using namespace std;
-
-int charstring_to_int(char *num){
-    int len = strlen(num);
-    int n = 0, digit;
-    for (int i = 0; i < len; ++i){
-        digit = (int)num [i] - (int)'0';
-        n *= 10;
-        n += digit;
-    }
-    return n;
-}
 
 void printtriecrumbs(map <Node, bitset<64> > &crumbs, Trie *T, string s){
     cout << "string s: "<< s << " crumbs: ";
@@ -38,17 +28,6 @@ void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
         }
     }
     printtriecrumbs(crumbs, root, "");
-}
-
-inline void program_arguments_to_variables(char *argv[], char *&typealignment, int &d, int &k, char *&heuristic, char *&shownexplstates, char *&triestart, int &dmatch){
-    typealignment = argv[1];///first argument: aligning single reads or paired-end
-    d = charstring_to_int(argv[2]);///second argument: value of D
-    k = charstring_to_int(argv[3]);///third argument: value of k
-    heuristic = argv[4];///fourth argument: used heuristic
-    shownexplstates = argv[5];///fifth argument: show or not show explored states
-    triestart = argv[6];///sixth argument: triestart: Yes or No
-    if (strcmp(typealignment, "pairend-read") == 0)
-        dmatch = charstring_to_int(argv[7]);///seventh argument: distance of filtering matches
 }
 
 inline void building_tries(string &ref, int d, int k, Trie *&rootdmer, Trie *&rootkmer, MatchingKmers &info){
@@ -81,9 +60,12 @@ int main(int argc, char *argv[]){
     cin.tie(NULL);
     cout.tie(NULL);*/
     cerr <<"Start of the program\n";
-    int d, k, dmatch;
-    char *typealignment, *heuristic_method, *shownexplstates, *triestart;
-    program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart, dmatch);
+    int d, k, insdist, drange;
+    string typealignment, heuristic;
+    parameters_default_values(d, k, typealignment, heuristic, insdist, drange);
+    read_parameters(argc, argv, d, k, typealignment, heuristic, insdist, drange);
+    //char *typealignment, *heuristic_method, *shownexplstates, *triestart;
+    //program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart, dmatch);
     cout << "D: " << d << " k: " << k << endl;
     string ref;
     int testcases;
@@ -105,21 +87,22 @@ int main(int argc, char *argv[]){
         cout << "Query "<< testcase << ":\n";
         int rezult;
         t = clock();
-        if (strcmp(typealignment, "single-read") == 0){
+        //if (strcmp(typealignment, "single-read") == 0){
+        if (typealignment == "single-read"){
             cerr << "If for single read alingment\n";
             string query;
             cin>>query;
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             maximum_edit_cost = query.size() + 1;
-            if (strcmp(heuristic_method, "seed_heuristic") == 0){
+            //if (strcmp(heuristic_method, "seed_heuristic") == 0){
+            if (heuristic == "seed_heuristic"){
                 t = clock();
                 info.seeds = query_into_seeds(query, k, rootkmer);
                 nindel = info.seeds.size();
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
-                //getcrumbs(ref, d, k, info, 0);
                 getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                 info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
                 t = clock() - t;

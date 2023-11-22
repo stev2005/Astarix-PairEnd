@@ -7,7 +7,8 @@ testsingleread_seed_heuristic:
 	time ./main.exe single-read 10 12 seed_heuristic Yes Yes <testsingleread.in >testsingleread_statsAstar.out
 
 exptestsingleread_seed_heuristic:
-	time ./main.exe single-read 10 12 seed_heuristic Yes Yes <testsingleread.in >exptestsingleread_statsAstar.out
+	#time ./main.exe single-read 10 12 seed_heuristic Yes Yes <testsingleread.in >exptestsingleread_statsAstar.out
+	time ./main.exe --alignment single-read --heuristic seed_heuristic --trie-depth 10 --seed-len 12 <testsingleread.in >exptestsingleread_statsAstar.out
 
 problemtest:
 	time ./main.exe single-read 10 20 seed_heuristic Yes Yes <problemtest.in >problemtest.out
