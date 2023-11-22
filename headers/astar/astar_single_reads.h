@@ -249,6 +249,20 @@ vector<Statesr> & get_next_states_sr(int qpos, Node p, char cqpos, string &ref, 
     return next;
 }
 
+void showinfoaboutstatesrancestors(vector<Statesr> &nextst, MatchingKmers &info){
+    //cout << "Inheritors of the root:\n";
+    cout << "Inheritor of the root with minimum f:\n";
+    /*for (auto i: nextst)
+        i.print();*/
+        Statesr minf(-1, Node(0), 1000, 1000);
+        for (auto i: nextst)
+            if (i.g + i.h < minf.g + minf.h)
+                minf = i;
+    cout << "Number of missing crumbs of Node: " << info.crumbs[minf.p].count() << " ";
+    minf.print();
+    cout << endl;
+}
+
 cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info){
     int n = query.size();
     int m = ref.size();
@@ -270,10 +284,10 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
         cur = q.top();
         cntexpansions++;
         q.pop();
-        if (cntshow < 10){
+        /*if (cntshow < 10){
             cout << "Number of missing crumbs of Node: " << info.crumbs[cur.p].count() << " ";
             cur.print();
-        }
+        }*/
             
         if (cur.p.is_in_trie()){
             if (istrie == false)
@@ -310,20 +324,10 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
             }
             else{
                 vector<Statesr> & nextst = get_next_states_sr(cur.qpos, cur.p, query[cur.qpos], ref, k, info.last, info.prevpos, info.seeds, info.crumbs);
-                if (cntshow < 10){
+                /*if (cntshow < 10){
                     cntshow++;
-                    //cout << "Inheritors of the root:\n";
-                    cout << "Inheritor of the root with minimum f:\n";
-                    /*for (auto i: nextst)
-                        i.print();*/
-                    Statesr minf(-1, Node(0), 1000, 1000);
-                    for (auto i: nextst)
-                        if (i.g + i.h < minf.g + minf.h)
-                            minf = i;
-                    cout << "Number of missing crumbs of Node: " << info.crumbs[minf.p].count() << " ";
-                    minf.print();
-                    cout << endl;
-                }
+                    showinfoaboutstatesrancestors(nextst, info);
+                }*/
                 for (auto i: nextst){
                     i.g += cur.g;
                     q.push(i);
