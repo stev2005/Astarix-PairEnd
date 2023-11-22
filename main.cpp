@@ -62,10 +62,11 @@ int main(int argc, char *argv[]){
     cout.tie(NULL);*/
     cerr <<"Start of the program\n";
     int d, k, insdist, drange;
-    string typealignment, heuristic;
+    string typealignment;
+    string& heuristiclocal = heuristic;
     string fileref, filequery;
-    parameters_default_values(d, k, typealignment, heuristic, insdist, drange, fileref, filequery);
-    read_parameters(argc, argv, d, k, typealignment, heuristic, insdist, drange, fileref, filequery);
+    parameters_default_values(d, k, typealignment, heuristiclocal, insdist, drange, fileref, filequery);
+    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, insdist, drange, fileref, filequery);
     cout << "D: " << d << " k: " << k << endl;
     string ref;
     int testcases;

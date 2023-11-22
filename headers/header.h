@@ -1,7 +1,7 @@
 #pragma once
 
 //#define NDEBUG
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 char base[4] = {'A', 'C', 'G', 'T'};
 
@@ -10,3 +10,4 @@ cost_t inf = (1<<30);
 cost_t maximum_edit_cost;
 
 int nindel = 0;///can be taken as ndel and nins if deletion cost ==  insertion cost
+string heuristic;

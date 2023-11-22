@@ -163,8 +163,21 @@ cost_t seed_heuristic(int qpos, Node p, int k, vector<int> &seeds, crumbs_t & cr
     return hvalue;
 }
 
+cost_t choose_heuristic(int qpos, Node p, int k, vector<int> &seeds, crumbs_t &crumbs){
+    if (heuristic == "seed_heuristic")
+        return seed_heuristic(qpos, p, k, seeds, crumbs);
+    else if (heuristic == "Dijkstra_heuristic")
+        return 0;
+    else{
+        cerr << "The choosen heuristic is unavailable.\n";
+        cerr << "Choosen heuristic: " << heuristic << "\n";
+        cerr << "Program is going to abort.\n";
+        assert(false);
+    }
+}
+
 Statesr createStatesr(int qpos, Node p, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
-    return Statesr(qpos, p, g, seed_heuristic(qpos, p, k, seeds, crumbs));
+    return Statesr(qpos, p, g, choose_heuristic(qpos, p, k, seeds, crumbs));
 }
 
 Statesr createStatesr(int qpos, int rpos, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
