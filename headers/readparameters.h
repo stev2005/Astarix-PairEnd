@@ -13,10 +13,11 @@ int string_to_int(string s){
     return num;
 }
 
-inline void read_parameters(int argc, char *argv[], int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange){
+inline void read_parameters(int argc, char *argv[], int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange, string &fileref, string &filequery){
     for (int i = 1; i < argc; i += 2){
         string argument(argv[i]);
         string value(argv[i + 1]);
+        //cerr << "i: " << i << " argument: " << argument << " value: " << value << "\n";
         if (argument == "--trie-depth")
             d = string_to_int(value);
         else if (argument == "--seed-len")
@@ -29,6 +30,10 @@ inline void read_parameters(int argc, char *argv[], int &d, int &k, string &type
             insdist = string_to_int(value);
         else if (argument == "--filter-difference")
             drange = string_to_int(value);
+        else if (argument == "--reference")
+            fileref = value;
+        else if (argument == "--query")
+            filequery = value;
         else{
             cerr << argument << " is not a valid program argument\n";
             cerr << "Program is going to abort\n";
@@ -37,33 +42,13 @@ inline void read_parameters(int argc, char *argv[], int &d, int &k, string &type
     }
 }
 
-inline void parameters_default_values(int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange){
+inline void parameters_default_values(int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange, string &fileref, string &filequery){
     d = 10;
     k = 13;
     typealignment = "single-read";
     heuristic = "seed_heuristic";
     insdist = 5000;
     drange = 25;
+    fileref = "data/single-reads/reference.in";
+    filequery = "data/single-reads/tests/1.in";
 }
-
-/*inline void program_arguments_to_variables(char *argv[], char *&typealignment, int &d, int &k, char *&heuristic, char *&shownexplstates, char *&triestart, int &dmatch){
-    typealignment = argv[1];///first argument: aligning single reads or paired-end
-    d = charstring_to_int(argv[2]);///second argument: value of D
-    k = charstring_to_int(argv[3]);///third argument: value of k
-    heuristic = argv[4];///fourth argument: used heuristic
-    shownexplstates = argv[5];///fifth argument: show or not show explored states
-    triestart = argv[6];///sixth argument: triestart: Yes or No
-    if (strcmp(typealignment, "pairend-read") == 0)
-        dmatch = charstring_to_int(argv[7]);///seventh argument: distance of filtering matches
-}*/
-
-/*int charstring_to_int(char* num){
-    int len = strlen(num);
-    int n = 0, digit;
-    for (int i = 0; i < len; ++i){
-        digit = (int)num [i] - (int)'0';
-        n *= 10;
-        n += digit;
-    }
-    return n;
-}*/

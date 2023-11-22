@@ -5,6 +5,7 @@
 #include "headers/astar/astar_single_reads.h"
 //#include "headers/astar/astar_pair-end.h"
 #include "headers/readparameters.h"
+#include "headers/readinput.h"
 using namespace std;
 
 void printtriecrumbs(map <Node, bitset<64> > &crumbs, Trie *T, string s){
@@ -62,21 +63,22 @@ int main(int argc, char *argv[]){
     cerr <<"Start of the program\n";
     int d, k, insdist, drange;
     string typealignment, heuristic;
-    string fileref, file;
-    parameters_default_values(d, k, typealignment, heuristic, insdist, drange);
-    read_parameters(argc, argv, d, k, typealignment, heuristic, insdist, drange);
-    //char *typealignment, *heuristic_method, *shownexplstates, *triestart;
-    //program_arguments_to_variables(argv, typealignment, d, k, heuristic_method, shownexplstates, triestart, dmatch);
+    string fileref, filequery;
+    parameters_default_values(d, k, typealignment, heuristic, insdist, drange, fileref, filequery);
+    read_parameters(argc, argv, d, k, typealignment, heuristic, insdist, drange, fileref, filequery);
     cout << "D: " << d << " k: " << k << endl;
     string ref;
     int testcases;
     cerr << "int k has a value equal to " << k << "\n";
     clock_t t = clock();
-    cin >> ref ;
+    //cin >> ref ;
+    read_reference(fileref, ref);
     t = clock() - t;
     cerr << "entered reference\n";
     cout << "reading reference: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-    cin >> testcases ;
+    set_query_in_file(filequery);
+    //cin >> testcases ;
+    testcases = get_num_testcases();
     cerr << "entered num of tescases\n" ;
     MatchingKmers info;
     Trie *rootdmer = new Trie();
@@ -88,15 +90,14 @@ int main(int argc, char *argv[]){
         cout << "Query "<< testcase << ":\n";
         int rezult;
         t = clock();
-        //if (strcmp(typealignment, "single-read") == 0){
         if (typealignment == "single-read"){
             cerr << "If for single read alingment\n";
             string query;
-            cin>>query;
+            //cin>>query;
+            query = get_single_read_query();
             t = clock() - t;
             cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             maximum_edit_cost = query.size() + 1;
-            //if (strcmp(heuristic_method, "seed_heuristic") == 0){
             if (heuristic == "seed_heuristic"){
                 t = clock();
                 info.seeds = query_into_seeds(query, k, rootkmer);
@@ -112,7 +113,6 @@ int main(int argc, char *argv[]){
                 //printmatches(info);
             }
             t = clock();
-            //rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, 0);
             rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info);
             cout << "Cost: " << rezult << "\n";
             t = clock() - t;
@@ -120,7 +120,7 @@ int main(int argc, char *argv[]){
         }
         /*else{
             pair <string, string> queryp;
-            cin >> queryp.first >> queryp.second;
+            cin >> queryp.first >> queryp.second;///use the get funct
             nindel = queryp.first.size() / k;
             if (queryp.first.size() % k != 0)
                 nindel++;

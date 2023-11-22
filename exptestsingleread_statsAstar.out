@@ -1,14 +1,14 @@
 D: 10 k: 12
-reading reference: 0.01078s.
-constructing trie: 0.932399s.
+reading reference: 0.001457s.
+constructing trie: 0.97405s.
 
 Query 1:
-Reading query: 1.2e-05s.
-breaking query into seeds: 1.3e-05s.
+Reading query: 8e-06s.
+breaking query into seeds: 1.4e-05s.
 Number of Nodes with at least one crumb: 963
 Number of Trie Nodes with at least one crumb: 675
 Number of Ref Nodes with at least one crumb: 288
-Precompute of crumbs: 0.007019s.
+Precompute of crumbs: 0.007037s.
 Missing crumbs in the Trie root: 4
 The root is not a leaf
 Expanded states: 964
@@ -24,16 +24,16 @@ Expanded ref states reexpanded (% ref expansions): 22.9911%
 Times switching from trie to linear search: 448
 Band: 3.856
 Cost: 6
-Alignment: 0.014682s.
+Alignment: 0.014607s.
 Cleaning help vectors: 3.4e-05s.
 
 Query 2:
-Reading query: 1.2e-05s.
-breaking query into seeds: 1.2e-05s.
+Reading query: 9e-06s.
+breaking query into seeds: 1.3e-05s.
 Number of Nodes with at least one crumb: 1184
 Number of Trie Nodes with at least one crumb: 700
 Number of Ref Nodes with at least one crumb: 484
-Precompute of crumbs: 0.007562s.
+Precompute of crumbs: 0.007283s.
 Missing crumbs in the Trie root: 3
 The root is not a leaf
 Expanded states: 1489
@@ -49,16 +49,16 @@ Expanded ref states reexpanded (% ref expansions): 15.4198%
 Times switching from trie to linear search: 655
 Band: 5.956
 Cost: 5
-Alignment: 0.021559s.
-Cleaning help vectors: 4e-05s.
+Alignment: 0.021825s.
+Cleaning help vectors: 3.8e-05s.
 
 Query 3:
-Reading query: 1.1e-05s.
-breaking query into seeds: 1.5e-05s.
+Reading query: 1.2e-05s.
+breaking query into seeds: 3.3e-05s.
 Number of Nodes with at least one crumb: 2216
 Number of Trie Nodes with at least one crumb: 1576
 Number of Ref Nodes with at least one crumb: 640
-Precompute of crumbs: 0.010118s.
+Precompute of crumbs: 0.009847s.
 Missing crumbs in the Trie root: 1
 The root is not a leaf
 Expanded states: 301
@@ -74,16 +74,16 @@ Expanded ref states reexpanded (% ref expansions): 1.1194%
 Times switching from trie to linear search: 268
 Band: 1.204
 Cost: 2
-Alignment: 0.002761s.
-Cleaning help vectors: 6e-05s.
+Alignment: 0.00273s.
+Cleaning help vectors: 5.8e-05s.
 
 Query 4:
 Reading query: 1.1e-05s.
-breaking query into seeds: 1.6e-05s.
+breaking query into seeds: 3.1e-05s.
 Number of Nodes with at least one crumb: 1496
 Number of Trie Nodes with at least one crumb: 1128
 Number of Ref Nodes with at least one crumb: 368
-Precompute of crumbs: 0.009405s.
+Precompute of crumbs: 0.009094s.
 Missing crumbs in the Trie root: 2
 The root is not a leaf
 Expanded states: 2272
@@ -99,16 +99,16 @@ Expanded ref states reexpanded (% ref expansions): 41.293%
 Times switching from trie to linear search: 959
 Band: 9.088
 Cost: 4
-Alignment: 0.028991s.
-Cleaning help vectors: 5.1e-05s.
+Alignment: 0.030162s.
+Cleaning help vectors: 5.9e-05s.
 
 Query 5:
-Reading query: 2e-05s.
-breaking query into seeds: 1.6e-05s.
+Reading query: 1.3e-05s.
+breaking query into seeds: 2.7e-05s.
 Number of Nodes with at least one crumb: 1088
 Number of Trie Nodes with at least one crumb: 748
 Number of Ref Nodes with at least one crumb: 340
-Precompute of crumbs: 0.007673s.
+Precompute of crumbs: 0.007646s.
 Missing crumbs in the Trie root: 3
 The root is not a leaf
 Expanded states: 3163
@@ -124,16 +124,16 @@ Expanded ref states reexpanded (% ref expansions): 42.8397%
 Times switching from trie to linear search: 1641
 Band: 12.652
 Cost: 6
-Alignment: 0.03597s.
-Cleaning help vectors: 4.4e-05s.
+Alignment: 0.037246s.
+Cleaning help vectors: 5.3e-05s.
 
 Query 6:
 Reading query: 1.2e-05s.
-breaking query into seeds: 1.7e-05s.
+breaking query into seeds: 2.4e-05s.
 Number of Nodes with at least one crumb: 1060
 Number of Trie Nodes with at least one crumb: 732
 Number of Ref Nodes with at least one crumb: 328
-Precompute of crumbs: 0.008918s.
+Precompute of crumbs: 0.008757s.
 Missing crumbs in the Trie root: 0
 The root is not a leaf
 Expanded states: 252
@@ -149,16 +149,16 @@ Expanded ref states reexpanded (% ref expansions): 0%
 Times switching from trie to linear search: 241
 Band: 1.008
 Cost: 0
-Alignment: 0.001844s.
-Cleaning help vectors: 3.7e-05s.
+Alignment: 0.001833s.
+Cleaning help vectors: 2.8e-05s.
 
 Query 7:
-Reading query: 1.1e-05s.
-breaking query into seeds: 1.9e-05s.
+Reading query: 1e-05s.
+breaking query into seeds: 2.5e-05s.
 Number of Nodes with at least one crumb: 1438
 Number of Trie Nodes with at least one crumb: 1030
 Number of Ref Nodes with at least one crumb: 408
-Precompute of crumbs: 0.00911s.
+Precompute of crumbs: 0.009126s.
 Missing crumbs in the Trie root: 1
 The root is not a leaf
 Expanded states: 1786
@@ -174,16 +174,16 @@ Expanded ref states reexpanded (% ref expansions): 44.3442%
 Times switching from trie to linear search: 1441
 Band: 7.144
 Cost: 3
-Alignment: 0.014916s.
-Cleaning help vectors: 4.8e-05s.
+Alignment: 0.015386s.
+Cleaning help vectors: 5.4e-05s.
 
 Query 8:
 Reading query: 1.6e-05s.
-breaking query into seeds: 2.9e-05s.
+breaking query into seeds: 4.5e-05s.
 Number of Nodes with at least one crumb: 15261
 Number of Trie Nodes with at least one crumb: 9154
 Number of Ref Nodes with at least one crumb: 6107
-Precompute of crumbs: 0.041912s.
+Precompute of crumbs: 0.043388s.
 Missing crumbs in the Trie root: 1
 The root is not a leaf
 Expanded states: 918
@@ -199,16 +199,16 @@ Expanded ref states reexpanded (% ref expansions): 14.2344%
 Times switching from trie to linear search: 836
 Band: 3.672
 Cost: 3
-Alignment: 0.008562s.
-Cleaning help vectors: 0.000423s.
+Alignment: 0.008513s.
+Cleaning help vectors: 0.000434s.
 
 Query 9:
-Reading query: 1.2e-05s.
-breaking query into seeds: 2.4e-05s.
+Reading query: 1.1e-05s.
+breaking query into seeds: 3.5e-05s.
 Number of Nodes with at least one crumb: 1116
 Number of Trie Nodes with at least one crumb: 740
 Number of Ref Nodes with at least one crumb: 376
-Precompute of crumbs: 0.008821s.
+Precompute of crumbs: 0.008791s.
 Missing crumbs in the Trie root: 0
 The root is not a leaf
 Expanded states: 16862
@@ -224,16 +224,16 @@ Expanded ref states reexpanded (% ref expansions): 61.4371%
 Times switching from trie to linear search: 9255
 Band: 67.448
 Cost: 7
-Alignment: 0.134604s.
-Cleaning help vectors: 5.8e-05s.
+Alignment: 0.140693s.
+Cleaning help vectors: 7e-05s.
 
 Query 10:
-Reading query: 1.9e-05s.
-breaking query into seeds: 2.4e-05s.
+Reading query: 1.7e-05s.
+breaking query into seeds: 2.2e-05s.
 Number of Nodes with at least one crumb: 624
 Number of Trie Nodes with at least one crumb: 376
 Number of Ref Nodes with at least one crumb: 248
-Precompute of crumbs: 0.00712s.
+Precompute of crumbs: 0.007176s.
 Missing crumbs in the Trie root: 3
 The root is not a leaf
 Expanded states: 18988
@@ -249,6 +249,6 @@ Expanded ref states reexpanded (% ref expansions): 62.5486%
 Times switching from trie to linear search: 4889
 Band: 75.952
 Cost: 11
-Alignment: 0.189065s.
-Cleaning help vectors: 4.6e-05s.
+Alignment: 0.197456s.
+Cleaning help vectors: 4.9e-05s.
 
