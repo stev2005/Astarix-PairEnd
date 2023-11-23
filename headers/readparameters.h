@@ -28,7 +28,7 @@ inline void read_parameters(int argc, char *argv[], int &d, int &k, string &type
             heuristic = string (value);
         else if (argument == "--insert-distance")
             insdist = string_to_int(value);
-        else if (argument == "--filter-difference")
+        else if (argument == "--filter-distance-difference")
             drange = string_to_int(value);
         else if (argument == "--reference")
             fileref = value;
