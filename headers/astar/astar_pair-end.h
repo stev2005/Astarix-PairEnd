@@ -158,6 +158,74 @@ inline void filter_matches(MatchingKmers &info, int  insdist, int drange, int re
 
 inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
     getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
-    
     getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
+}
+
+Statepr createStatepr(int qpos, Node p1, Node p2, cost_t g, cost_t h){
+    return Statepr(qpos, p1, p2, g, h);
+}
+
+Statepr createStatepr(int qpos, int rpos1, int rpos2, cost_t g, cost_t h){
+    return createStatepr(qpos, Node(rpos1), Node(rpos2), g, h);
+}
+
+Statepr createStatepr(int qpos, int rpos1, Trie* u2, cost_t g, cost_t h){
+    return createStatepr(qpos, Node(rpos1), Node(u2), g, h);
+}
+
+Statepr createStatepr(int qpos, int rpos1, Node p2, cost_t g, cost_t h){
+    return createStatepr(qpos, Node(rpos1), p2, g, h);
+}
+
+Statepr createStatepr(int qpos, Trie* u1, int rpos2, cost_t g, cost_t h){
+    return createStatepr(qpos, Node(u1), Node(rpos2), g, h);
+}
+
+Statepr createStatepr(int qpos, Trie* u1, Trie* u2, cost_t g, cost_t h){
+    return createStatepr(qpos, Node(u1), Node(u2), g, h);
+}
+
+Statepr createStatepr(int qpos, Trie* u1, Node p2, cost_t g, cost_t h){
+    return createStatepr(qpos, Node(u1), p2, g, h);
+}
+
+Statepr createStatepr(int qpos, Node p1, int rpos2, cost_t g, cost_t h){
+    return createStatepr(qpos, p1, Node(rpos2), g, h);
+}
+
+Statepr createStatepr(int qpos, Node p1, Trie* u2, cost_t g, cost_t h){
+    return createStatepr(qpos, p1, Node(u2), g, h);
+}
+
+inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *root){
+
+}
+
+cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int d, int k, Trie *root, MatchingKmers &info){
+    int n = query.first.size();
+    int m = ref.size();
+    priority_queue<Statepr> q;
+    return 0;
+}
+
+inline void test_createStatepr(){
+    Statepr g;
+    g = createStatepr(g.qpos, g.p1, g.p2, g.g, g.h);
+    cerr << "1 works\n";
+    g = createStatepr(g.qpos, g.p1.rpos, g.p2.rpos, g.g, g.h);
+    cerr << "2 works\n";
+    g = createStatepr(g.qpos, g.p1.rpos, g.p2.u, g.g, g.h);
+    cerr << "3 works\n";
+    g = createStatepr(g.qpos, g.p1.rpos, g.p2, g.g, g.h);
+    cerr << "4 works\n";
+    g = createStatepr(g.qpos, g.p1.u, g.p2.rpos, g.g, g.h);
+    cerr << "5 works\n";
+    g = createStatepr(g.qpos, g.p1.u, g.p2.u, g.g, g.h);
+    cerr << "6 works\n";
+    g = createStatepr(g.qpos, g.p1.u, g.p2, g.g, g.h);
+    cerr << "7 works\n";
+    g = createStatepr(g.qpos, g.p1, g.p2.rpos, g.g, g.h);
+    cerr << "8 works\n";
+    g = createStatepr(g.qpos, g.p1, g.p2.u, g.g, g.h);
+    cerr << " works\n";
 }

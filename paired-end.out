@@ -1,6 +1,6 @@
 D: 10 k: 12
-reading reference: 0.00138s.
-constructing trie: 0.902835s.
+reading reference: 0.001487s.
+constructing trie: 0.93109s.
 
 Query 1:
 Number of Nodes with at least one crumb: 629
@@ -9,7 +9,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 648
 Number of Trie Nodes with at least one crumb: 400
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.6e-05s.
+Cleaning help vectors: 3.4e-05s.
 
 Query 2:
 Number of Nodes with at least one crumb: 630
@@ -18,7 +18,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 597
 Number of Trie Nodes with at least one crumb: 349
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.6e-05s.
+Cleaning help vectors: 3.5e-05s.
 
 Query 3:
 Number of Nodes with at least one crumb: 615
@@ -27,7 +27,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 630
 Number of Trie Nodes with at least one crumb: 382
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.4e-05s.
+Cleaning help vectors: 3.5e-05s.
 
 Query 4:
 Number of Nodes with at least one crumb: 631
@@ -36,7 +36,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 641
 Number of Trie Nodes with at least one crumb: 393
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.4e-05s.
+Cleaning help vectors: 3.6e-05s.
 
 Query 5:
 Number of Nodes with at least one crumb: 622
@@ -45,7 +45,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 643
 Number of Trie Nodes with at least one crumb: 395
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.9e-05s.
+Cleaning help vectors: 3.2e-05s.
 
 Query 6:
 Number of Nodes with at least one crumb: 598
@@ -54,7 +54,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 648
 Number of Trie Nodes with at least one crumb: 400
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.2e-05s.
+Cleaning help vectors: 3.8e-05s.
 
 Query 7:
 Number of Nodes with at least one crumb: 634
@@ -63,7 +63,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 627
 Number of Trie Nodes with at least one crumb: 379
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.4e-05s.
+Cleaning help vectors: 3.6e-05s.
 
 Query 8:
 Number of Nodes with at least one crumb: 627
@@ -72,7 +72,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 993
 Number of Trie Nodes with at least one crumb: 701
 Number of Ref Nodes with at least one crumb: 292
-Cleaning help vectors: 4.2e-05s.
+Cleaning help vectors: 4.1e-05s.
 
 Query 9:
 Number of Nodes with at least one crumb: 630
@@ -81,7 +81,7 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 632
 Number of Trie Nodes with at least one crumb: 384
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.4e-05s.
+Cleaning help vectors: 4.1e-05s.
 
 Query 10:
 Number of Nodes with at least one crumb: 623
@@ -90,5 +90,5 @@ Number of Ref Nodes with at least one crumb: 236
 Number of Nodes with at least one crumb: 647
 Number of Trie Nodes with at least one crumb: 399
 Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.5e-05s.
+Cleaning help vectors: 3.9e-05s.
 

@@ -131,6 +131,7 @@ int main(int argc, char *argv[]){
             filter_matches(info, insdist, drange, queryp.first.size());
             //howmanycrumbs_seeds_have(info, k);
             get_crumbs_pairend(ref, d, k, info);
+            //test_createStatepr();
             /*t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
             t = clock() - t;
