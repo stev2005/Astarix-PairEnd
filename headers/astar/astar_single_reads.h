@@ -105,22 +105,23 @@ struct  Statesr{
     }
 };
 
-bool is_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, int pos){///needed for pair-end
-    if (crumbseeds[num].find(pos) != crumbseeds[num].end())
+bool not_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, int pos){///needed for pair-end
+    /*if (crumbseeds[num].find(pos) != crumbseeds[num].end())
         return true;
-    else return false;
+    else return false;*/
+    return (crumbseeds[num].find(pos) == crumbseeds[num].end());
 }
 
 void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                 const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
-                const vector<int> &prevposkmer, int alignment, vector<unordered_set<int> > & crumbseeds){
-    /*alignment: what type of alignment is used
+                const vector<int> &prevposkmer, int read, vector<unordered_set<int> > & crumbseeds){
+    /*read: which read is being set on crumbs
     valuews to receive:
         - 0 when single read has its crumbs set on the Gr+
         - 1 when first read of pair-end has its crumbs set on the Gr+
         - 2 when second read of pair-end has its crumbs set on the Gr+
         crumbseeds are needed for pairend getting of crumbs
-        */
+    */
     set<Node> st;
     set<Node> trienodes;
     int ndel = seeds.size();
@@ -130,6 +131,9 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
             int seedpos = i * k;
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
                 int seedstart = j - k + 1;///start of a seed in the reference;
+                if (read != 0)
+                    if (not_available_to_crumb(crumbseeds, seeds[i], j))
+                        continue;
                 for (int back = 0; back < seedpos + ndel; ++back){
                     int rpos = seedstart - back;
                     if (rpos >= 0){
