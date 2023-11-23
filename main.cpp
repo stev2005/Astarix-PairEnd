@@ -120,6 +120,7 @@ int main(int argc, char *argv[]){
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         /*else{
+            ///paired-end alignment
             pair <string, string> queryp;
             cin >> queryp.first >> queryp.second;///use the get funct
             nindel = queryp.first.size() / k;

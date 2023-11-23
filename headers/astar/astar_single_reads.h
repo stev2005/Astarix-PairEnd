@@ -166,7 +166,7 @@ cost_t seed_heuristic(int qpos, Node p, int k, vector<int> &seeds, crumbs_t & cr
 cost_t choose_heuristic(int qpos, Node p, int k, vector<int> &seeds, crumbs_t &crumbs){
     if (heuristic == "seed_heuristic")
         return seed_heuristic(qpos, p, k, seeds, crumbs);
-    else if (heuristic == "Dijkstra_heuristic")
+    else if (heuristic == "dijkstra_heuristic")
         return 0;
     else{
         cerr << "The choosen heuristic is unavailable.\n";

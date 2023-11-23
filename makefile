@@ -1,4 +1,5 @@
 SingleReadDIR=data/single-reads/testsE.coli
+PairedEndDIR=data/pair-end-reads/testsE.coli
 
 default: main
 
@@ -6,31 +7,16 @@ main:
 	g++ main.cpp -o main.exe
 
 testsingleread_seed_heuristic:
-	time ./main.exe single-read 10 12 seed_heuristic Yes Yes <testsingleread.in >testsingleread_statsAstar.out
+	time ./main.exe --alignment single-read --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --reference $(SingleReadDIR)/reference.in --query $(SingleReadDIR)/1.in >single-read.out
 
 exptestsingleread_seed_heuristic:
-		time ./main.exe --alignment single-read --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --reference $(SingleReadDIR)/reference.in --query $(SingleReadDIR)/1.in >exptestsingleread_statsAstar.out
-
-problemtest:
-	time ./main.exe single-read 10 20 seed_heuristic Yes Yes <problemtest.in >problemtest.out
+	time ./main.exe --alignment single-read --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --reference $(SingleReadDIR)/reference.in --query $(SingleReadDIR)/1.in >exptestsingleread_statsAstar.out
 
 testchep_dijkstra_heuristic:
-	time ./main.exe pairend-read 10 dijkstra_heuristic Yes Yes <testchep.in
+	time ./main.exe --alignment paired-end --heuristic dijkstra_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/1.in >paired-end.out
 
 testpairend_seed_heuristic:
-	time ./main.exe pairend-read 10 15 seed_heuristic Yes Yes 5001 <testpairend.in >testpairend_statsAstar.out 
-
-test10pairend_seed_heuristic:
-	time ./main.exe pairend-read 10 25 seed_heuristic Yes Yes 10000 <onlytest10.in >onlytest10.out
-
-test_try_pe1024:
-	time ./main.exe pairend-read 11 seed_heuristic Yes Yes <tests_try_pair-end/test1024.in >tests_try_pair-end/rezult1024.out
-
-helptest:
-	time ./main.exe single-read 10 seed_heuristic Yes Yes <helptest.in
-
-evaltest:
-	time ./main.exe single-read 11 seed_heuristic Yes Yes <Evaltest.in
+	time ./main.exe --alignment paired-end --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/1.in >paired-end.out
 
 clean:
 	-rm -f main
