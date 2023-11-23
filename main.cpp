@@ -129,10 +129,9 @@ int main(int argc, char *argv[]){
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
             filter_matches(info, insdist, drange, queryp.first.size());
-            
             //howmanycrumbs_seeds_have(info, k);
-            /*getcrumbs_pairend(ref, d, k, info);
-            t = clock();
+            get_crumbs_pairend(ref, d, k, info);
+            /*t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
             t = clock() - t;
             cout << "Cost: " << rezult << "\n"; 

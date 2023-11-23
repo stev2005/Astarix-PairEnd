@@ -132,7 +132,7 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
                 int seedstart = j - k + 1;///start of a seed in the reference;
                 if (read != 0)
-                    if (not_available_to_crumb(crumbseeds, seeds[i], j))
+                    if (not_available_to_crumb(crumbseeds, i, j))
                         continue;
                 for (int back = 0; back < seedpos + ndel; ++back){
                     int rpos = seedstart - back;

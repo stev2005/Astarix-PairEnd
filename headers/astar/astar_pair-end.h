@@ -33,7 +33,7 @@ struct Statepr{
     }
 };
 
- void get_seeds_matches_sorted(vector<int> &seeds, vector <int> &lastkmer, vector<int> &prevposkmer, vector<pair<int, int> > &matches){
+ inline void get_seeds_matches_sorted(vector<int> &seeds, vector <int> &lastkmer, vector<int> &prevposkmer, vector<pair<int, int> > &matches){
     /*
     matches.first: position of seed
     matches.second: num of seed
@@ -87,7 +87,7 @@ int lowerbs(vector<pair<int, int> > &matches, int pos){
     return r;
 }
 
-void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir){
+inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir){
     if (dir == true){
         ///posseed is in matches1, and searching in matches2
         sposseed = posseed + readdist;
@@ -100,7 +100,7 @@ void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &
     currb = sposseed + drange;
 }
 
-void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int> > &matches2, int drange, int readdist,
+inline void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int> > &matches2, int drange, int readdist,
                                             vector<unordered_set<int> > &crumbseeds, bool dir){
     /*static int cnt = 1;
     cout << "crumb_seed_matches cnt: " << cnt << endl;*/
@@ -127,7 +127,7 @@ void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int>
     }
 }
 
-void show_filter_matches(vector<unordered_set<int> > & crumbseeds){
+inline void show_filter_matches(vector<unordered_set<int> > & crumbseeds){
     static int cnt = 1;
     cout << "show_filter_matches"<<cnt<<":\n";
     int sz = crumbseeds.size();
@@ -141,7 +141,7 @@ void show_filter_matches(vector<unordered_set<int> > & crumbseeds){
 }
 
 
-void filter_matches(MatchingKmers &info, int  insdist, int drange, int readsz){
+inline void filter_matches(MatchingKmers &info, int  insdist, int drange, int readsz){
     int inndist = insdist - readsz*2;///inner distance
     int readdist = inndist + readsz;///distance between reads position with same indexes
     vector<pair<int, int> > matches1, matches2;
@@ -154,4 +154,10 @@ void filter_matches(MatchingKmers &info, int  insdist, int drange, int readsz){
     crumb_seed_matches(matches2, matches1, drange, readdist, info.crumbseeds2, false);
     //show_filter_matches(info.crumbseeds1);
     //show_filter_matches(info.crumbseeds2);
+}
+
+inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
+    getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
+    
+    getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
 }
