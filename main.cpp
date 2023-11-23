@@ -3,7 +3,7 @@
 //#include "headers/dp.h"
 #include "headers/trie.h"
 #include "headers/astar/astar_single_reads.h"
-//#include "headers/astar/astar_pair-end.h"
+#include "headers/astar/astar_pair-end.h"
 #include "headers/readparameters.h"
 #include "headers/readinput.h"
 using namespace std;
@@ -119,24 +119,25 @@ int main(int argc, char *argv[]){
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
-        /*else{
+        else{
             ///paired-end alignment
             pair <string, string> queryp;
-            cin >> queryp.first >> queryp.second;///use the get funct
+            queryp = get_pair_end_query();
             nindel = queryp.first.size() / k;
             if (queryp.first.size() % k != 0)
                 nindel++;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-            filter_matches(info, k, dmatch);
+            filter_matches(info, insdist, drange, queryp.first.size());
+            
             //howmanycrumbs_seeds_have(info, k);
-            getcrumbs_pairend(ref, d, k, info);
+            /*getcrumbs_pairend(ref, d, k, info);
             t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
             t = clock() - t;
             cout << "Cost: " << rezult << "\n"; 
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-        }*/
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";*/
+        }
         t = clock();
         info.clearquerydata();
         t = clock() - t;
