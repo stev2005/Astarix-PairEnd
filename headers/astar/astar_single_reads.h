@@ -1,8 +1,9 @@
 #pragma once
 
-#include"../header.h"
-#include<bits/stdc++.h>
-#include"statesstruct.h"
+#include "../header.h"
+#include <bits/stdc++.h>
+#include "statesstruct.h"
+#include "single_read_heursitic.h"
 
 using namespace std;
 
@@ -58,40 +59,6 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     cout << "Number of Nodes with at least one crumb: " << st.size() << endl;
     cout << "Number of Trie Nodes with at least one crumb: " << trienodes.size() << endl;
     cout << "Number of Ref Nodes with at least one crumb: " << st.size() - trienodes.size() << endl;
-}
-
-cost_t seed_heuristic(int qpos, Node p, int k, vector<int> &seeds, crumbs_t & crumbs){
-    cost_t hvalue = 0;
-    int i = (qpos % k)? qpos / k + 1: qpos / k;
-    for (; i < seeds.size(); ++i)
-        if (crumbs[p][i] == false)
-            ++hvalue;
-    return hvalue;
-}
-
-cost_t choose_heuristic(int qpos, Node p, int k, vector<int> &seeds, crumbs_t &crumbs){
-    if (heuristic == "seed_heuristic")
-        return seed_heuristic(qpos, p, k, seeds, crumbs);
-    else if (heuristic == "dijkstra_heuristic")
-        return 0;
-    else{
-        cerr << "The choosen heuristic is unavailable.\n";
-        cerr << "Choosen heuristic: " << heuristic << "\n";
-        cerr << "Program is going to abort.\n";
-        assert(false);
-    }
-}
-
-Statesr createStatesr(int qpos, Node p, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
-    return Statesr(qpos, p, g, choose_heuristic(qpos, p, k, seeds, crumbs));
-}
-
-Statesr createStatesr(int qpos, int rpos, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
-    return createStatesr(qpos, Node(rpos), g, k, seeds, crumbs);
-}
-
-Statesr createStatesr(int qpos, Trie *u, cost_t g, int k, vector<int> &seeds, crumbs_t &crumbs){
-    return createStatesr(qpos, Node(u), g, k, seeds, crumbs);
 }
 
 inline void push_first_states_in_q(priority_queue<Statesr> &q, int m, int d, int k, Trie *rootdmer, vector<int> &seeds, crumbs_t &crumbs){

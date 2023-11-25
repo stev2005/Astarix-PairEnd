@@ -3,7 +3,8 @@
 #include "../header.h"
 #include <bits/stdc++.h>
 #include "statesstruct.h"
-#include "astar_single_reads.h"
+#include "pairend_read_heuristic.h"
+//#include "astar_single_reads.h"
 
 using namespace std;
 
@@ -135,9 +136,8 @@ inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
     getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
 }
 
-
-inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *root){
-
+inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *root, int k, MatchingKmers &info){
+    Statepr cur = createStatepr(0, root, root, 0, k, info);
 }
 
 cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, int d, int k, Trie *root, MatchingKmers &info){
