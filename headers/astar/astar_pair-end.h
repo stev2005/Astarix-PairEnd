@@ -2,36 +2,10 @@
 
 #include "../header.h"
 #include <bits/stdc++.h>
-#include "../trie.h"
+#include "statesstruct.h"
 #include "astar_single_reads.h"
 
 using namespace std;
-
-struct Statepr{
-    int qpos;
-    Node p1;
-    Node p2;
-    cost_t g;
-    cost_t h;
-    Statepr(){}
-    Statepr(int _qpos, Node _p1, Node _p2){
-        qpos = _qpos;
-        p1 = _p1;
-        p2 = _p2;
-        g = 0;
-        h = 0;
-    }
-    Statepr(int _qpos, Node _p1, Node _p2, cost_t _g, cost_t _h){
-        qpos = _qpos;
-        p1 = _p1;
-        p2 = _p2;
-        g = _g;
-        h = _h;
-    }
-    bool operator<(const Statepr &other) const{//only for priority_queue
-        return g + h >  other.g + other.h;
-    }
-};
 
  inline void get_seeds_matches_sorted(vector<int> &seeds, vector <int> &lastkmer, vector<int> &prevposkmer, vector<pair<int, int> > &matches){
     /*
@@ -161,41 +135,6 @@ inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
     getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
 }
 
-Statepr createStatepr(int qpos, Node p1, Node p2, cost_t g, cost_t h){
-    return Statepr(qpos, p1, p2, g, h);
-}
-
-Statepr createStatepr(int qpos, int rpos1, int rpos2, cost_t g, cost_t h){
-    return createStatepr(qpos, Node(rpos1), Node(rpos2), g, h);
-}
-
-Statepr createStatepr(int qpos, int rpos1, Trie* u2, cost_t g, cost_t h){
-    return createStatepr(qpos, Node(rpos1), Node(u2), g, h);
-}
-
-Statepr createStatepr(int qpos, int rpos1, Node p2, cost_t g, cost_t h){
-    return createStatepr(qpos, Node(rpos1), p2, g, h);
-}
-
-Statepr createStatepr(int qpos, Trie* u1, int rpos2, cost_t g, cost_t h){
-    return createStatepr(qpos, Node(u1), Node(rpos2), g, h);
-}
-
-Statepr createStatepr(int qpos, Trie* u1, Trie* u2, cost_t g, cost_t h){
-    return createStatepr(qpos, Node(u1), Node(u2), g, h);
-}
-
-Statepr createStatepr(int qpos, Trie* u1, Node p2, cost_t g, cost_t h){
-    return createStatepr(qpos, Node(u1), p2, g, h);
-}
-
-Statepr createStatepr(int qpos, Node p1, int rpos2, cost_t g, cost_t h){
-    return createStatepr(qpos, p1, Node(rpos2), g, h);
-}
-
-Statepr createStatepr(int qpos, Node p1, Trie* u2, cost_t g, cost_t h){
-    return createStatepr(qpos, p1, Node(u2), g, h);
-}
 
 inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *root){
 
@@ -208,24 +147,3 @@ cost_t astar_pairend_read_alignment(pair<string, string> &query, string &ref, in
     return 0;
 }
 
-inline void test_createStatepr(){
-    Statepr g;
-    g = createStatepr(g.qpos, g.p1, g.p2, g.g, g.h);
-    cerr << "1 works\n";
-    g = createStatepr(g.qpos, g.p1.rpos, g.p2.rpos, g.g, g.h);
-    cerr << "2 works\n";
-    g = createStatepr(g.qpos, g.p1.rpos, g.p2.u, g.g, g.h);
-    cerr << "3 works\n";
-    g = createStatepr(g.qpos, g.p1.rpos, g.p2, g.g, g.h);
-    cerr << "4 works\n";
-    g = createStatepr(g.qpos, g.p1.u, g.p2.rpos, g.g, g.h);
-    cerr << "5 works\n";
-    g = createStatepr(g.qpos, g.p1.u, g.p2.u, g.g, g.h);
-    cerr << "6 works\n";
-    g = createStatepr(g.qpos, g.p1.u, g.p2, g.g, g.h);
-    cerr << "7 works\n";
-    g = createStatepr(g.qpos, g.p1, g.p2.rpos, g.g, g.h);
-    cerr << "8 works\n";
-    g = createStatepr(g.qpos, g.p1, g.p2.u, g.g, g.h);
-    cerr << " works\n";
-}
