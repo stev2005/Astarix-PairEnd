@@ -1,94 +1,134 @@
-D: 10 k: 12
-reading reference: 0.001487s.
-constructing trie: 0.93109s.
+D: 10 k: 15
+reading reference: 0.001398s.
+constructing trie: 1.12929s.
 
 Query 1:
-Number of Nodes with at least one crumb: 629
-Number of Trie Nodes with at least one crumb: 393
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 648
-Number of Trie Nodes with at least one crumb: 400
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.4e-05s.
+Number of Nodes with at least one crumb: 561
+Number of Trie Nodes with at least one crumb: 335
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 580
+Number of Trie Nodes with at least one crumb: 339
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 802
+Cost: 10
+Alignment: 8.47586s.
+Cleaning help vectors: 0.000338s.
 
 Query 2:
-Number of Nodes with at least one crumb: 630
-Number of Trie Nodes with at least one crumb: 394
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 597
-Number of Trie Nodes with at least one crumb: 349
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.5e-05s.
+Number of Nodes with at least one crumb: 555
+Number of Trie Nodes with at least one crumb: 329
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 538
+Number of Trie Nodes with at least one crumb: 297
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 18
+Cost: 4
+Alignment: 0.317609s.
+Cleaning help vectors: 8e-05s.
 
 Query 3:
-Number of Nodes with at least one crumb: 615
-Number of Trie Nodes with at least one crumb: 379
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 630
-Number of Trie Nodes with at least one crumb: 382
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.5e-05s.
+Number of Nodes with at least one crumb: 551
+Number of Trie Nodes with at least one crumb: 325
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 570
+Number of Trie Nodes with at least one crumb: 329
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 4107
+Cost: 14
+Alignment: 36.0016s.
+Cleaning help vectors: 0.000309s.
 
 Query 4:
-Number of Nodes with at least one crumb: 631
-Number of Trie Nodes with at least one crumb: 395
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 641
-Number of Trie Nodes with at least one crumb: 393
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.6e-05s.
+Number of Nodes with at least one crumb: 560
+Number of Trie Nodes with at least one crumb: 334
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 581
+Number of Trie Nodes with at least one crumb: 340
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 526
+Cost: 8
+Alignment: 6.24962s.
+Cleaning help vectors: 0.000289s.
 
 Query 5:
-Number of Nodes with at least one crumb: 622
-Number of Trie Nodes with at least one crumb: 386
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 643
-Number of Trie Nodes with at least one crumb: 395
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.2e-05s.
+Number of Nodes with at least one crumb: 556
+Number of Trie Nodes with at least one crumb: 330
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 580
+Number of Trie Nodes with at least one crumb: 339
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 131
+Cost: 9
+Alignment: 1.81478s.
+Cleaning help vectors: 0.000165s.
 
 Query 6:
-Number of Nodes with at least one crumb: 598
-Number of Trie Nodes with at least one crumb: 362
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 648
-Number of Trie Nodes with at least one crumb: 400
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.8e-05s.
+Number of Nodes with at least one crumb: 537
+Number of Trie Nodes with at least one crumb: 311
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 582
+Number of Trie Nodes with at least one crumb: 341
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 177
+Cost: 9
+Alignment: 2.212s.
+Cleaning help vectors: 0.000124s.
 
 Query 7:
-Number of Nodes with at least one crumb: 634
-Number of Trie Nodes with at least one crumb: 398
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 627
-Number of Trie Nodes with at least one crumb: 379
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.6e-05s.
+Number of Nodes with at least one crumb: 563
+Number of Trie Nodes with at least one crumb: 337
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 571
+Number of Trie Nodes with at least one crumb: 330
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 2408
+Cost: 14
+Alignment: 21.7484s.
+Cleaning help vectors: 0.000315s.
 
 Query 8:
-Number of Nodes with at least one crumb: 627
-Number of Trie Nodes with at least one crumb: 391
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 993
-Number of Trie Nodes with at least one crumb: 701
-Number of Ref Nodes with at least one crumb: 292
-Cleaning help vectors: 4.1e-05s.
+Number of Nodes with at least one crumb: 557
+Number of Trie Nodes with at least one crumb: 331
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 575
+Number of Trie Nodes with at least one crumb: 334
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 507
+Cost: 7
+Alignment: 5.57143s.
+Cleaning help vectors: 0.000243s.
 
 Query 9:
-Number of Nodes with at least one crumb: 630
-Number of Trie Nodes with at least one crumb: 394
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 632
-Number of Trie Nodes with at least one crumb: 384
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 4.1e-05s.
+Number of Nodes with at least one crumb: 562
+Number of Trie Nodes with at least one crumb: 336
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 577
+Number of Trie Nodes with at least one crumb: 336
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 1130
+Cost: 9
+Alignment: 11.255s.
+Cleaning help vectors: 0.000378s.
 
 Query 10:
-Number of Nodes with at least one crumb: 623
-Number of Trie Nodes with at least one crumb: 387
-Number of Ref Nodes with at least one crumb: 236
-Number of Nodes with at least one crumb: 647
-Number of Trie Nodes with at least one crumb: 399
-Number of Ref Nodes with at least one crumb: 248
-Cleaning help vectors: 3.9e-05s.
+Number of Nodes with at least one crumb: 559
+Number of Trie Nodes with at least one crumb: 333
+Number of Ref Nodes with at least one crumb: 226
+Number of Nodes with at least one crumb: 581
+Number of Trie Nodes with at least one crumb: 340
+Number of Ref Nodes with at least one crumb: 241
+infheuristic value: 20
+Band: 10905
+Cost: 14
+Alignment: 77.0033s.
+Cleaning help vectors: 0.000295s.
 

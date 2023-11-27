@@ -61,12 +61,14 @@ int main(int argc, char *argv[]){
     cin.tie(NULL);
     cout.tie(NULL);*/
     cerr <<"Start of the program\n";
-    int d, k, insdist, drange;
+    int d, k, locinsdist, locdrange;
     string typealignment;
     string& heuristiclocal = heuristic;
     string fileref, filequery;
-    parameters_default_values(d, k, typealignment, heuristiclocal, insdist, drange, fileref, filequery);
-    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, insdist, drange, fileref, filequery);
+    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic);
+    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic);
+    insdist = locinsdist;
+    drange = locdrange; 
     cout << "D: " << d << " k: " << k << endl;
     string ref;
     int testcases;
@@ -121,6 +123,7 @@ int main(int argc, char *argv[]){
         }
         else{
             ///paired-end alignment
+            cerr << "main: paired-end\n";
             pair <string, string> queryp;
             queryp = get_pair_end_query();
             nindel = queryp.first.size() / k;
@@ -128,15 +131,18 @@ int main(int argc, char *argv[]){
                 nindel++;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-            filter_matches(info, insdist, drange, queryp.first.size());
+            filter_matches(info, /*insdist, drange,*/ queryp.first.size());
             //howmanycrumbs_seeds_have(info, k);
             get_crumbs_pairend(ref, d, k, info);
             //test_createStatepr();
-            /*t = clock();
-            rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
+            t = clock();
+            //rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
+            rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
             t = clock() - t;
             cout << "Cost: " << rezult << "\n"; 
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";*/
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            cerr << "Cost: " << rezult << "\n"; 
+            cerr << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         t = clock();
         info.clearquerydata();

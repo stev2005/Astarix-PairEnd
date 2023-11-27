@@ -12,6 +12,7 @@ bool not_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, i
     /*if (crumbseeds[num].find(pos) != crumbseeds[num].end())
         return true;
     else return false;*/
+    //cout << "checking num: " << num << " and pos: " << pos << endl;
     return (crumbseeds[num].find(pos) == crumbseeds[num].end());
 }
 
@@ -25,27 +26,40 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
         - 2 when second read of pair-end has its crumbs set on the Gr+
         crumbseeds are needed for pairend getting of crumbs
     */
+    /*cout << "elements in crumbseeds: \n";
+    for (int i = 0; i < (int) crumbseeds.size(); ++i){
+        cout << "   in set i: " << i << "\n";
+        for (auto it = crumbseeds[i].begin(); it != crumbseeds[i].end(); ++it)
+            cout << "       " << *it << "\n";
+        cout << "\n";
+    }
+    cout << "\n";*/
     set<Node> st;
     set<Node> trienodes;
     int ndel = seeds.size();
     int nins = seeds.size();
+    //int cntseedcrumbs = 0;
     for (int i = 0; i < seeds.size(); ++i){
         if (seeds[i] >= 0){
+            //cntseedcrumbs = 0;
             int seedpos = i * k;
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
                 int seedstart = j - k + 1;///start of a seed in the reference;
                 if (read != 0)
                     if (not_available_to_crumb(crumbseeds, i, j))
                         continue;
+                //cerr << "filtered accepted crumb here\n";
                 for (int back = 0; back < seedpos + ndel; ++back){
                     int rpos = seedstart - back;
                     if (rpos >= 0){
                         crumbs[Node(rpos)][i] = true;
+                        //cntseedcrumbs++;
                         st.insert(Node(rpos));
                     }
                     if (seedstart - rpos > seedpos - nins - d){
                         Trie* cur = backtotrieconnection[rpos];
                         while (cur != nullptr){
+                            //cntseedcrumbs++;
                             crumbs[Node(cur)][i] = true;
                             trienodes.insert(Node(cur));
                             st.insert(Node(cur));
@@ -54,8 +68,11 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                     }
                 }
             }
+            //cout << "seed[" << i << "] has "<< cntseedcrumbs << " crumbs in the Gr+\n";
         }
     }
+    /*for (int i = 0; i < st.size(); ++i)
+        cout << "seed[" << i << "] has "<< crumbs[i].size() << "appereances in the reference\n";*/
     cout << "Number of Nodes with at least one crumb: " << st.size() << endl;
     cout << "Number of Trie Nodes with at least one crumb: " << trienodes.size() << endl;
     cout << "Number of Ref Nodes with at least one crumb: " << st.size() - trienodes.size() << endl;
@@ -104,34 +121,48 @@ bool gready_available(string &query, string &ref, int qpos, Node p){
 }
 
 vector<Statesr> & get_next_states_sr(int qpos, Node p, char cqpos, string &ref, int k, vector<int> &last, vector<int> &prevpos, vector<int> &seeds, crumbs_t &crumbs){
+    //cout << "get single read inheritors:\n";
     static vector<Statesr> next;
     next.clear();
+    //cout << "qpos: " << qpos << " p.u: "<< p.u << " p.rpos: " << p.rpos << "\n";
     if (p.is_in_trie()){
+        //cout << "in the trie\n";
         if (p.u->is_leaf()){
-            for (int i = last[p.u->num]; i != -1;  i = prevpos[i])
+            //cout << "It is leaf\n";
+            for (int i = last[p.u->num]; i != -1;  i = prevpos[i]){
+                //cout << "inheritor\n";
                 next.push_back(createStatesr(qpos, i + 1, 0, k, seeds, crumbs));
+            }
         }
         else{
+            //cout << "It's not leaf\n";
             next.push_back(createStatesr(qpos + 1, p.u, 1, k, seeds, crumbs));
+            //cout << "inheritor\n";
             for (int i = 0; i < 4; ++i){
                 if (p.u->child[i] != nullptr){
                     if (base[i] == cqpos)
                         next.push_back(createStatesr(qpos + 1, p.u->child[i], 0, k, seeds, crumbs));
                     else next.push_back(createStatesr(qpos + 1, p.u->child[i], 1, k, seeds, crumbs));
                     next.push_back(createStatesr(qpos, p.u->child[i], 1, k, seeds, crumbs));
+                    //cout << "inheritor\n";
+                    //cout << "inheritor\n";
                 }
             }
         }
     }
     else{
         next.push_back(createStatesr(qpos + 1, p.rpos, 1, k, seeds, crumbs));
+        //cout << "inheritor\n";
         if (p.rpos < ref.size()){
             next.push_back(createStatesr(qpos, p.rpos + 1, 1, k, seeds, crumbs));
+            //cout << "inheritor\n";
             if (cqpos == ref[p.rpos])
                 next.push_back(createStatesr(qpos + 1, p.rpos + 1, 0, k, seeds, crumbs));
             else next.push_back(createStatesr(qpos + 1, p.rpos + 1, 1, k, seeds, crumbs));
+            //cout << "inheritor\n";
         }
     }
+    //cout << "The end of getting heirs\n";
     return next;
 }
 
