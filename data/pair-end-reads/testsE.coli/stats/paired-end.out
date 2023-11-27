@@ -1,6 +1,6 @@
 D: 10 k: 15
-reading reference: 0.001398s.
-constructing trie: 1.12929s.
+reading reference: 0.001771s.
+constructing trie: 1.16108s.
 
 Query 1:
 Number of Nodes with at least one crumb: 561
@@ -12,8 +12,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 802
 Cost: 10
-Alignment: 8.47586s.
-Cleaning help vectors: 0.000338s.
+Alignment: 8.32445s.
+Cleaning help vectors: 0.000111s.
 
 Query 2:
 Number of Nodes with at least one crumb: 555
@@ -25,7 +25,7 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 18
 Cost: 4
-Alignment: 0.317609s.
+Alignment: 0.301308s.
 Cleaning help vectors: 8e-05s.
 
 Query 3:
@@ -38,8 +38,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 4107
 Cost: 14
-Alignment: 36.0016s.
-Cleaning help vectors: 0.000309s.
+Alignment: 34.7058s.
+Cleaning help vectors: 0.000267s.
 
 Query 4:
 Number of Nodes with at least one crumb: 560
@@ -51,8 +51,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 526
 Cost: 8
-Alignment: 6.24962s.
-Cleaning help vectors: 0.000289s.
+Alignment: 6.12556s.
+Cleaning help vectors: 0.000112s.
 
 Query 5:
 Number of Nodes with at least one crumb: 556
@@ -64,8 +64,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 131
 Cost: 9
-Alignment: 1.81478s.
-Cleaning help vectors: 0.000165s.
+Alignment: 1.73326s.
+Cleaning help vectors: 9.5e-05s.
 
 Query 6:
 Number of Nodes with at least one crumb: 537
@@ -77,8 +77,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 177
 Cost: 9
-Alignment: 2.212s.
-Cleaning help vectors: 0.000124s.
+Alignment: 2.10638s.
+Cleaning help vectors: 9.3e-05s.
 
 Query 7:
 Number of Nodes with at least one crumb: 563
@@ -90,8 +90,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 2408
 Cost: 14
-Alignment: 21.7484s.
-Cleaning help vectors: 0.000315s.
+Alignment: 21.3522s.
+Cleaning help vectors: 0.000224s.
 
 Query 8:
 Number of Nodes with at least one crumb: 557
@@ -103,8 +103,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 507
 Cost: 7
-Alignment: 5.57143s.
-Cleaning help vectors: 0.000243s.
+Alignment: 5.36485s.
+Cleaning help vectors: 0.000106s.
 
 Query 9:
 Number of Nodes with at least one crumb: 562
@@ -116,8 +116,8 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 1130
 Cost: 9
-Alignment: 11.255s.
-Cleaning help vectors: 0.000378s.
+Alignment: 11.1371s.
+Cleaning help vectors: 0.00017s.
 
 Query 10:
 Number of Nodes with at least one crumb: 559
@@ -129,6 +129,6 @@ Number of Ref Nodes with at least one crumb: 241
 infheuristic value: 20
 Band: 10905
 Cost: 14
-Alignment: 77.0033s.
-Cleaning help vectors: 0.000295s.
+Alignment: 75.1964s.
+Cleaning help vectors: 0.0003s.
 

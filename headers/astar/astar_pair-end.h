@@ -272,8 +272,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
             break;
         if (to_explore_pr(cur.qpos, cur.p1, cur.p2, cur.g)){
             if (gready_available_pr(queryp, ref, cur.qpos, cur.p1, cur.p2)){
-                cost_t h = seed_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), k, info.seeds1, info.crumbs1) +
-                           seed_heuristic(cur.qpos + 1, Node(cur.p2.rpos + 1), k, info.seeds2, info.crumbs2); 
+                /*cost_t h = seed_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), k, info.seeds1, info.crumbs1) +
+                           seed_heuristic(cur.qpos + 1, Node(cur.p2.rpos + 1), k, info.seeds2, info.crumbs2); */
+                cost_t h = pairend_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), k, info);
                 Statepr topush = createStatepr(cur.qpos + 1, cur.p1.rpos + 1, cur.p2.rpos + 1, cur.g, h);
                 q.push(topush);
             }
