@@ -9,14 +9,11 @@ using namespace std;
 
 
 bool not_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, int pos){///needed for pair-end
-    /*if (crumbseeds[num].find(pos) != crumbseeds[num].end())
-        return true;
-    else return false;*/
-    //cout << "checking num: " << num << " and pos: " << pos << endl;
     return (crumbseeds[num].find(pos) == crumbseeds[num].end());
 }
 
-void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
+//gets the crumbs on Gr+ and returns their count
+int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                 const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
                 const vector<int> &prevposkmer, int read, vector<unordered_set<int> > & crumbseeds){
     /*read: which read is being set on crumbs
@@ -38,7 +35,7 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     set<Node> trienodes;
     int ndel = seeds.size();
     int nins = seeds.size();
-    //int cntseedcrumbs = 0;
+    int cntsetcrumbs = 0;
     for (int i = 0; i < seeds.size(); ++i){
         if (seeds[i] >= 0){
             //cntseedcrumbs = 0;
@@ -53,13 +50,13 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                     int rpos = seedstart - back;
                     if (rpos >= 0){
                         crumbs[Node(rpos)][i] = true;
-                        //cntseedcrumbs++;
+                        cntsetcrumbs++;
                         st.insert(Node(rpos));
                     }
                     if (seedstart - rpos > seedpos - nins - d){
                         Trie* cur = backtotrieconnection[rpos];
                         while (cur != nullptr){
-                            //cntseedcrumbs++;
+                            cntsetcrumbs++;
                             crumbs[Node(cur)][i] = true;
                             trienodes.insert(Node(cur));
                             st.insert(Node(cur));
@@ -73,9 +70,10 @@ void getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     }
     /*for (int i = 0; i < st.size(); ++i)
         cout << "seed[" << i << "] has "<< crumbs[i].size() << "appereances in the reference\n";*/
-    cout << "Number of Nodes with at least one crumb: " << st.size() << endl;
+    /*cout << "Number of Nodes with at least one crumb: " << st.size() << endl;
     cout << "Number of Trie Nodes with at least one crumb: " << trienodes.size() << endl;
-    cout << "Number of Ref Nodes with at least one crumb: " << st.size() - trienodes.size() << endl;
+    cout << "Number of Ref Nodes with at least one crumb: " << st.size() - trienodes.size() << endl;*/
+    return cntsetcrumbs;
 }
 
 inline void push_first_states_in_q(priority_queue<Statesr> &q, int m, int d, int k, Trie *rootdmer, vector<int> &seeds, crumbs_t &crumbs){

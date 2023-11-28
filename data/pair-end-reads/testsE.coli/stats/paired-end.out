@@ -1,134 +1,254 @@
 D: 10 k: 15
-reading reference: 0.001771s.
-constructing trie: 1.16108s.
+reading reference: 0.00178s.
+constructing trie: 1.14907s.
 
 Query 1:
-Number of Nodes with at least one crumb: 561
-Number of Trie Nodes with at least one crumb: 335
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 580
-Number of Trie Nodes with at least one crumb: 339
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 802
+Number of seeds' mathces per number of seeds for read1: 0.9375
+Number of seeds' mathces per number of seeds for read2: 0.875
+Number of seeds' matches per nuumber of seeds for both reads0.90625
+Number of seeds' filtered mathces per number of seeds for read1: 0.875
+Number of seeds' filtered mathces per number of seeds for read2: 0.875
+Number of seeds' filtered matches per nuumber of seeds for both reads0.875
+Number of crumbs per number of filtered matches for read1: 558.786
+Number of crumbs per number of filtered matches for read2: 552
+Number of crumbs per number of filtered matches for bith reads: 555.393
+Expanded states:484407
+Expanded states <qpos, Trie*, Trie*>: 462776
+Expanded states <qpos, Trie*, Trie*> (% all states ): 95.5345%
+Expanded states <qpos, Trie*, ref>: 8037
+Expanded states <qpos, Trie*, ref> (% all states): 1.65914%
+Expanded states <qpos, ref, Trie*>: 8028
+Expanded states <qpos, ref, Trie*> (% all states): 1.65728%
+Expanded states <qpos, ref, ref>: 5566
+Expanded states <qpos, ref, ref> (% all states): 1.14903%
+Band: 968.814
+Times heuristic is infinity: 1853371
 Cost: 10
-Alignment: 8.32445s.
-Cleaning help vectors: 0.000111s.
+Alignment: 10.7304s.
+Cleaning help vectors: 0.000219s.
 
 Query 2:
-Number of Nodes with at least one crumb: 555
-Number of Trie Nodes with at least one crumb: 329
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 538
-Number of Trie Nodes with at least one crumb: 297
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 18
+Number of seeds' mathces per number of seeds for read1: 1
+Number of seeds' mathces per number of seeds for read2: 1
+Number of seeds' matches per nuumber of seeds for both reads1
+Number of seeds' filtered mathces per number of seeds for read1: 1.8125
+Number of seeds' filtered mathces per number of seeds for read2: 1.8125
+Number of seeds' filtered matches per nuumber of seeds for both reads1.8125
+Number of crumbs per number of filtered matches for read1: 282.586
+Number of crumbs per number of filtered matches for read2: 284.138
+Number of crumbs per number of filtered matches for bith reads: 283.362
+Expanded states:4911
+Expanded states <qpos, Trie*, Trie*>: 4211
+Expanded states <qpos, Trie*, Trie*> (% all states ): 85.7463%
+Expanded states <qpos, Trie*, ref>: 92
+Expanded states <qpos, Trie*, ref> (% all states): 1.87335%
+Expanded states <qpos, ref, Trie*>: 108
+Expanded states <qpos, ref, Trie*> (% all states): 2.19914%
+Expanded states <qpos, ref, ref>: 500
+Expanded states <qpos, ref, ref> (% all states): 10.1812%
+Band: 9.822
+Times heuristic is infinity: 1884540
 Cost: 4
-Alignment: 0.301308s.
-Cleaning help vectors: 8e-05s.
+Alignment: 0.202551s.
+Cleaning help vectors: 6.4e-05s.
 
 Query 3:
-Number of Nodes with at least one crumb: 551
-Number of Trie Nodes with at least one crumb: 325
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 570
-Number of Trie Nodes with at least one crumb: 329
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 4107
+Number of seeds' mathces per number of seeds for read1: 0.875
+Number of seeds' mathces per number of seeds for read2: 0.875
+Number of seeds' matches per nuumber of seeds for both reads0.875
+Number of seeds' filtered mathces per number of seeds for read1: 2.625
+Number of seeds' filtered mathces per number of seeds for read2: 2.625
+Number of seeds' filtered matches per nuumber of seeds for both reads2.625
+Number of crumbs per number of filtered matches for read1: 168.238
+Number of crumbs per number of filtered matches for read2: 167.524
+Number of crumbs per number of filtered matches for bith reads: 167.881
+Expanded states:1861335
+Expanded states <qpos, Trie*, Trie*>: 1671723
+Expanded states <qpos, Trie*, Trie*> (% all states ): 89.8131%
+Expanded states <qpos, Trie*, ref>: 80783
+Expanded states <qpos, Trie*, ref> (% all states): 4.34006%
+Expanded states <qpos, ref, Trie*>: 80954
+Expanded states <qpos, ref, Trie*> (% all states): 4.34924%
+Expanded states <qpos, ref, ref>: 27875
+Expanded states <qpos, ref, ref> (% all states): 1.49758%
+Band: 3722.67
+Times heuristic is infinity: 8004133
 Cost: 14
-Alignment: 34.7058s.
-Cleaning help vectors: 0.000267s.
+Alignment: 36.3019s.
+Cleaning help vectors: 0.000286s.
 
 Query 4:
-Number of Nodes with at least one crumb: 560
-Number of Trie Nodes with at least one crumb: 334
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 581
-Number of Trie Nodes with at least one crumb: 340
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 526
+Number of seeds' mathces per number of seeds for read1: 0.9375
+Number of seeds' mathces per number of seeds for read2: 0.9375
+Number of seeds' matches per nuumber of seeds for both reads0.9375
+Number of seeds' filtered mathces per number of seeds for read1: 3.5
+Number of seeds' filtered mathces per number of seeds for read2: 3.5625
+Number of seeds' filtered matches per nuumber of seeds for both reads3.53125
+Number of crumbs per number of filtered matches for read1: 135.589
+Number of crumbs per number of filtered matches for read2: 145.877
+Number of crumbs per number of filtered matches for bith reads: 140.779
+Expanded states:255663
+Expanded states <qpos, Trie*, Trie*>: 244010
+Expanded states <qpos, Trie*, Trie*> (% all states ): 95.442%
+Expanded states <qpos, Trie*, ref>: 3928
+Expanded states <qpos, Trie*, ref> (% all states): 1.5364%
+Expanded states <qpos, ref, Trie*>: 4275
+Expanded states <qpos, ref, Trie*> (% all states): 1.67212%
+Expanded states <qpos, ref, ref>: 3450
+Expanded states <qpos, ref, ref> (% all states): 1.34943%
+Band: 511.326
+Times heuristic is infinity: 9191735
 Cost: 8
-Alignment: 6.12556s.
-Cleaning help vectors: 0.000112s.
+Alignment: 6.62894s.
+Cleaning help vectors: 0.000178s.
 
 Query 5:
-Number of Nodes with at least one crumb: 556
-Number of Trie Nodes with at least one crumb: 330
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 580
-Number of Trie Nodes with at least one crumb: 339
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 131
+Number of seeds' mathces per number of seeds for read1: 0.9375
+Number of seeds' mathces per number of seeds for read2: 0.8125
+Number of seeds' matches per nuumber of seeds for both reads0.875
+Number of seeds' filtered mathces per number of seeds for read1: 4.375
+Number of seeds' filtered mathces per number of seeds for read2: 4.375
+Number of seeds' filtered matches per nuumber of seeds for both reads4.375
+Number of crumbs per number of filtered matches for read1: 108.471
+Number of crumbs per number of filtered matches for read2: 103.8
+Number of crumbs per number of filtered matches for bith reads: 106.136
+Expanded states:76170
+Expanded states <qpos, Trie*, Trie*>: 71532
+Expanded states <qpos, Trie*, Trie*> (% all states ): 93.911%
+Expanded states <qpos, Trie*, ref>: 1450
+Expanded states <qpos, Trie*, ref> (% all states): 1.90364%
+Expanded states <qpos, ref, Trie*>: 1147
+Expanded states <qpos, ref, Trie*> (% all states): 1.50584%
+Expanded states <qpos, ref, ref>: 2041
+Expanded states <qpos, ref, ref> (% all states): 2.67953%
+Band: 152.34
+Times heuristic is infinity: 9589737
 Cost: 9
-Alignment: 1.73326s.
-Cleaning help vectors: 9.5e-05s.
+Alignment: 2.22197s.
+Cleaning help vectors: 0.000133s.
 
 Query 6:
-Number of Nodes with at least one crumb: 537
-Number of Trie Nodes with at least one crumb: 311
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 582
-Number of Trie Nodes with at least one crumb: 341
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 177
+Number of seeds' mathces per number of seeds for read1: 0.75
+Number of seeds' mathces per number of seeds for read2: 0.9375
+Number of seeds' matches per nuumber of seeds for both reads0.84375
+Number of seeds' filtered mathces per number of seeds for read1: 5.0625
+Number of seeds' filtered mathces per number of seeds for read2: 5.3125
+Number of seeds' filtered matches per nuumber of seeds for both reads5.1875
+Number of crumbs per number of filtered matches for read1: 78.7901
+Number of crumbs per number of filtered matches for read2: 100.176
+Number of crumbs per number of filtered matches for bith reads: 89.741
+Expanded states:71290
+Expanded states <qpos, Trie*, Trie*>: 68801
+Expanded states <qpos, Trie*, Trie*> (% all states ): 96.5086%
+Expanded states <qpos, Trie*, ref>: 875
+Expanded states <qpos, Trie*, ref> (% all states): 1.22738%
+Expanded states <qpos, ref, Trie*>: 542
+Expanded states <qpos, ref, Trie*> (% all states): 0.760275%
+Expanded states <qpos, ref, ref>: 1072
+Expanded states <qpos, ref, ref> (% all states): 1.50372%
+Band: 142.58
+Times heuristic is infinity: 9959349
 Cost: 9
-Alignment: 2.10638s.
-Cleaning help vectors: 9.3e-05s.
+Alignment: 2.07093s.
+Cleaning help vectors: 0.000271s.
 
 Query 7:
-Number of Nodes with at least one crumb: 563
-Number of Trie Nodes with at least one crumb: 337
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 571
-Number of Trie Nodes with at least one crumb: 330
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 2408
+Number of seeds' mathces per number of seeds for read1: 0.875
+Number of seeds' mathces per number of seeds for read2: 0.875
+Number of seeds' matches per nuumber of seeds for both reads0.875
+Number of seeds' filtered mathces per number of seeds for read1: 5.875
+Number of seeds' filtered mathces per number of seeds for read2: 6.1875
+Number of seeds' filtered matches per nuumber of seeds for both reads6.03125
+Number of crumbs per number of filtered matches for read1: 76.6596
+Number of crumbs per number of filtered matches for read2: 78.0606
+Number of crumbs per number of filtered matches for bith reads: 77.3782
+Expanded states:1233167
+Expanded states <qpos, Trie*, Trie*>: 1135700
+Expanded states <qpos, Trie*, Trie*> (% all states ): 92.0962%
+Expanded states <qpos, Trie*, ref>: 41727
+Expanded states <qpos, Trie*, ref> (% all states): 3.38373%
+Expanded states <qpos, ref, Trie*>: 38989
+Expanded states <qpos, ref, Trie*> (% all states): 3.1617%
+Expanded states <qpos, ref, ref>: 16751
+Expanded states <qpos, ref, ref> (% all states): 1.35837%
+Band: 2466.33
+Times heuristic is infinity: 14160525
 Cost: 14
-Alignment: 21.3522s.
-Cleaning help vectors: 0.000224s.
+Alignment: 24.1376s.
+Cleaning help vectors: 0.00027s.
 
 Query 8:
-Number of Nodes with at least one crumb: 557
-Number of Trie Nodes with at least one crumb: 331
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 575
-Number of Trie Nodes with at least one crumb: 334
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 507
+Number of seeds' mathces per number of seeds for read1: 1
+Number of seeds' mathces per number of seeds for read2: 0.875
+Number of seeds' matches per nuumber of seeds for both reads0.9375
+Number of seeds' filtered mathces per number of seeds for read1: 6.8125
+Number of seeds' filtered mathces per number of seeds for read2: 7.0625
+Number of seeds' filtered matches per nuumber of seeds for both reads6.9375
+Number of crumbs per number of filtered matches for read1: 75.1835
+Number of crumbs per number of filtered matches for read2: 71.6195
+Number of crumbs per number of filtered matches for bith reads: 73.3694
+Expanded states:158709
+Expanded states <qpos, Trie*, Trie*>: 156548
+Expanded states <qpos, Trie*, Trie*> (% all states ): 98.6384%
+Expanded states <qpos, Trie*, ref>: 575
+Expanded states <qpos, Trie*, ref> (% all states): 0.362298%
+Expanded states <qpos, ref, Trie*>: 747
+Expanded states <qpos, ref, Trie*> (% all states): 0.470673%
+Expanded states <qpos, ref, ref>: 839
+Expanded states <qpos, ref, ref> (% all states): 0.52864%
+Band: 317.418
+Times heuristic is infinity: 14983121
 Cost: 7
-Alignment: 5.36485s.
-Cleaning help vectors: 0.000106s.
+Alignment: 4.33176s.
+Cleaning help vectors: 0.000154s.
 
 Query 9:
-Number of Nodes with at least one crumb: 562
-Number of Trie Nodes with at least one crumb: 336
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 577
-Number of Trie Nodes with at least one crumb: 336
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 1130
+Number of seeds' mathces per number of seeds for read1: 0.8125
+Number of seeds' mathces per number of seeds for read2: 1
+Number of seeds' matches per nuumber of seeds for both reads0.90625
+Number of seeds' filtered mathces per number of seeds for read1: 7.5625
+Number of seeds' filtered mathces per number of seeds for read2: 8.0625
+Number of seeds' filtered matches per nuumber of seeds for both reads7.8125
+Number of crumbs per number of filtered matches for read1: 56.0661
+Number of crumbs per number of filtered matches for read2: 68.8915
+Number of crumbs per number of filtered matches for bith reads: 62.684
+Expanded states:393313
+Expanded states <qpos, Trie*, Trie*>: 380277
+Expanded states <qpos, Trie*, Trie*> (% all states ): 96.6856%
+Expanded states <qpos, Trie*, ref>: 6723
+Expanded states <qpos, Trie*, ref> (% all states): 1.70933%
+Expanded states <qpos, ref, Trie*>: 4264
+Expanded states <qpos, ref, Trie*> (% all states): 1.08412%
+Expanded states <qpos, ref, ref>: 2049
+Expanded states <qpos, ref, ref> (% all states): 0.520959%
+Band: 786.626
+Times heuristic is infinity: 16667514
 Cost: 9
-Alignment: 11.1371s.
-Cleaning help vectors: 0.00017s.
+Alignment: 9.11236s.
+Cleaning help vectors: 0.000268s.
 
 Query 10:
-Number of Nodes with at least one crumb: 559
-Number of Trie Nodes with at least one crumb: 333
-Number of Ref Nodes with at least one crumb: 226
-Number of Nodes with at least one crumb: 581
-Number of Trie Nodes with at least one crumb: 340
-Number of Ref Nodes with at least one crumb: 241
-infheuristic value: 20
-Band: 10905
+Number of seeds' mathces per number of seeds for read1: 0.9375
+Number of seeds' mathces per number of seeds for read2: 0.9375
+Number of seeds' matches per nuumber of seeds for both reads0.9375
+Number of seeds' filtered mathces per number of seeds for read1: 8.4375
+Number of seeds' filtered mathces per number of seeds for read2: 9
+Number of seeds' filtered matches per nuumber of seeds for both reads8.71875
+Number of crumbs per number of filtered matches for read1: 56.5778
+Number of crumbs per number of filtered matches for read2: 58.2639
+Number of crumbs per number of filtered matches for bith reads: 57.448
+Expanded states:5455265
+Expanded states <qpos, Trie*, Trie*>: 4467330
+Expanded states <qpos, Trie*, Trie*> (% all states ): 81.8902%
+Expanded states <qpos, Trie*, ref>: 442217
+Expanded states <qpos, Trie*, ref> (% all states): 8.10624%
+Expanded states <qpos, ref, Trie*>: 466321
+Expanded states <qpos, ref, Trie*> (% all states): 8.54809%
+Expanded states <qpos, ref, ref>: 79397
+Expanded states <qpos, ref, ref> (% all states): 1.45542%
+Band: 10910.5
+Times heuristic is infinity: 27444566
 Cost: 14
-Alignment: 75.1964s.
-Cleaning help vectors: 0.0003s.
+Alignment: 81.8608s.
+Cleaning help vectors: 0.000313s.
 

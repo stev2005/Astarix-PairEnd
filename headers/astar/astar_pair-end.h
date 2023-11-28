@@ -12,13 +12,7 @@ int insdist, drange, innerdist, readdist;
 int punishl, punishr;
 cost_t infheuristic;
 int cntinfhvalues;
-/*void calc_innerdist_readdist(int _insdist, int _drange){
-    glinsdist = _insdist;
-    gldrange = _drange;
-    glinnersdist = glinsdist - readsz * 2; 
-    int inndist = insdist - readsz*2;///inner distance
-    int readdist = inndist + readsz;///distance between reads position with same indexes
-}*/
+int cntfilteredmatche1spr, cntfilteredmatche2spr;
 
 inline void get_seeds_matches_sorted(vector<int> &seeds, vector <int> &lastkmer, vector<int> &prevposkmer, vector<pair<int, int> > &matches){
     /*
@@ -87,6 +81,11 @@ inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed
     currb = sposseed + drange;
 }
 
+/// @brief Computes which of the matches of a seed should be used as crumbs for calculation of the heuristic
+/// @param matches1 first read's seeds' matches
+/// @param matches2 second read's seeds' matches
+/// @param crumbseeds hash_sets for saving which seed should be used as crumbs for first seed
+/// @param dir says if matches1 are matches of the first seed(true) or the second one (false)(using makes the function universal for both reads)
 inline void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int> > &matches2, /*int drange, int readdist,*/
                                             vector<unordered_set<int> > &crumbseeds, bool dir){
     /*static int cnt = 1;
@@ -133,19 +132,35 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
     vector<pair<int, int> > matches1, matches2;
     get_seeds_matches_sorted(info.seeds1, info.lastkmer, info.prevposkmer, matches1);
     get_seeds_matches_sorted(info.seeds2, info.lastkmer, info.prevposkmer, matches2);
+    cout << "Number of seeds' mathces per number of seeds for read1: " << (double) matches1.size() / (double) info.seeds1.size() << "\n";
+    cout << "Number of seeds' mathces per number of seeds for read2: " << (double) matches2.size() / (double) info.seeds2.size() << "\n";
+    cout << "Number of seeds' matches per nuumber of seeds for both reads" <<
+        (double) (matches1.size() + matches2.size()) / (double) (info.seeds1.size() + info.seeds2.size()) << "\n";
     info.crumbseeds1.resize(info.seeds1.size());
     info.crumbseeds2.resize(info.seeds2.size());
     //make_crumbs_appropriate_matches(matches1, matches2, lb, rb, info.crumbseeds1, info.crumbseeds2);
     crumb_seed_matches(matches1, matches2, /*drange, readdist,*/ info.crumbseeds1, true);
     crumb_seed_matches(matches2, matches1, /*drange, readdist,*/ info.crumbseeds2, false);
+    for (auto i: info.crumbseeds1)
+        cntfilteredmatche1spr += i.size();
+    for (auto i: info.crumbseeds2)
+        cntfilteredmatche2spr += i.size();
+    cout << "Number of seeds' filtered mathces per number of seeds for read1: " << (double) cntfilteredmatche1spr / (double) info.seeds1.size() << "\n";
+    cout << "Number of seeds' filtered mathces per number of seeds for read2: " << (double) cntfilteredmatche2spr / (double) info.seeds2.size() << "\n";
+    cout << "Number of seeds' filtered matches per nuumber of seeds for both reads" <<
+        (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) / (double) (info.seeds1.size() + info.seeds2.size()) << "\n";
     /*show_filter_matches(info.crumbseeds1);
     show_filter_matches(info.crumbseeds2);
     cout << "end of the filtering function\n";*/
 }
 
 inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
-    getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
-    getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
+    int cntsetcrumbs1 = getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
+    int cntsetcrumbs2 = getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
+    cout << "Number of crumbs per number of filtered matches for read1: " << (double) cntsetcrumbs1 / (double) cntfilteredmatche1spr << "\n";
+    cout << "Number of crumbs per number of filtered matches for read2: " << (double) cntsetcrumbs2 / (double) cntfilteredmatche2spr << "\n";
+    cout << "Number of crumbs per number of filtered matches for bith reads: " <<
+        (double) (cntsetcrumbs1 + cntsetcrumbs2) / (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) << "\n";
     cerr << "crumbing pairend ended\n";
 }
 
@@ -154,7 +169,7 @@ inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *ro
     cerr << "<0, root, root> heuristic is: " << h << endl;
     Statepr cur = createStatepr(0, root, root, 0, h);
     q.push(cur);
-    /*for (int i = m - d + 1; i < m; ++i){
+    for (int i = m - d + 1; i < m; ++i){
         h = pairend_heuristic(0, Node(root), Node(i), k, info);
         cur = createStatepr(0, root, i, 0, h);
         q.push(cur);
@@ -168,7 +183,7 @@ inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *ro
             cur = createStatepr(0, i, j, 0, h);
             q.push(cur);
         }
-    }*/
+    }
 }
 
 map<tuple<int, Node, Node>, cost_t>& get_expanded_prstates(bool del = false){
@@ -200,7 +215,8 @@ bool to_explore_pr(int qpos, Node p1, Node p2, cost_t g){
 }
 
 bool gready_available_pr(pair<string, string> &queryp, string &ref, int qpos, Node p1, Node p2){
-    if (p1.is_in_trie() == false && p2.is_in_trie() == false){
+    //if (p1.is_in_trie() == false && p2.is_in_trie() == false){
+    if (!p1.is_in_trie() && !p2.is_in_trie()){
         if (ref.size() > p1.rpos && ref.size() > p2.rpos &&
             queryp.first[qpos] == ref[p1.rpos] && queryp.second[qpos] == ref[p2.rpos])
             return true;
@@ -209,20 +225,19 @@ bool gready_available_pr(pair<string, string> &queryp, string &ref, int qpos, No
 }
 
 bool punish(Node p1, Node p2, cost_t h1, cost_t h2){
-    //it matter which Node is given first as parameter because dist is not taken by absolute value!
+    //it matters which Node is given first as parameter because dist is not taken by absolute value!
     if (h1 + h2 >= infheuristic){
         cntinfhvalues++;
         return true;
     }
-    if (p1.is_in_trie() == false && p2.is_in_trie() == false){
+    //if (p1.is_in_trie() == false && p2.is_in_trie() == false){
+    if (!p1.is_in_trie() && !p2.is_in_trie()){
         int dist = p2.rpos - p1.rpos;
-        //return true;
         if (!is_in_range(dist, punishl, punishr)){
             if (h1 + h2 >= infheuristic)
                 cntinfhvalues++;
             return true;
         }
-        //else return true;
     }
     return false;
 }
@@ -233,19 +248,26 @@ vector<Statesr> receivenextsr(int qpos, Node p, char cqpos, string & ref, int k,
     return ret;
 }
 
+//gets inheritors of single-read states <qpos, p1> and <qpos, p2>.
+//Then combines them resulting in a list of inheritors of paired-end state <qpos, p1, p2>
 vector<Statepr>& get_next_pr(int qpos, Node p1, Node p2, int k, pair<string, string> &queryp, string &ref, MatchingKmers &info){
     static vector<Statepr> nextpr;
     nextpr.clear();
+    //v1, v2, list of inheritors of the single-read states
     vector<Statesr> v1 = receivenextsr(qpos, p1, queryp.first[qpos], ref, k, info.last, info.prevpos, info.seeds1, info.crumbs1);
     vector<Statesr> v2 = receivenextsr(qpos, p2, queryp.second[qpos], ref, k, info.last, info.prevpos, info.seeds2, info.crumbs2);
+    //the two not nested fors are combing 
     Statesr present = createStatesr(qpos, p1, 0, k, info.seeds1, info.crumbs1);
+    //combines <qpos, p1> with <qpos, p2>'s inheritors
     for (auto i: v2)
         if (present.qpos == i.qpos && !punish(present.p, i.p, present.h, i.h))
             nextpr.push_back(createStatepr(present.qpos, present.p, i.p, present.g + i.g, present.h + i.h));
     present = createStatesr(qpos, p2, 0, k, info.seeds2, info.crumbs2);
+    //combines <qpos, p2> with <qpos, p1>'s inheritors
     for (auto i: v1)
         if (present.qpos == i.qpos && !punish(i.p, present.p, i.h, present.h))
             nextpr.push_back(createStatepr(present.qpos, i.p, present.p, i.g + present.g, i.h + present.h));
+    //combines <qpos, p1>'s inheritors with <qpos, p2>'s inheritors
     for (auto i: v1)
         for (auto j: v2)
             if (i.qpos == j.qpos && !punish(i.p, j.p, i.h, j.h))
@@ -253,9 +275,26 @@ vector<Statepr>& get_next_pr(int qpos, Node p1, Node p2, int k, pair<string, str
     return nextpr;
 }
 
+inline void increasecnt(int qpos, Node p1, Node p2, long long &cntexpansions, long long &cntTrieTrieexpansions, long long &cntrefTrieexpansions, long long &cntTrierefexpansions, long long &cntrefrefexpansions){
+    ++cntexpansions;
+    if (p1.is_in_trie() && p2.is_in_trie())
+        ++cntTrieTrieexpansions;
+    else if(p1.is_in_trie() && !p2.is_in_trie())
+        ++cntTrierefexpansions;
+    else if(!p1.is_in_trie() && p2.is_in_trie())
+        ++cntrefTrieexpansions;
+    else if(!p1.is_in_trie() && !p2.is_in_trie())
+        ++cntrefrefexpansions;
+    else{
+        cerr << "There is no counter for this combination of Nodes\n";
+        cerr << "Program is going to abort";
+        assert(false);
+    }
+}
+
 cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, int d, int k, Trie *root, MatchingKmers &info){
     cerr << "in the paired-end alignment function\n";
-    cout << "infheuristic value: " << infheuristic << endl;
+    //cout << "infheuristic value: " << infheuristic << endl;
     int n = queryp.first.size();
     int m = ref.size();
     priority_queue<Statepr> q;
@@ -263,11 +302,16 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     punishr = readdist + drange;
     push_first_prstates_in_q(q, m, root, d, k, info);
     Statepr cur;
-    int cntexpansions = 0;
+    long long cntexpansions = 0;
+    long long cntTrieTrieexpansions = 0;
+    long long cntrefTrieexpansions = 0;
+    long long cntTrierefexpansions = 0;
+    long long cntrefrefexpansions = 0;
     while (!q.empty()){
         cur = q.top();
         q.pop();
-        cntexpansions++;
+        //cntexpansions++;
+        increasecnt(cur.qpos, cur.p1, cur.p2, cntexpansions, cntTrieTrieexpansions, cntrefTrieexpansions, cntTrierefexpansions, cntrefrefexpansions);
         if (cur.qpos == n)
             break;
         if (to_explore_pr(cur.qpos, cur.p1, cur.p2, cur.g)){
@@ -275,8 +319,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
                 /*cost_t h = seed_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), k, info.seeds1, info.crumbs1) +
                            seed_heuristic(cur.qpos + 1, Node(cur.p2.rpos + 1), k, info.seeds2, info.crumbs2); */
                 cost_t h = pairend_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), k, info);
-                Statepr topush = createStatepr(cur.qpos + 1, cur.p1.rpos + 1, cur.p2.rpos + 1, cur.g, h);
-                q.push(topush);
+                Statepr nextstate = createStatepr(cur.qpos + 1, cur.p1.rpos + 1, cur.p2.rpos + 1, cur.g, h);
+                q.push(nextstate);
             }
             else{
                 vector<Statepr> &nextpr = get_next_pr(cur.qpos, cur.p1, cur.p2, k, queryp, ref, info);
@@ -288,85 +332,18 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
         }
     }
     get_expanded_prstates(true);
-    cout << "Band: " << cntexpansions / (n * 2) << "\n";
+    cout << "Expanded states:" << cntexpansions << "\n";
+    cout << "Expanded states <qpos, Trie*, Trie*>: " << cntTrieTrieexpansions << "\n";
+    cout << "Expanded states <qpos, Trie*, Trie*> (% all states ): " << (double)cntTrieTrieexpansions / (double) cntexpansions * (double) 100<< "%\n";    
+    cout << "Expanded states <qpos, Trie*, ref>: " << cntTrierefexpansions << "\n"; 
+    cout << "Expanded states <qpos, Trie*, ref> (% all states): " << (double) cntTrierefexpansions / (double) cntexpansions * (double) 100<< "%\n"; 
+    cout << "Expanded states <qpos, ref, Trie*>: " << cntrefTrieexpansions << "\n";
+    cout << "Expanded states <qpos, ref, Trie*> (% all states): " << (double) cntrefTrieexpansions / (double) cntexpansions * (double) 100<< "%\n";
+    cout << "Expanded states <qpos, ref, ref>: " << cntrefrefexpansions << "\n";
+    cout << "Expanded states <qpos, ref, ref> (% all states): " << (double) cntrefrefexpansions / (double) cntexpansions * (double) 100 << "%\n";  
+    cout << "Band: " << (double) cntexpansions / (double)(n * 2) << "\n";
+    cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";
     return cur.g;
 }
 
-/*vector<Statepr>& get_next_states_pr(int qpos, Node p1, Node p2, int k, pair<string, string> & queryp, string &ref, MatchingKmers &info){
-    static vector<Statepr> nextpr;
-    nextpr.clear();
-    vector<Statesr>& next1 = get_next_states_sr(qpos, p1, queryp.first[qpos], ref, k, info.last, info.prevpos, info.seeds1, info.crumbs1);
-    vector<Statesr>& next2 = get_next_states_sr(qpos, p2, queryp.second[qpos], ref, k, info.last, info.prevpos, info.seeds2, info.crumbs2);
-    next1.push_back(createStatesr(qpos, p1, 0, k, info.seeds1, info.crumbs1));
-    next2.push_back(createStatesr(qpos, p2, 0, k, info.seeds2, info.crumbs2));
-    cout <<"next1.size(): " << next1.size() << " next2.size(): " << next2.size() << "\n";
-    for (auto i: next1)
-        for (auto j: next2)
-            if (i.qpos == j.qpos && !punish(i.p, j.p, i.h, j.h)){
-                if (!(i.qpos == qpos && i.p == p1 && j.p == p2))
-                    nextpr.push_back(createStatepr(i.qpos, i.p, j.p, i.g + j.g, i.h + j.h));
-            }
-    return nextpr;
-}*/
-
-/*cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, int d, int k, Trie *root, MatchingKmers &info){
-    cerr << "in the paired-end alignment function\n";
-    cout << "infheuristic value: " << infheuristic << endl;
-    int n = queryp.first.size();
-    int m = ref.size();
-    punishl = readdist - drange;
-    punishr = readdist + drange;
-    priority_queue<Statepr> q;
-    cerr << "before call of func. for pushing first states\n";
-    push_first_prstates_in_q(q, m, root, d, k, info);
-    cerr << "afte call of func. for pushing first states\n";
-    Statepr cur;
-    int maxqpos = -1;
-    int cntexpansions = 0;
-    int cntshowinheritors = 0;
-    cerr << "Exactly before while\n";
-    while(!q.empty()){
-        cur = q.top();
-        q.pop();
-        cntexpansions++;
-        /*if (cntexpansions % 20 == 0){
-            cerr << "A pair-end state qpos: " << cur.qpos << "\n";
-        }
-        if (cur.qpos > maxqpos){
-            maxqpos = cur.qpos;
-            cerr << "A new maxqpos value: " << maxqpos << "\n";
-        }
-        if (cur.qpos % 25 == 0)
-            cerr << "cur.qpos: " << cur.qpos << endl;
-        if (cur.qpos == n)
-            break;
-        if (to_explore_pr(cur.qpos, cur.p1, cur.p2, cur.g)){
-            if (gready_available_pr(queryp, ref, cur.qpos, cur.p1, cur.p2)){
-                //Statepr topush = createStatepr(cur.qpos, cur.p1.rpos + 1, cur.p2.rpos + 1, cur.g, k, info);
-                cost_t h = pairend_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), k, info);
-                Statepr topush = createStatepr(cur.qpos + 1, cur.p1.rpos + 1, cur.p2.rpos, cur.g, h);
-                q.push(topush);
-            }
-            else{
-                vector<Statepr> &nextpr = get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, queryp, ref, info);
-                for (auto i: nextpr){
-                    
-                    i.g += cur.g;
-                    if(cntshowinheritors < 100){
-                        cout<< "inheritor: qpos: " << i.qpos  << " p1.u: " << i.p1.u << " p1.rpos: " << i.p1.rpos << " p2.u: " << i.p2.u << " p2.rpos: "
-                         << i.p2.rpos << " g: " << i.g << " h: " << i.h << "\n";
-                    }
-                    q.push(i);
-                }
-                if (cntshowinheritors < 100){
-                    cntshowinheritors++;
-                    cout << endl;
-                }
-            }
-        }
-    }
-    get_expanded_prstates(true);
-    cout << "Band: " << cntexpansions / (n * 2) << "\n";
-    return cur.g;
-}*/
 
