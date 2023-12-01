@@ -81,17 +81,18 @@ inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed
     currb = sposseed + drange;
 }
 
-/// @brief Computes which of the matches of a seed should be used as crumbs for calculation of the heuristic
+/// @brief Computes which of the matches of a seed should be used as crumbs for calculation of the heuristic and /*returns count of legit matches*/()
 /// @param matches1 first read's seeds' matches
 /// @param matches2 second read's seeds' matches
 /// @param crumbseeds hash_sets for saving which seed should be used as crumbs for first seed
 /// @param dir says if matches1 are matches of the first seed(true) or the second one (false)(using makes the function universal for both reads)
-inline void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int> > &matches2, /*int drange, int readdist,*/
+void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int> > &matches2, /*int drange, int readdist,*/
                                             vector<unordered_set<int> > &crumbseeds, bool dir){
     /*static int cnt = 1;
     cout << "crumb_seed_matches cnt: " << cnt << endl;*/
     int sz1 = matches1.size();
     int sz2 = matches2.size();
+    //int cntlegitmatcheslocal = 0;
     for (int i = 0; i < sz1; ++i){
         int numseed = matches1[i].second;
         int posseed = matches1[i].first;
@@ -99,18 +100,23 @@ inline void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<in
         calc_search_pos(posseed, drange, readdist, sposseed, curlb, currb, dir);
         //cout << "numseed: " << numseed << " posseed: " << posseed << " sposseed: " << sposseed << " curlb: " << curlb << " currb: " << currb << "\n";
         int idx = lowerbs(matches2, sposseed);
-        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(matches2[idx].first, curlb, currb))
+        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(matches2[idx].first, curlb, currb)){
             crumbseeds[numseed].insert(posseed);
+            //cntlegitmatcheslocal++;
+        }
         else{
             idx++;
             /*
             It is possiblie that posseed2[idx] places to be out of range compared to posseed1.
             But meanwhile that doesn't make impossible that possed2[idx + 1] is in range compared to posseed1.
             */
-            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(matches2[idx].first, curlb, currb))
+            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(matches2[idx].first, curlb, currb)){
                 crumbseeds[numseed].insert(posseed);
+                //cntlegitmatcheslocal++;
+            }
         }
     }
+    //return cntlegitmatcheslocal;
 }
 
 inline void show_filter_matches(vector<unordered_set<int> > & crumbseeds){
@@ -142,6 +148,8 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
     //make_crumbs_appropriate_matches(matches1, matches2, lb, rb, info.crumbseeds1, info.crumbseeds2);
     crumb_seed_matches(matches1, matches2, /*drange, readdist,*/ info.crumbseeds1, true);
     crumb_seed_matches(matches2, matches1, /*drange, readdist,*/ info.crumbseeds2, false);
+    cntfilteredmatche1spr = 0;
+    cntfilteredmatche2spr = 0;
     for (auto i: info.crumbseeds1)
         cntfilteredmatche1spr += i.size();
     for (auto i: info.crumbseeds2)
@@ -229,10 +237,10 @@ bool gready_available_pr(pair<string, string> &queryp, string &ref, int qpos, No
 
 bool punish(Node p1, Node p2, cost_t h1, cost_t h2){
     //it matters which Node is given first as parameter because dist is not taken by absolute value!
-    if (h1 + h2 >= infheuristic){
+    /*if (h1 + h2 >= infheuristic){
         cntinfhvalues++;
         return true;
-    }
+    }*/
     //if (p1.is_in_trie() == false && p2.is_in_trie() == false){
     if (!p1.is_in_trie() && !p2.is_in_trie()){
         int dist = p2.rpos - p1.rpos;

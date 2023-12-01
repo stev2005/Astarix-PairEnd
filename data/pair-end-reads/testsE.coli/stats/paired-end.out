@@ -1,77 +1,77 @@
 D: 10 k: 15
-reading reference: 0.001377s.
-constructing trie: 1.12948s.
+reading reference: 0.001476s.
+constructing trie: 1.16756s.
 
 Query 1:
 Cost: 10
-Alignment: 9.60687s.
-Cleaning help vectors: 0.000187s.
+Alignment: 11.9889s.
+Cleaning help vectors: 0.00023s.
 
 Query 2:
 Cost: 4
-Alignment: 0.183727s.
-Cleaning help vectors: 6.1e-05s.
+Alignment: 0.310582s.
+Cleaning help vectors: 6.7e-05s.
 
 Query 3:
 Cost: 14
-Alignment: 20.4007s.
-Cleaning help vectors: 0.000202s.
+Alignment: 22.3099s.
+Cleaning help vectors: 0.000267s.
 
 Query 4:
 Cost: 8
-Alignment: 5.97601s.
-Cleaning help vectors: 0.00012s.
+Alignment: 5.76703s.
+Cleaning help vectors: 0.00013s.
 
 Query 5:
 Cost: 9
-Alignment: 2.02083s.
-Cleaning help vectors: 0.00011s.
+Alignment: 2.67856s.
+Cleaning help vectors: 0.00015s.
 
 Query 6:
 Cost: 9
-Alignment: 1.82866s.
-Cleaning help vectors: 8.5e-05s.
+Alignment: 1.5583s.
+Cleaning help vectors: 9.6e-05s.
 
 Query 7:
 Cost: 14
-Alignment: 21.9941s.
-Cleaning help vectors: 0.000214s.
+Alignment: 21.4631s.
+Cleaning help vectors: 0.000272s.
 
 Query 8:
 Cost: 7
-Alignment: 3.97072s.
-Cleaning help vectors: 0.000122s.
+Alignment: 5.54756s.
+Cleaning help vectors: 0.000173s.
 
 Query 9:
 Cost: 9
-Alignment: 8.29959s.
-Cleaning help vectors: 0.000186s.
+Alignment: 11.752s.
+Cleaning help vectors: 0.000256s.
 
 Query 10:
 Cost: 14
-Alignment: 75.5855s.
-Cleaning help vectors: 0.000485s.
+Alignment: 70.6025s.
+Cleaning help vectors: 0.000283s.
 
 Stats for this test group:
    Number of tests: 10
    Error-rate: (you have to know it in advance)
-   Avg. runtime filtering legit from faux matches: 2.54e-05 (sec.)
-   Avg. run-time setting crumbs: 0.0092711 (sec.)
-   Avg. run-time joint alignment: 14.9867 (sec.)
+   Avg. runtime filtering legit from faux matches: 2.46e-05 (sec.)
+   Avg. run-time setting crumbs: 0.0086642 (sec.)
+   Avg. run-time joint alignment: 15.3978 (sec.)
    Trie depth: 10
    Seeds lenght: 15 (bp.)
    Drange: 50
    Avg. matches per seed: 0.909375
-   Avg. legit matches per seed: 4.76562
-   Avg. crumbs per legit match: 161.288
-   Avg. band: 1842.2
-   Avg. expanded states: 921099
-   Avg. expanded states u, v ∈ Trie: 797748
-   Avg. expanded states u ∈ Trie, v ∈ Gr: 54284.9
-   Avg. expanded states u ∈ Gr, v ∈ Trie: 56094.9
-   Avg. expanded states u, v ∈ Gr: 12970.5
-   Avg. punished states: 2.58441e+06
-   Avg. expanded states u, v∈ Trie (% of all): 92.7943
-   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): 2.52165
-   Avg. expanded states u∈Gr, v∈Trie (% of all): 2.52165
-   Avg. expanded states u, v ∈ Gr (% of all): 2.23972
+   Avg. legit matches per seed: 0.86875
+   Avg. crumbs per legit match: 554.281
+   Avg. band: 1650.98
+   Avg. expanded states: 825490
+   Avg. expanded states u, v ∈ Trie: 730428
+   Avg. expanded states u ∈ Trie, v ∈ Gr: 41387.4
+   Avg. expanded states u ∈ Gr, v ∈ Trie: 42605.3
+   Avg. expanded states u, v ∈ Gr: 11069.1
+   Avg. punished states: 10126.8
+   Avg. expanded states u, v∈ Trie (% of all): 93.1875
+   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): 2.45867
+   Avg. expanded states u∈Gr, v∈Trie (% of all): 2.45867
+   Avg. expanded states u, v ∈ Gr (% of all): 1.95355
