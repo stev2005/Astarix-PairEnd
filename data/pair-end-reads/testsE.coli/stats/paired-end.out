@@ -1,77 +1,26 @@
-D: 10 k: 15
-reading reference: 0.001476s.
-constructing trie: 1.16756s.
-
-Query 1:
-Cost: 10
-Alignment: 11.9889s.
-Cleaning help vectors: 0.00023s.
-
-Query 2:
-Cost: 4
-Alignment: 0.310582s.
-Cleaning help vectors: 6.7e-05s.
-
-Query 3:
-Cost: 14
-Alignment: 22.3099s.
-Cleaning help vectors: 0.000267s.
-
-Query 4:
-Cost: 8
-Alignment: 5.76703s.
-Cleaning help vectors: 0.00013s.
-
-Query 5:
-Cost: 9
-Alignment: 2.67856s.
-Cleaning help vectors: 0.00015s.
-
-Query 6:
-Cost: 9
-Alignment: 1.5583s.
-Cleaning help vectors: 9.6e-05s.
-
-Query 7:
-Cost: 14
-Alignment: 21.4631s.
-Cleaning help vectors: 0.000272s.
-
-Query 8:
-Cost: 7
-Alignment: 5.54756s.
-Cleaning help vectors: 0.000173s.
-
-Query 9:
-Cost: 9
-Alignment: 11.752s.
-Cleaning help vectors: 0.000256s.
-
-Query 10:
-Cost: 14
-Alignment: 70.6025s.
-Cleaning help vectors: 0.000283s.
-
+D: 10 k: 12
+reading reference: 0.001722s.
+constructing trie: 0.908447s.
 Stats for this test group:
    Number of tests: 10
    Error-rate: (you have to know it in advance)
-   Avg. runtime filtering legit from faux matches: 2.46e-05 (sec.)
-   Avg. run-time setting crumbs: 0.0086642 (sec.)
-   Avg. run-time joint alignment: 15.3978 (sec.)
+   Avg. runtime filtering legit from faux matches: 3.6e-05 (sec.)
+   Avg. run-time setting crumbs: 0.0130099 (sec.)
+   Avg. run-time joint alignment: 18.2905 (sec.)
    Trie depth: 10
-   Seeds lenght: 15 (bp.)
+   Seeds lenght: 12 (bp.)
    Drange: 50
-   Avg. matches per seed: 0.909375
-   Avg. legit matches per seed: 0.86875
-   Avg. crumbs per legit match: 554.281
-   Avg. band: 1650.98
-   Avg. expanded states: 825490
-   Avg. expanded states u, v ∈ Trie: 730428
-   Avg. expanded states u ∈ Trie, v ∈ Gr: 41387.4
-   Avg. expanded states u ∈ Gr, v ∈ Trie: 42605.3
-   Avg. expanded states u, v ∈ Gr: 11069.1
-   Avg. punished states: 10126.8
-   Avg. expanded states u, v∈ Trie (% of all): 93.1875
-   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): 2.45867
-   Avg. expanded states u∈Gr, v∈Trie (% of all): 2.45867
-   Avg. expanded states u, v ∈ Gr (% of all): 1.95355
+   Avg. matches per seed: 1.095
+   Avg. legit matches per seed: 0.8875
+   Avg. crumbs per legit match: 644.41
+   Avg. band: 1577.17
+   Avg. expanded states: 788586
+   Avg. expanded states u, v ∈ Trie: 724712
+   Avg. expanded states u ∈ Trie, v ∈ Gr: 26792.6
+   Avg. expanded states u ∈ Gr, v ∈ Trie: 27835.2
+   Avg. expanded states u, v ∈ Gr: 9246.3
+   Avg. punished states: 10172.4
+   Avg. expanded states u, v∈ Trie (% of all): 91.48
+   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): 2.22673
+   Avg. expanded states u∈Gr, v∈Trie (% of all): 2.22673
+   Avg. expanded states u, v ∈ Gr (% of all): 4.1134
