@@ -15,7 +15,7 @@ int nindel = 0;///can be taken as ndel and nins if deletion cost ==  insertion c
 string heuristic;
 
 struct Evaluations{
-    eval_t cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, punishedstates;
+    eval_t cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, cntpunishedstates;
     /// cnts percentages to cntexpansions;
     eval_tr percntTrieTrieexpansions, percntTrierefexpansions, percntrefTrieexpansions, percntrefrefexpansions;
     eval_tr band;
@@ -35,14 +35,14 @@ struct Evaluations{
     }
     
     void update_astar_cnts(eval_t _cntexpansions, eval_t _cntTrieTrieexpansions,eval_t _cntTrierefexpansions, eval_t _cntrefTrieexpansions,
-    eval_t _cntrefrefexpansions, eval_tr _band, eval_t _punishedstates){
+    eval_t _cntrefrefexpansions, eval_tr _band, eval_t _cntpunishedstates){
         cntexpansions += _cntexpansions;
         cntTrieTrieexpansions += _cntTrieTrieexpansions;
         cntTrierefexpansions += _cntTrierefexpansions;
         cntrefTrieexpansions += _cntrefTrieexpansions;
         cntrefrefexpansions += _cntrefrefexpansions;
         band += _band;
-        punishedstates += _punishedstates;
+        cntpunishedstates += _cntpunishedstates;
     }
 
     void update_astar_percentages(eval_tr _percntTrieTrieexpansions, eval_tr _percntTrierefexpansions, eval_tr _percntrefTrieexpansions, eval_tr _percntrefrefexpansions){
@@ -72,7 +72,7 @@ struct Evaluations{
         cout << "   Avg. expanded states u ∈ Trie, v ∈ Gr: " << (double) cntTrierefexpansions / ntestsr << "\n";
         cout << "   Avg. expanded states u ∈ Gr, v ∈ Trie: " << (double) cntrefTrieexpansions / ntestsr << "\n";
         cout << "   Avg. expanded states u, v ∈ Gr: " << (double) cntrefrefexpansions / ntestsr << "\n";
-        cout << "   Avg. punished states: " << (double) cntinfhvalues / ntestsr << "\n";
+        cout << "   Avg. punished states: " << (double) cntpunishedstates / ntestsr << "\n";
         cout << "   Avg. expanded states u, v∈ Trie (% of all): " << percntTrieTrieexpansions / ntestsr << "\n";
         cout << "   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): " << percntTrierefexpansions / ntestsr << "\n";
         cout << "   Avg. expanded states u∈Gr, v∈Trie (% of all): " << percntrefTrieexpansions / ntestsr << "\n";

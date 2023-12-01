@@ -98,7 +98,7 @@ int main(int argc, char *argv[]){
     cout << "\n";
     cerr << "inited kmers\n" ;
     for (int testcase=1; testcase<=testcases; ++testcase, cout<<endl){
-        //cout << "Query "<< testcase << ":\n";
+        cout << "Query "<< testcase << ":\n";
         int rezult;
         t = clock();
         if (typealignment == "single-read"){
@@ -152,16 +152,17 @@ int main(int argc, char *argv[]){
             rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
             t = clock() - t;
             evalsts.aligntime += runtime(t);
-            //cout << "Cost: " << rezult << "\n"; 
-            //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            cout << "Cost: " << rezult << "\n"; 
+            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //cerr << "Cost: " << rezult << "\n"; 
             //cerr << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
-        /*t = clock();
+        t = clock();
         info.clearquerydata();
         t = clock() - t;
-        cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";*/
+        cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
     }
+    evalsts.print_stats();
     cerr << "End of the main.\n";
     return 0;
 }

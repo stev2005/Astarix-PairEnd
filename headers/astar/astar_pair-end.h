@@ -237,7 +237,7 @@ bool punish(Node p1, Node p2, cost_t h1, cost_t h2){
     if (!p1.is_in_trie() && !p2.is_in_trie()){
         int dist = p2.rpos - p1.rpos;
         if (!is_in_range(dist, punishl, punishr)){
-            if (h1 + h2 >= infheuristic)
+            //if (h1 + h2 >= infheuristic)
                 cntinfhvalues++;
             return true;
         }
@@ -355,5 +355,3 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     evalsts.update_astar_percentages(perTrieTrie, perTrieref, perrefTrie, perrefref);
     return cur.g;
 }
-
-
