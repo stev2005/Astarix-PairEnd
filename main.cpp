@@ -56,6 +56,10 @@ inline void printmatches(MatchingKmers &info){
     cout << "\n";
 }
 
+double runtime(clock_t t){
+    return (double) t / CLOCKS_PER_SEC;
+}
+
 int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -68,7 +72,10 @@ int main(int argc, char *argv[]){
     parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic);
     read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic);
     insdist = locinsdist;
-    drange = locdrange; 
+    drange = locdrange;
+    evalsts.d = d;
+    evalsts.k = k;
+    evalsts.drange = drange;
     cout << "D: " << d << " k: " << k << endl;
     string ref;
     int testcases;
@@ -82,7 +89,8 @@ int main(int argc, char *argv[]){
     set_query_in_file(filequery);
     //cin >> testcases ;
     testcases = get_num_testcases();
-    cerr << "entered num of tescases\n" ;
+    evalsts.ntests = testcases;
+    //cerr << "entered num of tescases\n" ;
     MatchingKmers info;
     Trie *rootdmer = new Trie();
     Trie *rootkmer = new Trie();
@@ -90,16 +98,16 @@ int main(int argc, char *argv[]){
     cout << "\n";
     cerr << "inited kmers\n" ;
     for (int testcase=1; testcase<=testcases; ++testcase, cout<<endl){
-        cout << "Query "<< testcase << ":\n";
+        //cout << "Query "<< testcase << ":\n";
         int rezult;
         t = clock();
         if (typealignment == "single-read"){
-            cerr << "If for single read alingment\n";
+            //cerr << "If for single read alingment\n";
             string query;
             //cin>>query;
             query = get_single_read_query();
             t = clock() - t;
-            cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            //cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             maximum_edit_cost = query.size() + 1;
             if (heuristic == "seed_heuristic"){
                 t = clock();
@@ -123,7 +131,7 @@ int main(int argc, char *argv[]){
         }
         else{
             ///paired-end alignment
-            cerr << "main: paired-end\n";
+            //cerr << "main: paired-end\n";
             pair <string, string> queryp;
             queryp = get_pair_end_query();
             nindel = queryp.first.size() / k;
@@ -131,24 +139,29 @@ int main(int argc, char *argv[]){
                 nindel++;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-            filter_matches(info, /*insdist, drange,*/ queryp.first.size());
-            //howmanycrumbs_seeds_have(info, k);
-            get_crumbs_pairend(ref, d, k, info);
-            //test_createStatepr();
             t = clock();
-            //rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info, heuristic_method, shownexplstates, triestart, dmatch);
+            filter_matches(info, queryp.first.size());
+            t = clock() - t;
+            evalsts.filtermatchestime += runtime(t);
+            //howmanycrumbs_seeds_have(info, k);
+            t = clock();
+            get_crumbs_pairend(ref, d, k, info);
+            t = clock() - t;
+            evalsts.getcrumbstime += runtime(t);
+            t = clock();
             rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
             t = clock() - t;
-            cout << "Cost: " << rezult << "\n"; 
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            cerr << "Cost: " << rezult << "\n"; 
-            cerr << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            evalsts.aligntime += runtime(t);
+            //cout << "Cost: " << rezult << "\n"; 
+            //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            //cerr << "Cost: " << rezult << "\n"; 
+            //cerr << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
-        t = clock();
+        /*t = clock();
         info.clearquerydata();
         t = clock() - t;
-        cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+        cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";*/
     }
-    //cout<<"End of the main program.\n";
+    cerr << "End of the main.\n";
     return 0;
 }

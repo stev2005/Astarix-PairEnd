@@ -132,10 +132,11 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
     vector<pair<int, int> > matches1, matches2;
     get_seeds_matches_sorted(info.seeds1, info.lastkmer, info.prevposkmer, matches1);
     get_seeds_matches_sorted(info.seeds2, info.lastkmer, info.prevposkmer, matches2);
-    cout << "Number of seeds' mathces per number of seeds for read1: " << (double) matches1.size() / (double) info.seeds1.size() << "\n";
+    /*cout << "Number of seeds' mathces per number of seeds for read1: " << (double) matches1.size() / (double) info.seeds1.size() << "\n";
     cout << "Number of seeds' mathces per number of seeds for read2: " << (double) matches2.size() / (double) info.seeds2.size() << "\n";
     cout << "Number of seeds' matches per nuumber of seeds for both reads" <<
-        (double) (matches1.size() + matches2.size()) / (double) (info.seeds1.size() + info.seeds2.size()) << "\n";
+        (double) (matches1.size() + matches2.size()) / (double) (info.seeds1.size() + info.seeds2.size()) << "\n";*/
+    evalsts.matchesperseed +=  (double) (matches1.size() + matches2.size()) / (double) (info.seeds1.size() + info.seeds2.size());
     info.crumbseeds1.resize(info.seeds1.size());
     info.crumbseeds2.resize(info.seeds2.size());
     //make_crumbs_appropriate_matches(matches1, matches2, lb, rb, info.crumbseeds1, info.crumbseeds2);
@@ -145,10 +146,11 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
         cntfilteredmatche1spr += i.size();
     for (auto i: info.crumbseeds2)
         cntfilteredmatche2spr += i.size();
-    cout << "Number of seeds' filtered mathces per number of seeds for read1: " << (double) cntfilteredmatche1spr / (double) info.seeds1.size() << "\n";
+    /*cout << "Number of seeds' filtered mathces per number of seeds for read1: " << (double) cntfilteredmatche1spr / (double) info.seeds1.size() << "\n";
     cout << "Number of seeds' filtered mathces per number of seeds for read2: " << (double) cntfilteredmatche2spr / (double) info.seeds2.size() << "\n";
     cout << "Number of seeds' filtered matches per nuumber of seeds for both reads" <<
-        (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) / (double) (info.seeds1.size() + info.seeds2.size()) << "\n";
+        (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) / (double) (info.seeds1.size() + info.seeds2.size()) << "\n";*/
+    evalsts.legitmatchesperseed += (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) / (double) (info.seeds1.size() + info.seeds2.size());
     /*show_filter_matches(info.crumbseeds1);
     show_filter_matches(info.crumbseeds2);
     cout << "end of the filtering function\n";*/
@@ -157,16 +159,17 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
 inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
     int cntsetcrumbs1 = getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
     int cntsetcrumbs2 = getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
-    cout << "Number of crumbs per number of filtered matches for read1: " << (double) cntsetcrumbs1 / (double) cntfilteredmatche1spr << "\n";
+    /*cout << "Number of crumbs per number of filtered matches for read1: " << (double) cntsetcrumbs1 / (double) cntfilteredmatche1spr << "\n";
     cout << "Number of crumbs per number of filtered matches for read2: " << (double) cntsetcrumbs2 / (double) cntfilteredmatche2spr << "\n";
     cout << "Number of crumbs per number of filtered matches for bith reads: " <<
-        (double) (cntsetcrumbs1 + cntsetcrumbs2) / (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) << "\n";
-    cerr << "crumbing pairend ended\n";
+        (double) (cntsetcrumbs1 + cntsetcrumbs2) / (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) << "\n";*/
+    evalsts.crumbsperlegitmatch += (double) (cntsetcrumbs1 + cntsetcrumbs2) / (double) (cntfilteredmatche1spr + cntfilteredmatche2spr);
+    //cerr << "crumbing pairend ended\n";
 }
 
 inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *root, int d, int k, MatchingKmers &info){
     cost_t h = pairend_heuristic(0, Node(root), Node(root), k, info);
-    cerr << "<0, root, root> heuristic is: " << h << endl;
+    //cerr << "<0, root, root> heuristic is: " << h << endl;
     Statepr cur = createStatepr(0, root, root, 0, h);
     q.push(cur);
     for (int i = m - d + 1; i < m; ++i){
@@ -293,10 +296,11 @@ inline void increasecnt(int qpos, Node p1, Node p2, long long &cntexpansions, lo
 }
 
 cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, int d, int k, Trie *root, MatchingKmers &info){
-    cerr << "in the paired-end alignment function\n";
+    //cerr << "in the paired-end alignment function\n";
     //cout << "infheuristic value: " << infheuristic << endl;
     int n = queryp.first.size();
     int m = ref.size();
+    cntinfhvalues = 0;
     priority_queue<Statepr> q;
     punishl = readdist - drange;
     punishr = readdist + drange;
@@ -332,7 +336,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
         }
     }
     get_expanded_prstates(true);
-    cout << "Expanded states:" << cntexpansions << "\n";
+    /*cout << "Expanded states:" << cntexpansions << "\n";
     cout << "Expanded states <qpos, Trie*, Trie*>: " << cntTrieTrieexpansions << "\n";
     cout << "Expanded states <qpos, Trie*, Trie*> (% all states ): " << (double)cntTrieTrieexpansions / (double) cntexpansions * (double) 100<< "%\n";    
     cout << "Expanded states <qpos, Trie*, ref>: " << cntTrierefexpansions << "\n"; 
@@ -342,7 +346,13 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     cout << "Expanded states <qpos, ref, ref>: " << cntrefrefexpansions << "\n";
     cout << "Expanded states <qpos, ref, ref> (% all states): " << (double) cntrefrefexpansions / (double) cntexpansions * (double) 100 << "%\n";  
     cout << "Band: " << (double) cntexpansions / (double)(n * 2) << "\n";
-    cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";
+    cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";*/
+    evalsts.update_astar_cnts(cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, (double) cntexpansions / (double)(n * 2), cntinfhvalues);
+    double perTrieTrie = (double)cntTrieTrieexpansions / (double) cntexpansions * (double) 100;
+    double perTrieref = (double) cntTrierefexpansions / (double) cntexpansions * (double) 100;
+    double perrefTrie = (double) cntrefTrieexpansions / (double) cntexpansions * (double) 100;
+    double perrefref = (double) cntrefrefexpansions / (double) cntexpansions * (double) 100;
+    evalsts.update_astar_percentages(perTrieTrie, perTrieref, perrefTrie, perrefref);
     return cur.g;
 }
 
