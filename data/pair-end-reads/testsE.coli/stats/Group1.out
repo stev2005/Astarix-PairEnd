@@ -1,0 +1,23 @@
+Stats for this test group:
+   Number of tests: 10000
+   Error-rate: (you have to know it in advance)
+   Avg. runtime filtering legit from faux matches: 2.49354e-05 (sec.)
+   Avg. run-time setting crumbs: 0.010473 (sec.)
+   Avg. run-time joint alignment: 0.00212963 (sec.)
+   Trie depth: 10
+   Seeds lenght: 15 (bp.)
+   Drange: 50
+   Avg. matches per seed: 1.05804
+   Avg. legit matches per seed: 0.970744
+   Avg. crumbs per legit match: 551.061
+   Avg. band: 0.512353
+   Avg. expanded states: 256.176
+   Avg. expanded states u, v ∈ Trie: 11.1635
+   Avg. expanded states u ∈ Trie, v ∈ Gr: 1.0007
+   Avg. expanded states u ∈ Gr, v ∈ Trie: 1.0031
+   Avg. expanded states u, v ∈ Gr: 243.009
+   Avg. punished states: 15.9225
+   Avg. expanded states u, v∈ Trie (% of all): 4.34353
+   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): 0.390582
+   Avg. expanded states u∈Gr, v∈Trie (% of all): 0.390582
+   Avg. expanded states u, v ∈ Gr (% of all): 94.8746
