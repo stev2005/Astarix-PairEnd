@@ -36,7 +36,7 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     set<Node> trienodes;
     int ndel = seeds.size();
     int nins = seeds.size();
-    int cntsetcrumbs = 0;
+    //int cntsetcrumbs = 0;
     for (int i = 0; i < seeds.size(); ++i){
         //cerr << "i: " << i << " seeds[i]: " << seeds[i] << "\n";
         if (seeds[i] >= 0){
@@ -54,14 +54,14 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                     //cerr << "rpos: " << rpos << "\n";
                     if (rpos >= 0){
                         crumbs[Node(rpos)][i] = true;
-                        cntsetcrumbs++;
+                        //cntsetcrumbs++;
                         st.insert(Node(rpos));
                         //cerr << "if for rpos >= 0 passed\n";
                         if (seedstart - rpos > seedpos - nins - d){
                             //cerr << "print again rpos: " << rpos << "\n";
                             Trie* cur = backtotrieconnection[rpos];
                             while (cur != nullptr){
-                                cntsetcrumbs++;
+                                //cntsetcrumbs++;
                                 crumbs[Node(cur)][i] = true;
                                 trienodes.insert(Node(cur));
                                 st.insert(Node(cur));
@@ -81,7 +81,7 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     /*cout << "Number of Nodes with at least one crumb: " << st.size() << endl;
     cout << "Number of Trie Nodes with at least one crumb: " << trienodes.size() << endl;
     cout << "Number of Ref Nodes with at least one crumb: " << st.size() - trienodes.size() << endl;*/
-    return cntsetcrumbs;
+    return st.size();
 }
 
 inline void push_first_states_in_q(priority_queue<Statesr> &q, int m, int d, int k, Trie *rootdmer, vector<int> &seeds, crumbs_t &crumbs){
