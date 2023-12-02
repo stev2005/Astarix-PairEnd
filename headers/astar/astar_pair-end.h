@@ -165,8 +165,11 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
 }
 
 inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
+    //cerr << "Begin of get_crumbs_paired end\n";
     int cntsetcrumbs1 = getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
+    //cerr << "Here1\n";
     int cntsetcrumbs2 = getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
+    //cerr << "Here2\n";
     /*cout << "Number of crumbs per number of filtered matches for read1: " << (double) cntsetcrumbs1 / (double) cntfilteredmatche1spr << "\n";
     cout << "Number of crumbs per number of filtered matches for read2: " << (double) cntsetcrumbs2 / (double) cntfilteredmatche2spr << "\n";
     cout << "Number of crumbs per number of filtered matches for bith reads: " <<

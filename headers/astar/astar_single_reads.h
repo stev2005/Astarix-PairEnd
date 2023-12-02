@@ -31,16 +31,19 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
         cout << "\n";
     }
     cout << "\n";*/
+    //cerr << "starts sr get crumbs\n";
     set<Node> st;
     set<Node> trienodes;
     int ndel = seeds.size();
     int nins = seeds.size();
     int cntsetcrumbs = 0;
     for (int i = 0; i < seeds.size(); ++i){
+        //cerr << "i: " << i << " seeds[i]: " << seeds[i] << "\n";
         if (seeds[i] >= 0){
             //cntseedcrumbs = 0;
             int seedpos = i * k;
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
+                //cerr << "j: " << j << "\n";
                 int seedstart = j - k + 1;///start of a seed in the reference;
                 if (read != 0)
                     if (not_available_to_crumb(crumbseeds, i, j))
@@ -48,26 +51,31 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                 //cerr << "filtered accepted crumb here\n";
                 for (int back = 0; back < seedpos + ndel; ++back){
                     int rpos = seedstart - back;
+                    //cerr << "rpos: " << rpos << "\n";
                     if (rpos >= 0){
                         crumbs[Node(rpos)][i] = true;
                         cntsetcrumbs++;
                         st.insert(Node(rpos));
-                    }
-                    if (seedstart - rpos > seedpos - nins - d){
-                        Trie* cur = backtotrieconnection[rpos];
-                        while (cur != nullptr){
-                            cntsetcrumbs++;
-                            crumbs[Node(cur)][i] = true;
-                            trienodes.insert(Node(cur));
-                            st.insert(Node(cur));
-                            cur = cur->parent;
+                        //cerr << "if for rpos >= 0 passed\n";
+                        if (seedstart - rpos > seedpos - nins - d){
+                            //cerr << "print again rpos: " << rpos << "\n";
+                            Trie* cur = backtotrieconnection[rpos];
+                            while (cur != nullptr){
+                                cntsetcrumbs++;
+                                crumbs[Node(cur)][i] = true;
+                                trienodes.insert(Node(cur));
+                                st.insert(Node(cur));
+                                cur = cur->parent;
+                            }
                         }
                     }
+                    
                 }
             }
             //cout << "seed[" << i << "] has "<< cntseedcrumbs << " crumbs in the Gr+\n";
         }
     }
+    //cerr << "End get sr crumbs\n";
     /*for (int i = 0; i < st.size(); ++i)
         cout << "seed[" << i << "] has "<< crumbs[i].size() << "appereances in the reference\n";*/
     /*cout << "Number of Nodes with at least one crumb: " << st.size() << endl;

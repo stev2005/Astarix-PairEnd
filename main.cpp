@@ -100,7 +100,7 @@ int main(int argc, char *argv[]){
     for (int testcase=1; testcase<=testcases; ++testcase/*, cout<<endl*/){
         cerr << "Query "<< testcase << ":\n";
         int rezult;
-        t = clock();
+        //t = clock();
         if (typealignment == "single-read"){
             //cerr << "If for single read alingment\n";
             string query;
@@ -139,19 +139,29 @@ int main(int argc, char *argv[]){
                 nindel++;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-            t = clock();
-            filter_matches(info, queryp.first.size());
-            t = clock() - t;
-            evalsts.filtermatchestime += runtime(t);
-            //howmanycrumbs_seeds_have(info, k);
-            t = clock();
-            get_crumbs_pairend(ref, d, k, info);
-            t = clock() - t;
-            evalsts.getcrumbstime += runtime(t);
-            t = clock();
+            //cerr << "Here 1\n";
+                t = clock();
+                filter_matches(info, queryp.first.size());
+                t = clock() - t;
+                evalsts.filtermatchestime += runtime(t);
+                //cerr << "filtering not the problme\n";
+                //howmanycrumbs_seeds_have(info, k);
+                    //cerr << "Here2\n";
+                    t = clock();
+                    //cerr << "Here3\n";
+                        get_crumbs_pairend(ref, d, k, info);
+                    //cerr << "Here4\n";
+                    t = clock() - t;
+                    //cerr << "Here5\n";
+                    evalsts.getcrumbstime += runtime(t);
+                    //cerr << "Here6\n";
+                    t = clock();
+                    //cerr << "crumbing not the problem\n";
+            //cerr << "Here 10\n";
             rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
             t = clock() - t;
             evalsts.aligntime += runtime(t);
+            //cerr << "alignment passed\n";
             //cout << "Cost: " << rezult << "\n"; 
             //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //cerr << "Cost: " << rezult << "\n"; 
@@ -161,7 +171,9 @@ int main(int argc, char *argv[]){
         info.clearquerydata();
         t = clock() - t;
         //cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+        cout << "Here 20\n";
     }
+    //cerr << "Here 30\n";
     evalsts.print_stats();
     cerr << "End of the main.\n";
     return 0;
