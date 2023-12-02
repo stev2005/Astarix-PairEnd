@@ -52,9 +52,9 @@ struct Evaluations{
         percntrefrefexpansions += _percntrefrefexpansions;
     }
 
-    void print_stats(){
+    void print_avg_stats(){
         eval_tr ntestsr = ntests;
-        cout << "Stats for this test group:\n";
+        cout << "Average Stats for this test group:\n";
         cout << "   Number of tests: " << ntests << "\n";
         cout << "   Error-rate: " << "(you have to know it in advance)\n";
         cout << "   Avg. runtime filtering legit from faux matches: " << filtermatchestime / ntestsr << " (sec.)\n";
@@ -77,6 +77,33 @@ struct Evaluations{
         cout << "   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): " << percntTrierefexpansions / ntestsr << "\n";
         cout << "   Avg. expanded states u∈Gr, v∈Trie (% of all): " << percntrefTrieexpansions / ntestsr << "\n";
         cout << "   Avg. expanded states u, v ∈ Gr (% of all): " << percntrefrefexpansions / ntests << endl;
+    }
+
+    void print_stats(){
+        eval_tr ntestsr = ntests;
+        cout << "Stats for this test group:\n";
+        cout << "   Number of tests: " << ntests << "\n";
+        cout << "   Error-rate: " << "(you have to know it in advance)\n";
+        cout << "   runtime filtering legit from faux matches: " << filtermatchestime  << " (sec.)\n";
+        cout << "   run-time setting crumbs: " << getcrumbstime << " (sec.)\n";
+        cout << "   run-time joint alignment: " << aligntime << " (sec.)\n";
+        cout << "   Trie depth: " << d << "\n";
+        cout << "   Seeds lenght: " << k << " (bp.)\n";
+        cout << "   Drange: " << drange << "\n";
+        cout << "   matches per seed: " << matchesperseed  << "\n";
+        cout << "   legit matches per seed: " << legitmatchesperseed << "\n";
+        cout << "   crumbs per legit match: " << crumbsperlegitmatch << "\n";
+        cout << "   band: " << band << "\n";
+        cout << "   expanded states: " << cntexpansions << "\n";
+        cout << "   expanded states u, v ∈ Trie: " << cntTrieTrieexpansions << "\n";
+        cout << "   expanded states u ∈ Trie, v ∈ Gr: " << cntTrierefexpansions << "\n";
+        cout << "   expanded states u ∈ Gr, v ∈ Trie: " << cntrefTrieexpansions << "\n";
+        cout << "   expanded states u, v ∈ Gr: " << cntrefrefexpansions << "\n";
+        cout << "   punished states: " << cntpunishedstates << "\n";
+        cout << "   expanded states u, v∈ Trie (% of all): " << percntTrieTrieexpansions << "\n";
+        cout << "   expanded states u ∈ Trie, v ∈ Gr (% of all): " << percntTrierefexpansions << "\n";
+        cout << "   expanded states u∈Gr, v∈Trie (% of all): " << percntrefTrieexpansions << "\n";
+        cout << "   expanded states u, v ∈ Gr (% of all): " << percntrefrefexpansions << endl;
     }
 };
 Evaluations evalsts;
