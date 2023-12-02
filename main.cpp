@@ -171,7 +171,7 @@ int main(int argc, char *argv[]){
         info.clearquerydata();
         t = clock() - t;
         //cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-        cout << "Here 20\n";
+        //cout << "Here 20\n";
     }
     //cerr << "Here 30\n";
     evalsts.print_stats();
