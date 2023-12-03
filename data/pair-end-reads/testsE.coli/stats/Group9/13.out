@@ -1,0 +1,27 @@
+D: 10 k: 12
+reading reference: 0.001582s.
+constructing trie: 1.01074s.
+
+Stats for this test group:
+   Number of tests: 500
+   Error-rate: (you have to know it in advance)
+   runtime filtering legit from faux matches: 0.01653 (sec.)
+   run-time setting crumbs: 5.64336 (sec.)
+   run-time joint alignment: 2057.93 (sec.)
+   Trie depth: 10
+   Seeds lenght: 12 (bp.)
+   Drange: 50
+   matches per seed: 446.7
+   legit matches per seed: 325.75
+   crumbs per legit match: 24451.1
+   band: 133068
+   expanded states: 66534101
+   expanded states u, v ∈ Trie: 62108848
+   expanded states u ∈ Trie, v ∈ Gr: 1447040
+   expanded states u ∈ Gr, v ∈ Trie: 1460955
+   expanded states u, v ∈ Gr: 1517258
+   punished states: 871153
+   expanded states u, v∈ Trie (% of all): 39464.2
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 680.409
+   expanded states u∈Gr, v∈Trie (% of all): 680.409
+   expanded states u, v ∈ Gr (% of all): 9177.59
