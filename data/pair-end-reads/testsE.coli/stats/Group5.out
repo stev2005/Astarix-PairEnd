@@ -1,27 +1,27 @@
 D: 10 k: 12
-reading reference: 0.001663s.
-constructing trie: 1.48588s.
+reading reference: 0.001357s.
+constructing trie: 0.894563s.
 
 Stats for this test group:
    Number of tests: 10000
    Error-rate: (you have to know it in advance)
-   Avg. runtime filtering legit from faux matches: 3.2911e-05 (sec.)
-   Avg. run-time setting crumbs: 0.0119377 (sec.)
-   Avg. run-time joint alignment: 0.110393 (sec.)
+   runtime filtering legit from faux matches: 0.295912 (sec.)
+   run-time setting crumbs: 117.511 (sec.)
+   run-time joint alignment: 1129.29 (sec.)
    Trie depth: 10
    Seeds lenght: 12 (bp.)
    Drange: 50
-   Avg. matches per seed: 1.03404
-   Avg. legit matches per seed: 0.79971
-   Avg. crumbs per legit match: 639.701
-   Avg. band: 6.16046
-   Avg. expanded states: 3080.23
-   Avg. expanded states u, v ∈ Trie: 2583.15
-   Avg. expanded states u ∈ Trie, v ∈ Gr: 43.3936
-   Avg. expanded states u ∈ Gr, v ∈ Trie: 44.0943
-   Avg. expanded states u, v ∈ Gr: 409.587
-   Avg. punished states: 95.3686
-   Avg. expanded states u, v∈ Trie (% of all): 43.2543
-   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): 1.2845
-   Avg. expanded states u∈Gr, v∈Trie (% of all): 1.2845
-   Avg. expanded states u, v ∈ Gr (% of all): 54.1843
+   matches per seed: 10340.4
+   legit matches per seed: 7997.1
+   crumbs per legit match: 398058
+   band: 61604.6
+   expanded states: 30802290
+   expanded states u, v ∈ Trie: 25831544
+   expanded states u ∈ Trie, v ∈ Gr: 433936
+   expanded states u ∈ Gr, v ∈ Trie: 440943
+   expanded states u, v ∈ Gr: 4095867
+   punished states: 953686
+   expanded states u, v∈ Trie (% of all): 432543
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 12845
+   expanded states u∈Gr, v∈Trie (% of all): 12845
+   expanded states u, v ∈ Gr (% of all): 541843
