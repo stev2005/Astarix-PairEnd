@@ -23,7 +23,9 @@ struct Evaluations{
     eval_tr matchesperseed, legitmatchesperseed, crumbsperlegitmatch;
     eval_tr aligntime, filtermatchestime, getcrumbstime;
     int d, k, drange;
-
+    ///stats for single read
+    eval_tr sraligntime, srcrumbingtime;
+    
     Evaluations(){
         cntexpansions = 0;
         cntTrieTrieexpansions = 0;

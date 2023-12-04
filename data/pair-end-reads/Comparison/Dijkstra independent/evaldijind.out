@@ -1,0 +1,2069 @@
+D: 10 k: 13
+reading reference: 0.001388s.
+constructing trie: 0.987291s.
+
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 264
+Expanded trie states: 11
+Expanded trie states (%): 4.16667%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 253
+Expanded ref states (%): 95.8333%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 253
+Band: 1.056
+Cost: 0
+Alignment: 0.000466s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 3406705
+Expanded trie states: 1752679
+Expanded trie states (%): 51.4479%
+Expanded trie states without any crumb: 1752679
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 549330
+Expanded trie states reexpanded (% Trie expansions): 31.3423%
+Expanded ref states: 1654026
+Expanded ref states (%): 48.5521%
+Expanded ref states reexpanded (% ref expansions): 34.4916%
+Times switching from trie to linear search: 1654026
+Band: 13626.8
+Cost: 5
+Alignment: 13.0722s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 43119618
+Expanded trie states: 15304886
+Expanded trie states (%): 35.494%
+Expanded trie states without any crumb: 15304886
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 7621018
+Expanded trie states reexpanded (% Trie expansions): 49.7947%
+Expanded ref states: 27814732
+Expanded ref states (%): 64.506%
+Expanded ref states reexpanded (% ref expansions): 62.3778%
+Times switching from trie to linear search: 27814732
+Band: 172478
+Cost: 8
+Alignment: 176.704s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 266
+Expanded trie states: 11
+Expanded trie states (%): 4.13534%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 255
+Expanded ref states (%): 95.8647%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 255
+Band: 1.064
+Cost: 0
+Alignment: 2.50143s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 91104
+Expanded trie states: 67578
+Expanded trie states (%): 74.1768%
+Expanded trie states without any crumb: 67578
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 9353
+Expanded trie states reexpanded (% Trie expansions): 13.8403%
+Expanded ref states: 23526
+Expanded ref states (%): 25.8232%
+Expanded ref states reexpanded (% ref expansions): 14.9367%
+Times switching from trie to linear search: 23526
+Band: 364.416
+Cost: 3
+Alignment: 0.327868s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 131239
+Expanded trie states: 78780
+Expanded trie states (%): 60.0279%
+Expanded trie states without any crumb: 78780
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11925
+Expanded trie states reexpanded (% Trie expansions): 15.1371%
+Expanded ref states: 52459
+Expanded ref states (%): 39.9721%
+Expanded ref states reexpanded (% ref expansions): 16.8894%
+Times switching from trie to linear search: 52459
+Band: 524.956
+Cost: 3
+Alignment: 0.551114s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 10393
+Expanded trie states: 6242
+Expanded trie states (%): 60.0597%
+Expanded trie states without any crumb: 6242
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 640
+Expanded trie states reexpanded (% Trie expansions): 10.2531%
+Expanded ref states: 4151
+Expanded ref states (%): 39.9403%
+Expanded ref states reexpanded (% ref expansions): 22.3561%
+Times switching from trie to linear search: 4151
+Band: 41.572
+Cost: 2
+Alignment: 0.030644s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 334926
+Expanded trie states: 186120
+Expanded trie states (%): 55.5705%
+Expanded trie states without any crumb: 186120
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 46636
+Expanded trie states reexpanded (% Trie expansions): 25.057%
+Expanded ref states: 148806
+Expanded ref states (%): 44.4295%
+Expanded ref states reexpanded (% ref expansions): 24.1079%
+Times switching from trie to linear search: 148806
+Band: 1339.7
+Cost: 4
+Alignment: 1.13108s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 884617
+Expanded trie states: 537860
+Expanded trie states (%): 60.8015%
+Expanded trie states without any crumb: 537860
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 125892
+Expanded trie states reexpanded (% Trie expansions): 23.4061%
+Expanded ref states: 346757
+Expanded ref states (%): 39.1985%
+Expanded ref states reexpanded (% ref expansions): 22.2496%
+Times switching from trie to linear search: 346757
+Band: 3538.47
+Cost: 4
+Alignment: 3.33735s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 898
+Expanded trie states: 392
+Expanded trie states (%): 43.6526%
+Expanded trie states without any crumb: 392
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 10
+Expanded trie states reexpanded (% Trie expansions): 2.55102%
+Expanded ref states: 506
+Expanded ref states (%): 56.3474%
+Expanded ref states reexpanded (% ref expansions): 8.10277%
+Times switching from trie to linear search: 506
+Band: 3.592
+Cost: 1
+Alignment: 0.07523s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 186476
+Expanded trie states: 89752
+Expanded trie states (%): 48.1306%
+Expanded trie states without any crumb: 89752
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 12743
+Expanded trie states reexpanded (% Trie expansions): 14.198%
+Expanded ref states: 96724
+Expanded ref states (%): 51.8694%
+Expanded ref states reexpanded (% ref expansions): 17.4497%
+Times switching from trie to linear search: 96724
+Band: 745.904
+Cost: 3
+Alignment: 0.627576s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 616179
+Expanded trie states: 340676
+Expanded trie states (%): 55.2885%
+Expanded trie states without any crumb: 340676
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 102058
+Expanded trie states reexpanded (% Trie expansions): 29.9575%
+Expanded ref states: 275503
+Expanded ref states (%): 44.7115%
+Expanded ref states reexpanded (% ref expansions): 33.8073%
+Times switching from trie to linear search: 275503
+Band: 2464.72
+Cost: 4
+Alignment: 2.06719s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 11815792
+Expanded trie states: 5051249
+Expanded trie states (%): 42.75%
+Expanded trie states without any crumb: 5051249
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 2001950
+Expanded trie states reexpanded (% Trie expansions): 39.6328%
+Expanded ref states: 6764543
+Expanded ref states (%): 57.25%
+Expanded ref states reexpanded (% ref expansions): 47.017%
+Times switching from trie to linear search: 6764543
+Band: 47263.2
+Cost: 6
+Alignment: 46.8883s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 990
+Expanded trie states: 385
+Expanded trie states (%): 38.8889%
+Expanded trie states without any crumb: 385
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11
+Expanded trie states reexpanded (% Trie expansions): 2.85714%
+Expanded ref states: 605
+Expanded ref states (%): 61.1111%
+Expanded ref states reexpanded (% ref expansions): 11.0744%
+Times switching from trie to linear search: 605
+Band: 3.96
+Cost: 1
+Alignment: 0.821764s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 3472924
+Expanded trie states: 1757697
+Expanded trie states (%): 50.6114%
+Expanded trie states without any crumb: 1757697
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 561488
+Expanded trie states reexpanded (% Trie expansions): 31.9445%
+Expanded ref states: 1715227
+Expanded ref states (%): 49.3886%
+Expanded ref states reexpanded (% ref expansions): 34.9119%
+Times switching from trie to linear search: 1715227
+Band: 13891.7
+Cost: 5
+Alignment: 13.6628s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 11392
+Expanded trie states: 6426
+Expanded trie states (%): 56.408%
+Expanded trie states without any crumb: 6426
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 666
+Expanded trie states reexpanded (% Trie expansions): 10.3641%
+Expanded ref states: 4966
+Expanded ref states (%): 43.592%
+Expanded ref states reexpanded (% ref expansions): 11.8002%
+Times switching from trie to linear search: 4966
+Band: 45.568
+Cost: 2
+Alignment: 0.320214s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 2504517
+Expanded trie states: 1268244
+Expanded trie states (%): 50.6383%
+Expanded trie states without any crumb: 1268244
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 353020
+Expanded trie states reexpanded (% Trie expansions): 27.8353%
+Expanded ref states: 1236273
+Expanded ref states (%): 49.3617%
+Expanded ref states reexpanded (% ref expansions): 29.825%
+Times switching from trie to linear search: 1236273
+Band: 10018.1
+Cost: 5
+Alignment: 9.75364s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 6535
+Expanded trie states: 4081
+Expanded trie states (%): 62.4484%
+Expanded trie states without any crumb: 4081
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 329
+Expanded trie states reexpanded (% Trie expansions): 8.06175%
+Expanded ref states: 2454
+Expanded ref states (%): 37.5516%
+Expanded ref states reexpanded (% ref expansions): 13.1622%
+Times switching from trie to linear search: 2454
+Band: 26.14
+Cost: 2
+Alignment: 0.229812s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 941747
+Expanded trie states: 515469
+Expanded trie states (%): 54.7354%
+Expanded trie states without any crumb: 515469
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 125932
+Expanded trie states reexpanded (% Trie expansions): 24.4306%
+Expanded ref states: 426278
+Expanded ref states (%): 45.2646%
+Expanded ref states reexpanded (% ref expansions): 26.5493%
+Times switching from trie to linear search: 426278
+Band: 3766.99
+Cost: 4
+Alignment: 3.52963s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 986119
+Expanded trie states: 514677
+Expanded trie states (%): 52.1922%
+Expanded trie states without any crumb: 514677
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 128725
+Expanded trie states reexpanded (% Trie expansions): 25.0108%
+Expanded ref states: 471442
+Expanded ref states (%): 47.8078%
+Expanded ref states reexpanded (% ref expansions): 26.9844%
+Times switching from trie to linear search: 471442
+Band: 3944.48
+Cost: 4
+Alignment: 3.73081s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 28097956
+Expanded trie states: 11408372
+Expanded trie states (%): 40.6021%
+Expanded trie states without any crumb: 11408372
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 5309567
+Expanded trie states reexpanded (% Trie expansions): 46.541%
+Expanded ref states: 16689584
+Expanded ref states (%): 59.3979%
+Expanded ref states reexpanded (% ref expansions): 56.4729%
+Times switching from trie to linear search: 16689584
+Band: 112392
+Cost: 7
+Alignment: 116.156s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 265
+Expanded trie states: 11
+Expanded trie states (%): 4.15094%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 254
+Expanded ref states (%): 95.8491%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 254
+Band: 1.06
+Cost: 0
+Alignment: 1.60731s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 267
+Expanded trie states: 11
+Expanded trie states (%): 4.11985%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 256
+Expanded ref states (%): 95.8801%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 256
+Band: 1.068
+Cost: 0
+Alignment: 0.00046s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 5668475
+Expanded trie states: 2594759
+Expanded trie states (%): 45.7753%
+Expanded trie states without any crumb: 2594759
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 884392
+Expanded trie states reexpanded (% Trie expansions): 34.0838%
+Expanded ref states: 3073716
+Expanded ref states (%): 54.2247%
+Expanded ref states reexpanded (% ref expansions): 39.3957%
+Times switching from trie to linear search: 3073716
+Band: 22673.9
+Cost: 6
+Alignment: 21.1723s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 20543
+Expanded trie states: 12429
+Expanded trie states (%): 60.5024%
+Expanded trie states without any crumb: 12429
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1564
+Expanded trie states reexpanded (% Trie expansions): 12.5835%
+Expanded ref states: 8114
+Expanded ref states (%): 39.4976%
+Expanded ref states reexpanded (% ref expansions): 16.108%
+Times switching from trie to linear search: 8114
+Band: 82.172
+Cost: 3
+Alignment: 0.143952s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 270
+Expanded trie states: 11
+Expanded trie states (%): 4.07407%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 259
+Expanded ref states (%): 95.9259%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 259
+Band: 1.08
+Cost: 0
+Alignment: 0.000599s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 272
+Expanded trie states: 11
+Expanded trie states (%): 4.04412%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 261
+Expanded ref states (%): 95.9559%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 261
+Band: 1.088
+Cost: 0
+Alignment: 0.030446s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 14891620
+Expanded trie states: 6684702
+Expanded trie states (%): 44.889%
+Expanded trie states without any crumb: 6684702
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 2725982
+Expanded trie states reexpanded (% Trie expansions): 40.7794%
+Expanded ref states: 8206918
+Expanded ref states (%): 55.111%
+Expanded ref states reexpanded (% ref expansions): 46.1506%
+Times switching from trie to linear search: 8206918
+Band: 59566.5
+Cost: 6
+Alignment: 56.5271s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 8085
+Expanded trie states: 5071
+Expanded trie states (%): 62.7211%
+Expanded trie states without any crumb: 5071
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 472
+Expanded trie states reexpanded (% Trie expansions): 9.30783%
+Expanded ref states: 3014
+Expanded ref states (%): 37.2789%
+Expanded ref states reexpanded (% ref expansions): 12.7405%
+Times switching from trie to linear search: 3014
+Band: 32.34
+Cost: 2
+Alignment: 1.10137s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 12687362
+Expanded trie states: 5716157
+Expanded trie states (%): 45.0539%
+Expanded trie states without any crumb: 5716157
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 2317040
+Expanded trie states reexpanded (% Trie expansions): 40.5349%
+Expanded ref states: 6971205
+Expanded ref states (%): 54.9461%
+Expanded ref states reexpanded (% ref expansions): 46.8423%
+Times switching from trie to linear search: 6971205
+Band: 50749.4
+Cost: 6
+Alignment: 48.0647s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 67290
+Expanded trie states: 47760
+Expanded trie states (%): 70.9764%
+Expanded trie states without any crumb: 47760
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 7524
+Expanded trie states reexpanded (% Trie expansions): 15.7538%
+Expanded ref states: 19530
+Expanded ref states (%): 29.0236%
+Expanded ref states reexpanded (% ref expansions): 15.7245%
+Times switching from trie to linear search: 19530
+Band: 269.16
+Cost: 3
+Alignment: 1.07758s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 997023
+Expanded trie states: 576705
+Expanded trie states (%): 57.8427%
+Expanded trie states without any crumb: 576705
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 132137
+Expanded trie states reexpanded (% Trie expansions): 22.9124%
+Expanded ref states: 420318
+Expanded ref states (%): 42.1573%
+Expanded ref states reexpanded (% ref expansions): 24.1591%
+Times switching from trie to linear search: 420318
+Band: 3988.09
+Cost: 4
+Alignment: 3.69942s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 881
+Expanded trie states: 342
+Expanded trie states (%): 38.8195%
+Expanded trie states without any crumb: 342
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 13
+Expanded trie states reexpanded (% Trie expansions): 3.80117%
+Expanded ref states: 539
+Expanded ref states (%): 61.1805%
+Expanded ref states reexpanded (% ref expansions): 11.5028%
+Times switching from trie to linear search: 539
+Band: 3.524
+Cost: 1
+Alignment: 0.091347s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 8881107
+Expanded trie states: 4132466
+Expanded trie states (%): 46.531%
+Expanded trie states without any crumb: 4132466
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1495745
+Expanded trie states reexpanded (% Trie expansions): 36.195%
+Expanded ref states: 4748641
+Expanded ref states (%): 53.469%
+Expanded ref states reexpanded (% ref expansions): 39.7735%
+Times switching from trie to linear search: 4748641
+Band: 35524.4
+Cost: 6
+Alignment: 34.5791s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 716
+Expanded trie states: 363
+Expanded trie states (%): 50.6983%
+Expanded trie states without any crumb: 363
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11
+Expanded trie states reexpanded (% Trie expansions): 3.0303%
+Expanded ref states: 353
+Expanded ref states (%): 49.3017%
+Expanded ref states reexpanded (% ref expansions): 6.79887%
+Times switching from trie to linear search: 353
+Band: 2.864
+Cost: 1
+Alignment: 0.658897s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 8406366
+Expanded trie states: 3778403
+Expanded trie states (%): 44.9469%
+Expanded trie states without any crumb: 3778403
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1381255
+Expanded trie states reexpanded (% Trie expansions): 36.5566%
+Expanded ref states: 4627963
+Expanded ref states (%): 55.0531%
+Expanded ref states reexpanded (% ref expansions): 41.6424%
+Times switching from trie to linear search: 4627963
+Band: 33625.5
+Cost: 6
+Alignment: 32.5041s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1742856
+Expanded trie states: 839268
+Expanded trie states (%): 48.1548%
+Expanded trie states without any crumb: 839268
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 219509
+Expanded trie states reexpanded (% Trie expansions): 26.1548%
+Expanded ref states: 903588
+Expanded ref states (%): 51.8452%
+Expanded ref states reexpanded (% ref expansions): 28.7394%
+Times switching from trie to linear search: 903588
+Band: 6971.42
+Cost: 5
+Alignment: 6.8219s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 2169
+Expanded trie states: 904
+Expanded trie states (%): 41.6782%
+Expanded trie states without any crumb: 904
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 56
+Expanded trie states reexpanded (% Trie expansions): 6.19469%
+Expanded ref states: 1265
+Expanded ref states (%): 58.3218%
+Expanded ref states reexpanded (% ref expansions): 18.419%
+Times switching from trie to linear search: 1265
+Band: 8.676
+Cost: 2
+Alignment: 0.179406s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 264
+Expanded trie states: 11
+Expanded trie states (%): 4.16667%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 253
+Expanded ref states (%): 95.8333%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 253
+Band: 1.056
+Cost: 0
+Alignment: 0.000469s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 2309607
+Expanded trie states: 1152382
+Expanded trie states (%): 49.8952%
+Expanded trie states without any crumb: 1152382
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 331739
+Expanded trie states reexpanded (% Trie expansions): 28.7872%
+Expanded ref states: 1157225
+Expanded ref states (%): 50.1048%
+Expanded ref states reexpanded (% ref expansions): 31.6929%
+Times switching from trie to linear search: 1157225
+Band: 9238.43
+Cost: 5
+Alignment: 8.41188s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 135021
+Expanded trie states: 83337
+Expanded trie states (%): 61.7215%
+Expanded trie states without any crumb: 83337
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 12417
+Expanded trie states reexpanded (% Trie expansions): 14.8997%
+Expanded ref states: 51684
+Expanded ref states (%): 38.2785%
+Expanded ref states reexpanded (% ref expansions): 17.7676%
+Times switching from trie to linear search: 51684
+Band: 540.084
+Cost: 3
+Alignment: 0.599363s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1500516
+Expanded trie states: 802305
+Expanded trie states (%): 53.4686%
+Expanded trie states without any crumb: 802305
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 201236
+Expanded trie states reexpanded (% Trie expansions): 25.0822%
+Expanded ref states: 698211
+Expanded ref states (%): 46.5314%
+Expanded ref states reexpanded (% ref expansions): 28.245%
+Times switching from trie to linear search: 698211
+Band: 6002.06
+Cost: 5
+Alignment: 5.30342s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 6315136
+Expanded trie states: 3111460
+Expanded trie states (%): 49.2699%
+Expanded trie states without any crumb: 3111460
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1042636
+Expanded trie states reexpanded (% Trie expansions): 33.5095%
+Expanded ref states: 3203676
+Expanded ref states (%): 50.7301%
+Expanded ref states reexpanded (% ref expansions): 35.9099%
+Times switching from trie to linear search: 3203676
+Band: 25260.5
+Cost: 6
+Alignment: 24.9087s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 3454
+Expanded trie states: 2345
+Expanded trie states (%): 67.8923%
+Expanded trie states without any crumb: 2345
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 170
+Expanded trie states reexpanded (% Trie expansions): 7.24947%
+Expanded ref states: 1109
+Expanded ref states (%): 32.1077%
+Expanded ref states reexpanded (% ref expansions): 9.64833%
+Times switching from trie to linear search: 1109
+Band: 13.816
+Cost: 2
+Alignment: 0.633443s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 9277
+Expanded trie states: 6058
+Expanded trie states (%): 65.3013%
+Expanded trie states without any crumb: 6058
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 545
+Expanded trie states reexpanded (% Trie expansions): 8.99637%
+Expanded ref states: 3219
+Expanded ref states (%): 34.6987%
+Expanded ref states reexpanded (% ref expansions): 25.0699%
+Times switching from trie to linear search: 3219
+Band: 37.108
+Cost: 2
+Alignment: 0.0409s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 147655
+Expanded trie states: 97673
+Expanded trie states (%): 66.1495%
+Expanded trie states without any crumb: 97673
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 17566
+Expanded trie states reexpanded (% Trie expansions): 17.9845%
+Expanded ref states: 49982
+Expanded ref states (%): 33.8505%
+Expanded ref states reexpanded (% ref expansions): 18.5227%
+Times switching from trie to linear search: 49982
+Band: 590.62
+Cost: 4
+Alignment: 0.555205s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 36274326
+Expanded trie states: 13997931
+Expanded trie states (%): 38.5891%
+Expanded trie states without any crumb: 13997931
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 6810316
+Expanded trie states reexpanded (% Trie expansions): 48.6523%
+Expanded ref states: 22276395
+Expanded ref states (%): 61.4109%
+Expanded ref states reexpanded (% ref expansions): 60.2048%
+Times switching from trie to linear search: 22276395
+Band: 145097
+Cost: 7
+Alignment: 143.015s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 271
+Expanded trie states: 11
+Expanded trie states (%): 4.05904%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 260
+Expanded ref states (%): 95.941%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 260
+Band: 1.084
+Cost: 0
+Alignment: 2.11142s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 417
+Expanded trie states: 26
+Expanded trie states (%): 6.23501%
+Expanded trie states without any crumb: 26
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 391
+Expanded ref states (%): 93.765%
+Expanded ref states reexpanded (% ref expansions): 4.85934%
+Times switching from trie to linear search: 391
+Band: 1.668
+Cost: 1
+Alignment: 0.000768s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 22602442
+Expanded trie states: 9130354
+Expanded trie states (%): 40.3954%
+Expanded trie states without any crumb: 9130354
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 3892397
+Expanded trie states reexpanded (% Trie expansions): 42.6314%
+Expanded ref states: 13472088
+Expanded ref states (%): 59.6046%
+Expanded ref states reexpanded (% ref expansions): 50.6512%
+Times switching from trie to linear search: 13472088
+Band: 90409.8
+Cost: 7
+Alignment: 93.6388s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 971123
+Expanded trie states: 526144
+Expanded trie states (%): 54.1789%
+Expanded trie states without any crumb: 526144
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 127492
+Expanded trie states reexpanded (% Trie expansions): 24.2314%
+Expanded ref states: 444979
+Expanded ref states (%): 45.8211%
+Expanded ref states reexpanded (% ref expansions): 24.9654%
+Times switching from trie to linear search: 444979
+Band: 3884.49
+Cost: 4
+Alignment: 5.03851s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 118643
+Expanded trie states: 67511
+Expanded trie states (%): 56.9026%
+Expanded trie states without any crumb: 67511
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 9329
+Expanded trie states reexpanded (% Trie expansions): 13.8185%
+Expanded ref states: 51132
+Expanded ref states (%): 43.0974%
+Expanded ref states reexpanded (% ref expansions): 15.1823%
+Times switching from trie to linear search: 51132
+Band: 474.572
+Cost: 3
+Alignment: 0.441886s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 123049
+Expanded trie states: 72241
+Expanded trie states (%): 58.7091%
+Expanded trie states without any crumb: 72241
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11928
+Expanded trie states reexpanded (% Trie expansions): 16.5114%
+Expanded ref states: 50808
+Expanded ref states (%): 41.2909%
+Expanded ref states reexpanded (% ref expansions): 22.0516%
+Times switching from trie to linear search: 50808
+Band: 492.196
+Cost: 3
+Alignment: 0.386753s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 4577144
+Expanded trie states: 2205761
+Expanded trie states (%): 48.1908%
+Expanded trie states without any crumb: 2205761
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 740829
+Expanded trie states reexpanded (% Trie expansions): 33.5861%
+Expanded ref states: 2371383
+Expanded ref states (%): 51.8092%
+Expanded ref states reexpanded (% ref expansions): 39.3946%
+Times switching from trie to linear search: 2371383
+Band: 18308.6
+Cost: 5
+Alignment: 16.969s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1230260
+Expanded trie states: 734122
+Expanded trie states (%): 59.6721%
+Expanded trie states without any crumb: 734122
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 180685
+Expanded trie states reexpanded (% Trie expansions): 24.6124%
+Expanded ref states: 496138
+Expanded ref states (%): 40.3279%
+Expanded ref states reexpanded (% ref expansions): 24.2912%
+Times switching from trie to linear search: 496138
+Band: 4921.04
+Cost: 5
+Alignment: 4.96911s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 97440
+Expanded trie states: 64329
+Expanded trie states (%): 66.0191%
+Expanded trie states without any crumb: 64329
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 10472
+Expanded trie states reexpanded (% Trie expansions): 16.2788%
+Expanded ref states: 33111
+Expanded ref states (%): 33.9809%
+Expanded ref states reexpanded (% ref expansions): 16.8071%
+Times switching from trie to linear search: 33111
+Band: 389.76
+Cost: 3
+Alignment: 0.432995s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 2015
+Expanded trie states: 817
+Expanded trie states (%): 40.5459%
+Expanded trie states without any crumb: 817
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 42
+Expanded trie states reexpanded (% Trie expansions): 5.14076%
+Expanded ref states: 1198
+Expanded ref states (%): 59.4541%
+Expanded ref states reexpanded (% ref expansions): 16.0267%
+Times switching from trie to linear search: 1198
+Band: 8.06
+Cost: 2
+Alignment: 0.005168s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 18344740
+Expanded trie states: 7885871
+Expanded trie states (%): 42.9871%
+Expanded trie states without any crumb: 7885871
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 3314707
+Expanded trie states reexpanded (% Trie expansions): 42.0335%
+Expanded ref states: 10458869
+Expanded ref states (%): 57.0129%
+Expanded ref states reexpanded (% ref expansions): 49.3719%
+Times switching from trie to linear search: 10458869
+Band: 73379
+Cost: 6
+Alignment: 69.6487s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 16075536
+Expanded trie states: 6968440
+Expanded trie states (%): 43.3481%
+Expanded trie states without any crumb: 6968440
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 2952697
+Expanded trie states reexpanded (% Trie expansions): 42.3724%
+Expanded ref states: 9107096
+Expanded ref states (%): 56.6519%
+Expanded ref states reexpanded (% ref expansions): 48.945%
+Times switching from trie to linear search: 9107096
+Band: 64302.1
+Cost: 7
+Alignment: 63.4121s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 686
+Expanded trie states: 356
+Expanded trie states (%): 51.895%
+Expanded trie states without any crumb: 356
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11
+Expanded trie states reexpanded (% Trie expansions): 3.08989%
+Expanded ref states: 330
+Expanded ref states (%): 48.105%
+Expanded ref states reexpanded (% ref expansions): 6.66667%
+Times switching from trie to linear search: 330
+Band: 2.744
+Cost: 1
+Alignment: 1.15152s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1536287
+Expanded trie states: 746908
+Expanded trie states (%): 48.6177%
+Expanded trie states without any crumb: 746908
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 189925
+Expanded trie states reexpanded (% Trie expansions): 25.4282%
+Expanded ref states: 789379
+Expanded ref states (%): 51.3823%
+Expanded ref states reexpanded (% ref expansions): 30.1502%
+Times switching from trie to linear search: 789379
+Band: 6145.15
+Cost: 5
+Alignment: 5.70527s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 139152
+Expanded trie states: 78450
+Expanded trie states (%): 56.3772%
+Expanded trie states without any crumb: 78450
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 12633
+Expanded trie states reexpanded (% Trie expansions): 16.1033%
+Expanded ref states: 60702
+Expanded ref states (%): 43.6228%
+Expanded ref states reexpanded (% ref expansions): 19.0834%
+Times switching from trie to linear search: 60702
+Band: 556.608
+Cost: 3
+Alignment: 0.460216s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 5497614
+Expanded trie states: 2566934
+Expanded trie states (%): 46.6918%
+Expanded trie states without any crumb: 2566934
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 844085
+Expanded trie states reexpanded (% Trie expansions): 32.883%
+Expanded ref states: 2930680
+Expanded ref states (%): 53.3082%
+Expanded ref states reexpanded (% ref expansions): 37.4921%
+Times switching from trie to linear search: 2930680
+Band: 21990.5
+Cost: 5
+Alignment: 22.1592s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 5895
+Expanded trie states: 3594
+Expanded trie states (%): 60.9669%
+Expanded trie states without any crumb: 3594
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 295
+Expanded trie states reexpanded (% Trie expansions): 8.20812%
+Expanded ref states: 2301
+Expanded ref states (%): 39.0331%
+Expanded ref states reexpanded (% ref expansions): 10.7779%
+Times switching from trie to linear search: 2301
+Band: 23.58
+Cost: 2
+Alignment: 0.50866s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 4821972
+Expanded trie states: 2348535
+Expanded trie states (%): 48.7049%
+Expanded trie states without any crumb: 2348535
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 778523
+Expanded trie states reexpanded (% Trie expansions): 33.1493%
+Expanded ref states: 2473437
+Expanded ref states (%): 51.2951%
+Expanded ref states reexpanded (% ref expansions): 36.7503%
+Times switching from trie to linear search: 2473437
+Band: 19287.9
+Cost: 5
+Alignment: 19.0526s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 996
+Expanded trie states: 391
+Expanded trie states (%): 39.257%
+Expanded trie states without any crumb: 391
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 14
+Expanded trie states reexpanded (% Trie expansions): 3.58056%
+Expanded ref states: 605
+Expanded ref states (%): 60.743%
+Expanded ref states reexpanded (% ref expansions): 7.7686%
+Times switching from trie to linear search: 605
+Band: 3.984
+Cost: 1
+Alignment: 0.411357s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 182714
+Expanded trie states: 97320
+Expanded trie states (%): 53.2636%
+Expanded trie states without any crumb: 97320
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 16355
+Expanded trie states reexpanded (% Trie expansions): 16.8054%
+Expanded ref states: 85394
+Expanded ref states (%): 46.7364%
+Expanded ref states reexpanded (% ref expansions): 22.7206%
+Times switching from trie to linear search: 85394
+Band: 730.856
+Cost: 4
+Alignment: 0.607149s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 633878
+Expanded trie states: 391962
+Expanded trie states (%): 61.8356%
+Expanded trie states without any crumb: 391962
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 96656
+Expanded trie states reexpanded (% Trie expansions): 24.6595%
+Expanded ref states: 241916
+Expanded ref states (%): 38.1644%
+Expanded ref states reexpanded (% ref expansions): 24.5453%
+Times switching from trie to linear search: 241916
+Band: 2535.51
+Cost: 4
+Alignment: 2.29229s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 7540
+Expanded trie states: 5107
+Expanded trie states (%): 67.7321%
+Expanded trie states without any crumb: 5107
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 422
+Expanded trie states reexpanded (% Trie expansions): 8.26317%
+Expanded ref states: 2433
+Expanded ref states (%): 32.2679%
+Expanded ref states reexpanded (% ref expansions): 23.4279%
+Times switching from trie to linear search: 2433
+Band: 30.16
+Cost: 2
+Alignment: 0.0304s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 3450730
+Expanded trie states: 1632371
+Expanded trie states (%): 47.3051%
+Expanded trie states without any crumb: 1632371
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 503871
+Expanded trie states reexpanded (% Trie expansions): 30.8674%
+Expanded ref states: 1818359
+Expanded ref states (%): 52.6949%
+Expanded ref states reexpanded (% ref expansions): 33.7813%
+Times switching from trie to linear search: 1818359
+Band: 13802.9
+Cost: 5
+Alignment: 13.0124s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 603570
+Expanded trie states: 323006
+Expanded trie states (%): 53.5159%
+Expanded trie states without any crumb: 323006
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 92326
+Expanded trie states reexpanded (% Trie expansions): 28.5834%
+Expanded ref states: 280564
+Expanded ref states (%): 46.4841%
+Expanded ref states reexpanded (% ref expansions): 28.442%
+Times switching from trie to linear search: 280564
+Band: 2414.28
+Cost: 4
+Alignment: 2.36271s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 370
+Expanded trie states: 18
+Expanded trie states (%): 4.86486%
+Expanded trie states without any crumb: 18
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 352
+Expanded ref states (%): 95.1351%
+Expanded ref states reexpanded (% ref expansions): 3.97727%
+Times switching from trie to linear search: 352
+Band: 1.48
+Cost: 1
+Alignment: 0.043664s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 51041727
+Expanded trie states: 17766788
+Expanded trie states (%): 34.8084%
+Expanded trie states without any crumb: 17766788
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 8897120
+Expanded trie states reexpanded (% Trie expansions): 50.0773%
+Expanded ref states: 33274939
+Expanded ref states (%): 65.1916%
+Expanded ref states reexpanded (% ref expansions): 63.9559%
+Times switching from trie to linear search: 33274939
+Band: 204167
+Cost: 8
+Alignment: 189.174s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 272
+Expanded trie states: 11
+Expanded trie states (%): 4.04412%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 261
+Expanded ref states (%): 95.9559%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 261
+Band: 1.088
+Cost: 0
+Alignment: 2.60202s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 13152882
+Expanded trie states: 5820962
+Expanded trie states (%): 44.2562%
+Expanded trie states without any crumb: 5820962
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 2512225
+Expanded trie states reexpanded (% Trie expansions): 43.1582%
+Expanded ref states: 7331920
+Expanded ref states (%): 55.7438%
+Expanded ref states reexpanded (% ref expansions): 51.7394%
+Times switching from trie to linear search: 7331920
+Band: 52611.5
+Cost: 6
+Alignment: 46.7425s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1199
+Expanded trie states: 375
+Expanded trie states (%): 31.2761%
+Expanded trie states without any crumb: 375
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 12
+Expanded trie states reexpanded (% Trie expansions): 3.2%
+Expanded ref states: 824
+Expanded ref states (%): 68.7239%
+Expanded ref states reexpanded (% ref expansions): 14.199%
+Times switching from trie to linear search: 824
+Band: 4.796
+Cost: 1
+Alignment: 0.873529s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1328
+Expanded trie states: 389
+Expanded trie states (%): 29.2922%
+Expanded trie states without any crumb: 389
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 10
+Expanded trie states reexpanded (% Trie expansions): 2.57069%
+Expanded ref states: 939
+Expanded ref states (%): 70.7078%
+Expanded ref states reexpanded (% ref expansions): 12.2471%
+Times switching from trie to linear search: 939
+Band: 5.312
+Cost: 1
+Alignment: 0.020014s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 6794025
+Expanded trie states: 3155103
+Expanded trie states (%): 46.4394%
+Expanded trie states without any crumb: 3155103
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1043871
+Expanded trie states reexpanded (% Trie expansions): 33.0852%
+Expanded ref states: 3638922
+Expanded ref states (%): 53.5606%
+Expanded ref states reexpanded (% ref expansions): 37.1242%
+Times switching from trie to linear search: 3638922
+Band: 27176.1
+Cost: 6
+Alignment: 25.8865s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1028
+Expanded trie states: 387
+Expanded trie states (%): 37.6459%
+Expanded trie states without any crumb: 387
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11
+Expanded trie states reexpanded (% Trie expansions): 2.84238%
+Expanded ref states: 641
+Expanded ref states (%): 62.3541%
+Expanded ref states reexpanded (% ref expansions): 10.9204%
+Times switching from trie to linear search: 641
+Band: 4.112
+Cost: 1
+Alignment: 0.53744s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 4479714
+Expanded trie states: 2224695
+Expanded trie states (%): 49.6615%
+Expanded trie states without any crumb: 2224695
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 732520
+Expanded trie states reexpanded (% Trie expansions): 32.9268%
+Expanded ref states: 2255019
+Expanded ref states (%): 50.3385%
+Expanded ref states reexpanded (% ref expansions): 34.4084%
+Times switching from trie to linear search: 2255019
+Band: 17918.9
+Cost: 5
+Alignment: 17.0497s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 3201182
+Expanded trie states: 1657724
+Expanded trie states (%): 51.7847%
+Expanded trie states without any crumb: 1657724
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 514989
+Expanded trie states reexpanded (% Trie expansions): 31.066%
+Expanded ref states: 1543458
+Expanded ref states (%): 48.2153%
+Expanded ref states reexpanded (% ref expansions): 34.5701%
+Times switching from trie to linear search: 1543458
+Band: 12804.7
+Cost: 5
+Alignment: 12.1415s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 136513
+Expanded trie states: 78975
+Expanded trie states (%): 57.8516%
+Expanded trie states without any crumb: 78975
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11196
+Expanded trie states reexpanded (% Trie expansions): 14.1766%
+Expanded ref states: 57538
+Expanded ref states (%): 42.1484%
+Expanded ref states reexpanded (% ref expansions): 16.5943%
+Times switching from trie to linear search: 57538
+Band: 546.052
+Cost: 3
+Alignment: 0.718847s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1717536
+Expanded trie states: 898743
+Expanded trie states (%): 52.3275%
+Expanded trie states without any crumb: 898743
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 244422
+Expanded trie states reexpanded (% Trie expansions): 27.196%
+Expanded ref states: 818793
+Expanded ref states (%): 47.6725%
+Expanded ref states reexpanded (% ref expansions): 29.1985%
+Times switching from trie to linear search: 818793
+Band: 6870.14
+Cost: 5
+Alignment: 6.26436s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 14126
+Expanded trie states: 6675
+Expanded trie states (%): 47.2533%
+Expanded trie states without any crumb: 6675
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 708
+Expanded trie states reexpanded (% Trie expansions): 10.6067%
+Expanded ref states: 7451
+Expanded ref states (%): 52.7467%
+Expanded ref states reexpanded (% ref expansions): 20.1181%
+Times switching from trie to linear search: 7451
+Band: 56.504
+Cost: 2
+Alignment: 0.177626s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 268
+Expanded trie states: 11
+Expanded trie states (%): 4.10448%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 257
+Expanded ref states (%): 95.8955%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 257
+Band: 1.072
+Cost: 0
+Alignment: 0.000524s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 6613196
+Expanded trie states: 3161547
+Expanded trie states (%): 47.8066%
+Expanded trie states without any crumb: 3161547
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1169177
+Expanded trie states reexpanded (% Trie expansions): 36.9812%
+Expanded ref states: 3451649
+Expanded ref states (%): 52.1934%
+Expanded ref states reexpanded (% ref expansions): 39.5634%
+Times switching from trie to linear search: 3451649
+Band: 26452.8
+Cost: 6
+Alignment: 24.2402s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 5660975
+Expanded trie states: 2742816
+Expanded trie states (%): 48.4513%
+Expanded trie states without any crumb: 2742816
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 881452
+Expanded trie states reexpanded (% Trie expansions): 32.1368%
+Expanded ref states: 2918159
+Expanded ref states (%): 51.5487%
+Expanded ref states reexpanded (% ref expansions): 35.3318%
+Times switching from trie to linear search: 2918159
+Band: 22643.9
+Cost: 5
+Alignment: 22.0382s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1294
+Expanded trie states: 427
+Expanded trie states (%): 32.9985%
+Expanded trie states without any crumb: 427
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 15
+Expanded trie states reexpanded (% Trie expansions): 3.51288%
+Expanded ref states: 867
+Expanded ref states (%): 67.0015%
+Expanded ref states reexpanded (% ref expansions): 16.1476%
+Times switching from trie to linear search: 867
+Band: 5.176
+Cost: 2
+Alignment: 0.46299s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 13308
+Expanded trie states: 6936
+Expanded trie states (%): 52.119%
+Expanded trie states without any crumb: 6936
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 627
+Expanded trie states reexpanded (% Trie expansions): 9.03979%
+Expanded ref states: 6372
+Expanded ref states (%): 47.881%
+Expanded ref states reexpanded (% ref expansions): 23.054%
+Times switching from trie to linear search: 6372
+Band: 53.232
+Cost: 2
+Alignment: 0.048653s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1499298
+Expanded trie states: 826618
+Expanded trie states (%): 55.1337%
+Expanded trie states without any crumb: 826618
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 224437
+Expanded trie states reexpanded (% Trie expansions): 27.1512%
+Expanded ref states: 672680
+Expanded ref states (%): 44.8663%
+Expanded ref states reexpanded (% ref expansions): 29.8347%
+Times switching from trie to linear search: 672680
+Band: 5997.19
+Cost: 5
+Alignment: 5.19049s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 46699800
+Expanded trie states: 16296444
+Expanded trie states (%): 34.8962%
+Expanded trie states without any crumb: 16296444
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 7982598
+Expanded trie states reexpanded (% Trie expansions): 48.9837%
+Expanded ref states: 30403356
+Expanded ref states (%): 65.1038%
+Expanded ref states reexpanded (% ref expansions): 62.4825%
+Times switching from trie to linear search: 30403356
+Band: 186799
+Cost: 8
+Alignment: 175.635s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 269
+Expanded trie states: 11
+Expanded trie states (%): 4.08922%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 258
+Expanded ref states (%): 95.9108%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 258
+Band: 1.076
+Cost: 0
+Alignment: 2.3782s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 84001
+Expanded trie states: 60298
+Expanded trie states (%): 71.7825%
+Expanded trie states without any crumb: 60298
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 8714
+Expanded trie states reexpanded (% Trie expansions): 14.4516%
+Expanded ref states: 23703
+Expanded ref states (%): 28.2175%
+Expanded ref states reexpanded (% ref expansions): 14.3526%
+Times switching from trie to linear search: 23703
+Band: 336.004
+Cost: 3
+Alignment: 0.258952s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 3282026
+Expanded trie states: 1609924
+Expanded trie states (%): 49.0527%
+Expanded trie states without any crumb: 1609924
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 529769
+Expanded trie states reexpanded (% Trie expansions): 32.9065%
+Expanded ref states: 1672102
+Expanded ref states (%): 50.9473%
+Expanded ref states reexpanded (% ref expansions): 38.8229%
+Times switching from trie to linear search: 1672102
+Band: 13128.1
+Cost: 5
+Alignment: 11.6949s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1423
+Expanded trie states: 416
+Expanded trie states (%): 29.234%
+Expanded trie states without any crumb: 416
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 10
+Expanded trie states reexpanded (% Trie expansions): 2.40385%
+Expanded ref states: 1007
+Expanded ref states (%): 70.766%
+Expanded ref states reexpanded (% ref expansions): 13.9027%
+Times switching from trie to linear search: 1007
+Band: 5.692
+Cost: 1
+Alignment: 0.032984s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 387986
+Expanded trie states: 221269
+Expanded trie states (%): 57.0302%
+Expanded trie states without any crumb: 221269
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 51555
+Expanded trie states reexpanded (% Trie expansions): 23.2997%
+Expanded ref states: 166717
+Expanded ref states (%): 42.9698%
+Expanded ref states reexpanded (% ref expansions): 23.5477%
+Times switching from trie to linear search: 166717
+Band: 1551.94
+Cost: 4
+Alignment: 1.3212s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 198134
+Expanded trie states: 122118
+Expanded trie states (%): 61.634%
+Expanded trie states without any crumb: 122118
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 21926
+Expanded trie states reexpanded (% Trie expansions): 17.9548%
+Expanded ref states: 76016
+Expanded ref states (%): 38.366%
+Expanded ref states reexpanded (% ref expansions): 19.8432%
+Times switching from trie to linear search: 76016
+Band: 792.536
+Cost: 4
+Alignment: 0.627581s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 220816
+Expanded trie states: 131926
+Expanded trie states (%): 59.7448%
+Expanded trie states without any crumb: 131926
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 26997
+Expanded trie states reexpanded (% Trie expansions): 20.4637%
+Expanded ref states: 88890
+Expanded ref states (%): 40.2552%
+Expanded ref states reexpanded (% ref expansions): 19.9348%
+Times switching from trie to linear search: 88890
+Band: 883.264
+Cost: 4
+Alignment: 0.694168s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1187807
+Expanded trie states: 606913
+Expanded trie states (%): 51.0953%
+Expanded trie states without any crumb: 606913
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 191398
+Expanded trie states reexpanded (% Trie expansions): 31.5363%
+Expanded ref states: 580894
+Expanded ref states (%): 48.9047%
+Expanded ref states reexpanded (% ref expansions): 34.1876%
+Times switching from trie to linear search: 580894
+Band: 4751.23
+Cost: 5
+Alignment: 3.92998s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1112
+Expanded trie states: 349
+Expanded trie states (%): 31.3849%
+Expanded trie states without any crumb: 349
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11
+Expanded trie states reexpanded (% Trie expansions): 3.15186%
+Expanded ref states: 763
+Expanded ref states (%): 68.6151%
+Expanded ref states reexpanded (% ref expansions): 14.81%
+Times switching from trie to linear search: 763
+Band: 4.448
+Cost: 1
+Alignment: 0.087111s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 33282210
+Expanded trie states: 12631033
+Expanded trie states (%): 37.9513%
+Expanded trie states without any crumb: 12631033
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 5966764
+Expanded trie states reexpanded (% Trie expansions): 47.2389%
+Expanded ref states: 20651177
+Expanded ref states (%): 62.0487%
+Expanded ref states reexpanded (% ref expansions): 58.3853%
+Times switching from trie to linear search: 20651177
+Band: 133129
+Cost: 7
+Alignment: 123.359s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 266
+Expanded trie states: 11
+Expanded trie states (%): 4.13534%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 255
+Expanded ref states (%): 95.8647%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 255
+Band: 1.064
+Cost: 0
+Alignment: 1.83609s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 905
+Expanded trie states: 382
+Expanded trie states (%): 42.2099%
+Expanded trie states without any crumb: 382
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11
+Expanded trie states reexpanded (% Trie expansions): 2.87958%
+Expanded ref states: 523
+Expanded ref states (%): 57.7901%
+Expanded ref states reexpanded (% ref expansions): 9.75143%
+Times switching from trie to linear search: 523
+Band: 3.62
+Cost: 1
+Alignment: 0.002082s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 7179634
+Expanded trie states: 3204967
+Expanded trie states (%): 44.6397%
+Expanded trie states without any crumb: 3204967
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1107627
+Expanded trie states reexpanded (% Trie expansions): 34.5597%
+Expanded ref states: 3974667
+Expanded ref states (%): 55.3603%
+Expanded ref states reexpanded (% ref expansions): 39.6138%
+Times switching from trie to linear search: 3974667
+Band: 28718.5
+Cost: 6
+Alignment: 26.495s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 13034
+Expanded trie states: 7491
+Expanded trie states (%): 57.4728%
+Expanded trie states without any crumb: 7491
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 637
+Expanded trie states reexpanded (% Trie expansions): 8.50354%
+Expanded ref states: 5543
+Expanded ref states (%): 42.5272%
+Expanded ref states reexpanded (% ref expansions): 17.5176%
+Times switching from trie to linear search: 5543
+Band: 52.136
+Cost: 2
+Alignment: 0.091617s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 868056
+Expanded trie states: 469955
+Expanded trie states (%): 54.1388%
+Expanded trie states without any crumb: 469955
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 103614
+Expanded trie states reexpanded (% Trie expansions): 22.0476%
+Expanded ref states: 398101
+Expanded ref states (%): 45.8612%
+Expanded ref states reexpanded (% ref expansions): 24.8683%
+Times switching from trie to linear search: 398101
+Band: 3472.22
+Cost: 4
+Alignment: 3.07416s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 127267
+Expanded trie states: 80931
+Expanded trie states (%): 63.5915%
+Expanded trie states without any crumb: 80931
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 11787
+Expanded trie states reexpanded (% Trie expansions): 14.5643%
+Expanded ref states: 46336
+Expanded ref states (%): 36.4085%
+Expanded ref states reexpanded (% ref expansions): 13.7323%
+Times switching from trie to linear search: 46336
+Band: 509.068
+Cost: 3
+Alignment: 0.410285s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 834
+Expanded trie states: 386
+Expanded trie states (%): 46.283%
+Expanded trie states without any crumb: 386
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 14
+Expanded trie states reexpanded (% Trie expansions): 3.62694%
+Expanded ref states: 448
+Expanded ref states (%): 53.717%
+Expanded ref states reexpanded (% ref expansions): 7.14286%
+Times switching from trie to linear search: 448
+Band: 3.336
+Cost: 1
+Alignment: 0.002737s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 272
+Expanded trie states: 11
+Expanded trie states (%): 4.04412%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 261
+Expanded ref states (%): 95.9559%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 261
+Band: 1.088
+Cost: 0
+Alignment: 0.000482s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 11258499
+Expanded trie states: 5014386
+Expanded trie states (%): 44.5387%
+Expanded trie states without any crumb: 5014386
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1957462
+Expanded trie states reexpanded (% Trie expansions): 39.0369%
+Expanded ref states: 6244113
+Expanded ref states (%): 55.4613%
+Expanded ref states reexpanded (% ref expansions): 45.6151%
+Times switching from trie to linear search: 6244113
+Band: 45034
+Cost: 6
+Alignment: 42.0947s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 10220
+Expanded trie states: 6528
+Expanded trie states (%): 63.8748%
+Expanded trie states without any crumb: 6528
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 568
+Expanded trie states reexpanded (% Trie expansions): 8.70098%
+Expanded ref states: 3692
+Expanded ref states (%): 36.1252%
+Expanded ref states reexpanded (% ref expansions): 22.4269%
+Times switching from trie to linear search: 3692
+Band: 40.88
+Cost: 2
+Alignment: 0.808136s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 881405
+Expanded trie states: 435643
+Expanded trie states (%): 49.426%
+Expanded trie states without any crumb: 435643
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 105331
+Expanded trie states reexpanded (% Trie expansions): 24.1783%
+Expanded ref states: 445762
+Expanded ref states (%): 50.574%
+Expanded ref states reexpanded (% ref expansions): 29.173%
+Times switching from trie to linear search: 445762
+Band: 3525.62
+Cost: 4
+Alignment: 3.01683s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 779
+Expanded trie states: 381
+Expanded trie states (%): 48.9089%
+Expanded trie states without any crumb: 381
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 10
+Expanded trie states reexpanded (% Trie expansions): 2.62467%
+Expanded ref states: 398
+Expanded ref states (%): 51.0911%
+Expanded ref states reexpanded (% ref expansions): 6.53266%
+Times switching from trie to linear search: 398
+Band: 3.116
+Cost: 1
+Alignment: 0.012724s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 866977
+Expanded trie states: 507591
+Expanded trie states (%): 58.5472%
+Expanded trie states without any crumb: 507591
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 129261
+Expanded trie states reexpanded (% Trie expansions): 25.4656%
+Expanded ref states: 359386
+Expanded ref states (%): 41.4528%
+Expanded ref states reexpanded (% ref expansions): 26.9201%
+Times switching from trie to linear search: 359386
+Band: 3467.91
+Cost: 4
+Alignment: 3.04964s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1266
+Expanded trie states: 378
+Expanded trie states (%): 29.8578%
+Expanded trie states without any crumb: 378
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 12
+Expanded trie states reexpanded (% Trie expansions): 3.1746%
+Expanded ref states: 888
+Expanded ref states (%): 70.1422%
+Expanded ref states reexpanded (% ref expansions): 14.0766%
+Times switching from trie to linear search: 888
+Band: 5.064
+Cost: 1
+Alignment: 0.015157s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 11653628
+Expanded trie states: 5264065
+Expanded trie states (%): 45.171%
+Expanded trie states without any crumb: 5264065
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 2045143
+Expanded trie states reexpanded (% Trie expansions): 38.851%
+Expanded ref states: 6389563
+Expanded ref states (%): 54.829%
+Expanded ref states reexpanded (% ref expansions): 44.4162%
+Times switching from trie to linear search: 6389563
+Band: 46614.5
+Cost: 6
+Alignment: 43.9397s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1321430
+Expanded trie states: 728200
+Expanded trie states (%): 55.107%
+Expanded trie states without any crumb: 728200
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 186649
+Expanded trie states reexpanded (% Trie expansions): 25.6316%
+Expanded ref states: 593230
+Expanded ref states (%): 44.893%
+Expanded ref states reexpanded (% ref expansions): 26.7894%
+Times switching from trie to linear search: 593230
+Band: 5285.72
+Cost: 5
+Alignment: 5.39224s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 264
+Expanded trie states: 11
+Expanded trie states (%): 4.16667%
+Expanded trie states without any crumb: 11
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 0
+Expanded trie states reexpanded (% Trie expansions): 0%
+Expanded ref states: 253
+Expanded ref states (%): 95.8333%
+Expanded ref states reexpanded (% ref expansions): 0%
+Times switching from trie to linear search: 253
+Band: 1.056
+Cost: 0
+Alignment: 0.025312s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 939
+Expanded trie states: 383
+Expanded trie states (%): 40.7881%
+Expanded trie states without any crumb: 383
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 10
+Expanded trie states reexpanded (% Trie expansions): 2.61097%
+Expanded ref states: 556
+Expanded ref states (%): 59.2119%
+Expanded ref states reexpanded (% ref expansions): 10.9712%
+Times switching from trie to linear search: 556
+Band: 3.756
+Cost: 1
+Alignment: 0.002144s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1004934
+Expanded trie states: 581025
+Expanded trie states (%): 57.8172%
+Expanded trie states without any crumb: 581025
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 137413
+Expanded trie states reexpanded (% Trie expansions): 23.6501%
+Expanded ref states: 423909
+Expanded ref states (%): 42.1828%
+Expanded ref states reexpanded (% ref expansions): 25.0165%
+Times switching from trie to linear search: 423909
+Band: 4019.74
+Cost: 5
+Alignment: 3.55364s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1149
+Expanded trie states: 374
+Expanded trie states (%): 32.55%
+Expanded trie states without any crumb: 374
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 10
+Expanded trie states reexpanded (% Trie expansions): 2.6738%
+Expanded ref states: 775
+Expanded ref states (%): 67.45%
+Expanded ref states reexpanded (% ref expansions): 11.2258%
+Times switching from trie to linear search: 775
+Band: 4.596
+Cost: 1
+Alignment: 0.086597s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 23274344
+Expanded trie states: 8936492
+Expanded trie states (%): 38.3963%
+Expanded trie states without any crumb: 8936492
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 3835246
+Expanded trie states reexpanded (% Trie expansions): 42.9167%
+Expanded ref states: 14337852
+Expanded ref states (%): 61.6037%
+Expanded ref states reexpanded (% ref expansions): 53.3833%
+Times switching from trie to linear search: 14337852
+Band: 93097.4
+Cost: 7
+Alignment: 90.704s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1011
+Expanded trie states: 369
+Expanded trie states (%): 36.4985%
+Expanded trie states without any crumb: 369
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 12
+Expanded trie states reexpanded (% Trie expansions): 3.25203%
+Expanded ref states: 642
+Expanded ref states (%): 63.5015%
+Expanded ref states reexpanded (% ref expansions): 13.5514%
+Times switching from trie to linear search: 642
+Band: 4.044
+Cost: 1
+Alignment: 1.39821s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 131583
+Expanded trie states: 80063
+Expanded trie states (%): 60.846%
+Expanded trie states without any crumb: 80063
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 15189
+Expanded trie states reexpanded (% Trie expansions): 18.9713%
+Expanded ref states: 51520
+Expanded ref states (%): 39.154%
+Expanded ref states reexpanded (% ref expansions): 19.9437%
+Times switching from trie to linear search: 51520
+Band: 526.332
+Cost: 4
+Alignment: 0.457547s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 17313
+Expanded trie states: 10691
+Expanded trie states (%): 61.7513%
+Expanded trie states without any crumb: 10691
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 1392
+Expanded trie states reexpanded (% Trie expansions): 13.0203%
+Expanded ref states: 6622
+Expanded ref states (%): 38.2487%
+Expanded ref states reexpanded (% ref expansions): 15.9317%
+Times switching from trie to linear search: 6622
+Band: 69.252
+Cost: 3
+Alignment: 0.048126s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 148063
+Expanded trie states: 80259
+Expanded trie states (%): 54.206%
+Expanded trie states without any crumb: 80259
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 13008
+Expanded trie states reexpanded (% Trie expansions): 16.2075%
+Expanded ref states: 67804
+Expanded ref states (%): 45.794%
+Expanded ref states reexpanded (% ref expansions): 17.7526%
+Times switching from trie to linear search: 67804
+Band: 592.252
+Cost: 3
+Alignment: 0.449419s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 784868
+Expanded trie states: 469837
+Expanded trie states (%): 59.8619%
+Expanded trie states without any crumb: 469837
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 127925
+Expanded trie states reexpanded (% Trie expansions): 27.2275%
+Expanded ref states: 315031
+Expanded ref states (%): 40.1381%
+Expanded ref states reexpanded (% ref expansions): 27.0161%
+Times switching from trie to linear search: 315031
+Band: 3139.47
+Cost: 4
+Alignment: 2.63832s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 7605
+Expanded trie states: 4734
+Expanded trie states (%): 62.2485%
+Expanded trie states without any crumb: 4734
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 431
+Expanded trie states reexpanded (% Trie expansions): 9.10435%
+Expanded ref states: 2871
+Expanded ref states (%): 37.7515%
+Expanded ref states reexpanded (% ref expansions): 22.0481%
+Times switching from trie to linear search: 2871
+Band: 30.42
+Cost: 2
+Alignment: 0.031292s.
+Missing crumbs in the Trie root: 0
+The root is not a leaf
+Expanded states: 1046
+Expanded trie states: 397
+Expanded trie states (%): 37.9541%
+Expanded trie states without any crumb: 397
+Expanded trie states without any crumb (% Trie expansions): 100%
+Expanded trie states reexpanded: 14
+Expanded trie states reexpanded (% Trie expansions): 3.52645%
+Expanded ref states: 649
+Expanded ref states (%): 62.0459%
+Expanded ref states reexpanded (% ref expansions): 10.0154%
+Times switching from trie to linear search: 649
+Band: 4.184
+Cost: 1
+Alignment: 0.002438s.
+Missing crumbs in the Trie root: 0

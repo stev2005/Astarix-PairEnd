@@ -13,7 +13,7 @@ int string_to_int(string s){
     return num;
 }
 
-inline void read_parameters(int argc, char *argv[], int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange, string &fileref, string &filequery, cost_t &infheuristic){
+inline void read_parameters(int argc, char *argv[], int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange, string &fileref, string &filequery, cost_t &infheuristic, int &indaligns){
     for (int i = 1; i < argc; i += 2){
         string argument(argv[i]);
         string value(argv[i + 1]);
@@ -36,6 +36,8 @@ inline void read_parameters(int argc, char *argv[], int &d, int &k, string &type
             filequery = value;
         else if (argument == "--punish-heuristic-cost")
             infheuristic = string_to_int(value);
+        else if (argument == "--independent-aligns")
+            indaligns = string_to_int(value);
         else{
             cerr << argument << " is not a valid program argument\n";
             cerr << "Program is going to abort\n";
@@ -44,9 +46,9 @@ inline void read_parameters(int argc, char *argv[], int &d, int &k, string &type
     }
 }
 
-inline void parameters_default_values(int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange, string &fileref, string &filequery, cost_t &infheuristic){
+inline void parameters_default_values(int &d, int &k, string &typealignment, string &heuristic, int &insdist, int &drange, string &fileref, string &filequery, cost_t &infheuristic, int &indaligns){
     d = 10;
-    k = 13;
+    k = 0;
     typealignment = "single-read";
     heuristic = "seed_heuristic";
     insdist = 5000;
@@ -54,4 +56,5 @@ inline void parameters_default_values(int &d, int &k, string &typealignment, str
     fileref = "data/single-reads/reference.in";
     filequery = "data/single-reads/tests/1.in";
     infheuristic = 50;
+    indaligns = 1;
 }

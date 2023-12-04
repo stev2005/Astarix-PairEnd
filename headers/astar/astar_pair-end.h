@@ -13,6 +13,7 @@ int punishl, punishr;
 cost_t infheuristic;
 int cntinfhvalues;
 int cntfilteredmatche1spr, cntfilteredmatche2spr;
+int indaligns;
 
 inline void get_seeds_matches_sorted(vector<int> &seeds, vector <int> &lastkmer, vector<int> &prevposkmer, vector<pair<int, int> > &matches){
     /*
@@ -366,3 +367,4 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     evalsts.update_astar_percentages(perTrieTrie, perTrieref, perrefTrie, perrefref);
     return cur.g;
 }
+

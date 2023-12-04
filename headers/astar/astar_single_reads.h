@@ -186,7 +186,24 @@ void showinfoaboutstatesrancestors(vector<Statesr> &nextst, MatchingKmers &info)
     cout << endl;
 }
 
-cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info){
+void showcounters_for_the_best_aligner(int cntexpansions, int cntexpansionsTrie, int cntexpansionsref, int cntTrienodeswithoutcrumbs,
+int cntreexpandedTrienodes, int cntreexpandedrefnodes, int cntswitchfromtrietoline, int n){
+    cout << "Expanded states: " << cntexpansions << "\n";
+    cout << "Expanded trie states: " << cntexpansionsTrie << "\n";
+    cout << "Expanded trie states (%): " << (double) cntexpansionsTrie / (double) cntexpansions * (double) 100 << "%\n";
+    cout << "Expanded trie states without any crumb: " << cntTrienodeswithoutcrumbs << endl;
+    cout << "Expanded trie states without any crumb (% Trie expansions): " << (double) cntTrienodeswithoutcrumbs / (double) cntexpansionsTrie * (double) 100 << "%\n";
+    cout << "Expanded trie states reexpanded: " << cntreexpandedTrienodes << endl;
+    cout << "Expanded trie states reexpanded (% Trie expansions): " << (double) cntreexpandedTrienodes / (double) cntexpansionsTrie * (double) 100 << "%\n";
+    cout << "Expanded ref states: " << cntexpansionsref << "\n";
+    cout << "Expanded ref states (%): " << (double) cntexpansionsref / (double) cntexpansions * (double) 100 << "%\n";
+    cout << "Expanded ref states reexpanded (% ref expansions): " << (double) cntreexpandedrefnodes / (double) cntexpansionsref * (double) 100 << "%\n";
+    cout << "Times switching from trie to linear search: " << cntswitchfromtrietoline << "\n";
+    cout << "Band: " << (double) cntexpansions / (double) n << "\n";
+}
+
+vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info, int numaligns){
+    vector< pair<cost_t, int> > alignments;
     int n = query.size();
     int m = ref.size();
     int cntexpansions = 0;
@@ -203,6 +220,7 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
     int cntshow = 0;
     int cntswitchfromtrietoline = 0;
     bool istrie = true;
+    int cntaligns = 0;
     while (!q.empty()){
         cur = q.top();
         cntexpansions++;
@@ -230,8 +248,15 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
             if (it != expandedstates.end())
                 cntreexpandedrefnodes++;
         }
-        if (cur.qpos == n)
-            break;
+        if (cur.qpos == n){
+            if (cntaligns == 0)
+                showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
+                    cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);
+            alignments.push_back({cur.g, cur.p.rpos});
+            cntaligns++;
+            if (cntaligns == numaligns)
+                break;
+        }
         if (to_explore(cur.qpos, cur.p, cur.g)){
             /*while (to_explore(cur.qpos, cur.p, cur.g) && gready_available(query, ref, cur.qpos, cur.p) && cur.qpos < n ){
                 cur.qpos++;
@@ -260,18 +285,6 @@ cost_t astar_single_read_alignment(string &query, string &ref, int d, int k, Tri
         }
     }
     
-    cout << "Expanded states: " << cntexpansions << "\n";
-    cout << "Expanded trie states: " << cntexpansionsTrie << "\n";
-    cout << "Expanded trie states (%): " << (double) cntexpansionsTrie / (double) cntexpansions * (double) 100 << "%\n";
-    cout << "Expanded trie states without any crumb: " << cntTrienodeswithoutcrumbs << endl;
-    cout << "Expanded trie states without any crumb (% Trie expansions): " << (double) cntTrienodeswithoutcrumbs / (double) cntexpansionsTrie * (double) 100 << "%\n";
-    cout << "Expanded trie states reexpanded: " << cntreexpandedTrienodes << endl;
-    cout << "Expanded trie states reexpanded (% Trie expansions): " << (double) cntreexpandedTrienodes / (double) cntexpansionsTrie * (double) 100 << "%\n";
-    cout << "Expanded ref states: " << cntexpansionsref << "\n";
-    cout << "Expanded ref states (%): " << (double) cntexpansionsref / (double) cntexpansions * (double) 100 << "%\n";
-    cout << "Expanded ref states reexpanded (% ref expansions): " << (double) cntreexpandedrefnodes / (double) cntexpansionsref * (double) 100 << "%\n";
-    cout << "Times switching from trie to linear search: " << cntswitchfromtrietoline << "\n";
-    cout << "Band: " << (double) cntexpansions / (double) n << "\n";
     get_expanded_states(true);
-    return cur.g;
+    return alignments;
 }

@@ -66,13 +66,15 @@ int main(int argc, char *argv[]){
     cout.tie(NULL);*/
     cerr <<"Start of the program\n";
     int d, k, locinsdist, locdrange;
+    int locindaligns;
     string typealignment;
     string& heuristiclocal = heuristic;
     string fileref, filequery;
-    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic);
-    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic);
+    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns);
+    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns);
     insdist = locinsdist;
     drange = locdrange;
+    indaligns = locindaligns;
     evalsts.d = d;
     evalsts.k = k;
     evalsts.drange = drange;
@@ -124,13 +126,25 @@ int main(int argc, char *argv[]){
                 //printmatches(info);
             }
             t = clock();
-            rezult = astar_single_read_alignment(query, ref, d, k, rootdmer, info);
-            cout << "Cost: " << rezult << "\n";
+            vector<pair<cost_t, int> > alignments;
+            alignments = astar_single_read_alignment(query, ref, d, k, rootdmer, info, 1);
+            cout << "Cost: " << alignments.front().first << "\n";
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
-        else{
-            ///paired-end alignment
+        else if (typealignment == "paired-end independent"){
+            pair <string, string> queryp;
+            queryp = get_pair_end_query();
+            nindel = queryp.first.size() / k;
+            if (queryp.first.size() % k != 0)
+                nindel++;
+            info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
+            info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
+            getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds1);
+            getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds2);
+        }
+        else if (typealignment == "paired-end"){
+            ///paired-end alignment joint
             //cerr << "main: paired-end\n";
             pair <string, string> queryp;
             queryp = get_pair_end_query();
@@ -166,6 +180,11 @@ int main(int argc, char *argv[]){
             //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //cerr << "Cost: " << rezult << "\n"; 
             //cerr << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+        }
+        else{
+            cerr << "No such alignment type is supported\n";
+            cerr << "Program is going to abort\n";
+            abort();
         }
         t = clock();
         info.clearquerydata();
