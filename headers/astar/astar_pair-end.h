@@ -368,3 +368,24 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     return cur.g;
 }
 
+cost_t astar_pairend_read_alignment_independent(pair<string, string> &queryp, string &ref, int d, int k, Trie *root, MatchingKmers &info, int numaligns){
+    vector<pair<cost_t, int> > v1, v2;
+    info.seeds = info.seeds1;
+    info.crumbs = info.crumbs1;
+    v1 = astar_single_read_alignment(queryp.first, ref, d, k, root, info, numaligns);
+    info.seeds = info.seeds2;
+    info.crumbs = info.crumbs2;
+    v2 = astar_single_read_alignment(queryp.second, ref, d, k, root, info, numaligns);
+    cost_t g = (1<<30);
+    punishl = readdist - drange;
+    punishr = readdist + drange;
+    for (auto cur1: v1)
+        for (auto cur2: v2){
+            int dist = cur2.second - cur1.second;
+            if (is_in_range(dist, punishl, punishr)){
+                if (cur1.first + cur2.first < g)
+                    g = cur1.first + cur2.first;
+            }
+        }
+    return g;
+}

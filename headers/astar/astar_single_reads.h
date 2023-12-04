@@ -249,9 +249,9 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
                 cntreexpandedrefnodes++;
         }
         if (cur.qpos == n){
-            if (cntaligns == 0)
+            /*if (cntaligns == 0)
                 showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
-                    cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);
+                    cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);*/
             alignments.push_back({cur.g, cur.p.rpos});
             cntaligns++;
             if (cntaligns == numaligns)
@@ -284,7 +284,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
             
         }
     }
-    
+    evalsts.cntexpansions += cntexpansions;
     get_expanded_states(true);
     return alignments;
 }

@@ -132,7 +132,7 @@ int main(int argc, char *argv[]){
             t = clock() - t;
             cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
-        else if (typealignment == "paired-end independent"){
+        else if (typealignment == "paired-end_independent"){
             pair <string, string> queryp;
             queryp = get_pair_end_query();
             nindel = queryp.first.size() / k;
@@ -140,8 +140,15 @@ int main(int argc, char *argv[]){
                 nindel++;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
+            t = clock();
             getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds1);
             getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds2);
+            t = clock() - t;
+            evalsts.getcrumbstime += runtime(t);
+            t = clock();
+            cost_t rezult = astar_pairend_read_alignment_independent(queryp, ref, d, k, rootdmer, info, indaligns);
+            cout << "Independent alignement passed\n";
+            cout << "Cost: " << rezult << endl;
         }
         else if (typealignment == "paired-end"){
             ///paired-end alignment joint
