@@ -2,6 +2,9 @@ SingleReadDIR=data/single-reads/testsE.coli
 SingleReadStatsDIR=data/single-reads/testsE.coli/stats
 PairedEndDIR=data/pair-end-reads/testsE.coli
 PairedEndStatsDIR=data/pair-end-reads/testsE.coli/stats
+PairedEndCompareDijkstraIndDIR=data/pair-end-reads/Comparison/'Dijkstra independent'
+PairedEndCompareDijkstraJointDIR=data/pair-end-reads/Comparison/'Dijkstra joint'
+PairedEndCompareAstarIndDIR=data/pair-end-reads/Comparison/'Astarix independent'
 
 default: main
 
@@ -19,6 +22,17 @@ testchep_dijkstra_heuristic:
 
 testpairend_seed_heuristic:
 	time ./main.exe --alignment paired-end --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/1.in >$(PairedEndStatsDIR)/paired-end.out
+
+compare_dijkstra_independent:
+	time ./main.exe --alignment single-read --heuristic dijkstra_heuristic --trie-depth 10 --insert-distance 5000 --filter-distance-difference 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndCompareDijkstraIndDIR)/DijTests.in >$(PairedEndCompareDijkstraIndDIR)/evaldijind.out
+
+compare_dijkstra_joint:
+	time ./main.exe --alignment paired-end --heuristic dijkstra_heuristic --trie-depth 10 --insert-distance 500 --filter-distance-difference 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndCompareDijkstraJointDIR)/DijTests.in >$(PairedEndCompareDijkstraJointDIR)/evaldijjoint.out
+
+compare_astar_ind:
+	time ./main.exe --alignment single-read --heuristic seed_heuristic --trie-depth 12 --insert-distance 500 --filter-distance-difference 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndCompareAstarIndDIR)/Group4.in >$(PairedEndCompareAstarIndDIR)/evalastarind.out
+
+
 
 group1:
 	time ./main.exe --alignment paired-end --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/Group1.in >$(PairedEndStatsDIR)/Group1.out
@@ -344,6 +358,8 @@ group9_19:
 
 group9_20:
 	time ./main.exe --alignment paired-end --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/Group9/20.in >$(PairedEndStatsDIR)/Group9/20.out
+
+
 
 
 problem:
