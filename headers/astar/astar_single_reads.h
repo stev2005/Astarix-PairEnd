@@ -285,6 +285,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
         }
     }
     evalsts.cntexpansions += cntexpansions;
+    evalsts.band += ((double)cntexpansions / (double)n);
     get_expanded_states(true);
     return alignments;
 }

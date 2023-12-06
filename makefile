@@ -24,7 +24,7 @@ testpairend_seed_heuristic:
 	time ./main.exe --alignment paired-end --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/1.in >$(PairedEndStatsDIR)/paired-end.out
 
 testpairend_seed_heuristic_independent:
-	time ./main.exe --alignment paired-end_independent --independent-aligns  --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/1.in >$(PairedEndStatsDIR)/paired-end.out
+	time ./main.exe --alignment paired-end_independent --independent-aligns 100 --heuristic seed_heuristic --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(PairedEndDIR)/reference.in --query $(PairedEndDIR)/1.in >$(PairedEndStatsDIR)/paired-end.out
 
 
 
@@ -35,7 +35,7 @@ compare_dijkstra_joint:
 	time ./main.exe --alignment paired-end --heuristic dijkstra_heuristic --trie-depth 10 --insert-distance 500 --filter-distance-difference 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndCompareDijkstraJointDIR)/DijTests.in >$(PairedEndCompareDijkstraJointDIR)/evaldijjoint.out
 
 compare_astar_ind:
-	time ./main.exe --alignment single-read --heuristic seed_heuristic --trie-depth 12 --insert-distance 500 --filter-distance-difference 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndCompareAstarIndDIR)/Group4.in >$(PairedEndCompareAstarIndDIR)/evalastarind.out
+	time ./main.exe --alignment single-read --heuristic seed_heuristic  --independent-aligns 1 --trie-depth 10 --seed-len 12 --insert-distance 500 --filter-distance-difference 50 --reference $(PairedEndDIR)/reference.in --query $(PairedEndCompareAstarIndDIR)/Group4.in >$(PairedEndCompareAstarIndDIR)/evalastarind.out
 
 
 

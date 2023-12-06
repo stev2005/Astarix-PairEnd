@@ -121,7 +121,8 @@ int main(int argc, char *argv[]){
                 getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                 info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
                 t = clock() - t;
-                cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
+                //cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
+                evalsts.getcrumbstime += runtime(t);
                 //printoutcrumbs(info.crumbs, root);
                 //printmatches(info);
             }
@@ -130,7 +131,8 @@ int main(int argc, char *argv[]){
             alignments = astar_single_read_alignment(query, ref, d, k, rootdmer, info, 1);
             cout << "Cost: " << alignments.front().first << "\n";
             t = clock() - t;
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            evalsts.aligntime += runtime(t);
         }
         else if (typealignment == "paired-end_independent"){
             pair <string, string> queryp;

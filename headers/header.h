@@ -54,6 +54,17 @@ struct Evaluations{
         percntrefrefexpansions += _percntrefrefexpansions;
     }
 
+    void print_single_read_stats(){
+        cout << "Stats for single read group:\n";
+        cout << "   Number of tests: " << ntests << "\n";
+        cout << "   run-time setting crumbs: " << getcrumbstime << " (sec.)\n";
+        cout << "   run-time joint alignment: " << aligntime << " (sec.)\n";
+        cout << "   Trie depth: " << d << "\n";
+        cout << "   Seeds lenght: " << k << " (bp.)\n";
+        cout << "   Drange: " << drange << "\n";
+
+    }
+
     void print_avg_stats(){
         eval_tr ntestsr = ntests;
         cout << "Average Stats for this test group:\n";
