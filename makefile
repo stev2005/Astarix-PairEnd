@@ -15,7 +15,7 @@ default: main
 main:
 	g++ main.cpp -o main.exe
 
-testsingleread_seed_heuristic):
+testsingleread_seed_heuristic:
 	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 12 $(EcoliREF) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/single-read.out
 
 exptestsingleread_seed_heuristic:
@@ -30,6 +30,39 @@ testpairend_seed_heuristic:
 testpairend_seed_heuristic_independent:
 	time ./main.exe --alignment $(PE)_independent --independent-aligns 100 --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out
 
+#define run_rule
+#group$(1)_$(2): 
+#	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --reference $(EcoliDIR) --query $(PE_DIR)/Group$(1)/$(2).in >$(PE_StatsDIR)/Group$(1)/$(2).out
+#endef
+
+#test_group5_1: group5/1.out
+
+
+
+#GROUP=99
+#OUT_NUM=99
+#$(GROUP) $(OUT_NUM)
+.PHONY group_run:
+group_run:
+	echo "Running group $(GROUP) for output $(OUT_NUM)"
+	time ./main.exe \
+		--alignment $(PE) \
+		--heuristic $(SH) \
+		--trie-depth 10 \
+		--seed-len 12 \
+		--insert-distance 5000 \
+		--filter-distance-difference 50 \
+		--reference $(EcoliDIR) \
+		--query $(PE_DIR)/Group$(GROUP)/$(OUT_NUM).in \
+		> $(PE_StatsDIR)/Group$(GROUP)/$(OUT_NUM).out
+
+test_group5_1:
+	make group_run GROUP=5 OUT_NUM=1
+	echo "running group5_1"
+
+test_simultanious:
+	#make -j 3 group_run GROUP=5 OUT_NUM=1 group_run GROUP=5 OUT_NUM=2 group_run GROUP=5 OUT_NUM=3 group_run GROUP=5 OUT_NUM=4 group_run GROUP=5 OUT_NUM=5
+	make  group_run GROUP=5 OUT_NUM=1 & group_run GROUP=5 OUT_NUM=2 & group_run GROUP=5 OUT_NUM=3 & group_run GROUP=5 OUT_NUM=4 & group_run GROUP=5 OUT_NUM=5
 
 
 compare_dijkstra_independent:
@@ -52,6 +85,9 @@ group3:
 group4:
 	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50  --reference $(EcoliDIR) --query $(PE_DIR)/Group4.in >$(PE_StatsDIR)/Group4.out
 
+#$(eval $(call run_rule, 5, 1))
+#test_group5_1: group$(1)_$(2)
+#	echo "running group5_1"
 group5_1:
 	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50  --reference $(EcoliDIR) --query $(PE_DIR)/Group5/1.in >$(PE_StatsDIR)/Group5/1.out
 group5_2:
