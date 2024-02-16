@@ -10,6 +10,7 @@ struct Trie{
     int num;///the number of this kmer
     //char bp;
     //int firstapp;///first position fo ending of kmers got from childs of this Trie vertex
+    vector<int> positions;
     Trie(){
         for (int i = 0; i < 4; ++i)
             child[i] = nullptr;
@@ -35,7 +36,9 @@ struct Trie{
 
 };
 
-void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *&tocon){
+void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *&tocon, bool savepos){
+    if (savepos)
+        T->positions.push_back(savepos);
     if (pos == s.size()){
         if(T->num == -1){
             T->num = num;
@@ -44,6 +47,7 @@ void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *
         else num = T->num;
         //return T;
         tocon = T;
+        return;
     }
     for(int i = 0; i<4; ++i)
         if (s[pos] == base[i]){
@@ -52,14 +56,14 @@ void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *
                 T->child[i]->parent = T;
                 //T->child[i]->bp=base[i];
             }    
-            insert_kmer(T->child[i], s, pos+1, num, posapp, tocon);
+            insert_kmer(T->child[i], s, pos+1, num, posapp, tocon, savepos);
             /*if (T->firstapp == -1)
                 T->firstapp = T->child[i]->firstapp;
             else T->firstapp = min(T->firstapp, T->child[i]->firstapp);*/
         }
 }
 
-inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &backtotrieconnection){
+inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &backtotrieconnection, bool savepos){
     int m = ref.size();
     int sz;
     prevpos.resize(m, -1);
@@ -72,7 +76,7 @@ inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vect
         kmer = ref.substr(i, k);
         sz = kmer.size();
         Trie *con;
-        insert_kmer(T, kmer, 0, cntkmer, i, con);
+        insert_kmer(T, kmer, 0, cntkmer, i, con, savepos);
         backtotrieconnection[i+sz-1] = con;
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;
@@ -98,7 +102,7 @@ inline void construct_trie_info_about_transitions_into_ref(string &ref, int k, T
         kmer = ref.substr(i, k);
         sz = kmer.size();
         Trie *con;
-        insert_kmer(T, kmer, 0, cntkmer, i, con);
+        insert_kmer(T, kmer, 0, cntkmer, i, con, false);
         backtotrieconnection[i+sz-1] = con;
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;

@@ -33,8 +33,8 @@ void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
 
 inline void building_tries(string &ref, int d, int k, Trie *&rootdmer, Trie *&rootkmer, MatchingKmers &info){
     clock_t t = clock();
-    construct_trie(ref, d, rootdmer, info.last, info.prevpos, info.backtotrieconnection);
-    construct_trie(ref, k, rootkmer, info.lastkmer, info.prevposkmer, info.backtotrieconnectionkmer);
+    construct_trie(ref, d, rootdmer, info.last, info.prevpos, info.backtotrieconnection, true);
+    construct_trie(ref, k, rootkmer, info.lastkmer, info.prevposkmer, info.backtotrieconnectionkmer, false);
     t = clock() - t;
     cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
 }
