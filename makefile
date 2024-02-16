@@ -30,6 +30,7 @@ testpairend_seed_heuristic:
 testpairend_seed_heuristic_independent:
 	time ./main.exe --alignment $(PE)_independent --independent-aligns 100 --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out
 
+
 .PHONY group_run:
 group_run:
 	echo "Running group $(GROUP) for output $(OUT_NUM)"
@@ -40,6 +41,7 @@ group_run:
 		--seed-len 12 \
 		--insert-distance 5000 \
 		--filter-distance-difference 50 \
+		--trie-positions-limit-checker 1100
 		--reference $(EcoliDIR) \
 		--query $(PE_DIR)/Group$(GROUP)/$(OUT_NUM).in \
 		> $(PE_StatsDIR)/Group$(GROUP)/$(OUT_NUM).out

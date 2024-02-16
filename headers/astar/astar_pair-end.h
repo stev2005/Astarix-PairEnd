@@ -14,6 +14,8 @@ cost_t infheuristic;
 int cntinfhvalues;
 int cntfilteredmatche1spr, cntfilteredmatche2spr;
 int indaligns;
+int occurposlimit;///maximum positions of the min(u->positions.size(), v->positions.size()) in case of we check whether or not we check there is a pair of suitable positions among u.positions and v.positions
+
 
 inline void get_seeds_matches_sorted(vector<int> &seeds, vector <int> &lastkmer, vector<int> &prevposkmer, vector<pair<int, int> > &matches){
     /*

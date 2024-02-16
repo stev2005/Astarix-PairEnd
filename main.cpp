@@ -70,8 +70,8 @@ int main(int argc, char *argv[]){
     string typealignment;
     string& heuristiclocal = heuristic;
     string fileref, filequery;
-    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns);
-    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns);
+    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit);
+    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit);
     insdist = locinsdist;
     drange = locdrange;
     indaligns = locindaligns;
