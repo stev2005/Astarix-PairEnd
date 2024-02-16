@@ -241,7 +241,7 @@ bool gready_available_pr(pair<string, string> &queryp, string &ref, int qpos, No
     return false;
 }
 
-bool punish(Node p1, Node p2, cost_t h1, cost_t h2){
+bool old_punish(Node p1, Node p2, cost_t h1, cost_t h2){
     //it matters which Node is given first as parameter because dist is not taken by absolute value!
     /*if (h1 + h2 >= infheuristic){
         cntinfhvalues++;
@@ -257,6 +257,34 @@ bool punish(Node p1, Node p2, cost_t h1, cost_t h2){
         }
     }
     return false;
+}
+
+bool punishtwotries(Node p1, Node p2){
+    return false;
+}
+
+bool punishonetrieoneref(Node p1, Node p2){
+    return false;
+}
+
+bool punishtworef(Node p1, Node p2){
+    int dist = p2.rpos - p1.rpos;
+        if (!is_in_range(dist, punishl, punishr)){
+            cntinfhvalues++;
+            return true;
+        }
+        return false;
+}
+
+bool punish(Node p1, Node p2){
+    if (p1.is_in_trie()&p2.is_in_trie())
+        return punishtwotries(p1, p2);
+    if (p1.is_in_trie()^p2.is_in_trie())
+        return punishonetrieoneref(p1, p2);
+    if (!p1.is_in_trie() && !p2.is_in_trie())
+        return punishtworef(p1, p2);
+    cerr << "In function punish(Node p1, Node p2) none of the checks has been passed. Program is going to abort\n";
+    assert(false);
 }
 
 vector<Statesr> receivenextsr(int qpos, Node p, char cqpos, string & ref, int k, vector<int> &last, vector<int> &prevpos, vector<int> &seeds, crumbs_t & crumbs){
@@ -277,17 +305,20 @@ vector<Statepr>& get_next_pr(int qpos, Node p1, Node p2, int k, pair<string, str
     Statesr present = createStatesr(qpos, p1, 0, k, info.seeds1, info.crumbs1);
     //combines <qpos, p1> with <qpos, p2>'s inheritors
     for (auto i: v2)
-        if (present.qpos == i.qpos && !punish(present.p, i.p, present.h, i.h))
+        //if (present.qpos == i.qpos && !punish(present.p, i.p, present.h, i.h))
+        if (present.qpos == i.qpos && !punish(present.p, i.p))
             nextpr.push_back(createStatepr(present.qpos, present.p, i.p, present.g + i.g, present.h + i.h));
     present = createStatesr(qpos, p2, 0, k, info.seeds2, info.crumbs2);
     //combines <qpos, p2> with <qpos, p1>'s inheritors
     for (auto i: v1)
-        if (present.qpos == i.qpos && !punish(i.p, present.p, i.h, present.h))
+        //if (present.qpos == i.qpos && !punish(i.p, present.p, i.h, present.h))
+        if (present.qpos == i.qpos && !punish(i.p, present.p))
             nextpr.push_back(createStatepr(present.qpos, i.p, present.p, i.g + present.g, i.h + present.h));
     //combines <qpos, p1>'s inheritors with <qpos, p2>'s inheritors
     for (auto i: v1)
         for (auto j: v2)
-            if (i.qpos == j.qpos && !punish(i.p, j.p, i.h, j.h))
+            //if (i.qpos == j.qpos && !punish(i.p, j.p, i.h, j.h))
+            if (i.qpos == j.qpos && !punish(i.p, j.p))
                 nextpr.push_back(createStatepr(i.qpos, i.p, j.p, i.g + j.g, i.h + j.h));
     return nextpr;
 }
@@ -358,9 +389,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     cout << "Expanded states <qpos, ref, Trie*>: " << cntrefTrieexpansions << "\n";
     cout << "Expanded states <qpos, ref, Trie*> (% all states): " << (double) cntrefTrieexpansions / (double) cntexpansions * (double) 100<< "%\n";
     cout << "Expanded states <qpos, ref, ref>: " << cntrefrefexpansions << "\n";
-    cout << "Expanded states <qpos, ref, ref> (% all states): " << (double) cntrefrefexpansions / (double) cntexpansions * (double) 100 << "%\n";  
+    cout << "Expanded states <qpos, ref, ref> (% all states): " << (double) cntrefrefexpansions / (double) cntexpansions * (double) 100 << "%\n";*/  
     cout << "Band: " << (double) cntexpansions / (double)(n * 2) << "\n";
-    cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";*/
+    cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";
     evalsts.update_astar_cnts(cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, (double) cntexpansions / (double)(n * 2), cntinfhvalues);
     double perTrieTrie = (double)cntTrieTrieexpansions / (double) cntexpansions * (double) 100;
     double perTrieref = (double) cntTrierefexpansions / (double) cntexpansions * (double) 100;

@@ -1,26 +1,67 @@
 D: 10 k: 12
-reading reference: 0.001722s.
-constructing trie: 0.908447s.
+reading reference: 0.001735s.
+constructing trie: 2.26281s.
+
+Band: 1358.37
+Times heuristic is infinity: 5836
+Cost: 10
+Alignment: 16.7922s.
+Band: 3.138
+Times heuristic is infinity: 71
+Cost: 4
+Alignment: 0.086551s.
+Band: 2985.13
+Times heuristic is infinity: 47971
+Cost: 14
+Alignment: 36.4774s.
+Band: 433.76
+Times heuristic is infinity: 2094
+Cost: 8
+Alignment: 7.15445s.
+Band: 17.954
+Times heuristic is infinity: 177
+Cost: 9
+Alignment: 0.398626s.
+Band: 255.96
+Times heuristic is infinity: 1477
+Cost: 9
+Alignment: 4.07446s.
+Band: 2950.2
+Times heuristic is infinity: 12961
+Cost: 14
+Alignment: 34.6135s.
+Band: 417.878
+Times heuristic is infinity: 722
+Cost: 7
+Alignment: 6.83612s.
+Band: 981.714
+Times heuristic is infinity: 4517
+Cost: 9
+Alignment: 13.5977s.
+Band: 6367.62
+Times heuristic is infinity: 25898
+Cost: 14
+Alignment: 66.0459s.
 Stats for this test group:
    Number of tests: 10
    Error-rate: (you have to know it in advance)
-   Avg. runtime filtering legit from faux matches: 3.6e-05 (sec.)
-   Avg. run-time setting crumbs: 0.0130099 (sec.)
-   Avg. run-time joint alignment: 18.2905 (sec.)
+   runtime filtering legit from faux matches: 0.000358 (sec.)
+   run-time setting crumbs: 0.133295 (sec.)
+   run-time joint alignment: 186.077 (sec.)
    Trie depth: 10
    Seeds lenght: 12 (bp.)
    Drange: 50
-   Avg. matches per seed: 1.095
-   Avg. legit matches per seed: 0.8875
-   Avg. crumbs per legit match: 644.41
-   Avg. band: 1577.17
-   Avg. expanded states: 788586
-   Avg. expanded states u, v ∈ Trie: 724712
-   Avg. expanded states u ∈ Trie, v ∈ Gr: 26792.6
-   Avg. expanded states u ∈ Gr, v ∈ Trie: 27835.2
-   Avg. expanded states u, v ∈ Gr: 9246.3
-   Avg. punished states: 10172.4
-   Avg. expanded states u, v∈ Trie (% of all): 91.48
-   Avg. expanded states u ∈ Trie, v ∈ Gr (% of all): 2.22673
-   Avg. expanded states u∈Gr, v∈Trie (% of all): 2.22673
-   Avg. expanded states u, v ∈ Gr (% of all): 4.1134
+   matches per seed: 10.95
+   legit matches per seed: 8.875
+   crumbs per legit match: 355.204
+   band: 15771.7
+   expanded states: 7885864
+   expanded states u, v ∈ Trie: 7247123
+   expanded states u ∈ Trie, v ∈ Gr: 267926
+   expanded states u ∈ Gr, v ∈ Trie: 278352
+   expanded states u, v ∈ Gr: 92463
+   punished states: 101724
+   expanded states u, v∈ Trie (% of all): 914.8
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 22.2673
+   expanded states u∈Gr, v∈Trie (% of all): 22.2673
+   expanded states u, v ∈ Gr (% of all): 41.134
