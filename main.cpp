@@ -99,6 +99,7 @@ int main(int argc, char *argv[]){
     building_tries(ref, d, k, rootdmer, rootkmer, info);
     cout << "\n";
     cerr << "inited kmers\n" ;
+    cerr << "occurposlimit: " << occurposlimit << "\n";
     for (int testcase=1; testcase<=testcases; ++testcase/*, cout<<endl*/){
         cerr << "Query "<< testcase << ":\n";
         int rezult;

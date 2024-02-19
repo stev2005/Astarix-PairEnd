@@ -71,6 +71,19 @@ int lowerbs(vector<pair<int, int> > &matches, int pos){
     return r;
 }
 
+int lowerbs(vector<int> &positions, int pos){
+    int l = -1, r = positions.size(), mid;
+    ///l - the rightest which is < than pos
+    ///r - the leftest which is >=  pos
+    while (l + 1 < r){
+        mid = (r - l) / 2 + l;
+        if (positions[mid] >= pos)
+            r = mid;
+        else l = mid;
+    }
+    return r;
+}
+
 inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir){
     if (dir == true){
         ///posseed is in matches1, and searching in matches2
@@ -109,6 +122,15 @@ void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int>
         }
         else{
             idx++;
+            /*
+            It is possiblie that posseed2[idx] places to be out of range compared to posseed1.
+            But meanwhile that doesn't make impossible that possed2[idx + 1] is in range compared to posseed1.
+            */
+            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(matches2[idx].first, curlb, currb)){
+                crumbseeds[numseed].insert(posseed);
+                //cntlegitmatcheslocal++;
+            }
+            idx-=2;
             /*
             It is possiblie that posseed2[idx] places to be out of range compared to posseed1.
             But meanwhile that doesn't make impossible that possed2[idx + 1] is in range compared to posseed1.
@@ -259,8 +281,37 @@ bool old_punish(Node p1, Node p2, cost_t h1, cost_t h2){
     return false;
 }
 
+///inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir)
+
 bool punishtwotries(Node p1, Node p2){
-    return false;
+    vector<int> & positions1 = p1.u->positions;
+    vector<int> & positions2 = p2.u->positions;
+    bool dir = true;//True if p1 corresponds to the left alignment and p2 - to the right one. False - vice versa
+    if (positions1.size() > positions2.size()){
+        swap(p1, p2);///vectors aslo swap (they are references)
+        dir = false;
+    }
+    int sz1 = positions1.size(), sz2 = positions2.size();
+    if (sz1 > occurposlimit)
+        return false;
+    for (int i = 0; i < sz1; ++i){
+        int pos = positions1[i];
+        int searchpos, curlb, currb;
+        calc_search_pos(pos, drange, readdist, searchpos, curlb, currb, dir);
+        int idx = lowerbs(positions2, searchpos);
+        if (is_in_range(idx, 0, sz2) && is_in_range(positions2[idx], curlb, currb)){
+            return false;
+        }
+        else{
+            idx++;
+            if (is_in_range(idx, 0, sz2) && is_in_range(positions2[idx], curlb, currb))
+                return false;
+            idx -= 2;
+            if (is_in_range(idx, 0, sz2) && is_in_range(positions2[idx], curlb, currb))
+                return false;
+        }
+    }
+    return true;
 }
 
 bool punishonetrieoneref(Node p1, Node p2){
@@ -305,19 +356,16 @@ vector<Statepr>& get_next_pr(int qpos, Node p1, Node p2, int k, pair<string, str
     Statesr present = createStatesr(qpos, p1, 0, k, info.seeds1, info.crumbs1);
     //combines <qpos, p1> with <qpos, p2>'s inheritors
     for (auto i: v2)
-        //if (present.qpos == i.qpos && !punish(present.p, i.p, present.h, i.h))
         if (present.qpos == i.qpos && !punish(present.p, i.p))
             nextpr.push_back(createStatepr(present.qpos, present.p, i.p, present.g + i.g, present.h + i.h));
     present = createStatesr(qpos, p2, 0, k, info.seeds2, info.crumbs2);
     //combines <qpos, p2> with <qpos, p1>'s inheritors
     for (auto i: v1)
-        //if (present.qpos == i.qpos && !punish(i.p, present.p, i.h, present.h))
         if (present.qpos == i.qpos && !punish(i.p, present.p))
             nextpr.push_back(createStatepr(present.qpos, i.p, present.p, i.g + present.g, i.h + present.h));
     //combines <qpos, p1>'s inheritors with <qpos, p2>'s inheritors
     for (auto i: v1)
         for (auto j: v2)
-            //if (i.qpos == j.qpos && !punish(i.p, j.p, i.h, j.h))
             if (i.qpos == j.qpos && !punish(i.p, j.p))
                 nextpr.push_back(createStatepr(i.qpos, i.p, j.p, i.g + j.g, i.h + j.h));
     return nextpr;
