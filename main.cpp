@@ -60,6 +60,21 @@ double runtime(clock_t t){
     return (double) t / CLOCKS_PER_SEC;
 }
 
+void check_are_vectors_sorted(Trie* T){
+    if (T == nullptr)
+        return;
+    int sz = T->positions.size();
+    cout << "sz: " << sz << endl;
+    for (int i = 1; i < sz; ++i)
+        if (T->positions[i - 1] > T->positions[i]){
+            cerr << "Not sorted\n";
+        }
+    for (int i = 0; i < 4; ++i){
+        cout << "From: " << T << " to child: " << i << endl; 
+        check_are_vectors_sorted(T->child[i]);
+    }
+}
+
 int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -100,6 +115,9 @@ int main(int argc, char *argv[]){
     cout << "\n";
     cerr << "inited kmers\n" ;
     cerr << "occurposlimit: " << occurposlimit << "\n";
+    /*check_are_vectors_sorted(rootdmer);
+    cerr << "Ended check sorted\n";
+    return 0;*/
     for (int testcase=1; testcase<=testcases; ++testcase/*, cout<<endl*/){
         cerr << "Query "<< testcase << ":\n";
         int rezult;

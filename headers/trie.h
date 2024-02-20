@@ -38,7 +38,7 @@ struct Trie{
 
 void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *&tocon, bool savepos){
     if (savepos)
-        T->positions.push_back(savepos);
+        T->positions.push_back(posapp);
     if (pos == s.size()){
         if(T->num == -1){
             T->num = num;
@@ -87,8 +87,6 @@ inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vect
     for (int i = m - k + 1; i < m; ++i)///the last suffixes of the reference have length < k 
         backtotrieconnection.push_back(nullptr);
 }
-
-
 
 int kmer_exists(string &seed, int pos, Trie *T){
     if (pos == seed.size())

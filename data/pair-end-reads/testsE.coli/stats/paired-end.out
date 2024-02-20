@@ -1,67 +1,67 @@
 D: 10 k: 12
-reading reference: 0.001735s.
-constructing trie: 2.26281s.
+reading reference: 0.001422s.
+constructing trie: 1.44087s.
 
-Band: 1358.37
-Times heuristic is infinity: 5836
+Band: 1309.06
+Times heuristic is infinity: 5611
 Cost: 10
-Alignment: 16.7922s.
-Band: 3.138
-Times heuristic is infinity: 71
+Alignment: 19.2228s.
+Band: 2.238
+Times heuristic is infinity: 51
 Cost: 4
-Alignment: 0.086551s.
-Band: 2985.13
-Times heuristic is infinity: 47971
+Alignment: 0.064798s.
+Band: 3255.07
+Times heuristic is infinity: 50758
 Cost: 14
-Alignment: 36.4774s.
-Band: 433.76
-Times heuristic is infinity: 2094
+Alignment: 46.8839s.
+Band: 608.506
+Times heuristic is infinity: 2762
 Cost: 8
-Alignment: 7.15445s.
-Band: 17.954
-Times heuristic is infinity: 177
+Alignment: 10.4176s.
+Band: 15.648
+Times heuristic is infinity: 155
 Cost: 9
-Alignment: 0.398626s.
-Band: 255.96
-Times heuristic is infinity: 1477
+Alignment: 0.375619s.
+Band: 409.618
+Times heuristic is infinity: 2825
 Cost: 9
-Alignment: 4.07446s.
-Band: 2950.2
-Times heuristic is infinity: 12961
+Alignment: 6.62902s.
+Band: 5551.26
+Times heuristic is infinity: 29064
 Cost: 14
-Alignment: 34.6135s.
-Band: 417.878
-Times heuristic is infinity: 722
+Alignment: 68.7113s.
+Band: 438.436
+Times heuristic is infinity: 777
 Cost: 7
-Alignment: 6.83612s.
-Band: 981.714
-Times heuristic is infinity: 4517
+Alignment: 8.01944s.
+Band: 1099.81
+Times heuristic is infinity: 4914
 Cost: 9
-Alignment: 13.5977s.
-Band: 6367.62
-Times heuristic is infinity: 25898
+Alignment: 16.9346s.
+Band: 6984.57
+Times heuristic is infinity: 27703
 Cost: 14
-Alignment: 66.0459s.
+Alignment: 79.6605s.
 Stats for this test group:
    Number of tests: 10
    Error-rate: (you have to know it in advance)
-   runtime filtering legit from faux matches: 0.000358 (sec.)
-   run-time setting crumbs: 0.133295 (sec.)
-   run-time joint alignment: 186.077 (sec.)
+   runtime filtering legit from faux matches: 0.000372 (sec.)
+   run-time setting crumbs: 0.135917 (sec.)
+   run-time joint alignment: 256.92 (sec.)
    Trie depth: 10
    Seeds lenght: 12 (bp.)
    Drange: 50
    matches per seed: 10.95
-   legit matches per seed: 8.875
-   crumbs per legit match: 355.204
-   band: 15771.7
-   expanded states: 7885864
-   expanded states u, v ∈ Trie: 7247123
-   expanded states u ∈ Trie, v ∈ Gr: 267926
-   expanded states u ∈ Gr, v ∈ Trie: 278352
-   expanded states u, v ∈ Gr: 92463
-   punished states: 101724
-   expanded states u, v∈ Trie (% of all): 914.8
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 22.2673
-   expanded states u∈Gr, v∈Trie (% of all): 22.2673
-   expanded states u, v ∈ Gr (% of all): 41.134
+   legit matches per seed: 9.125
+   crumbs per legit match: 348.739
+   band: 19674.2
+   expanded states: 9837104
+   expanded states u, v ∈ Trie: 8985145
+   expanded states u ∈ Trie, v ∈ Gr: 370585
+   expanded states u ∈ Gr, v ∈ Trie: 367359
+   expanded states u, v ∈ Gr: 114015
+   punished states: 124620
+   expanded states u, v∈ Trie (% of all): 905.654
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 23.3638
+   expanded states u∈Gr, v∈Trie (% of all): 23.3638
+   expanded states u, v ∈ Gr (% of all): 49.0502

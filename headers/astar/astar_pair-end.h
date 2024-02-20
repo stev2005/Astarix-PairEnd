@@ -284,13 +284,13 @@ bool old_punish(Node p1, Node p2, cost_t h1, cost_t h2){
 ///inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir)
 
 bool punishtwotries(Node p1, Node p2){
-    vector<int> & positions1 = p1.u->positions;
-    vector<int> & positions2 = p2.u->positions;
     bool dir = true;//True if p1 corresponds to the left alignment and p2 - to the right one. False - vice versa
-    if (positions1.size() > positions2.size()){
-        swap(p1, p2);///vectors aslo swap (they are references)
+    if (p1.u->positions.size() > p2.u->positions.size()){
+        swap(p1, p2);
         dir = false;
     }
+    vector<int> & positions1 = p1.u->positions;
+    vector<int> & positions2 = p2.u->positions;
     int sz1 = positions1.size(), sz2 = positions2.size();
     if (sz1 > occurposlimit)
         return false;
@@ -311,6 +311,16 @@ bool punishtwotries(Node p1, Node p2){
                 return false;
         }
     }
+    /*cout << "Occur positions of punished p1 and p2:\n";
+    cout << "P1 poss:\n";
+    for (auto i: positions1)
+        cout << i << " ";
+    cout << "\n";
+    cout << "P2 poss:\n";
+    for (auto i: positions2)
+        cout << i << " ";
+    cout << "\n";*/
+    
     return true;
 }
 
