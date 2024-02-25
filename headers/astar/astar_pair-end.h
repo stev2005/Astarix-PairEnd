@@ -299,15 +299,15 @@ bool punishtwotries(Node p1, Node p2){
         int searchpos, curlb, currb;
         calc_search_pos(pos, drange, readdist, searchpos, curlb, currb, dir);
         int idx = lowerbs(positions2, searchpos);
-        if (is_in_range(idx, 0, sz2) && is_in_range(positions2[idx], curlb, currb)){
+        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb)){
             return false;
         }
         else{
             idx++;
-            if (is_in_range(idx, 0, sz2) && is_in_range(positions2[idx], curlb, currb))
+            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
                 return false;
             idx -= 2;
-            if (is_in_range(idx, 0, sz2) && is_in_range(positions2[idx], curlb, currb))
+            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
                 return false;
         }
     }
@@ -325,7 +325,28 @@ bool punishtwotries(Node p1, Node p2){
 }
 
 bool punishonetrieoneref(Node p1, Node p2){
-    return false;
+    bool dir = true;
+    if (p1.is_in_trie()){
+        swap(p1, p2);
+        dir = false;
+    }
+    int pos = p1.rpos;
+    int searchpos, curlb, currb;
+    calc_search_pos(pos, drange, readdist, searchpos, curlb, currb, dir);
+    vector<int> & positions = p2.u->positions;
+    int sz = positions.size();
+    int idx = lowerbs(positions, searchpos);
+    if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
+        return false;
+    else{
+        idx++;
+        if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
+            return false;
+        idx -= 2;
+        if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
+            return false;
+    }
+    return true;
 }
 
 bool punishtworef(Node p1, Node p2){
