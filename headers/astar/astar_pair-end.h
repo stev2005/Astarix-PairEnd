@@ -303,10 +303,13 @@ bool punishtwotries(Node p1, Node p2){
             return false;
         }
         else{
-            idx++;
+            /*idx++;
             if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
                 return false;
             idx -= 2;
+            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
+                return false;*/
+            idx--;
             if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
                 return false;
         }
@@ -320,7 +323,7 @@ bool punishtwotries(Node p1, Node p2){
     for (auto i: positions2)
         cout << i << " ";
     cout << "\n";*/
-    
+    cntinfhvalues++;
     return true;
 }
 
@@ -339,13 +342,17 @@ bool punishonetrieoneref(Node p1, Node p2){
     if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
         return false;
     else{
-        idx++;
+        /*idx++;
         if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
             return false;
         idx -= 2;
         if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
+            return false;*/
+        idx--;
+        if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
             return false;
     }
+    cntinfhvalues++;
     return true;
 }
 

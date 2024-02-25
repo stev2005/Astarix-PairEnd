@@ -1,53 +1,53 @@
 D: 10 k: 12
-reading reference: 0.002021s.
-constructing trie: 1.60446s.
+reading reference: 0.001372s.
+constructing trie: 1.51166s.
 
 Band: 1190.14
-Times heuristic is infinity: 5074
+Times heuristic is infinity: 1004044
 Cost: 10
-Alignment: 18.6268s.
+Alignment: 18.3096s.
 Band: 4.126
-Times heuristic is infinity: 92
+Times heuristic is infinity: 6604
 Cost: 4
-Alignment: 0.114379s.
+Alignment: 0.113362s.
 Band: 3782.74
-Times heuristic is infinity: 62318
+Times heuristic is infinity: 5722449
 Cost: 14
-Alignment: 53.9648s.
+Alignment: 53.939s.
 Band: 515.604
-Times heuristic is infinity: 2512
+Times heuristic is infinity: 580736
 Cost: 8
-Alignment: 9.85728s.
+Alignment: 9.86052s.
 Band: 17.662
-Times heuristic is infinity: 158
+Times heuristic is infinity: 15895
 Cost: 9
-Alignment: 0.416215s.
+Alignment: 0.414289s.
 Band: 418.702
-Times heuristic is infinity: 2800
+Times heuristic is infinity: 294423
 Cost: 9
-Alignment: 6.84743s.
+Alignment: 6.90719s.
 Band: 4520.08
-Times heuristic is infinity: 22861
+Times heuristic is infinity: 5478439
 Cost: 14
-Alignment: 60.3154s.
+Alignment: 60.3167s.
 Band: 437.216
-Times heuristic is infinity: 724
+Times heuristic is infinity: 258253
 Cost: 7
-Alignment: 8.28741s.
+Alignment: 8.3104s.
 Band: 1126.49
-Times heuristic is infinity: 5050
+Times heuristic is infinity: 1159351
 Cost: 9
-Alignment: 17.8451s.
+Alignment: 17.897s.
 Band: 7106.38
-Times heuristic is infinity: 28075
+Times heuristic is infinity: 9313762
 Cost: 14
-Alignment: 84.2962s.
+Alignment: 83.7063s.
 Stats for this test group:
    Number of tests: 10
    Error-rate: (you have to know it in advance)
-   runtime filtering legit from faux matches: 0.000399 (sec.)
-   run-time setting crumbs: 0.150221 (sec.)
-   run-time joint alignment: 260.571 (sec.)
+   runtime filtering legit from faux matches: 0.0004 (sec.)
+   run-time setting crumbs: 0.142606 (sec.)
+   run-time joint alignment: 259.774 (sec.)
    Trie depth: 10
    Seeds lenght: 12 (bp.)
    Drange: 50
@@ -60,7 +60,7 @@ Stats for this test group:
    expanded states u ∈ Trie, v ∈ Gr: 359473
    expanded states u ∈ Gr, v ∈ Trie: 361715
    expanded states u, v ∈ Gr: 113798
-   punished states: 129664
+   punished states: 23833956
    expanded states u, v∈ Trie (% of all): 913.862
    expanded states u ∈ Trie, v ∈ Gr (% of all): 24.2655
    expanded states u∈Gr, v∈Trie (% of all): 24.2655
