@@ -71,7 +71,7 @@ int lowerbs(vector<pair<int, int> > &matches, int pos){
     return r;
 }
 
-int lowerbs(vector<int> &positions, int pos){
+int lowerbs(const vector<int> &positions, int pos){
     int l = -1, r = positions.size(), mid;
     ///l - the rightest which is < than pos
     ///r - the leftest which is >=  pos
@@ -283,97 +283,82 @@ bool old_punish(Node p1, Node p2, cost_t h1, cost_t h2){
 
 ///inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir)
 
+/*bool punishtwotries(Node p1, Node p2){
+    bool dir = true;
+
+    return false;
+}
+
+bool punishonetrieoneref(Node p1, Node p2){
+    return false;
+}*/
+
 bool punishtwotries(Node p1, Node p2){
     bool dir = true;//True if p1 corresponds to the left alignment and p2 - to the right one. False - vice versa
     if (p1.u->positions.size() > p2.u->positions.size()){
         swap(p1, p2);
         dir = false;
     }
-    vector<int> & positions1 = p1.u->positions;
-    vector<int> & positions2 = p2.u->positions;
-    int sz1 = positions1.size(), sz2 = positions2.size();
+    const vector <int> & positions1 = p1.u->positions;
+    const vector <int> & positions2 = p2.u->positions;
+    int sz1 = positions1.size();
+    int sz2 = positions2.size();
     if (sz1 > occurposlimit)
         return false;
-    for (int i = 0; i < sz1; ++i){
-        int pos = positions1[i];
-        int searchpos, curlb, currb;
-        calc_search_pos(pos, drange, readdist, searchpos, curlb, currb, dir);
+    for (auto pos: positions1){
+        /*int searchpos, lbpos, rbpos;
+        calc_search_pos(pos, drange, readdist, searchpos, lbpos, rbpos, dir);
         int idx = lowerbs(positions2, searchpos);
-        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb)){
+        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], lbpos, rbpos))
             return false;
-        }
-        else{
-            /*idx++;
-            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
+        idx--;
+        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], lbpos, rbpos))
+            return false;*/
+        int searchpos;
+        if (dir) searchpos = pos + readdist;
+        else searchpos = pos - readdist;
+        int idx = lowerbs(positions2, searchpos);
+        if (is_in_range(idx, 0, sz2 - 1)){
+            int dist = abs(pos - positions2[idx]);
+            if (is_in_range(dist, punishl, punishr))
                 return false;
-            idx -= 2;
-            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
-                return false;*/
-            idx--;
-            if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], curlb, currb))
+        }
+        idx--;
+        if (is_in_range(idx, 0, sz2 - 1)){
+            int dist = abs(pos - positions2[idx]);
+            if (is_in_range(dist, punishl, punishr))
                 return false;
         }
     }
-    /*cout << "Occur positions of punished p1 and p2:\n";
-    cout << "P1 poss:\n";
-    for (auto i: positions1)
-        cout << i << " ";
-    cout << "\n";
-    cout << "P2 poss:\n";
-    for (auto i: positions2)
-        cout << i << " ";
-    cout << "\n";*/
-    cntinfhvalues++;
     return true;
 }
 
 bool punishonetrieoneref(Node p1, Node p2){
+    return false;
     bool dir = true;
-    if (p1.is_in_trie()){
-        swap(p1, p2);
-        dir = false;
-    }
-    int pos = p1.rpos;
-    int searchpos, curlb, currb;
-    calc_search_pos(pos, drange, readdist, searchpos, curlb, currb, dir);
-    vector<int> & positions = p2.u->positions;
-    int sz = positions.size();
-    int idx = lowerbs(positions, searchpos);
-    if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
-        return false;
-    else{
-        /*idx++;
-        if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
-            return false;
-        idx -= 2;
-        if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
-            return false;*/
-        idx--;
-        if (is_in_range(idx, 0, sz - 1) && is_in_range(positions[idx], curlb, currb))
-            return false;
-    }
-    cntinfhvalues++;
-    return true;
 }
 
 bool punishtworef(Node p1, Node p2){
     int dist = p2.rpos - p1.rpos;
-        if (!is_in_range(dist, punishl, punishr)){
-            cntinfhvalues++;
-            return true;
-        }
-        return false;
+    if (!is_in_range(dist, punishl, punishr)){
+        cntinfhvalues++;
+        return true;
+    }
+    return false;
 }
 
 bool punish(Node p1, Node p2){
-    if (p1.is_in_trie()&p2.is_in_trie())
+    if (p1.is_in_trie() && p2.is_in_trie())
         return punishtwotries(p1, p2);
-    if (p1.is_in_trie()^p2.is_in_trie())
-        return punishonetrieoneref(p1, p2);
     if (!p1.is_in_trie() && !p2.is_in_trie())
         return punishtworef(p1, p2);
+    return punishonetrieoneref(p1, p2);
+
+    /*if (p1.is_in_trie()^p2.is_in_trie())
+        
+    
     cerr << "In function punish(Node p1, Node p2) none of the checks has been passed. Program is going to abort\n";
-    assert(false);
+    assert(false);*/
 }
 
 vector<Statesr> receivenextsr(int qpos, Node p, char cqpos, string & ref, int k, vector<int> &last, vector<int> &prevpos, vector<int> &seeds, crumbs_t & crumbs){
