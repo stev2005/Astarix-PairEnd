@@ -1,4 +1,87 @@
 D: 10 k: 12
-reading reference: 0.001748s.
-constructing trie: 1.47763s.
+reading reference: 0.001365s.
+constructing trie: 1.69841s.
 
+Band: 1358.42
+Times heuristic is infinity: 5836
+Cost: 10
+Alignment: 16.0317s.
+Band: 3.234
+Times heuristic is infinity: 76
+Cost: 4
+Alignment: 0.082431s.
+Band: 2985.22
+Times heuristic is infinity: 47971
+Cost: 14
+Alignment: 34.7387s.
+Band: 433.892
+Times heuristic is infinity: 2094
+Cost: 8
+Alignment: 6.75139s.
+Band: 17.998
+Times heuristic is infinity: 177
+Cost: 9
+Alignment: 0.380946s.
+Band: 256.052
+Times heuristic is infinity: 1480
+Cost: 9
+Alignment: 3.78269s.
+Band: 4223.47
+Times heuristic is infinity: 22097
+Cost: 14
+Alignment: 44.7244s.
+Band: 417.922
+Times heuristic is infinity: 722
+Cost: 7
+Alignment: 6.26854s.
+Band: 981.758
+Times heuristic is infinity: 4517
+Cost: 9
+Alignment: 12.6817s.
+Band: 6367.66
+Times heuristic is infinity: 25898
+Cost: 14
+Alignment: 61.7271s.
+Band: 4146.08
+Times heuristic is infinity: 12772
+Cost: 15
+Alignment: 45.391s.
+Band: 14458.3
+Times heuristic is infinity: 131040
+Cost: 16
+Alignment: 126.951s.
+Band: 22210.8
+Times heuristic is infinity: 229963
+Cost: 22
+Alignment: 176.788s.
+Band: 4259.06
+Times heuristic is infinity: 7368
+Cost: 13
+Alignment: 47.6086s.
+Band: 36.6195
+Times heuristic is infinity: 235
+Cost: 11
+Alignment: 0.746748s.
+Stats for this test group:
+   Number of tests: 15
+   Error-rate: (you have to know it in advance)
+   runtime filtering legit from faux matches: 0.218321 (sec.)
+   run-time setting crumbs: 0.206827 (sec.)
+   run-time joint alignment: 584.655 (sec.)
+   Trie depth: 10
+   Seeds lenght: 12 (bp.)
+   Drange: 50
+   matches per seed: 15.8053
+   legit matches per seed: 13.3489
+   crumbs per legit match: 542.037
+   band: 62156.5
+   expanded states: 32389526
+   expanded states u, v ∈ Trie: 26667991
+   expanded states u ∈ Trie, v ∈ Gr: 2576305
+   expanded states u ∈ Gr, v ∈ Trie: 2560384
+   expanded states u, v ∈ Gr: 584846
+   punished states: 492246
+   expanded states u, v∈ Trie (% of all): 1348.48
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 51.7267
+   expanded states u∈Gr, v∈Trie (% of all): 51.7267
+   expanded states u, v ∈ Gr (% of all): 48.7517

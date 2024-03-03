@@ -10,6 +10,8 @@ typedef long long eval_t;//integers
 typedef double eval_tr;//real number
 cost_t inf = (1<<30);
 cost_t maximum_edit_cost;
+char special_sign = '$';
+cost_t special_cost = 0;
 
 int nindel = 0;///can be taken as ndel and nins if deletion cost ==  insertion cost
 string heuristic;

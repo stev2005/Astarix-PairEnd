@@ -131,6 +131,21 @@ vector<Statesr> & get_next_states_sr(int qpos, Node p, char cqpos, string &ref, 
     static vector<Statesr> next;
     next.clear();
     //cout << "qpos: " << qpos << " p.u: "<< p.u << " p.rpos: " << p.rpos << "\n";
+    if (cqpos == special_sign){
+        if (p.is_in_trie()){
+            if (p.u->is_leaf()){
+                for (int i = last[p.u->num]; i != -1;  i = prevpos[i])
+                    next.push_back(Statesr(qpos, Node(i + 1), special_cost, 0));
+            }
+            else{
+                for (int i = 0; i < 4; ++i)
+                    if (p.u->child[i] != nullptr)
+                        next.push_back(Statesr(qpos + 1, p.u->child[i], special_cost, 0));
+            }
+        }
+        else next.push_back(Statesr(qpos + 1, Node(p.rpos + 1), special_cost, 0));
+        return next;
+    }
     if (p.is_in_trie()){
         //cout << "in the trie\n";
         if (p.u->is_leaf()){

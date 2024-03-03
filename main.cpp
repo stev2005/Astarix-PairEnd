@@ -75,6 +75,14 @@ void check_are_vectors_sorted(Trie* T){
     }
 }
 
+void make_paired_ends_same_size(pair<string, string> &q){
+    while (q.first.size() !=  q.second.size()){
+        if (q.first.size() < q.second.size())
+            q.first.push_back(special_sign);
+        else q.second.push_back(special_sign);
+    }
+}
+
 int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -181,6 +189,7 @@ int main(int argc, char *argv[]){
                 nindel++;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
+            make_paired_ends_same_size(queryp);
             //cerr << "Here 1\n";
                 t = clock();
                 filter_matches(info, queryp.first.size());

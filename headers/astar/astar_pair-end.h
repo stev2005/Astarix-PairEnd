@@ -285,6 +285,7 @@ bool old_punish(Node p1, Node p2, cost_t h1, cost_t h2){
 ///inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir)
 
 bool punishtwotries(Node p1, Node p2){
+    return false;
     const vector <int> & positions1 = p1.u->positions;
     const vector <int> & positions2 = p2.u->positions;
     int sz1 = positions1.size();
