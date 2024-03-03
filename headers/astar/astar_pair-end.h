@@ -77,6 +77,7 @@ int lowerbs(const vector<int> &positions, int pos){
     ///r - the leftest which is >=  pos
     while (l + 1 < r){
         mid = (r - l) / 2 + l;
+        //mid = (l + r) / 2;
         if (positions[mid] >= pos)
             r = mid;
         else l = mid;
@@ -283,18 +284,22 @@ bool old_punish(Node p1, Node p2, cost_t h1, cost_t h2){
 
 ///inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir)
 
-/*bool punishtwotries(Node p1, Node p2){
-    bool dir = true;
-
-    return false;
-}
-
-bool punishonetrieoneref(Node p1, Node p2){
-    return false;
-}*/
-
 bool punishtwotries(Node p1, Node p2){
-    bool dir = true;//True if p1 corresponds to the left alignment and p2 - to the right one. False - vice versa
+    const vector <int> & positions1 = p1.u->positions;
+    const vector <int> & positions2 = p2.u->positions;
+    int sz1 = positions1.size();
+    int sz2 = positions2.size();
+    if (sz1 > occurposlimit)
+        return false;
+    if (sz2 > occurposlimit)
+        return false;
+    for (auto pos: positions1)
+        for (auto pos2: positions2){
+            int dist = pos2 - pos;
+            if (is_in_range(dist, punishl, punishr))
+                return false;
+        }
+    /*bool dir = true;//True if p1 corresponds to the left alignment and p2 - to the right one. False - vice versa
     if (p1.u->positions.size() > p2.u->positions.size()){
         swap(p1, p2);
         dir = false;
@@ -306,14 +311,6 @@ bool punishtwotries(Node p1, Node p2){
     if (sz1 > occurposlimit)
         return false;
     for (auto pos: positions1){
-        /*int searchpos, lbpos, rbpos;
-        calc_search_pos(pos, drange, readdist, searchpos, lbpos, rbpos, dir);
-        int idx = lowerbs(positions2, searchpos);
-        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], lbpos, rbpos))
-            return false;
-        idx--;
-        if (is_in_range(idx, 0, sz2 - 1) && is_in_range(positions2[idx], lbpos, rbpos))
-            return false;*/
         int searchpos;
         if (dir) searchpos = pos + readdist;
         else searchpos = pos - readdist;
@@ -329,7 +326,7 @@ bool punishtwotries(Node p1, Node p2){
             if (is_in_range(dist, punishl, punishr))
                 return false;
         }
-    }
+    }*/
     return true;
 }
 

@@ -76,7 +76,7 @@ inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vect
         kmer = ref.substr(i, k);
         sz = kmer.size();
         Trie *con;
-        insert_kmer(T, kmer, 0, cntkmer, i, con, savepos);
+        insert_kmer(T, kmer, 0, cntkmer, i + k - 1, con, savepos);
         backtotrieconnection[i+sz-1] = con;
         prevpos[i+sz-1]=last[cntkmer];
         last[cntkmer]=i+sz-1;
