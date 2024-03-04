@@ -213,8 +213,8 @@ int main(int argc, char *argv[]){
             t = clock() - t;
             evalsts.aligntime += runtime(t);
             //cerr << "alignment passed\n";
-            cout << "Cost: " << rezult << "\n"; 
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            //cout << "Cost: " << rezult << "\n"; 
+            //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             cerr << "Cost: " << rezult << "\n"; 
             cerr << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }

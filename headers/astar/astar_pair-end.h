@@ -459,8 +459,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     cout << "Expanded states <qpos, ref, Trie*> (% all states): " << (double) cntrefTrieexpansions / (double) cntexpansions * (double) 100<< "%\n";
     cout << "Expanded states <qpos, ref, ref>: " << cntrefrefexpansions << "\n";
     cout << "Expanded states <qpos, ref, ref> (% all states): " << (double) cntrefrefexpansions / (double) cntexpansions * (double) 100 << "%\n";*/  
-    cout << "Band: " << (double) cntexpansions / (double)(n * 2) << "\n";
-    cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";
+    //cout << "Band: " << (double) cntexpansions / (double)(n * 2) << "\n";
+    //cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";
     evalsts.update_astar_cnts(cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, (double) cntexpansions / (double)(n * 2), cntinfhvalues);
     double perTrieTrie = (double)cntTrieTrieexpansions / (double) cntexpansions * (double) 100;
     double perTrieref = (double) cntTrierefexpansions / (double) cntexpansions * (double) 100;
