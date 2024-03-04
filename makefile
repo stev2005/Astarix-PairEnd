@@ -41,7 +41,7 @@ group_run:
 		--seed-len 12 \
 		--insert-distance 5000 \
 		--filter-distance-difference 50 \
-		--trie-positions-limit-checker 1100
+		--trie-positions-limit-checker 1100 \
 		--reference $(EcoliDIR) \
 		--query $(PE_DIR)/Group$(GROUP)/$(OUT_NUM).in \
 		> $(PE_StatsDIR)/Group$(GROUP)/$(OUT_NUM).out
@@ -50,9 +50,9 @@ test_group5_1:
 	make group_run GROUP=5 OUT_NUM=1
 	echo "running group5_1"
 
-test_simultanious:
+test_simultaneous:
 	#make -j 3 group_run GROUP=5 OUT_NUM=1 group_run GROUP=5 OUT_NUM=2 group_run GROUP=5 OUT_NUM=3 group_run GROUP=5 OUT_NUM=4 group_run GROUP=5 OUT_NUM=5
-	make  group_run GROUP=5 OUT_NUM=1 & group_run GROUP=5 OUT_NUM=2 & group_run GROUP=5 OUT_NUM=3 & group_run GROUP=5 OUT_NUM=4 & group_run GROUP=5 OUT_NUM=5
+	make -j3 -l3 group_run GROUP=5 OUT_NUM=1 & group_run GROUP=5 OUT_NUM=2 & group_run GROUP=5 OUT_NUM=3 & group_run GROUP=5 OUT_NUM=4 & group_run GROUP=5 OUT_NUM=5
 
 
 compare_dijkstra_independent:
@@ -64,7 +64,8 @@ compare_dijkstra_joint:
 compare_astar_ind:
 	time ./main.exe --alignment single-read --heuristic $(SH)  --independent-aligns 1 --trie-depth 10 --seed-len 12 --insert-distance 500 --filter-distance-difference 50 --reference $(EcoliDIR) --query $(PairedEndCompareAstarIndDIR)/Group4.in >$(PairedEndCompareAstarIndDIR)/evalastarind.out
 
-
+run_group5:
+	parallel -j2 eval make ::: 'group_run GROUP=5 OUT_NUM=1' 'group_run GROUP=5 OUT_NUM=2' 'group_run GROUP=5 OUT_NUM=3' 'group_run GROUP=5 OUT_NUM=4' 'group_run GROUP=5 OUT_NUM=5' 'group_run GROUP=5 OUT_NUM=6'
 
 group1:
 	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(EcoliDIR) --query $(PE_DIR)/Group1.in >$(PE_StatsDIR)/Group1.out
