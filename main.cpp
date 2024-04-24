@@ -93,8 +93,9 @@ int main(int argc, char *argv[]){
     string typealignment;
     string& heuristiclocal = heuristic;
     string fileref, filequery;
-    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit);
-    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit);
+    string triecrumbsopt;
+    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit, triecrumbsopt);
+    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit, triecrumbsopt);
     insdist = locinsdist;
     drange = locdrange;
     indaligns = locindaligns;
@@ -145,7 +146,10 @@ int main(int argc, char *argv[]){
                 t = clock() - t;
                 cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
-                getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
+                if (triecrumbsopt == "yes")
+                    getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
+                    info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
+                else getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                 info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
                 t = clock() - t;
                 //cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";

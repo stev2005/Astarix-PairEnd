@@ -84,6 +84,75 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     return st.size();
 }
 
+inline void get_Node_crumbs(Node curnode, int nseeds, int &maxcntcrumbs, crumbs_t &crumbs, set<int> &crumbsidx){
+    int cntcrumbs = crumbs[curnode].count();
+    maxcntcrumbs = (maxcntcrumbs < cntcrumbs)? cntcrumbs: maxcntcrumbs;
+    for (int j = 0; j < nseeds; ++j)
+        if (crumbs[curnode][j]) crumbsidx.insert(j);
+}
+
+int get_min_lack_of_crumbs(Trie *cur, int nseeds, crumbs_t &crumbs, const vector<int> &last, const vector<int> &prevpos, set<int> &crumbsidx){
+    int maxcntcrumbs = -1;
+    if (cur->is_leaf())
+        for (int i = last[cur->num]; i != -1; i = prevpos[i])
+            get_Node_crumbs(Node(i), nseeds, maxcntcrumbs, crumbs, crumbsidx);
+    else{
+        for (int i = 0; i < 4; i++)
+            if (cur->child[i])
+                get_Node_crumbs(Node(cur->child[i]), nseeds, maxcntcrumbs, crumbs, crumbsidx);
+    }
+    return maxcntcrumbs;
+}
+
+void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &crumbs,
+                const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
+                const vector<int> &prevposkmer, const vector<int> &last, const vector<int> &prevpos, int read, vector<unordered_set<int> > & crumbseeds){
+    /*read: which read is being set on crumbs
+    valuews to receive:
+        - 0 when single read has its crumbs set on the Gr+
+        - 1 when first read of pair-end has its crumbs set on the Gr+
+        - 2 when second read of pair-end has its crumbs set on the Gr+
+        crumbseeds are needed for pairend getting of crumbs
+    */
+    cerr << "Optimized crumbs function\n";
+    int ndel = seeds.size();
+    int nins = seeds.size();
+    queue<Trie*> q;///to set crumbs in the trie
+    for (int i = 0; i < (int)seeds.size(); ++i){
+        if (seeds[i] >= 0){
+            int seedpos = i * k;
+            for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
+                int seedstart = j - k + 1;
+                for (int back = 0; back < seedpos + ndel; ++back){
+                    int rpos = seedstart - back;
+                    if (rpos >= 0){
+                        crumbs[Node(rpos)][i] = true;
+                        if (seedstart - rpos > seedpos - nins - d){
+                            Trie* cur = backtotrieconnection[rpos];
+                            q.push(cur);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    while (!q.empty()){
+        Trie *cur = q.front();
+        q.pop();
+        set<int> crumbsidx;
+        int crumbscnt = get_min_lack_of_crumbs(cur, seeds.size(), crumbs, last, prevpos, crumbsidx);
+        auto it = crumbsidx.end();
+        --it;
+        Node curnode = Node(cur);
+        while (crumbscnt){
+            crumbs[curnode][*it] = true;
+            --it;
+            --crumbscnt;
+        }
+        if (cur->parent) q.push(cur->parent);
+    }
+}
+
 inline void push_first_states_in_q(priority_queue<Statesr> &q, int m, int d, int k, Trie *rootdmer, vector<int> &seeds, crumbs_t &crumbs){
     q.push(createStatesr(0, rootdmer, 0, k, seeds, crumbs));
     cout << "Missing crumbs in the Trie root: " << q.top().h << endl;
@@ -303,5 +372,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
     evalsts.cntexpansions += cntexpansions;
     evalsts.band += ((double)cntexpansions / (double)n);
     get_expanded_states(true);
+    showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
+        cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);
     return alignments;
 }
