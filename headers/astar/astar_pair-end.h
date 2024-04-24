@@ -285,8 +285,26 @@ bool old_punish(Node p1, Node p2, cost_t h1, cost_t h2){
 ///inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed, int &curlb, int &currb, bool dir)
 
 bool punishtwotries(Node p1, Node p2){
-    return false;
+    //return false;
     const vector <int> & positions1 = p1.u->positions;
+    const vector <int> & positions2 = p2.u->positions;
+    int sz1 = positions1.size();
+    int sz2 = positions2.size();
+    if (sz1 > occurposlimit)
+        return false;
+    if (sz2 > occurposlimit)
+        return false;
+    int pointer1 = 0, pointer2 = 0;
+    while (pointer1 < sz1 && pointer2 < sz2){
+        int dist = positions2[pointer2] - positions1[pointer1];
+        if (dist < punishl)
+            pointer2++;
+        else if (dist > punishr)
+            pointer1++;
+        else return false;
+    }
+    return true;
+    /*const vector <int> & positions1 = p1.u->positions;
     const vector <int> & positions2 = p2.u->positions;
     int sz1 = positions1.size();
     int sz2 = positions2.size();
@@ -299,7 +317,7 @@ bool punishtwotries(Node p1, Node p2){
             int dist = pos2 - pos;
             if (is_in_range(dist, punishl, punishr))
                 return false;
-        }
+        }*/
     /*bool dir = true;//True if p1 corresponds to the left alignment and p2 - to the right one. False - vice versa
     if (p1.u->positions.size() > p2.u->positions.size()){
         swap(p1, p2);
@@ -459,8 +477,8 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     cout << "Expanded states <qpos, ref, Trie*> (% all states): " << (double) cntrefTrieexpansions / (double) cntexpansions * (double) 100<< "%\n";
     cout << "Expanded states <qpos, ref, ref>: " << cntrefrefexpansions << "\n";
     cout << "Expanded states <qpos, ref, ref> (% all states): " << (double) cntrefrefexpansions / (double) cntexpansions * (double) 100 << "%\n";*/  
-    //cout << "Band: " << (double) cntexpansions / (double)(n * 2) << "\n";
-    //cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";
+    cout << "Band: " << (double) cntexpansions / (double)(n * 2) << "\n";
+    cout << "Times heuristic is infinity: " << cntinfhvalues << "\n";
     evalsts.update_astar_cnts(cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, (double) cntexpansions / (double)(n * 2), cntinfhvalues);
     double perTrieTrie = (double)cntTrieTrieexpansions / (double) cntexpansions * (double) 100;
     double perTrieref = (double) cntTrierefexpansions / (double) cntexpansions * (double) 100;
