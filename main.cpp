@@ -144,7 +144,7 @@ int main(int argc, char *argv[]){
                 info.seeds = query_into_seeds(query, k, rootkmer);
                 nindel = info.seeds.size();
                 t = clock() - t;
-                cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+                //cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 t = clock();
                 if (triecrumbsopt == "yes")
                     getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
@@ -152,36 +152,22 @@ int main(int argc, char *argv[]){
                 else getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                 info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
                 t = clock() - t;
+                /*getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
+                    info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
+                getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
+                    info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});*/
                 //cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
                 evalsts.getcrumbstime += runtime(t);
                 //printoutcrumbs(info.crumbs, root);
                 //printmatches(info);
             }
-            t = clock();
+            //t = clock();
             vector<pair<cost_t, int> > alignments;
             alignments = astar_single_read_alignment(query, ref, d, k, rootdmer, info, 1);
-            cout << "Cost: " << alignments.front().first << "\n";
-            t = clock() - t;
+            //cerr << "Cost: " << alignments.front().first << "\n";
+            //t = clock() - t;
             //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            evalsts.aligntime += runtime(t);
-        }
-        else if (typealignment == "paired-end_independent"){
-            pair <string, string> queryp;
-            queryp = get_pair_end_query();
-            nindel = queryp.first.size() / k;
-            if (queryp.first.size() % k != 0)
-                nindel++;
-            info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
-            info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-            t = clock();
-            getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds1);
-            getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds2);
-            t = clock() - t;
-            evalsts.getcrumbstime += runtime(t);
-            t = clock();
-            cost_t rezult = astar_pairend_read_alignment_independent(queryp, ref, d, k, rootdmer, info, indaligns);
-            cout << "Independent alignement passed\n";
-            cout << "Cost: " << rezult << endl;
+            //evalsts.aligntime += runtime(t);
         }
         else if (typealignment == "paired-end"){
             ///paired-end alignment joint
@@ -234,7 +220,31 @@ int main(int argc, char *argv[]){
         //cout << "Here 20\n";
     }
     //cerr << "Here 30\n";
-    evalsts.print_stats();
+    //evalsts.print_stats();
+    for (int i = 0; i < 128; ++i, cout << "\n"){
+        cout << "Cost: " << i << "\n";
+            seevals[i].print_info();
+        cout << "\n";
+    }
     cerr << "End of the main.\n";
     return 0;
 }
+
+/*else if (typealignment == "paired-end_independent"){
+            pair <string, string> queryp;
+            queryp = get_pair_end_query();
+            nindel = queryp.first.size() / k;
+            if (queryp.first.size() % k != 0)
+                nindel++;
+            info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
+            info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
+            t = clock();
+            getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds1);
+            getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds2);
+            t = clock() - t;
+            evalsts.getcrumbstime += runtime(t);
+            t = clock();
+            cost_t rezult = astar_pairend_read_alignment_independent(queryp, ref, d, k, rootdmer, info, indaligns);
+            cout << "Independent alignement passed\n";
+            cout << "Cost: " << rezult << endl;
+        }*/

@@ -2,6 +2,8 @@
 
 //#define NDEBUG
 #include <bits/stdc++.h>
+#include <chrono>
+#include "bucketqueue.h"
 using namespace std;
 char base[4] = {'A', 'C', 'G', 'T'};
 
@@ -123,3 +125,35 @@ struct Evaluations{
     }
 };
 Evaluations evalsts;
+
+struct EvaluationsSE{
+    eval_t cntexpansions, cntTrieexpansions, cntrefexpansions;
+    eval_tr band, aligntime;
+    eval_t ntests;
+    EvaluationsSE(){
+        cntexpansions = 0;
+        cntTrieexpansions = 0;
+        cntrefexpansions = 0;
+        band = 0;
+        ntests = 0;
+    }
+    void add_entry(eval_tr _band, eval_t _cntexpansions, eval_t _cntTrieexpansions, eval_t _cntrefexpansions, eval_tr _aligntime){
+        ntests++;
+        band += _band;
+        cntexpansions += _cntexpansions;
+        cntTrieexpansions += _cntTrieexpansions;
+        cntrefexpansions += _cntrefexpansions;
+        aligntime += _aligntime;
+    }
+    void print_info(){
+        eval_tr ntestsr = ntests;
+        cout << "   Tests: " << ntests << "\n";
+        cout << "   Avg. Band: " << band / ntestsr << "\n";
+        cout << "   Avg. Alignment time (sec.): " << aligntime / ntestsr << "\n"; 
+        cout << "   Avg. Number of expansions: " << cntexpansions / ntestsr<< "\n";
+        cout << "   Avg. Number of Trie expansions: " << cntTrieexpansions / ntestsr<< "\n";
+        cout << "   Avg. Number of Ref. expandions: " << cntrefexpansions / ntestsr << "\n";
+    }
+};
+
+EvaluationsSE seevals[128];

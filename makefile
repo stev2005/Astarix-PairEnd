@@ -19,7 +19,14 @@ testsingleread_seed_heuristic:
 	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 12 $(EcoliREF) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/single-read.out
 
 exptestsingleread_seed_heuristic:
-	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 12 --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/exptestsingleread_statsAstar.out
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/exptestsingleread_statsAstar.out
+
+exptestsingleread_seed_heuristic_without_trie_opt:
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --trie-crumbs-opt NO --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/exptestsingleread_statsAstar.out
+
+test_crumbs_trie_opt_seed_heuristic:
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/single_test.in >$(SingleReadStatsDIR)/single_test.out
+
 
 testchep_dijkstra_heuristic:
 	time ./main.exe --alignment $(PE) --heuristic dijkstra_heuristic --trie-depth 10 --seed-len 15 --insert-distance 5000 --filter-distance-difference 500 --punish-heuristic-cost 20 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out

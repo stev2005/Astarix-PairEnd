@@ -33,10 +33,11 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     cout << "\n";*/
     //cerr << "starts sr get crumbs\n";
     set<Node> st;
-    set<Node> trienodes;
+    //set<Node> trienodes;
     int ndel = seeds.size();
     int nins = seeds.size();
-    //int cntsetcrumbs = 0;
+    int cntsetcrumbs = 0;
+    int cntTriesetcrumbs = 0;
     for (int i = 0; i < seeds.size(); ++i){
         //cerr << "i: " << i << " seeds[i]: " << seeds[i] << "\n";
         if (seeds[i] >= 0){
@@ -54,17 +55,18 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                     //cerr << "rpos: " << rpos << "\n";
                     if (rpos >= 0){
                         crumbs[Node(rpos)][i] = true;
-                        //cntsetcrumbs++;
-                        st.insert(Node(rpos));
+                        cntsetcrumbs++;
+                        //st.insert(Node(rpos));
                         //cerr << "if for rpos >= 0 passed\n";
                         if (seedstart - rpos > seedpos - nins - d){
                             //cerr << "print again rpos: " << rpos << "\n";
                             Trie* cur = backtotrieconnection[rpos];
                             while (cur != nullptr){
-                                //cntsetcrumbs++;
+                                cntsetcrumbs++;
+                                cntTriesetcrumbs++;
                                 crumbs[Node(cur)][i] = true;
-                                trienodes.insert(Node(cur));
-                                st.insert(Node(cur));
+                                //trienodes.insert(Node(cur));
+                                //st.insert(Node(cur));
                                 cur = cur->parent;
                             }
                         }
@@ -75,6 +77,7 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
             //cout << "seed[" << i << "] has "<< cntseedcrumbs << " crumbs in the Gr+\n";
         }
     }
+    cout << "Trie crumbs set without the optimization: " << cntTriesetcrumbs << "\n";
     //cerr << "End get sr crumbs\n";
     /*for (int i = 0; i < st.size(); ++i)
         cout << "seed[" << i << "] has "<< crumbs[i].size() << "appereances in the reference\n";*/
@@ -82,6 +85,7 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
     cout << "Number of Trie Nodes with at least one crumb: " << trienodes.size() << endl;
     cout << "Number of Ref Nodes with at least one crumb: " << st.size() - trienodes.size() << endl;*/
     return st.size();
+    //return cntsetcrumbs;
 }
 
 inline void get_Node_crumbs(Node curnode, int nseeds, int &maxcntcrumbs, crumbs_t &crumbs, set<int> &crumbsidx){
@@ -91,7 +95,7 @@ inline void get_Node_crumbs(Node curnode, int nseeds, int &maxcntcrumbs, crumbs_
         if (crumbs[curnode][j]) crumbsidx.insert(j);
 }
 
-int get_min_lack_of_crumbs(Trie *cur, int nseeds, crumbs_t &crumbs, const vector<int> &last, const vector<int> &prevpos, set<int> &crumbsidx){
+/*int get_min_lack_of_crumbs(Trie *cur, int nseeds, crumbs_t &crumbs, const vector<int> &last, const vector<int> &prevpos, set<int> &crumbsidx){
     int maxcntcrumbs = -1;
     if (cur->is_leaf())
         for (int i = last[cur->num]; i != -1; i = prevpos[i])
@@ -101,6 +105,13 @@ int get_min_lack_of_crumbs(Trie *cur, int nseeds, crumbs_t &crumbs, const vector
             if (cur->child[i])
                 get_Node_crumbs(Node(cur->child[i]), nseeds, maxcntcrumbs, crumbs, crumbsidx);
     }
+    return maxcntcrumbs;
+}*/
+
+int get_min_lack_of_crumbs(int nseeds, const vector<Node> &heirs, crumbs_t &crumbs, set<int> &crumbsidx){
+    int maxcntcrumbs = 0;
+    for (auto heir: heirs)
+        get_Node_crumbs(heir, nseeds, maxcntcrumbs, crumbs, crumbsidx);
     return maxcntcrumbs;
 }
 
@@ -114,10 +125,12 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
         - 2 when second read of pair-end has its crumbs set on the Gr+
         crumbseeds are needed for pairend getting of crumbs
     */
-    cerr << "Optimized crumbs function\n";
+    //cerr << "Optimized crumbs function\n";
     int ndel = seeds.size();
     int nins = seeds.size();
-    queue<Trie*> q;///to set crumbs in the trie
+    //queue<Trie*> q;///to set crumbs in the trie
+    unordered_map<Trie*, vector<Node> > tcs;///Trie Crumbs Setting
+    int cntsetcrumbs = 0;
     for (int i = 0; i < (int)seeds.size(); ++i){
         if (seeds[i] >= 0){
             int seedpos = i * k;
@@ -129,14 +142,40 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
                         crumbs[Node(rpos)][i] = true;
                         if (seedstart - rpos > seedpos - nins - d){
                             Trie* cur = backtotrieconnection[rpos];
-                            q.push(cur);
+                            //q.push(cur);
+                            tcs[cur].push_back(Node(rpos));
                         }
                     }
                 }
             }
         }
     }
-    while (!q.empty()){
+    int cntTriesetcrumbs = 0;
+    while(tcs.size()){
+        unordered_map<Trie*, vector<Node> > newtcs;
+        for (auto node: tcs){
+            Trie* cur = node.first;
+            vector<Node> &heirs = node.second;
+            set<int> crumbsidx;
+            int crumbscnt = get_min_lack_of_crumbs(seeds.size(), heirs, crumbs, crumbsidx);
+            Node curnode = Node(cur);
+            auto it = crumbsidx.end();
+            --it;
+            while (crumbscnt){
+                crumbs[curnode][*it] = true;
+                --it;
+                ++cntTriesetcrumbs;
+                //auto it2 = it++;
+                --crumbscnt;
+            }
+            if (cur->parent)
+                newtcs[cur->parent].push_back(Node(cur));
+        }
+        tcs.clear();
+        tcs = newtcs;
+    }
+    cout << "Trie crumbs set with the optimization: " << cntTriesetcrumbs << "\n";
+    /*while (!q.empty()){
         Trie *cur = q.front();
         q.pop();
         set<int> crumbsidx;
@@ -150,15 +189,15 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
             --crumbscnt;
         }
         if (cur->parent) q.push(cur->parent);
-    }
+    }*/
 }
 
 inline void push_first_states_in_q(priority_queue<Statesr> &q, int m, int d, int k, Trie *rootdmer, vector<int> &seeds, crumbs_t &crumbs){
     q.push(createStatesr(0, rootdmer, 0, k, seeds, crumbs));
-    cout << "Missing crumbs in the Trie root: " << q.top().h << endl;
-    if (rootdmer->is_leaf())
+    //cout << "Missing crumbs in the Trie root: " << q.top().h << endl;
+    /*if (rootdmer->is_leaf())
         cout << "The root is a leaf\n";
-    else cout << "The root is not a leaf\n";
+    else cout << "The root is not a leaf\n";*/
     for (int i = m - d + 1; i <= m; ++i)
         q.push(createStatesr(0, i, 0, k, seeds, crumbs));
 }
@@ -299,6 +338,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
     int cntreexpandedrefnodes = 0;
     map<pair<int, Node>, cost_t> & expandedstates = get_expanded_states();
     priority_queue<Statesr> q;
+    //clock_t t = clock();
     push_first_states_in_q(q, m, d, k, rootdmer, info.seeds, info.crumbs);
     Statesr cur;
     bool showninheritorsfirsttime = false;
@@ -306,32 +346,48 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
     int cntswitchfromtrietoline = 0;
     bool istrie = true;
     int cntaligns = 0;
-    while (!q.empty()){
-        cur = q.top();
+    auto startt = chrono::high_resolution_clock::now();
+    int minmaxcost = -1;
+
+    BucketQueue<cost_t, Statesr> Q;
+    int init_h_value = info.seeds.size() - info.crumbs[Node(rootdmer)].count();
+    Q.Push(0 + init_h_value, createStatesr(0, rootdmer, 0, k, info.seeds, info.crumbs));
+    for (int i = m - d + 1; i <= m; ++i)
+        Q.Push(0 + init_h_value, createStatesr(0, i, 0, k, info.seeds, info.crumbs));
+
+
+
+    while (!Q.Empty()){
+        //cur = q.top();
         cntexpansions++;
-        q.pop();
+        //q.pop();
+        cur = Q.Top().second;
+        Q.Pop();
         /*if (cntshow < 10){
             cout << "Number of missing crumbs of Node: " << info.crumbs[cur.p].count() << " ";
             cur.print();
         }*/
-            
+        if (minmaxcost < cur.g){
+            minmaxcost = cur.g;
+            cerr << "New mimimal maximum cost achieved: " << minmaxcost << "\n";
+        }
         if (cur.p.is_in_trie()){
-            if (istrie == false)
-                istrie = true;
+            /*if (istrie == false)
+                istrie = true;*/
             cntexpansionsTrie++;
-            if (info.crumbs[cur.p].count() == 0)
-                cntTrienodeswithoutcrumbs++;
-            auto it = expandedstates.find({cur.qpos, cur.p});
+            /*if (info.crumbs[cur.p].count() == 0)
+                cntTrienodeswithoutcrumbs++;*/
+            /*auto it = expandedstates.find({cur.qpos, cur.p});
             if (it != expandedstates.end())
-                cntreexpandedTrienodes++;
+                cntreexpandedTrienodes++;*/
         }
         else{
-            istrie = true;
-            cntswitchfromtrietoline++;
+            //istrie = true;
+            //cntswitchfromtrietoline++;
             cntexpansionsref++;
-            auto it = expandedstates.find({cur.qpos, cur.p});
+            /*auto it = expandedstates.find({cur.qpos, cur.p});
             if (it != expandedstates.end())
-                cntreexpandedrefnodes++;
+                cntreexpandedrefnodes++;*/
         }
         if (cur.qpos == n){
             /*if (cntaligns == 0)
@@ -353,7 +409,8 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
             if (gready_available(query, ref, cur.qpos, cur.p)){
                 cur.qpos++;
                 cur.p.rpos++;
-                q.push(cur);
+                //q.push(cur);
+                Q.Push(cur.g + cur.h, cur);
             }
             else{
                 vector<Statesr> & nextst = get_next_states_sr(cur.qpos, cur.p, query[cur.qpos], ref, k, info.last, info.prevpos, info.seeds, info.crumbs);
@@ -363,16 +420,25 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
                 }*/
                 for (auto i: nextst){
                     i.g += cur.g;
-                    q.push(i);
+                    //q.push(i);
+                    Q.Push(i.g + i.h, i);
                 }
             }
             
         }
     }
-    evalsts.cntexpansions += cntexpansions;
-    evalsts.band += ((double)cntexpansions / (double)n);
+    //t = clock() - t;
+    auto endt = chrono::high_resolution_clock::now();
+    chrono::duration<double> takentime = endt - startt;
+    double aligntime = takentime.count();
+    cerr << "Band: " << (double)cntexpansions / (double)n << "\n";
+    cerr << "Alignment time: " << aligntime << "\n";
+    /*evalsts.cntexpansions += cntexpansions;
+    evalsts.band += ((double)cntexpansions / (double)n);*/
     get_expanded_states(true);
-    showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
-        cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);
+    //showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
+    //    cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);
+    if (cur.g < 128)
+        seevals[cur.g].add_entry((double)cntexpansions / (double)n, cntexpansions, cntexpansionsTrie, cntexpansionsref, aligntime);
     return alignments;
 }
