@@ -129,6 +129,7 @@ int main(int argc, char *argv[]){
     return 0;*/
     for (int testcase=1; testcase<=testcases; ++testcase/*, cout<<endl*/){
         cerr << "Query "<< testcase << ":\n";
+        //cout << "Query "<< testcase << ":\n";
         int rezult;
         //t = clock();
         if (typealignment == "single-read"){

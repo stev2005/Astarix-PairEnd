@@ -24,6 +24,13 @@ exptestsingleread_seed_heuristic:
 exptestsingleread_seed_heuristic_without_trie_opt:
 	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --trie-crumbs-opt NO --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/exptestsingleread_statsAstar.out
 
+singleend_ART_trie_opt:
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/single_test.in >$(SingleReadStatsDIR)/ART_trie_opt.out
+
+singleend_ART_no_trie_opt:
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --trie-crumbs-opt NO --reference $(EcoliDIR) --query $(SingleReadDIR)/single_test.in >$(SingleReadStatsDIR)/ART_no_trie_opt.out
+
+
 test_crumbs_trie_opt_seed_heuristic:
 	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/single_test.in >$(SingleReadStatsDIR)/single_test.out
 

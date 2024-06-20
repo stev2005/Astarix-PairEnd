@@ -358,6 +358,14 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
 
 
     while (!Q.Empty()){
+        auto nowt =chrono::high_resolution_clock::now();
+        chrono::duration<double> takentime = nowt - startt;
+        if (takentime.count() > 7){
+            cerr << "Alignment time more than 7 sec. Not alignable sample\n";
+            return alignments;
+        }
+
+
         //cur = q.top();
         cntexpansions++;
         //q.pop();
@@ -431,8 +439,10 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
     auto endt = chrono::high_resolution_clock::now();
     chrono::duration<double> takentime = endt - startt;
     double aligntime = takentime.count();
-    cerr << "Band: " << (double)cntexpansions / (double)n << "\n";
-    cerr << "Alignment time: " << aligntime << "\n";
+    //cerr << "Band: " << (double)cntexpansions / (double)n << "\n";
+    //cerr << "Alignment time: " << aligntime << "\n";
+    //cout << "Band: " << (double)cntexpansions / (double)n << "\n";
+    //cout << "Alignment time: " << aligntime << "\n";
     /*evalsts.cntexpansions += cntexpansions;
     evalsts.band += ((double)cntexpansions / (double)n);*/
     get_expanded_states(true);
