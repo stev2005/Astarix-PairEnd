@@ -140,19 +140,20 @@ int main(int argc, char *argv[]){
             t = clock() - t;
             //cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             maximum_edit_cost = query.size() + 1;
+            auto startprecomp = gettimenow_chrono();
             if (heuristic == "seed_heuristic"){
-                t = clock();
+                //t = clock();
                 info.seeds = query_into_seeds(query, k, rootkmer);
                 nindel = info.seeds.size();
-                t = clock() - t;
+                //t = clock() - t;
                 //cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-                t = clock();
+                //t = clock();
                 if (triecrumbsopt == "yes")
                     getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                     info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
                 else getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                 info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
-                t = clock() - t;
+                //t = clock() - t;
                 /*getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                     info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
                 getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
@@ -162,6 +163,7 @@ int main(int argc, char *argv[]){
                 //printoutcrumbs(info.crumbs, root);
                 //printmatches(info);
             }
+
             //t = clock();
             vector<pair<cost_t, int> > alignments;
             alignments = astar_single_read_alignment(query, ref, d, k, rootdmer, info, 1);
@@ -169,6 +171,8 @@ int main(int argc, char *argv[]){
             //t = clock() - t;
             //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //evalsts.aligntime += runtime(t);
+            double precomptime = runtimechrono(startprecomp, gettimenow_chrono());
+            seevals[alignments.front().first].precomptime += precomptime;
         }
         else if (typealignment == "paired-end"){
             ///paired-end alignment joint

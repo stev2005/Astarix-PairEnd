@@ -19,6 +19,15 @@ cost_t special_heuristic_cost = 0;
 int nindel = 0;///can be taken as ndel and nins if deletion cost ==  insertion cost
 string heuristic;
 
+chrono::time_point<chrono::high_resolution_clock> gettimenow_chrono(){
+    return chrono::high_resolution_clock::now();
+}
+
+double runtimechrono(chrono::time_point<chrono::high_resolution_clock> start, chrono::time_point<chrono::high_resolution_clock> finish){
+    chrono::duration<double> takentime = finish - start;
+    return takentime.count();
+}
+
 struct Evaluations{
     eval_t cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, cntpunishedstates;
     /// cnts percentages to cntexpansions;
@@ -128,7 +137,7 @@ Evaluations evalsts;
 
 struct EvaluationsSE{
     eval_t cntexpansions, cntTrieexpansions, cntrefexpansions;
-    eval_tr band, aligntime;
+    eval_tr band, aligntime, precomptime;
     eval_t ntests;
     EvaluationsSE(){
         cntexpansions = 0;
@@ -150,6 +159,7 @@ struct EvaluationsSE{
         cout << "   Tests: " << ntests << "\n";
         cout << "   Avg. Band: " << band / ntestsr << "\n";
         cout << "   Avg. Alignment time (sec.): " << aligntime / ntestsr << "\n"; 
+        cout << "   Avg. Precomputation time (sec.): " << precomptime / ntestsr << "\n";
         cout << "   Avg. Number of expansions: " << cntexpansions / ntestsr<< "\n";
         cout << "   Avg. Number of Trie expansions: " << cntTrieexpansions / ntestsr<< "\n";
         cout << "   Avg. Number of Ref. expandions: " << cntrefexpansions / ntestsr << "\n";
