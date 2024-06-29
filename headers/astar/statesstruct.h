@@ -40,6 +40,7 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
     vector <int> seeds, seeds1, seeds2;
     /*seeds: does (seed[i]>=0) or doesn't(seed[i]==-1) the ith seed match a kmer;
     1 for the first alignment, 2 for the second alignment*/
+    vector <int> nseeds;//nseeds: seeds but from the negative strand
     vector <int> last;///last: the end position of a last occurance of a dmer in the reference
     vector <int> prevpos;///prevpos: end positions of previous occurances of a dmer in the reference
     vector <Trie*> backtotrieconnection;///backtotrieconnection: pointer to trie leaf from which a given bp of the ref is accessed (for dmers)
@@ -48,10 +49,12 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
     vector <Trie*> backtotrieconnectionkmer;///same definition as backtotrieconnection but for kmers instead of dmers
     //map<Node, bitset<64> > crumbs, crumbs1, crumbs2;
     crumbs_t crumbs, crumbs1, crumbs2;
+    crumbs_t ncrumbs;//negative crumbs
     vector<unordered_set<int> > crumbseeds1;
     vector<unordered_set<int> > crumbseeds2;
     void clearquerydata(){
         seeds.clear();
+        nseeds.clear();
         seeds1.clear();
         seeds2.clear();
         crumbs.clear();
@@ -72,12 +75,14 @@ struct  Statesr{
     cost_t g;///edit distance of alignment of using qpos and p
     cost_t h;///value of heuristic function of using qpos and p
     //cost_t stepcost;///what to add to the already achived cost of the previous of state <qpos, p>
+    bool negative;//is the state for the positive or negative strand
     Statesr(){}
     Statesr(int _qpos, Node _p){
         qpos = _qpos;
         p = _p;
         g = 0;
         h = 0;
+        negative = false;
         //stepcost = 0;
     }
     Statesr(int _qpos, Node _p, cost_t _g, cost_t _h){
@@ -85,6 +90,7 @@ struct  Statesr{
         p = _p;
         g = _g;
         h = _h;
+        negative = false;
     }
     /*Statesr(int _qpos, Node _p, cost_t _g, cost_t _h, cost_t _stepcost){
         qpos = _qpos;

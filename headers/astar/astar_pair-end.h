@@ -488,7 +488,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     return cur.g;
 }
 
-cost_t astar_pairend_read_alignment_independent(pair<string, string> &queryp, string &ref, int d, int k, Trie *root, MatchingKmers &info, int numaligns){
+/*cost_t astar_pairend_read_alignment_independent(pair<string, string> &queryp, string &ref, int d, int k, Trie *root, MatchingKmers &info, int numaligns){
     vector<pair<cost_t, int> > v1, v2;
     info.seeds = info.seeds1;
     info.crumbs = info.crumbs1;
@@ -508,4 +508,4 @@ cost_t astar_pairend_read_alignment_independent(pair<string, string> &queryp, st
             }
         }
     return g;
-}
+}*/

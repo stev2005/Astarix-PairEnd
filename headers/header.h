@@ -5,7 +5,8 @@
 #include <chrono>
 #include "bucketqueue.h"
 using namespace std;
-char base[4] = {'A', 'T', 'G', 'C'};
+const int alphabetsz = 4;
+const char base[alphabetsz] = {'A', 'T', 'G', 'C'};
 
 typedef int cost_t;
 typedef long long eval_t;//integers

@@ -234,23 +234,24 @@ inline void push_first_states_in_q(priority_queue<Statesr> &q, int m, int d, int
         q.push(createStatesr(0, i, 0, k, seeds, crumbs));
 }
 
-map<pair<int, Node>, cost_t>& get_expanded_states(bool del = false){
-    static map<pair<int, Node>, cost_t> expanded_states;
+map<tuple<int, Node, bool>, cost_t>& get_expanded_states(bool del = false){
+    static map<tuple<int, Node, bool>, cost_t> expanded_states;
     if (del == true)
         expanded_states.clear();
     return expanded_states;
 }
 
-bool to_explore(int qpos, Node p, cost_t g){
+bool to_explore(int qpos, Node p, bool negative, cost_t g){
     //static map<pair<int, Node>, cost_t> expanded_states;
-    map<pair<int, Node>, cost_t> & expanded_states = get_expanded_states();
-    if (expanded_states.find({qpos, p}) == expanded_states.end()){
-        expanded_states[{qpos, p}] = g;
+    //map<pair<int, Node>, cost_t> & expanded_states = get_expanded_states();
+    map<tuple<int, Node, bool>, cost_t> & expanded_states = get_expanded_states();
+    if (expanded_states.find({qpos, p, negative}) == expanded_states.end()){
+        expanded_states[{qpos, p, negative}] = g;
         return true;
     }
     else{
-        if (expanded_states[{qpos, p}] > g){
-            expanded_states[{qpos, p}] = g;
+        if (expanded_states[{qpos, p, negative}] > g){
+            expanded_states[{qpos, p, negative}] = g;
             return true;
         }
         return false;
@@ -358,7 +359,27 @@ int cntreexpandedTrienodes, int cntreexpandedrefnodes, int cntswitchfromtrietoli
     cout << "Band: " << (double) cntexpansions / (double) n << "\n";
 }
 
-vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info, int numaligns){
+void push_first_single_end_states(BucketQueue<cost_t, Statesr> &Q, MatchingKmers &info, Trie *rootdmer, int k, int d, int m){
+    //int init_h_value = info.seeds.size() - info.crumbs[Node(rootdmer)].count();
+    Statesr cur = createStatesr(0, rootdmer, 0, k, info.seeds, info.crumbs);
+    cur.negative = false;
+    Q.Push(0 + cur.h, cur);
+    for (int i = m - d + 1; i <= m; ++i){
+        cur = createStatesr(0, i, 0, k, info.seeds, info.crumbs);
+        cur.negative = false;
+        Q.Push(0 + cur.h, cur);
+    }
+    cur = createStatesr(0, rootdmer, 0, k, info.nseeds, info.ncrumbs);
+    cur.negative = true;
+    Q.Push(0 + cur.h, cur);
+    for (int i = m - d + 1; i <= m; ++i){
+        cur = createStatesr(0, i, 0, k, info.nseeds, info.ncrumbs);
+        cur.negative = true;
+        Q.Push(0 + cur.h, cur);
+    }
+}
+
+vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nquery, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info, int numaligns){
     vector< pair<cost_t, int> > alignments;
     int n = query.size();
     int m = ref.size();
@@ -368,10 +389,10 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
     int cntTrienodeswithoutcrumbs = 0;
     int cntreexpandedTrienodes = 0;
     int cntreexpandedrefnodes = 0;
-    map<pair<int, Node>, cost_t> & expandedstates = get_expanded_states();
+    map<tuple<int, Node, bool>, cost_t> & expandedstates = get_expanded_states();
     priority_queue<Statesr> q;
     //clock_t t = clock();
-    push_first_states_in_q(q, m, d, k, rootdmer, info.seeds, info.crumbs);
+    //push_first_states_in_q(q, m, d, k, rootdmer, info.seeds, info.crumbs);
     Statesr cur;
     bool showninheritorsfirsttime = false;
     int cntshow = 0;
@@ -383,11 +404,10 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
 
     BucketQueue<cost_t, Statesr> Q;
     int init_h_value = info.seeds.size() - info.crumbs[Node(rootdmer)].count();
-    Q.Push(0 + init_h_value, createStatesr(0, rootdmer, 0, k, info.seeds, info.crumbs));
+    /*Q.Push(0 + init_h_value, createStatesr(0, rootdmer, 0, k, info.seeds, info.crumbs));
     for (int i = m - d + 1; i <= m; ++i)
-        Q.Push(0 + init_h_value, createStatesr(0, i, 0, k, info.seeds, info.crumbs));
-
-
+        Q.Push(0 + init_h_value, createStatesr(0, i, 0, k, info.seeds, info.crumbs));*/
+    push_first_single_end_states(Q, info, rootdmer, k, d, m);
 
     while (!Q.Empty()){
         auto nowt =chrono::high_resolution_clock::now();
@@ -403,13 +423,17 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
         //q.pop();
         cur = Q.Top().second;
         Q.Pop();
+        /*if (cur.negative) 
+            cerr << "negative strand price: " << cur.negative << "\n"; */
+        //cerr << "popped from Q\n";
+        //cerr << "cur.g: " << cur.g <<  " cur.negative: " << cur.negative << "\n";
         /*if (cntshow < 10){
             cout << "Number of missing crumbs of Node: " << info.crumbs[cur.p].count() << " ";
             cur.print();
         }*/
         if (minmaxcost < cur.g){
             minmaxcost = cur.g;
-            cerr << "New mimimal maximum cost achieved: " << minmaxcost << "\n";
+            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative << "\n";
         }
         if (cur.p.is_in_trie()){
             /*if (istrie == false)
@@ -433,12 +457,14 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
             /*if (cntaligns == 0)
                 showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
                     cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);*/
+            cerr << "cur.qpos: " << cur.qpos << "\n";
             alignments.push_back({cur.g, cur.p.rpos});
             cntaligns++;
             if (cntaligns == numaligns)
                 break;
         }
-        if (to_explore(cur.qpos, cur.p, cur.g)){
+        if (to_explore(cur.qpos, cur.p, cur.negative, cur.g)){
+            //cerr << "allowed to explore cur\n";
             /*while (to_explore(cur.qpos, cur.p, cur.g) && gready_available(query, ref, cur.qpos, cur.p) && cur.qpos < n ){
                 cur.qpos++;
                 cur.p.rpos++;
@@ -446,26 +472,50 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
             }
             if (cur.qpos == n)
                 break;*/
-            if (gready_available(query, ref, cur.qpos, cur.p)){
+            string & curquery = (cur.negative)? nquery: query;
+            vector<int> & curseeds = (cur.negative)? info.nseeds: info.seeds;
+            crumbs_t & curcrumbs = (cur.negative)? info.ncrumbs: info.crumbs;
+            bool changed = false; // are cur.qpos | cur.p changed
+            //cerr << "before Greedy while\n";
+            while (cur.qpos < n && gready_available(curquery, ref, cur.qpos, cur.p)){//if
                 cur.qpos++;
                 cur.p.rpos++;
+                cntexpansions++;
+                changed = true;
+                if (!to_explore(cur.qpos, cur.p, cur.negative, cur.g))
+                    break;
                 //q.push(cur);
-                Q.Push(cur.g + cur.h, cur);
+                //cur.h = choose_heuristic(cur.qpos, cur.p, k, curseeds, curcrumbs);
+                //Q.Push(cur.g + cur.h, cur);
             }
-            else{
-                vector<Statesr> & nextst = get_next_states_sr(cur.qpos, cur.p, query[cur.qpos], ref, k, info.last, info.prevpos, info.seeds, info.crumbs);
+            //cerr << "after greedy while\n";
+            if (cur.qpos == n){
+                //cerr << "cur.qpos: " << cur.qpos << "\n";
+                alignments.push_back({cur.g, cur.p.rpos});
+                cntaligns++;
+                if (cntaligns == numaligns)
+                    break;
+            }
+            //cerr << "chech whether normal expansion is possible\n";
+            //else{
+            if (!changed | to_explore(cur.qpos, cur.p, cur.negative, cur.g)){
+                //cerr << "Normal expansion possible\b";
+                vector<Statesr> & nextst = get_next_states_sr(cur.qpos, cur.p, curquery[cur.qpos], ref, k, info.last, info.prevpos, curseeds, curcrumbs);
                 /*if (cntshow < 10){
                     cntshow++;
                     showinfoaboutstatesrancestors(nextst, info);
                 }*/
                 for (auto i: nextst){
                     i.g += cur.g;
+                    i.negative = cur.negative;
                     //q.push(i);
                     Q.Push(i.g + i.h, i);
                 }
+                //cerr << "nbs pushed in the Q\n";
             }
-            
+            //else cerr << "Not possible normal expansion\n";
         }
+        //cerr << "end of the while(!Q.Empty())\n";
     }
     //t = clock() - t;
     auto endt = chrono::high_resolution_clock::now();
@@ -482,5 +532,6 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &re
     //    cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);
     if (cur.g < 128)
         seevals[cur.g].add_entry((double)cntexpansions / (double)n, cntexpansions, cntexpansionsTrie, cntexpansionsref, aligntime);
+    cerr << "In single-end alignments.size(): " << alignments.size() << "\n";
     return alignments;
 }

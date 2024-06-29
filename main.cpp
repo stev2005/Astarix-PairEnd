@@ -83,6 +83,36 @@ void make_paired_ends_same_size(pair<string, string> &q){
     }
 }
 
+string get_reverse_complement(string s){
+    reverse(s.begin(), s.end());
+    for (int i = 0; i < (int)s.size(); ++i){
+        for (int j = 0; j < alphabetsz; ++j)
+            if (s[i] == base[j]){
+                s[i] = base[j ^ 1];
+                break;
+            }
+        /*switch (s[i])
+        {
+        case base[0]:
+            s[i] = base[1];
+            break;
+        case base[1]:
+            s[i] = base[0];
+            break;
+        case base[2]:
+            s[i] = base[3];
+            break;
+        case base[3]:
+            s[i] = base[2];
+            break;
+        default:
+            assert(false);
+            break;
+        }*/
+    }
+    return s;
+}
+
 int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -133,10 +163,12 @@ int main(int argc, char *argv[]){
         int rezult;
         //t = clock();
         if (typealignment == "single-read"){
-            //cerr << "If for single read alingment\n";
+            cerr << "If for single read alingment\n";
             string query;
             //cin>>query;
             query = get_single_read_query();
+            string nquery = get_reverse_complement(query);
+            //cerr << "nquery: " << nquery << "\n";
             t = clock() - t;
             //cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             maximum_edit_cost = query.size() + 1;
@@ -144,35 +176,45 @@ int main(int argc, char *argv[]){
             if (heuristic == "seed_heuristic"){
                 //t = clock();
                 info.seeds = query_into_seeds(query, k, rootkmer);
+                info.nseeds = query_into_seeds(nquery, k, rootkmer);
                 nindel = info.seeds.size();
                 //t = clock() - t;
                 //cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
                 //t = clock();
-                if (triecrumbsopt == "yes")
+                if (triecrumbsopt == "yes"){
                     getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                     info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
-                else getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
-                info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
+                    getcrumbs_trieopt(ref, d, k, info.ncrumbs, info.nseeds, info.backtotrieconnection,
+                    info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
+                }
+                else{
+                    getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
+                    info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
+                    getcrumbs(ref, d, k, info.ncrumbs, info.nseeds, info.backtotrieconnection,
+                    info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
+                }
                 //t = clock() - t;
                 /*getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                     info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
                 getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
                     info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});*/
                 //cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
-                evalsts.getcrumbstime += runtime(t);
+                //evalsts.getcrumbstime += runtime(t);
                 //printoutcrumbs(info.crumbs, root);
                 //printmatches(info);
             }
 
             //t = clock();
             vector<pair<cost_t, int> > alignments;
-            alignments = astar_single_read_alignment(query, ref, d, k, rootdmer, info, 1);
+            alignments = astar_single_read_alignment(query, nquery, ref, d, k, rootdmer, info, 1);
+            //cerr << "alignmnets.size(): " << alignments.size() << "\n"; 
+            //cerr << "Here after single-end alignment\n";
             //cerr << "Cost: " << alignments.front().first << "\n";
             //t = clock() - t;
             //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //evalsts.aligntime += runtime(t);
             double precomptime = runtimechrono(startprecomp, gettimenow_chrono());
-            seevals[alignments.front().first].precomptime += precomptime;
+            if (alignments.size()) seevals[alignments.front().first].precomptime += precomptime;
         }
         else if (typealignment == "paired-end"){
             ///paired-end alignment joint
