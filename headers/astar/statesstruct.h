@@ -137,4 +137,59 @@ struct Statepr{
     }
 };
 
+class BucketQueueSE{
+    private:
+        unordered_map<cost_t, queue<Statesr> > prq;///the priority-bucket queue;
+        using Comparator = std::function<bool(cost_t, cost_t)>;
+        Comparator cmpprior = [] (cost_t a, cost_t b){return a > b;};
+        priority_queue<cost_t, vector<cost_t>, Comparator> priorities{cmpprior};
+        int size;
+    public:
+        BucketQueueSE(){
+            size = 0;
+        }
 
+        ~BucketQueueSE(){
+            prq.clear();
+            //priorities.clear();
+            while (!priorities.empty())
+                priorities.pop();
+        }
+
+        void Push(Statesr cur){
+            cost_t pri = cur.g + cur.h;
+            if (prq.find(pri) == prq.end())
+                priorities.push(pri);
+            prq[pri].push(cur);
+            size++;
+        }
+        
+        bool Empty(){
+            return priorities.empty();
+        }
+        
+        Statesr Top(){
+            if (priorities.empty())
+                assert(false);
+            cost_t pri = priorities.top();
+            Statesr ver = prq[pri].front();
+            return ver;
+        }
+
+        void Pop(){
+            if (priorities.empty())
+                assert(false);
+            cost_t pri = priorities.top();
+            prq[pri].pop();
+            if (prq[pri].empty()){
+                auto it = prq.find(pri);
+                prq.erase(it);
+                priorities.pop();
+            }
+            size--;
+        }
+
+        int Size(){
+            return size;
+        }
+};

@@ -379,6 +379,29 @@ void push_first_single_end_states(BucketQueue<cost_t, Statesr> &Q, MatchingKmers
     }
 }
 
+void push_first_single_end_states_customQ(BucketQueueSE &Q, MatchingKmers &info, Trie *rootdmer, int k, int d, int m){
+    Statesr cur = createStatesr(0, rootdmer, 0, k, info.seeds, info.crumbs);
+    cur.negative = false;
+    //Q.Push(0 + cur.h, cur);
+    Q.Push(cur);
+    for (int i = m - d + 1; i <= m; ++i){
+        cur = createStatesr(0, i, 0, k, info.seeds, info.crumbs);
+        cur.negative = false;
+        //Q.Push(0 + cur.h, cur);
+        Q.Push(cur);
+    }
+    cur = createStatesr(0, rootdmer, 0, k, info.nseeds, info.ncrumbs);
+    cur.negative = true;
+    //Q.Push(0 + cur.h, cur);
+    Q.Push(cur);
+    for (int i = m - d + 1; i <= m; ++i){
+        cur = createStatesr(0, i, 0, k, info.nseeds, info.ncrumbs);
+        cur.negative = true;
+        //Q.Push(0 + cur.h, cur);
+        Q.Push(cur);
+    }
+}
+
 vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nquery, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info, int numaligns){
     vector< pair<cost_t, int> > alignments;
     int n = query.size();
@@ -402,12 +425,15 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
     auto startt = chrono::high_resolution_clock::now();
     int minmaxcost = -1;
 
-    BucketQueue<cost_t, Statesr> Q;
-    int init_h_value = info.seeds.size() - info.crumbs[Node(rootdmer)].count();
+    //ucketQueue<cost_t, Statesr> Q;
+    //int init_h_value = info.seeds.size() - info.crumbs[Node(rootdmer)].count();
     /*Q.Push(0 + init_h_value, createStatesr(0, rootdmer, 0, k, info.seeds, info.crumbs));
     for (int i = m - d + 1; i <= m; ++i)
         Q.Push(0 + init_h_value, createStatesr(0, i, 0, k, info.seeds, info.crumbs));*/
-    push_first_single_end_states(Q, info, rootdmer, k, d, m);
+    //push_first_single_end_states(Q, info, rootdmer, k, d, m);
+
+    BucketQueueSE Q;
+    push_first_single_end_states_customQ(Q, info, rootdmer, k, d, m);
 
     while (!Q.Empty()){
         auto nowt =chrono::high_resolution_clock::now();
@@ -421,7 +447,8 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
         //cur = q.top();
         cntexpansions++;
         //q.pop();
-        cur = Q.Top().second;
+        //cur = Q.Top().second;
+        cur = Q.Top();
         Q.Pop();
         /*if (cur.negative) 
             cerr << "negative strand price: " << cur.negative << "\n"; */
@@ -433,7 +460,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
         }*/
         if (minmaxcost < cur.g){
             minmaxcost = cur.g;
-            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative << "\n";
+            //cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative << "\n";
         }
         if (cur.p.is_in_trie()){
             /*if (istrie == false)
@@ -457,7 +484,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
             /*if (cntaligns == 0)
                 showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
                     cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);*/
-            cerr << "cur.qpos: " << cur.qpos << "\n";
+            //cerr << "cur.qpos: " << cur.qpos << "\n";
             alignments.push_back({cur.g, cur.p.rpos});
             cntaligns++;
             if (cntaligns == numaligns)
@@ -509,7 +536,8 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
                     i.g += cur.g;
                     i.negative = cur.negative;
                     //q.push(i);
-                    Q.Push(i.g + i.h, i);
+                    //Q.Push(i.g + i.h, i);
+                    Q.Push(i);
                 }
                 //cerr << "nbs pushed in the Q\n";
             }
@@ -532,6 +560,6 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
     //    cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);
     if (cur.g < 128)
         seevals[cur.g].add_entry((double)cntexpansions / (double)n, cntexpansions, cntexpansionsTrie, cntexpansionsref, aligntime);
-    cerr << "In single-end alignments.size(): " << alignments.size() << "\n";
+    //cerr << "In single-end alignments.size(): " << alignments.size() << "\n";
     return alignments;
 }

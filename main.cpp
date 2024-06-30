@@ -163,7 +163,7 @@ int main(int argc, char *argv[]){
         int rezult;
         //t = clock();
         if (typealignment == "single-read"){
-            cerr << "If for single read alingment\n";
+            //cerr << "If for single read alingment\n";
             string query;
             //cin>>query;
             query = get_single_read_query();
