@@ -1,87 +1,1389 @@
 D: 10 k: 12
-reading reference: 0.001365s.
-constructing trie: 1.69841s.
+reading reference: 0.00228s.
+constructing trie: 1.52009s.
 
-Band: 1358.42
-Times heuristic is infinity: 5836
+Trie crumbs set with the optimization: 7615
+Trie crumbs set with the optimization: 8422
+Band: 5.94
+Times heuristic is infinity: 24
 Cost: 10
-Alignment: 16.0317s.
-Band: 3.234
-Times heuristic is infinity: 76
+Alignment: 0.025634s.
+
+Trie crumbs set with the optimization: 8812
+Trie crumbs set with the optimization: 10154
+Band: 0.718
+Times heuristic is infinity: 34
 Cost: 4
-Alignment: 0.082431s.
-Band: 2985.22
-Times heuristic is infinity: 47971
+Alignment: 0.003788s.
+
+Trie crumbs set with the optimization: 7481
+Trie crumbs set with the optimization: 6563
+Band: 25.844
+Times heuristic is infinity: 684
 Cost: 14
-Alignment: 34.7387s.
-Band: 433.892
-Times heuristic is infinity: 2094
+Alignment: 0.0955s.
+
+Trie crumbs set with the optimization: 7504
+Trie crumbs set with the optimization: 9225
+Band: 4.642
+Times heuristic is infinity: 94
 Cost: 8
-Alignment: 6.75139s.
-Band: 17.998
-Times heuristic is infinity: 177
+Alignment: 0.018098s.
+
+Trie crumbs set with the optimization: 7610
+Trie crumbs set with the optimization: 7125
+Band: 1.916
+Times heuristic is infinity: 36
 Cost: 9
-Alignment: 0.380946s.
-Band: 256.052
-Times heuristic is infinity: 1480
+Alignment: 0.009908s.
+
+Trie crumbs set with the optimization: 6740
+Trie crumbs set with the optimization: 7964
+Band: 4.38
+Times heuristic is infinity: 11
 Cost: 9
-Alignment: 3.78269s.
-Band: 4223.47
-Times heuristic is infinity: 22097
+Alignment: 0.028232s.
+
+Trie crumbs set with the optimization: 7784
+Trie crumbs set with the optimization: 7189
+Band: 23.734
+Times heuristic is infinity: 0
 Cost: 14
-Alignment: 44.7244s.
-Band: 417.922
-Times heuristic is infinity: 722
+Alignment: 0.092228s.
+
+Trie crumbs set with the optimization: 8676
+Trie crumbs set with the optimization: 7278
+Band: 2.752
+Times heuristic is infinity: 70
 Cost: 7
-Alignment: 6.26854s.
-Band: 981.758
-Times heuristic is infinity: 4517
-Cost: 9
-Alignment: 12.6817s.
-Band: 6367.66
-Times heuristic is infinity: 25898
+Alignment: 0.051147s.
+
+Trie crumbs set with the optimization: 8840
+Trie crumbs set with the optimization: 7728
+Band: 3.41
+Times heuristic is infinity: 83
+Cost: 12
+Alignment: 0.043718s.
+
+Trie crumbs set with the optimization: 7587
+Trie crumbs set with the optimization: 7547
+Band: 37.442
+Times heuristic is infinity: 222
 Cost: 14
-Alignment: 61.7271s.
-Band: 4146.08
-Times heuristic is infinity: 12772
-Cost: 15
-Alignment: 45.391s.
-Band: 14458.3
-Times heuristic is infinity: 131040
+Alignment: 0.142837s.
+
+Trie crumbs set with the optimization: 7215
+Trie crumbs set with the optimization: 8679
+Band: 7.95155
+Times heuristic is infinity: 200
 Cost: 16
-Alignment: 126.951s.
-Band: 22210.8
-Times heuristic is infinity: 229963
+Alignment: 0.069272s.
+
+Trie crumbs set with the optimization: 7669
+Trie crumbs set with the optimization: 8692
+Band: 54.4943
+Times heuristic is infinity: 156
 Cost: 22
-Alignment: 176.788s.
-Band: 4259.06
-Times heuristic is infinity: 7368
+Alignment: 0.322857s.
+
+Trie crumbs set with the optimization: 7842
+Trie crumbs set with the optimization: 6746
+Band: 177.955
+Times heuristic is infinity: 286
+Cost: 22
+Alignment: 0.60412s.
+
+Trie crumbs set with the optimization: 8340
+Trie crumbs set with the optimization: 7602
+Band: 12.1461
+Times heuristic is infinity: 26
 Cost: 13
-Alignment: 47.6086s.
-Band: 36.6195
-Times heuristic is infinity: 235
+Alignment: 0.101588s.
+
+Trie crumbs set with the optimization: 7290
+Trie crumbs set with the optimization: 6428
+Band: 1.16932
+Times heuristic is infinity: 14
 Cost: 11
-Alignment: 0.746748s.
-Stats for this test group:
-   Number of tests: 15
-   Error-rate: (you have to know it in advance)
-   runtime filtering legit from faux matches: 0.218321 (sec.)
-   run-time setting crumbs: 0.206827 (sec.)
-   run-time joint alignment: 584.655 (sec.)
-   Trie depth: 10
-   Seeds lenght: 12 (bp.)
-   Drange: 50
-   matches per seed: 15.8053
-   legit matches per seed: 13.3489
-   crumbs per legit match: 542.037
-   band: 62156.5
-   expanded states: 32389526
-   expanded states u, v ∈ Trie: 26667991
-   expanded states u ∈ Trie, v ∈ Gr: 2576305
-   expanded states u ∈ Gr, v ∈ Trie: 2560384
-   expanded states u, v ∈ Gr: 584846
-   punished states: 492246
-   expanded states u, v∈ Trie (% of all): 1348.48
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 51.7267
-   expanded states u∈Gr, v∈Trie (% of all): 51.7267
-   expanded states u, v ∈ Gr (% of all): 48.7517
+Alignment: 0.018747s.
+
+Cost: 0
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 1
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 2
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 3
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 4
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 5
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 6
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 7
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 8
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 9
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 10
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 11
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 12
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 13
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 14
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 15
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 16
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 17
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 18
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 19
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 20
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 21
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 22
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 23
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 24
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 25
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 26
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 27
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 28
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 29
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 30
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 31
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 32
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 33
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 34
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 35
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 36
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 37
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 38
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 39
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 40
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 41
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 42
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 43
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 44
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 45
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 46
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 47
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 48
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 49
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 50
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 51
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 52
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 53
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 54
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 55
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 56
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 57
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 58
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 59
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 60
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 61
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 62
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 63
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 64
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 65
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 66
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 67
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 68
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 69
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 70
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 71
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 72
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 73
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 74
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 75
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 76
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 77
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 78
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 79
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 80
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 81
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 82
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 83
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 84
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 85
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 86
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 87
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 88
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 89
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 90
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 91
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 92
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 93
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 94
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 95
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 96
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 97
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 98
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 99
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 100
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 101
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 102
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 103
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 104
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 105
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 106
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 107
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 108
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 109
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 110
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 111
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 112
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 113
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 114
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 115
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 116
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 117
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 118
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 119
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 120
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 121
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 122
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 123
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 124
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 125
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 126
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 127
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+

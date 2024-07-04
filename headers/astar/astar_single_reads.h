@@ -9,6 +9,7 @@ using namespace std;
 
 
 bool not_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, int pos){///needed for pair-end
+    return false;
     return (crumbseeds[num].find(pos) == crumbseeds[num].end());
 }
 
@@ -46,9 +47,10 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
                 //cerr << "j: " << j << "\n";
                 int seedstart = j - k + 1;///start of a seed in the reference;
-                if (read != 0)
+                //cerr << "before filter\n";
+                /*if (read != 0)
                     if (not_available_to_crumb(crumbseeds, i, j))
-                        continue;
+                        continue;*/
                 //cerr << "filtered accepted crumb here\n";
                 for (int back = 0; back < seedpos + ndel; ++back){
                     int rpos = seedstart - back;
@@ -458,10 +460,10 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
             cout << "Number of missing crumbs of Node: " << info.crumbs[cur.p].count() << " ";
             cur.print();
         }*/
-        if (minmaxcost < cur.g){
+        /*if (minmaxcost < cur.g){
             minmaxcost = cur.g;
-            //cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative << "\n";
-        }
+            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative << "\n";
+        }*/
         if (cur.p.is_in_trie()){
             /*if (istrie == false)
                 istrie = true;*/

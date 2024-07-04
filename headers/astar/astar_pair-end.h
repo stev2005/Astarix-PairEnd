@@ -191,17 +191,22 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
 }
 
 inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
-    //cerr << "Begin of get_crumbs_paired end\n";
-    int cntsetcrumbs1 = getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
-    //cerr << "Here1\n";
-    int cntsetcrumbs2 = getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
-    //cerr << "Here2\n";
+    cerr << "Begin of get_crumbs_paired end\n";
+    /*int cntsetcrumbs1 =*/ getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
+    cerr << "Here1\n";
+    /*int cntsetcrumbs2 = */getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
+    cerr << "Here2\n";
     /*cout << "Number of crumbs per number of filtered matches for read1: " << (double) cntsetcrumbs1 / (double) cntfilteredmatche1spr << "\n";
     cout << "Number of crumbs per number of filtered matches for read2: " << (double) cntsetcrumbs2 / (double) cntfilteredmatche2spr << "\n";
     cout << "Number of crumbs per number of filtered matches for bith reads: " <<
         (double) (cntsetcrumbs1 + cntsetcrumbs2) / (double) (cntfilteredmatche1spr + cntfilteredmatche2spr) << "\n";*/
-    evalsts.crumbsperlegitmatch += (double) (cntsetcrumbs1 + cntsetcrumbs2) / (double) (cntfilteredmatche1spr + cntfilteredmatche2spr);
-    //cerr << "crumbing pairend ended\n";
+    //evalsts.crumbsperlegitmatch += (double) (cntsetcrumbs1 + cntsetcrumbs2) / (double) (cntfilteredmatche1spr + cntfilteredmatche2spr);
+    cerr << "crumbing pairend ended\n";
+}
+
+inline void get_crumbs_pairedend_trie_opt(string &ref, int d, int k, MatchingKmers &info){
+    getcrumbs_trieopt(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, info.last, info.prevpos, 1, info.crumbseeds1);
+    getcrumbs_trieopt(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, info.last, info.prevpos, 2, info.crumbseeds2);
 }
 
 inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *root, int d, int k, MatchingKmers &info){
@@ -443,6 +448,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     long long cntrefTrieexpansions = 0;
     long long cntTrierefexpansions = 0;
     long long cntrefrefexpansions = 0;
+
+    int minmaxcost = -1;
+
     while (!q.empty()){
         cur = q.top();
         q.pop();
@@ -450,6 +458,12 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
         increasecnt(cur.qpos, cur.p1, cur.p2, cntexpansions, cntTrieTrieexpansions, cntrefTrieexpansions, cntTrierefexpansions, cntrefrefexpansions);
         if (cur.qpos == n)
             break;
+
+        if (minmaxcost < cur.g){
+            minmaxcost = cur.g;
+            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.qpos: " << cur.qpos /*<< " cur.negative: " << cur.negative*/ << "\n";
+        }
+
         if (to_explore_pr(cur.qpos, cur.p1, cur.p2, cur.g)){
             if (gready_available_pr(queryp, ref, cur.qpos, cur.p1, cur.p2)){
                 /*cost_t h = seed_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), k, info.seeds1, info.crumbs1) +
@@ -462,6 +476,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
                 vector<Statepr> &nextpr = get_next_pr(cur.qpos, cur.p1, cur.p2, k, queryp, ref, info);
                 for (auto i: nextpr){
                     i.g += cur.g;
+                    //if (i.g + i.h < 15) cerr << "inheritor: qpos: " << i.qpos << " g: " << i.g << " h:" << i.h << "\n";
                     q.push(i);
                 }
             }
