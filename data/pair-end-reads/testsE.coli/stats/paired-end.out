@@ -1,111 +1,81 @@
 D: 10 k: 12
-reading reference: 0.00228s.
-constructing trie: 1.52009s.
+reading reference: 0.001612s.
+constructing trie: 1.61056s.
 
-Trie crumbs set with the optimization: 7615
-Trie crumbs set with the optimization: 8422
-Band: 5.94
-Times heuristic is infinity: 24
+Band: 977.264
+Times heuristic is infinity: 4432
 Cost: 10
-Alignment: 0.025634s.
+Alignment: 17.6247
 
-Trie crumbs set with the optimization: 8812
-Trie crumbs set with the optimization: 10154
-Band: 0.718
-Times heuristic is infinity: 34
+Band: 15.228
+Times heuristic is infinity: 92
 Cost: 4
-Alignment: 0.003788s.
+Alignment: 0.441398
 
-Trie crumbs set with the optimization: 7481
-Trie crumbs set with the optimization: 6563
-Band: 25.844
-Times heuristic is infinity: 684
+Band: 4592.45
+Times heuristic is infinity: 68395
 Cost: 14
-Alignment: 0.0955s.
+Alignment: 67.9423
 
-Trie crumbs set with the optimization: 7504
-Trie crumbs set with the optimization: 9225
-Band: 4.642
-Times heuristic is infinity: 94
+Band: 498.202
+Times heuristic is infinity: 2433
 Cost: 8
-Alignment: 0.018098s.
+Alignment: 10.6728
 
-Trie crumbs set with the optimization: 7610
-Trie crumbs set with the optimization: 7125
-Band: 1.916
-Times heuristic is infinity: 36
+Band: 40.106
+Times heuristic is infinity: 186
 Cost: 9
-Alignment: 0.009908s.
+Alignment: 0.978769
 
-Trie crumbs set with the optimization: 6740
-Trie crumbs set with the optimization: 7964
-Band: 4.38
-Times heuristic is infinity: 11
+Band: 422.794
+Times heuristic is infinity: 2798
 Cost: 9
-Alignment: 0.028232s.
+Alignment: 8.2087
 
-Trie crumbs set with the optimization: 7784
-Trie crumbs set with the optimization: 7189
-Band: 23.734
-Times heuristic is infinity: 0
+Band: 4161.25
+Times heuristic is infinity: 21439
 Cost: 14
-Alignment: 0.092228s.
+Alignment: 61.8815
 
-Trie crumbs set with the optimization: 8676
-Trie crumbs set with the optimization: 7278
-Band: 2.752
-Times heuristic is infinity: 70
+Band: 421.336
+Times heuristic is infinity: 655
 Cost: 7
-Alignment: 0.051147s.
+Alignment: 9.09033
 
-Trie crumbs set with the optimization: 8840
-Trie crumbs set with the optimization: 7728
-Band: 3.41
-Times heuristic is infinity: 83
-Cost: 12
-Alignment: 0.043718s.
+Band: 1036.65
+Times heuristic is infinity: 4952
+Cost: 9
+Alignment: 17.9603
 
-Trie crumbs set with the optimization: 7587
-Trie crumbs set with the optimization: 7547
-Band: 37.442
-Times heuristic is infinity: 222
+Band: 6344.08
+Times heuristic is infinity: 25453
 Cost: 14
-Alignment: 0.142837s.
+Alignment: 85.0212
 
-Trie crumbs set with the optimization: 7215
-Trie crumbs set with the optimization: 8679
-Band: 7.95155
-Times heuristic is infinity: 200
+Band: 4742.72
+Times heuristic is infinity: 13787
+Cost: 15
+Alignment: 66.8825
+
+Band: 14053.3
+Times heuristic is infinity: 127266
 Cost: 16
-Alignment: 0.069272s.
+Alignment: 164.002
 
-Trie crumbs set with the optimization: 7669
-Trie crumbs set with the optimization: 8692
-Band: 54.4943
-Times heuristic is infinity: 156
+Band: 19485.2
+Times heuristic is infinity: 184321
 Cost: 22
-Alignment: 0.322857s.
+Alignment: 219.838
 
-Trie crumbs set with the optimization: 7842
-Trie crumbs set with the optimization: 6746
-Band: 177.955
-Times heuristic is infinity: 286
-Cost: 22
-Alignment: 0.60412s.
-
-Trie crumbs set with the optimization: 8340
-Trie crumbs set with the optimization: 7602
-Band: 12.1461
-Times heuristic is infinity: 26
+Band: 3005.46
+Times heuristic is infinity: 4643
 Cost: 13
-Alignment: 0.101588s.
+Alignment: 49.8225
 
-Trie crumbs set with the optimization: 7290
-Trie crumbs set with the optimization: 6428
-Band: 1.16932
-Times heuristic is infinity: 14
+Band: 161.566
+Times heuristic is infinity: 399
 Cost: 11
-Alignment: 0.018747s.
+Alignment: 3.20853
 
 Cost: 0
    Tests: 0
@@ -1325,6 +1295,69 @@ Cost: 121
    Avg. Number of expansions: -nan
    Avg. Number of Trie expansions: -nan
    Avg. Number of Ref. expandions: -nan
+
+
+Cost: 122
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 123
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 124
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 125
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 126
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+Cost: 127
+   Tests: 0
+   Avg. Band: -nan
+   Avg. Alignment time (sec.): -nan
+   Avg. Precomputation time (sec.): -nan
+   Avg. Number of expansions: -nan
+   Avg. Number of Trie expansions: -nan
+   Avg. Number of Ref. expandions: -nan
+
+
+ Ref. expandions: -nan
 
 
 Cost: 122
