@@ -17,7 +17,7 @@ int indaligns;
 int occurposlimit;///maximum positions of the min(u->positions.size(), v->positions.size()) in case of we check whether or not we check there is a pair of suitable positions among u.positions and v.positions
 
 
-inline void get_seeds_matches_sorted(vector<int> &seeds, vector <int> &lastkmer, vector<int> &prevposkmer, vector<pair<int, int> > &matches){
+inline void get_seeds_matches_sorted(const vector<int> &seeds, const vector <int> &lastkmer, const vector<int> &prevposkmer, vector<pair<int, int> > &matches){
     /*
     matches.first: position of seed
     matches.second: num of seed
@@ -58,7 +58,7 @@ int upperbs(vector<pair<int, int> > &matches, int pos){
     return l;
 }
 
-int lowerbs(vector<pair<int, int> > &matches, int pos){
+int lowerbs(const vector<pair<int, int> > &matches, int pos){
     int l = -1, r = matches.size(), mid;
     ///l - the rightest which is < than pos
     ///r - the leftest which is >=  pos
@@ -103,7 +103,7 @@ inline void calc_search_pos(int posseed, int drange, int readdist, int &sposseed
 /// @param matches2 second read's seeds' matches
 /// @param crumbseeds hash_sets for saving which seed should be used as crumbs for first seed
 /// @param dir says if matches1 are matches of the first seed(true) or the second one (false)(using makes the function universal for both reads)
-void crumb_seed_matches(vector<pair<int, int> > &matches1, vector<pair<int, int> > &matches2, /*int drange, int readdist,*/
+void crumb_seed_matches(const vector<pair<int, int> > &matches1, const vector<pair<int, int> > &matches2, /*int drange, int readdist,*/
                                             vector<unordered_set<int> > &crumbseeds, bool dir){
     /*static int cnt = 1;
     cout << "crumb_seed_matches cnt: " << cnt << endl;*/
@@ -158,7 +158,7 @@ inline void show_filter_matches(vector<unordered_set<int> > & crumbseeds){
     cnt++;
 }
 
-inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ int readsz){
+inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ const int readsz){
     innerdist = insdist - readsz*2;///inner distance
     readdist = innerdist + readsz;///distance between reads position with same indexes
     vector<pair<int, int> > matches1, matches2;
@@ -192,9 +192,9 @@ inline void filter_matches(MatchingKmers &info, /*int  insdist, int drange,*/ in
 
 inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
     cerr << "Begin of get_crumbs_paired end\n";
-    /*int cntsetcrumbs1 =*/ getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1, info.crumbseeds1);
+    /*int cntsetcrumbs1 =*/ getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 1/*, info.crumbseeds1*/);
     cerr << "Here1\n";
-    /*int cntsetcrumbs2 = */getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2, info.crumbseeds2);
+    /*int cntsetcrumbs2 = */getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 2/*, info.crumbseeds2*/);
     cerr << "Here2\n";
     /*cout << "Number of crumbs per number of filtered matches for read1: " << (double) cntsetcrumbs1 / (double) cntfilteredmatche1spr << "\n";
     cout << "Number of crumbs per number of filtered matches for read2: " << (double) cntsetcrumbs2 / (double) cntfilteredmatche2spr << "\n";
@@ -205,8 +205,8 @@ inline void get_crumbs_pairend(string &ref, int d, int k, MatchingKmers &info){
 }
 
 inline void get_crumbs_pairedend_trie_opt(string &ref, int d, int k, MatchingKmers &info){
-    getcrumbs_trieopt(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, info.last, info.prevpos, 1, info.crumbseeds1);
-    getcrumbs_trieopt(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, info.last, info.prevpos, 2, info.crumbseeds2);
+    getcrumbs_trieopt(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer/*, info.last, info.prevpos*/, 1/*, info.crumbseeds1*/);
+    getcrumbs_trieopt(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer/*, info.last, info.prevpos*/, 2/*, info.crumbseeds2*/);
 }
 
 inline void push_first_prstates_in_q(priority_queue<Statepr> &q, int m, Trie *root, int d, int k, MatchingKmers &info){
@@ -461,7 +461,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
 
         if (minmaxcost < cur.g){
             minmaxcost = cur.g;
-            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.qpos: " << cur.qpos /*<< " cur.negative: " << cur.negative*/ << "\n";
+            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.qpos: " << cur.qpos
+            << " in the trie <u, v>: " << (cur.p1.is_in_trie() & cur.p2.is_in_trie())
+            /*<< " cur.negative: " << cur.negative*/ << "\n";
         }
 
         if (to_explore_pr(cur.qpos, cur.p1, cur.p2, cur.g)){

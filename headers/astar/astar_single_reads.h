@@ -16,7 +16,7 @@ bool not_available_to_crumb(vector<unordered_set<int> > & crumbseeds, int num, i
 //gets the crumbs on Gr+ and returns their count
 int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
                 const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
-                const vector<int> &prevposkmer, int read, vector<unordered_set<int> > & crumbseeds){
+                const vector<int> &prevposkmer, int read/*, vector<unordered_set<int> > & crumbseeds*/){
     /*read: which read is being set on crumbs
     valuews to receive:
         - 0 when single read has its crumbs set on the Gr+
@@ -117,9 +117,19 @@ int get_min_lack_of_crumbs(int nseeds, const vector<Node> &heirs, crumbs_t &crum
     return maxcntcrumbs;
 }
 
+vector<Node> & get_Trie_heirs(Trie* cur, unordered_map<Trie*, unordered_set<int> > & children){
+    static vector<Node> heirs;
+    if (cur->is_leaf())
+        for (auto i: children[cur])
+            heirs.push_back(Node(i));
+    else for (int i = 0; i < alphabetsz; ++i)
+        if (cur->child[i]) heirs.push_back(Node(cur->child[i]));
+    return heirs;
+}
+
 void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &crumbs,
                 const vector<int> &seeds, const vector<Trie*> &backtotrieconnection, const vector<int> &lastkmer,
-                const vector<int> &prevposkmer, const vector<int> &last, const vector<int> &prevpos, int read, vector<unordered_set<int> > & crumbseeds){
+                const vector<int> &prevposkmer/*, const vector<int> &last, const vector<int> &prevpos*/, int read/*, vector<unordered_set<int> > & crumbseeds*/){
     /*read: which read is being set on crumbs
     valuews to receive:
         - 0 when single read has its crumbs set on the Gr+
@@ -132,8 +142,9 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
     int nins = seeds.size();
     //queue<Trie*> q;///to set crumbs in the trie
     //unordered_map<Trie*, vector<Node> > tcs;///Trie Crumbs Setting
-    unordered_map<Trie*, int> maxcntcrumbs;
+    //unordered_map<Trie*, int> maxcntcrumbs;
     queue<Trie*> tcs;///Trie Crumbs Setting
+    unordered_map<Trie*, unordered_set<int> > children;
     int cntsetcrumbs = 0;
     for (int i = 0; i < (int)seeds.size(); ++i){
         if (seeds[i] >= 0){
@@ -146,27 +157,55 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
                         crumbs[Node(rpos)][i] = true;
                         if (seedstart - rpos > seedpos - nins - d){
                             Trie* cur = backtotrieconnection[rpos];
+                            tcs.push(cur);
+                            children[cur].insert(rpos);
+                            while (cur != nullptr){
+                                //cntsetcrumbs++;
+                                //cntTriesetcrumbs++;
+                                crumbs[Node(cur)][i] = true;
+                                //trienodes.insert(Node(cur));
+                                //st.insert(Node(cur));
+                                cur = cur->parent;
+                            }
                             //q.push(cur);
                             //tcs[cur].push_back(Node(rpos));
-                            crumbs[Node(cur)][i] = true;
+                            /*crumbs[Node(cur)][i] = true;
                             int rposcrumbscnt = crumbs[Node(rpos)].count();
                             //maxcntcrumbs[cur] = (rposcrumbscnt > maxcntcrumbs[cur])? rposcrumbscnt: maxcntcrumbs[cur];
                             if (rposcrumbscnt > maxcntcrumbs[cur])
                                 maxcntcrumbs[cur] = rposcrumbscnt;
-                            tcs.push(cur);
+                            tcs.push(cur);*/
                         }
                     }
                 }
             }
         }
     }
-    int cntTriesetcrumbs = 0;
     unordered_set<Trie*> settedTrie;
     while (!tcs.empty()){
         Trie* cur = tcs.front();
         tcs.pop();
         if (settedTrie.find(cur) != settedTrie.end())
             continue;
+        
+        vector<Node> heirs = get_Trie_heirs(cur, children);
+        int maxcntcrumbs = 0;
+        for (auto i: heirs)
+            maxcntcrumbs = max((int)crumbs[i].count(), maxcntcrumbs);
+        int numseed = 0;
+        while (crumbs[cur].count() > maxcntcrumbs){
+            crumbs[cur][numseed] = false;
+            ++numseed;
+        }
+        if (cur->parent) tcs.push(cur->parent);
+        settedTrie.insert(cur);
+    }
+    /*int cntTriesetcrumbs = 0;
+    unordered_set<Trie*> settedTrie;
+    while (!tcs.empty()){
+        Trie* cur = tcs.front();
+        tcs.pop();
+        
         int numseed = 0;
         while (crumbs[cur].count() > maxcntcrumbs[cur]){
             crumbs[cur][numseed] = false;
@@ -184,7 +223,7 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
         tcs.push(par);
         settedTrie.insert(cur);
     }
-    cout << "Trie crumbs set with the optimization: " << cntTriesetcrumbs << "\n";
+    cout << "Trie crumbs set with the optimization: " << cntTriesetcrumbs << "\n";*/
     /*while(tcs.size()){
         unordered_map<Trie*, vector<Node> > newtcs;
         for (auto node: tcs){

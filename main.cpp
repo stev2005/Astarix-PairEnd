@@ -113,6 +113,20 @@ string get_reverse_complement(string s){
     return s;
 }
 
+void ensure_info_is_not_changed(MatchingKmers &info, bool lamp){
+    static MatchingKmers infocopy;
+    if (lamp){
+        infocopy.crumbseeds1 = info.crumbseeds1;
+        infocopy.crumbseeds2 = info.crumbseeds2;
+        if (infocopy == info)
+            cerr << "info is not changed\n";
+        else cerr << "info is changed\n";
+    }
+    else{
+        infocopy = info;
+    }
+}
+
 int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -160,7 +174,7 @@ int main(int argc, char *argv[]){
     for (int testcase=1; testcase<=testcases; ++testcase/*, cout<<endl*/){
         cerr << "Query "<< testcase << ":\n";
         //cout << "Query "<< testcase << ":\n";
-        int rezult;
+        int result;
         //t = clock();
         if (typealignment == "single-read"){
             //cerr << "If for single read alingment\n";
@@ -183,15 +197,15 @@ int main(int argc, char *argv[]){
                 //t = clock();
                 if (triecrumbsopt == "yes"){
                     getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
+                    info.lastkmer, info.prevposkmer/*, info.last, info.prevpos*/, 0/*, vector<unordered_set<int> > () = {}*/);
                     getcrumbs_trieopt(ref, d, k, info.ncrumbs, info.nseeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
+                    info.lastkmer, info.prevposkmer/*, info.last, info.prevpos*/, 0/* vector<unordered_set<int> > () = {}*/);
                 }
                 else{
                     getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
+                    info.lastkmer, info.prevposkmer, 0/*, vector<unordered_set<int> > () = {}*/);
                     getcrumbs(ref, d, k, info.ncrumbs, info.nseeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});
+                    info.lastkmer, info.prevposkmer, 0/*, vector<unordered_set<int> > () = {}*/);
                 }
                 //t = clock() - t;
                 /*getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
@@ -217,54 +231,34 @@ int main(int argc, char *argv[]){
             if (alignments.size()) seevals[alignments.front().first].precomptime += precomptime;
         }
         else if (typealignment == "paired-end"){ //paired-end alignment joint
-            cerr << "main: paired-end\n";
-            pair <string, string> queryp;
+            pair<string, string> queryp;
             queryp = get_pair_end_query();
-            nindel = max(queryp.first.size() / k, queryp.second.size() / k);
-            if (max(queryp.first.size(), queryp.second.size()) % k != 0)
-                nindel++;
+            int szlongerread = max(queryp.first.size(), queryp.second.size());
+            nindel = (szlongerread % k)? szlongerread / k + 1: szlongerread / k;
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
+            //filter_matches(info, szlongerread);
+            int readsz = queryp.first.size();
+            innerdist = insdist - readsz*2;///inner distance
+            readdist = innerdist + readsz;///distance between reads position with same indexes
             make_paired_ends_same_size(queryp);
-            cerr << "equal query lengths\n";
-            //cerr << "Here 1\n";
-                t = clock();
-                filter_matches(info, queryp.first.size());
-                t = clock() - t;
-                evalsts.filtermatchestime += runtime(t);
-                cerr << "filtering not the problme\n";
-                //howmanycrumbs_seeds_have(info, k);
-                    //cerr << "Here2\n";
-                    t = clock();
-                    //cerr << "Here3\n";
-                        //
-                        if (triecrumbsopt == "yes"){
-                            get_crumbs_pairedend_trie_opt(ref, d, k, info);
-                        }
-                        else{
-                            cerr << "Before getting crumbs\n";
-                            get_crumbs_pairend(ref, d, k, info);
-                            cerr << "after getting crumbs\n";
-                        }
-                        
-                    //cerr << "Here4\n";
-                    t = clock() - t;
-                    //cerr << "Here5\n";
-                    evalsts.getcrumbstime += runtime(t);
-                    //cerr << "Here6\n";
-                    t = clock();
-                    //cerr << "crumbing not the problem\n";
-            //cerr << "Here 10\n";
-            cerr << "got crumbs\n";
-            rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
-            t = clock() - t;
-            evalsts.aligntime += runtime(t);
-            //cerr << "alignment passed\n";
-            cout << "Cost: " << rezult << "\n"; 
-            cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
+            cerr << "crumbs to be set\n";
+            if (triecrumbsopt == "yes"){
+                get_crumbs_pairedend_trie_opt(ref, d, k, info);
+            }
+            else{
+                get_crumbs_pairend(ref, d, k, info);
+            }
+            cerr << "setting crumbs done\n";
+            auto startaln = chrono::high_resolution_clock::now();
+            result = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
+            auto endaln = chrono::high_resolution_clock::now();
+            double runtimealn = runtimechrono(startaln, endaln);
+            cerr << "Cost: " << result << "\n";
+            cerr << "Alignment: " << runtimealn << "\n";
+            cout << "Cost: " << result << "\n";
+            cout << "Alignment: " << runtimealn << "\n";
             cout << "\n";
-            cerr << "Cost: " << rezult << "\n"; 
-            cerr << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
         }
         else{
             cerr << "No such alignment type is supported\n";

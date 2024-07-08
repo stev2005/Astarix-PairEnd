@@ -58,6 +58,7 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
         seeds1.clear();
         seeds2.clear();
         crumbs.clear();
+        ncrumbs.clear();
         crumbs1.clear();
         crumbs2.clear();
         crumbseeds1.clear();
@@ -65,6 +66,25 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
         lastkmer.clear();//not done in the old
         prevposkmer.clear();//not done in the old
         backtotrieconnectionkmer.clear();//not done in the old
+    }
+
+    bool operator==(const MatchingKmers &other)const{
+        if (seeds != other.seeds) return false;
+        if (nseeds != other.nseeds) return false;
+        if (seeds1 != other.seeds1) return false;
+        if (seeds2 != other.seeds2) return false;
+        if (crumbs != other.crumbs) return false;
+        if (ncrumbs != other.ncrumbs) return false;
+        if (crumbs1 != other.crumbs1) return false;
+        if (crumbs2 != other.crumbs2) return false;
+        if (crumbseeds1 != other.crumbseeds1) return false;
+        if (crumbseeds2 != other.crumbseeds2) return false;
+        if (lastkmer != other.lastkmer) return false;
+        if (prevposkmer != other.prevposkmer) return false;
+        if (backtotrieconnectionkmer != other.backtotrieconnectionkmer) return false;
+        if (last != other.last) return false;
+        if (prevpos != other.prevpos) return false;
+        return true;
     }
 };
 
