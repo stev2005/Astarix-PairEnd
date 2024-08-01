@@ -1,81 +1,81 @@
 D: 10 k: 12
-reading reference: 0.001612s.
-constructing trie: 1.61056s.
+reading reference: 0.002469s.
+constructing trie: 1.59328s.
 
-Band: 977.264
-Times heuristic is infinity: 4432
+Band: 3.076
+Times heuristic is infinity: 1
 Cost: 10
-Alignment: 17.6247
+Alignment: 0.0134427
 
-Band: 15.228
-Times heuristic is infinity: 92
+Band: 0.66
+Times heuristic is infinity: 5
 Cost: 4
-Alignment: 0.441398
+Alignment: 0.0031111
 
-Band: 4592.45
-Times heuristic is infinity: 68395
+Band: 14.656
+Times heuristic is infinity: 9
 Cost: 14
-Alignment: 67.9423
+Alignment: 0.0453271
 
-Band: 498.202
-Times heuristic is infinity: 2433
+Band: 3.592
+Times heuristic is infinity: 7
 Cost: 8
-Alignment: 10.6728
+Alignment: 0.0114724
 
-Band: 40.106
-Times heuristic is infinity: 186
+Band: 1.914
+Times heuristic is infinity: 3
 Cost: 9
-Alignment: 0.978769
+Alignment: 0.00862529
 
-Band: 422.794
-Times heuristic is infinity: 2798
+Band: 49.478
+Times heuristic is infinity: 17544
 Cost: 9
-Alignment: 8.2087
+Alignment: 0.274832
 
-Band: 4161.25
-Times heuristic is infinity: 21439
+Band: 15.896
+Times heuristic is infinity: 0
 Cost: 14
-Alignment: 61.8815
+Alignment: 0.054324
 
-Band: 421.336
-Times heuristic is infinity: 655
+Band: 2086.91
+Times heuristic is infinity: 724814
 Cost: 7
-Alignment: 9.09033
+Alignment: 12.6012
 
-Band: 1036.65
-Times heuristic is infinity: 4952
-Cost: 9
-Alignment: 17.9603
+Band: 8474.43
+Times heuristic is infinity: 2314658
+Cost: 12
+Alignment: 47.0238
 
-Band: 6344.08
-Times heuristic is infinity: 25453
+Band: 18.8
+Times heuristic is infinity: 3
 Cost: 14
-Alignment: 85.0212
+Alignment: 0.128742
 
-Band: 4742.72
-Times heuristic is infinity: 13787
-Cost: 15
-Alignment: 66.8825
-
-Band: 14053.3
-Times heuristic is infinity: 127266
+Band: 58.6027
+Times heuristic is infinity: 15004
 Cost: 16
-Alignment: 164.002
+Alignment: 0.38302
 
-Band: 19485.2
-Times heuristic is infinity: 184321
+Band: 12235.5
+Times heuristic is infinity: 2935863
+Cost: 40
+Alignment: 84.2802
+
+Band: 151.826
+Times heuristic is infinity: 3
 Cost: 22
-Alignment: 219.838
+Alignment: 0.622887
 
-Band: 3005.46
-Times heuristic is infinity: 4643
+Band: 1081.95
+Times heuristic is infinity: 286571
 Cost: 13
-Alignment: 49.8225
+Alignment: 7.16328
 
-Band: 161.566
-Times heuristic is infinity: 399
-Cost: 11
-Alignment: 3.20853
+Band: 0.762948
+Times heuristic is infinity: 36
+Cost: 12
+Alignment: 0.0145392
 
 Cost: 0
    Tests: 0
@@ -1295,69 +1295,6 @@ Cost: 121
    Avg. Number of expansions: -nan
    Avg. Number of Trie expansions: -nan
    Avg. Number of Ref. expandions: -nan
-
-
-Cost: 122
-   Tests: 0
-   Avg. Band: -nan
-   Avg. Alignment time (sec.): -nan
-   Avg. Precomputation time (sec.): -nan
-   Avg. Number of expansions: -nan
-   Avg. Number of Trie expansions: -nan
-   Avg. Number of Ref. expandions: -nan
-
-
-Cost: 123
-   Tests: 0
-   Avg. Band: -nan
-   Avg. Alignment time (sec.): -nan
-   Avg. Precomputation time (sec.): -nan
-   Avg. Number of expansions: -nan
-   Avg. Number of Trie expansions: -nan
-   Avg. Number of Ref. expandions: -nan
-
-
-Cost: 124
-   Tests: 0
-   Avg. Band: -nan
-   Avg. Alignment time (sec.): -nan
-   Avg. Precomputation time (sec.): -nan
-   Avg. Number of expansions: -nan
-   Avg. Number of Trie expansions: -nan
-   Avg. Number of Ref. expandions: -nan
-
-
-Cost: 125
-   Tests: 0
-   Avg. Band: -nan
-   Avg. Alignment time (sec.): -nan
-   Avg. Precomputation time (sec.): -nan
-   Avg. Number of expansions: -nan
-   Avg. Number of Trie expansions: -nan
-   Avg. Number of Ref. expandions: -nan
-
-
-Cost: 126
-   Tests: 0
-   Avg. Band: -nan
-   Avg. Alignment time (sec.): -nan
-   Avg. Precomputation time (sec.): -nan
-   Avg. Number of expansions: -nan
-   Avg. Number of Trie expansions: -nan
-   Avg. Number of Ref. expandions: -nan
-
-
-Cost: 127
-   Tests: 0
-   Avg. Band: -nan
-   Avg. Alignment time (sec.): -nan
-   Avg. Precomputation time (sec.): -nan
-   Avg. Number of expansions: -nan
-   Avg. Number of Trie expansions: -nan
-   Avg. Number of Ref. expandions: -nan
-
-
- Ref. expandions: -nan
 
 
 Cost: 122
