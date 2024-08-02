@@ -459,12 +459,12 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
         if (cur.qpos == n)
             break;
 
-        if (minmaxcost < cur.g){
+        /*if (minmaxcost < cur.g){
             minmaxcost = cur.g;
             cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.qpos: " << cur.qpos
             << " in the trie <u, v>: " << (cur.p1.is_in_trie() & cur.p2.is_in_trie())
-            /*<< " cur.negative: " << cur.negative*/ << "\n";
-        }
+            << " cur.negative: " << cur.negative << "\n";
+        }*/
 
         if (to_explore_pr(cur.qpos, cur.p1, cur.p2, cur.g)){
             if (gready_available_pr(queryp, ref, cur.qpos, cur.p1, cur.p2)){

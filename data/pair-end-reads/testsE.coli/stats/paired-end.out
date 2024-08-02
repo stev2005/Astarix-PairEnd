@@ -1,81 +1,111 @@
 D: 10 k: 12
-reading reference: 0.002469s.
-constructing trie: 1.59328s.
+reading reference: 0.001592s.
+constructing trie: 1.75036s.
 
-Band: 3.076
-Times heuristic is infinity: 1
+Trie crumbs set without the optimization: 10406
+Trie crumbs set without the optimization: 11836
+Band: 1148.94
+Times heuristic is infinity: 10712
 Cost: 10
-Alignment: 0.0134427
+Alignment: 16.6105
 
-Band: 0.66
-Times heuristic is infinity: 5
+Trie crumbs set without the optimization: 12375
+Trie crumbs set without the optimization: 16687
+Band: 8.942
+Times heuristic is infinity: 164
 Cost: 4
-Alignment: 0.0031111
+Alignment: 0.243356
 
-Band: 14.656
-Times heuristic is infinity: 9
+Trie crumbs set without the optimization: 10758
+Trie crumbs set without the optimization: 9262
+Band: 4515.59
+Times heuristic is infinity: 156326
 Cost: 14
-Alignment: 0.0453271
+Alignment: 55.0859
 
-Band: 3.592
-Times heuristic is infinity: 7
+Trie crumbs set without the optimization: 10219
+Trie crumbs set without the optimization: 13453
+Band: 649.668
+Times heuristic is infinity: 6764
 Cost: 8
-Alignment: 0.0114724
+Alignment: 9.72011
 
-Band: 1.914
-Times heuristic is infinity: 3
+Trie crumbs set without the optimization: 10758
+Trie crumbs set without the optimization: 9922
+Band: 41.076
+Times heuristic is infinity: 490
 Cost: 9
-Alignment: 0.00862529
+Alignment: 0.811929
 
-Band: 49.478
-Times heuristic is infinity: 17544
+Trie crumbs set without the optimization: 10054
+Trie crumbs set without the optimization: 10813
+Band: 270.43
+Times heuristic is infinity: 3544
 Cost: 9
-Alignment: 0.274832
+Alignment: 4.17096
 
-Band: 15.896
-Times heuristic is infinity: 0
+Trie crumbs set without the optimization: 10813
+Trie crumbs set without the optimization: 10219
+Band: 4303.38
+Times heuristic is infinity: 49086
 Cost: 14
-Alignment: 0.054324
+Alignment: 51.2722
 
-Band: 2086.91
-Times heuristic is infinity: 724814
+Trie crumbs set without the optimization: 12188
+Trie crumbs set without the optimization: 9944
+Band: 422.17
+Times heuristic is infinity: 1942
 Cost: 7
-Alignment: 12.6012
+Alignment: 7.24622
 
-Band: 8474.43
-Times heuristic is infinity: 2314658
-Cost: 12
-Alignment: 47.0238
+Trie crumbs set without the optimization: 13046
+Trie crumbs set without the optimization: 10758
+Band: 1040.76
+Times heuristic is infinity: 10928
+Cost: 9
+Alignment: 15.3076
 
-Band: 18.8
-Times heuristic is infinity: 3
+Trie crumbs set without the optimization: 10703
+Trie crumbs set without the optimization: 10307
+Band: 6490.46
+Times heuristic is infinity: 56580
 Cost: 14
-Alignment: 0.128742
+Alignment: 70.2502
 
-Band: 58.6027
-Times heuristic is infinity: 15004
+Trie crumbs set without the optimization: 9999
+Trie crumbs set without the optimization: 12639
+Band: 4260.66
+Times heuristic is infinity: 26224
+Cost: 15
+Alignment: 54.7181
+
+Trie crumbs set without the optimization: 11264
+Trie crumbs set without the optimization: 12122
+Band: 16133.8
+Times heuristic is infinity: 316270
 Cost: 16
-Alignment: 0.38302
+Alignment: 155.504
 
-Band: 12235.5
-Times heuristic is infinity: 2935863
-Cost: 40
-Alignment: 84.2802
-
-Band: 151.826
-Times heuristic is infinity: 3
+Trie crumbs set without the optimization: 11033
+Trie crumbs set without the optimization: 9141
+Band: 22692.7
+Times heuristic is infinity: 463430
 Cost: 22
-Alignment: 0.622887
+Alignment: 197.402
 
-Band: 1081.95
-Times heuristic is infinity: 286571
+Trie crumbs set without the optimization: 11660
+Trie crumbs set without the optimization: 10219
+Band: 4426.15
+Times heuristic is infinity: 17544
 Cost: 13
-Alignment: 7.16328
+Alignment: 54.2185
 
-Band: 0.762948
-Times heuristic is infinity: 36
-Cost: 12
-Alignment: 0.0145392
+Trie crumbs set without the optimization: 10219
+Trie crumbs set without the optimization: 9141
+Band: 160.4
+Times heuristic is infinity: 940
+Cost: 11
+Alignment: 2.53542
 
 Cost: 0
    Tests: 0
