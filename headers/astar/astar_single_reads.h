@@ -46,7 +46,7 @@ int getcrumbs(const string &ref, const int d, const int k, crumbs_t &crumbs,
             int seedpos = i * k;
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
                 //cerr << "j: " << j << "\n";
-                int seedstart = j - k + 1;///start of a seed in the reference;
+                int seedstart = j - k;///start of a seed in the reference;
                 //cerr << "before filter\n";
                 /*if (read != 0)
                     if (not_available_to_crumb(crumbseeds, i, j))
@@ -333,9 +333,13 @@ vector<Statesr> & get_next_states_sr(int qpos, Node p, char cqpos, string &ref, 
         //cout << "in the trie\n";
         if (p.u->is_leaf()){
             //cout << "It is leaf\n";
+            next.push_back(createStatesr(qpos + 1, p, 1, k, seeds, crumbs));
             for (int i = last[p.u->num]; i != -1;  i = prevpos[i]){
                 //cout << "inheritor\n";
-                next.push_back(createStatesr(qpos, i + 1, 0, k, seeds, crumbs));
+                if (ref[i - 1] == cqpos)
+                    next.push_back(createStatesr(qpos + 1, i, 0, k, seeds, crumbs));
+                else next.push_back(createStatesr(qpos + 1, i, 1, k, seeds, crumbs));
+                next.push_back(createStatesr(qpos, i, 0, k, seeds, crumbs));
             }
         }
         else{
@@ -444,6 +448,7 @@ void push_first_single_end_states_customQ(BucketQueueSE &Q, MatchingKmers &info,
 }
 
 vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nquery, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info, int numaligns){
+    cerr << "Query's size: " << query.size() << '\n';
     vector< pair<cost_t, int> > alignments;
     int n = query.size();
     int m = ref.size();
@@ -501,12 +506,13 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
         }*/
         /*if (minmaxcost < cur.g){
             minmaxcost = cur.g;
-            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative << "\n";
+            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative
+            << " cur.qpos: " << cur.qpos << "\n";
         }*/
         if (cur.p.is_in_trie()){
             /*if (istrie == false)
                 istrie = true;*/
-            cntexpansionsTrie++;
+            cntexpansionsTrie++;  
             /*if (info.crumbs[cur.p].count() == 0)
                 cntTrienodeswithoutcrumbs++;*/
             /*auto it = expandedstates.find({cur.qpos, cur.p});
@@ -602,5 +608,6 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
     if (cur.g < 128)
         seevals[cur.g].add_entry((double)cntexpansions / (double)n, cntexpansions, cntexpansionsTrie, cntexpansionsref, aligntime);
     //cerr << "In single-end alignments.size(): " << alignments.size() << "\n";
+    cerr << "Cost: " << cur.g << '\n';
     return alignments;
 }

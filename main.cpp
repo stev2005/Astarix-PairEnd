@@ -171,7 +171,7 @@ int main(int argc, char *argv[]){
     /*check_are_vectors_sorted(rootdmer);
     cerr << "Ended check sorted\n";
     return 0;*/
-    for (int testcase=1; testcase<=testcases; ++testcase/*, cout<<endl*/){
+    for (int testcase=1; testcase<=testcases; ++testcase, cerr << '\n' /*, cout<<endl*/){
         cerr << "Query "<< testcase << ":\n";
         //cout << "Query "<< testcase << ":\n";
         int result;

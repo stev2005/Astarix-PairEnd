@@ -65,7 +65,7 @@ void insert_kmer(Trie *&T,  string &s ,  int pos ,  int &num, int posapp, Trie *
 
 inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vector<int> &prevpos, vector<Trie*> &backtotrieconnection, bool savepos){
     int m = ref.size();
-    int sz;
+    //int sz;
     prevpos.resize(m, -1);
     last.resize(m, -1);
     backtotrieconnection.resize(m, nullptr);
@@ -74,18 +74,19 @@ inline void construct_trie(string &ref, int k, Trie *&T, vector<int> &last, vect
     for(int i = 0; i < m - k + 1; ++i){
         prevcnt=cntkmer;
         kmer = ref.substr(i, k);
-        sz = kmer.size();
+        ///sz = kmer.size();
+        int rpos = i + k;
         Trie *con;
-        insert_kmer(T, kmer, 0, cntkmer, i + k - 1, con, savepos);
-        backtotrieconnection[i+sz-1] = con;
-        prevpos[i+sz-1]=last[cntkmer];
-        last[cntkmer]=i+sz-1;
+        insert_kmer(T, kmer, 0, cntkmer, rpos, con, savepos);
+        backtotrieconnection[rpos] = con;
+        prevpos[rpos] = last[cntkmer];
+        last[cntkmer] = rpos;
         if(prevcnt==cntkmer)
             ++cntkmer;
         else cntkmer=prevcnt;
     }
     for (int i = m - k + 1; i < m; ++i)///the last suffixes of the reference have length < k 
-        backtotrieconnection.push_back(nullptr);
+        backtotrieconnection[i] = nullptr;
 }
 
 int kmer_exists(string &seed, int pos, Trie *T){
