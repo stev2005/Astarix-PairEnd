@@ -140,48 +140,40 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
     //cerr << "Optimized crumbs function\n";
     int ndel = seeds.size();
     int nins = seeds.size();
-    //queue<Trie*> q;///to set crumbs in the trie
-    //unordered_map<Trie*, vector<Node> > tcs;///Trie Crumbs Setting
-    //unordered_map<Trie*, int> maxcntcrumbs;
-    queue<Trie*> tcs;///Trie Crumbs Setting
-    unordered_map<Trie*, unordered_set<int> > children;
     int cntsetcrumbs = 0;
-    for (int i = 0; i < (int)seeds.size(); ++i){
+    int cntTriesetcrumbs = 0;
+    deque<Trie*> tcs;
+    unordered_map<Trie*, unordered_map<int, bitset<64> > > refchildcrumbs;
+    for (int i = 0; i < seeds.size(); ++i){
+        //cerr << "i: " << i << " seeds[i]: " << seeds[i] << "\n";
         if (seeds[i] >= 0){
             int seedpos = i * k;
             for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j]){
-                int seedstart = j - k + 1;
+                int seedstart = j - k;///start of a seed in the reference;
                 for (int back = 0; back < seedpos + ndel; ++back){
                     int rpos = seedstart - back;
                     if (rpos >= 0){
                         crumbs[Node(rpos)][i] = true;
+                        cntsetcrumbs++;
                         if (seedstart - rpos > seedpos - nins - d){
                             Trie* cur = backtotrieconnection[rpos];
-                            tcs.push(cur);
-                            children[cur].insert(rpos);
-                            while (cur != nullptr){
-                                //cntsetcrumbs++;
-                                //cntTriesetcrumbs++;
-                                crumbs[Node(cur)][i] = true;
-                                //trienodes.insert(Node(cur));
-                                //st.insert(Node(cur));
-                                cur = cur->parent;
-                            }
-                            //q.push(cur);
-                            //tcs[cur].push_back(Node(rpos));
-                            /*crumbs[Node(cur)][i] = true;
-                            int rposcrumbscnt = crumbs[Node(rpos)].count();
-                            //maxcntcrumbs[cur] = (rposcrumbscnt > maxcntcrumbs[cur])? rposcrumbscnt: maxcntcrumbs[cur];
-                            if (rposcrumbscnt > maxcntcrumbs[cur])
-                                maxcntcrumbs[cur] = rposcrumbscnt;
-                            tcs.push(cur);*/
+                            refchildcrumbs[cur][rpos][i] = true;
+                            tcs.push_back(cur);
                         }
-                    }
+                    } 
                 }
             }
         }
     }
-    unordered_set<Trie*> settedTrie;
+    unordered_map<Trie*, int> maxcntcrumbs;
+    for (Trie* cur: tcs){
+        for (pair<int, bitset<64> > it: refchildcrumbs[cur]){
+            if (maxcntcrumbs[cur] < it.second.count())
+                maxcntcrumbs[cur] = it.second.count();
+            crumbs[Node(cur)] |= it.second;
+        }
+    }
+    /*unordered_set<Trie*> settedTrie;
     while (!tcs.empty()){
         Trie* cur = tcs.front();
         tcs.pop();
@@ -199,31 +191,35 @@ void getcrumbs_trieopt(const string &ref, const int d, const int k, crumbs_t &cr
         }
         if (cur->parent) tcs.push(cur->parent);
         settedTrie.insert(cur);
-    }
-    /*int cntTriesetcrumbs = 0;
+    }*/
+    //int cntTriesetcrumbs = 0;
     unordered_set<Trie*> settedTrie;
     while (!tcs.empty()){
         Trie* cur = tcs.front();
-        tcs.pop();
-        
+        tcs.pop_front();
+        if (settedTrie.find(cur) != settedTrie.end())
+            continue;
+        Node curN = Node(cur);
         int numseed = 0;
-        while (crumbs[cur].count() > maxcntcrumbs[cur]){
-            crumbs[cur][numseed] = false;
+        while (crumbs[curN].count() > maxcntcrumbs[cur]){
+            crumbs[curN][numseed] = false;
             ++numseed;
         }
         cntTriesetcrumbs += maxcntcrumbs[cur];
         if (cur->parent == nullptr)
             continue;
         Trie* par = cur->parent;
-        for (numseed = 0; numseed < k; ++numseed)
-            if (crumbs[cur][numseed])
-                crumbs[par][numseed] = true;
+        Node parN = Node(par);
+        crumbs[parN] |= crumbs[curN];
+        /*for (numseed = 0; numseed < k; ++numseed)
+            if (crumbs[curN][numseed])
+                crumbs[parN][numseed] = true;*/
         if (maxcntcrumbs[par] < maxcntcrumbs[cur])
             maxcntcrumbs[par] = maxcntcrumbs[cur];
-        tcs.push(par);
+        tcs.push_back(par);
         settedTrie.insert(cur);
     }
-    cout << "Trie crumbs set with the optimization: " << cntTriesetcrumbs << "\n";*/
+    cout << "Trie crumbs set with the optimization: " << cntTriesetcrumbs << "\n";
     /*while(tcs.size()){
         unordered_map<Trie*, vector<Node> > newtcs;
         for (auto node: tcs){
