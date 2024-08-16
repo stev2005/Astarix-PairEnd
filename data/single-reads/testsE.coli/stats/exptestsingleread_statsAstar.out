@@ -1,141 +1,141 @@
 D: 10 k: 11
-reading reference: 0.001542s.
-constructing trie: 1.48994s.
+reading reference: 0.001744s.
+constructing trie: 1.27295s.
 
-Trie crumbs set with the optimization: 12425
-Trie crumbs set with the optimization: 3809
-Trie crumbs set with the optimization: 11016
-Trie crumbs set with the optimization: 6078
-Trie crumbs set with the optimization: 13239
-Trie crumbs set with the optimization: 6061
-Trie crumbs set with the optimization: 13250
-Trie crumbs set with the optimization: 5438
-Trie crumbs set with the optimization: 10227
-Trie crumbs set with the optimization: 4109
-Trie crumbs set with the optimization: 12558
-Trie crumbs set with the optimization: 1795
-Trie crumbs set with the optimization: 9612
-Trie crumbs set with the optimization: 1139
-Trie crumbs set with the optimization: 24778
-Trie crumbs set with the optimization: 8137
-Trie crumbs set with the optimization: 10701
-Trie crumbs set with the optimization: 4762
-Trie crumbs set with the optimization: 10258
-Trie crumbs set with the optimization: 3284
-Trie crumbs set with the optimization: 11770
-Trie crumbs set with the optimization: 4736
-Trie crumbs set with the optimization: 12137
-Trie crumbs set with the optimization: 3728
-Trie crumbs set with the optimization: 9932
-Trie crumbs set with the optimization: 3711
-Trie crumbs set with the optimization: 9281
-Trie crumbs set with the optimization: 3157
-Trie crumbs set with the optimization: 11522
-Trie crumbs set with the optimization: 4294
-Trie crumbs set with the optimization: 2699
-Trie crumbs set with the optimization: 10389
-Trie crumbs set with the optimization: 4246
-Trie crumbs set with the optimization: 11215
-Trie crumbs set with the optimization: 2118
-Trie crumbs set with the optimization: 8449
-Trie crumbs set with the optimization: 2094
-Trie crumbs set with the optimization: 11378
-Trie crumbs set with the optimization: 11458
-Trie crumbs set with the optimization: 7197
-Trie crumbs set with the optimization: 13719
-Trie crumbs set with the optimization: 2695
-Trie crumbs set with the optimization: 2246
-Trie crumbs set with the optimization: 9262
-Trie crumbs set with the optimization: 5233
-Trie crumbs set with the optimization: 12326
-Trie crumbs set with the optimization: 4246
-Trie crumbs set with the optimization: 12104
-Trie crumbs set with the optimization: 12280
-Trie crumbs set with the optimization: 4056
-Trie crumbs set with the optimization: 4056
-Trie crumbs set with the optimization: 12280
-Trie crumbs set with the optimization: 3918
-Trie crumbs set with the optimization: 12859
-Trie crumbs set with the optimization: 3680
-Trie crumbs set with the optimization: 785
+Trie crumbs set with the optimization: 10570
+Trie crumbs set with the optimization: 3176
+Trie crumbs set with the optimization: 9531
+Trie crumbs set with the optimization: 5025
+Trie crumbs set with the optimization: 11260
+Trie crumbs set with the optimization: 4989
+Trie crumbs set with the optimization: 11333
+Trie crumbs set with the optimization: 4470
+Trie crumbs set with the optimization: 8844
+Trie crumbs set with the optimization: 3426
+Trie crumbs set with the optimization: 10793
+Trie crumbs set with the optimization: 1528
+Trie crumbs set with the optimization: 8385
+Trie crumbs set with the optimization: 981
+Trie crumbs set with the optimization: 20613
+Trie crumbs set with the optimization: 6638
+Trie crumbs set with the optimization: 9208
+Trie crumbs set with the optimization: 3957
+Trie crumbs set with the optimization: 8893
+Trie crumbs set with the optimization: 2754
+Trie crumbs set with the optimization: 10055
+Trie crumbs set with the optimization: 3942
+Trie crumbs set with the optimization: 10397
+Trie crumbs set with the optimization: 3143
+Trie crumbs set with the optimization: 8637
+Trie crumbs set with the optimization: 3087
+Trie crumbs set with the optimization: 7956
+Trie crumbs set with the optimization: 2654
+Trie crumbs set with the optimization: 9929
+Trie crumbs set with the optimization: 3567
+Trie crumbs set with the optimization: 2279
+Trie crumbs set with the optimization: 8926
+Trie crumbs set with the optimization: 3542
+Trie crumbs set with the optimization: 9597
+Trie crumbs set with the optimization: 1802
+Trie crumbs set with the optimization: 7413
+Trie crumbs set with the optimization: 1779
+Trie crumbs set with the optimization: 9799
+Trie crumbs set with the optimization: 9910
+Trie crumbs set with the optimization: 6194
+Trie crumbs set with the optimization: 11722
+Trie crumbs set with the optimization: 2270
+Trie crumbs set with the optimization: 1910
+Trie crumbs set with the optimization: 8047
+Trie crumbs set with the optimization: 4326
+Trie crumbs set with the optimization: 10614
+Trie crumbs set with the optimization: 3541
+Trie crumbs set with the optimization: 10386
+Trie crumbs set with the optimization: 10540
+Trie crumbs set with the optimization: 3379
+Trie crumbs set with the optimization: 3379
+Trie crumbs set with the optimization: 10540
+Trie crumbs set with the optimization: 3270
+Trie crumbs set with the optimization: 11067
+Trie crumbs set with the optimization: 3080
+Trie crumbs set with the optimization: 678
 Cost: 0
    Tests: 2
-   Avg. Band: 1.014
-   Avg. Alignment time (sec.): 0.0029381
-   Avg. Precomputation time (sec.): 0.0234296
-   Avg. Number of expansions: 253.5
-   Avg. Number of Trie expansions: 11
-   Avg. Number of Ref. expandions: 242.5
+   Avg. Band: 1.012
+   Avg. Alignment time (sec.): 0.00305239
+   Avg. Precomputation time (sec.): 0.0244347
+   Avg. Number of expansions: 253
+   Avg. Number of Trie expansions: 10
+   Avg. Number of Ref. expandions: 243
 
 
 Cost: 1
    Tests: 1
    Avg. Band: 1.072
-   Avg. Alignment time (sec.): 0.00302274
-   Avg. Precomputation time (sec.): 0.0242854
+   Avg. Alignment time (sec.): 0.00314083
+   Avg. Precomputation time (sec.): 0.02504
    Avg. Number of expansions: 268
-   Avg. Number of Trie expansions: 11
-   Avg. Number of Ref. expandions: 257
+   Avg. Number of Trie expansions: 10
+   Avg. Number of Ref. expandions: 258
 
 
 Cost: 2
    Tests: 6
-   Avg. Band: 2.18067
-   Avg. Alignment time (sec.): 0.00857298
-   Avg. Precomputation time (sec.): 0.0322279
-   Avg. Number of expansions: 545.167
-   Avg. Number of Trie expansions: 133.833
-   Avg. Number of Ref. expandions: 411.333
+   Avg. Band: 2.18133
+   Avg. Alignment time (sec.): 0.00936394
+   Avg. Precomputation time (sec.): 0.0343294
+   Avg. Number of expansions: 545.333
+   Avg. Number of Trie expansions: 130
+   Avg. Number of Ref. expandions: 415.333
 
 
 Cost: 3
    Tests: 3
-   Avg. Band: 6.96
-   Avg. Alignment time (sec.): 0.0177505
-   Avg. Precomputation time (sec.): 0.0442891
-   Avg. Number of expansions: 1740
-   Avg. Number of Trie expansions: 243.667
-   Avg. Number of Ref. expandions: 1496.33
+   Avg. Band: 6.93333
+   Avg. Alignment time (sec.): 0.0182663
+   Avg. Precomputation time (sec.): 0.0452499
+   Avg. Number of expansions: 1733.33
+   Avg. Number of Trie expansions: 228.667
+   Avg. Number of Ref. expandions: 1504.67
 
 
 Cost: 4
    Tests: 4
-   Avg. Band: 10.751
-   Avg. Alignment time (sec.): 0.0359582
-   Avg. Precomputation time (sec.): 0.0618502
-   Avg. Number of expansions: 2687.75
-   Avg. Number of Trie expansions: 959.75
-   Avg. Number of Ref. expandions: 1728
+   Avg. Band: 10.69
+   Avg. Alignment time (sec.): 0.0392362
+   Avg. Precomputation time (sec.): 0.0659272
+   Avg. Number of expansions: 2672.5
+   Avg. Number of Trie expansions: 924
+   Avg. Number of Ref. expandions: 1748.5
 
 
 Cost: 5
    Tests: 4
-   Avg. Band: 5.66
-   Avg. Alignment time (sec.): 0.0294136
-   Avg. Precomputation time (sec.): 0.0534973
-   Avg. Number of expansions: 1415
-   Avg. Number of Trie expansions: 798.5
-   Avg. Number of Ref. expandions: 616.5
+   Avg. Band: 5.649
+   Avg. Alignment time (sec.): 0.0299869
+   Avg. Precomputation time (sec.): 0.0542019
+   Avg. Number of expansions: 1412.25
+   Avg. Number of Trie expansions: 783.5
+   Avg. Number of Ref. expandions: 628.75
 
 
 Cost: 6
    Tests: 3
-   Avg. Band: 12.36
-   Avg. Alignment time (sec.): 0.0415439
-   Avg. Precomputation time (sec.): 0.0640613
-   Avg. Number of expansions: 3090
-   Avg. Number of Trie expansions: 1135.67
-   Avg. Number of Ref. expandions: 1954.33
+   Avg. Band: 12.328
+   Avg. Alignment time (sec.): 0.0449865
+   Avg. Precomputation time (sec.): 0.0681995
+   Avg. Number of expansions: 3082
+   Avg. Number of Trie expansions: 1105.67
+   Avg. Number of Ref. expandions: 1976.33
 
 
 Cost: 7
    Tests: 3
-   Avg. Band: 49.7547
-   Avg. Alignment time (sec.): 0.149534
-   Avg. Precomputation time (sec.): 0.174056
-   Avg. Number of expansions: 12438.7
-   Avg. Number of Trie expansions: 5442.67
-   Avg. Number of Ref. expandions: 6996
+   Avg. Band: 49.3547
+   Avg. Alignment time (sec.): 0.160838
+   Avg. Precomputation time (sec.): 0.186037
+   Avg. Number of expansions: 12338.7
+   Avg. Number of Trie expansions: 5196.33
+   Avg. Number of Ref. expandions: 7142.33
 
 
 Cost: 8
@@ -170,12 +170,12 @@ Cost: 10
 
 Cost: 11
    Tests: 1
-   Avg. Band: 86.42
-   Avg. Alignment time (sec.): 0.306816
-   Avg. Precomputation time (sec.): 0.325799
-   Avg. Number of expansions: 21605
-   Avg. Number of Trie expansions: 15774
-   Avg. Number of Ref. expandions: 5831
+   Avg. Band: 80.136
+   Avg. Alignment time (sec.): 0.315462
+   Avg. Precomputation time (sec.): 0.334981
+   Avg. Number of expansions: 20034
+   Avg. Number of Trie expansions: 13858
+   Avg. Number of Ref. expandions: 6176
 
 
 Cost: 12

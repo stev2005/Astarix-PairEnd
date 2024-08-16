@@ -555,7 +555,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
                 if (!to_explore(cur.qpos, cur.p, cur.negative, cur.g))
                     break;
                 //q.push(cur);
-                //cur.h = choose_heuristic(cur.qpos, cur.p, k, curseeds, curcrumbs);
+                //cur.h = chosen_heuristic(cur.qpos, cur.p, k, curseeds, curcrumbs);
                 //Q.Push(cur.g + cur.h, cur);
             }
             //cerr << "after greedy while\n";

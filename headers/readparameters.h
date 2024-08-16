@@ -1,6 +1,7 @@
 #pragma once
 
 #include "header.h"
+#include "astar/single_read_heursitic.h"
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -24,8 +25,10 @@ inline void read_parameters(int argc, char *argv[], int &d, int &k, string &type
             k = string_to_int(value);
         else if (argument == "--alignment")
             typealignment = string(argv[i + 1]);
-        else if (argument == "--heuristic")
+        else if (argument == "--heuristic"){
             heuristic = string (value);
+            select_heuristic();
+        }
         else if (argument == "--insert-distance")
             insdist = string_to_int(value);
         else if (argument == "--filter-distance-difference")

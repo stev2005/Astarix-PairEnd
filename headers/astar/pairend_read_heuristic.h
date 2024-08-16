@@ -7,7 +7,7 @@
 using namespace std;
 
 cost_t pairend_heuristic(int qpos, Node p1, Node p2, int k, MatchingKmers &info){
-    if (heuristic == "seed_heuristic"){
+    /*if (heuristic == "seed_heuristic"){
         cost_t h1 = seed_heuristic(qpos, p1, k, info.seeds1, info.crumbs1);
         cost_t h2 = seed_heuristic(qpos, p2, k, info.seeds2, info.crumbs2);
         return h1 + h2;
@@ -19,7 +19,8 @@ cost_t pairend_heuristic(int qpos, Node p1, Node p2, int k, MatchingKmers &info)
         cerr << "Choosen heuristic: " << heuristic << "\n";
         cerr << "Program is going to abort.\n";
         assert(false);
-    }
+    }*/
+    return chosen_heuristic(qpos, p1, k, info.seeds1, info.crumbs1) + chosen_heuristic(qpos, p2, k, info.seeds2, info.crumbs2);
 }
 
 
