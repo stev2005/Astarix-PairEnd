@@ -25,14 +25,14 @@ exptestsingleread_seed_heuristic_without_trie_opt:
 	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --trie-crumbs-opt NO --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/exptestsingleread_statsAstar.out
 
 singleend_ART_trie_opt:
-	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/single_test.in >$(SingleReadStatsDIR)/ART_trie_opt.out
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/single_testnew.in >$(SingleReadStatsDIR)/ART_trie_opt.out
 
 singleend_ART_no_trie_opt:
 	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --trie-crumbs-opt NO --reference $(EcoliDIR) --query $(SingleReadDIR)/single_test.in >$(SingleReadStatsDIR)/ART_no_trie_opt.out
 
 
 test_crumbs_trie_opt_seed_heuristic:
-	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/single_test.in >$(SingleReadStatsDIR)/single_test.out
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/illumina250.in >$(SingleReadStatsDIR)/illumina250.out
 
 
 testchep_dijkstra_heuristic:
@@ -40,6 +40,9 @@ testchep_dijkstra_heuristic:
 
 testpairend_seed_heuristic:
 	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --trie-positions-limit-checker 0 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out
+
+testpairend_seed_heuristic_without_trie_opt:
+	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --trie-crumbs-opt NO --insert-distance 5000 --filter-distance-difference 50 --trie-positions-limit-checker 0 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out
 
 testpairend_seed_heuristic_independent:
 	time ./main.exe --alignment $(PE)_independent --independent-aligns 100 --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --punish-heuristic-cost 20 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out

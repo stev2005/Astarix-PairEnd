@@ -34,7 +34,9 @@ void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
 inline void building_tries(string &ref, int d, int k, Trie *&rootdmer, Trie *&rootkmer, MatchingKmers &info){
     clock_t t = clock();
     construct_trie(ref, d, rootdmer, info.last, info.prevpos, info.backtotrieconnection, true);
+    ++k;
     construct_trie(ref, k, rootkmer, info.lastkmer, info.prevposkmer, info.backtotrieconnectionkmer, false);
+    --k;
     t = clock() - t;
     cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
 }
@@ -238,9 +240,8 @@ int main(int argc, char *argv[]){
             info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
             info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
             //filter_matches(info, szlongerread);
-            int readsz = queryp.first.size();
-            innerdist = insdist - readsz*2;///inner distance
-            readdist = innerdist + readsz;///distance between reads position with same indexes
+            innerdist = insdist - queryp.first.size() - queryp.second.size();///inner distance
+            readdist = innerdist + queryp.first.size();///distance between reads position with same indexes
             make_paired_ends_same_size(queryp);
             cerr << "crumbs to be set\n";
             if (triecrumbsopt == "yes"){
