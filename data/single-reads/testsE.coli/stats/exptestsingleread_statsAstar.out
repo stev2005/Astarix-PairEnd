@@ -1,6 +1,6 @@
 D: 10 k: 11
-reading reference: 0.001744s.
-constructing trie: 1.27295s.
+reading reference: 0.002741s.
+constructing trie: 1.26534s.
 
 Trie crumbs set with the optimization: 10570
 Trie crumbs set with the optimization: 3176
@@ -61,8 +61,8 @@ Trie crumbs set with the optimization: 678
 Cost: 0
    Tests: 2
    Avg. Band: 1.012
-   Avg. Alignment time (sec.): 0.00305239
-   Avg. Precomputation time (sec.): 0.0244347
+   Avg. Alignment time (sec.): 0.00191432
+   Avg. Precomputation time (sec.): 0.0228724
    Avg. Number of expansions: 253
    Avg. Number of Trie expansions: 10
    Avg. Number of Ref. expandions: 243
@@ -70,72 +70,72 @@ Cost: 0
 
 Cost: 1
    Tests: 1
-   Avg. Band: 1.072
-   Avg. Alignment time (sec.): 0.00314083
-   Avg. Precomputation time (sec.): 0.02504
-   Avg. Number of expansions: 268
+   Avg. Band: 1.024
+   Avg. Alignment time (sec.): 0.00193059
+   Avg. Precomputation time (sec.): 0.0268201
+   Avg. Number of expansions: 256
    Avg. Number of Trie expansions: 10
-   Avg. Number of Ref. expandions: 258
+   Avg. Number of Ref. expandions: 246
 
 
 Cost: 2
    Tests: 6
-   Avg. Band: 2.18133
-   Avg. Alignment time (sec.): 0.00936394
-   Avg. Precomputation time (sec.): 0.0343294
-   Avg. Number of expansions: 545.333
+   Avg. Band: 1.54533
+   Avg. Alignment time (sec.): 0.00651302
+   Avg. Precomputation time (sec.): 0.0312813
+   Avg. Number of expansions: 386.333
    Avg. Number of Trie expansions: 130
-   Avg. Number of Ref. expandions: 415.333
+   Avg. Number of Ref. expandions: 256.333
 
 
 Cost: 3
    Tests: 3
-   Avg. Band: 6.93333
-   Avg. Alignment time (sec.): 0.0182663
-   Avg. Precomputation time (sec.): 0.0452499
-   Avg. Number of expansions: 1733.33
+   Avg. Band: 2.068
+   Avg. Alignment time (sec.): 0.0100382
+   Avg. Precomputation time (sec.): 0.0367094
+   Avg. Number of expansions: 517
    Avg. Number of Trie expansions: 228.667
-   Avg. Number of Ref. expandions: 1504.67
+   Avg. Number of Ref. expandions: 288.333
 
 
 Cost: 4
    Tests: 4
-   Avg. Band: 10.69
-   Avg. Alignment time (sec.): 0.0392362
-   Avg. Precomputation time (sec.): 0.0659272
-   Avg. Number of expansions: 2672.5
+   Avg. Band: 5.1
+   Avg. Alignment time (sec.): 0.0296631
+   Avg. Precomputation time (sec.): 0.0586435
+   Avg. Number of expansions: 1275
    Avg. Number of Trie expansions: 924
-   Avg. Number of Ref. expandions: 1748.5
+   Avg. Number of Ref. expandions: 351
 
 
 Cost: 5
    Tests: 4
-   Avg. Band: 5.649
-   Avg. Alignment time (sec.): 0.0299869
-   Avg. Precomputation time (sec.): 0.0542019
-   Avg. Number of expansions: 1412.25
+   Avg. Band: 4.402
+   Avg. Alignment time (sec.): 0.0273896
+   Avg. Precomputation time (sec.): 0.0524742
+   Avg. Number of expansions: 1100.5
    Avg. Number of Trie expansions: 783.5
-   Avg. Number of Ref. expandions: 628.75
+   Avg. Number of Ref. expandions: 317
 
 
 Cost: 6
    Tests: 3
-   Avg. Band: 12.328
-   Avg. Alignment time (sec.): 0.0449865
-   Avg. Precomputation time (sec.): 0.0681995
-   Avg. Number of expansions: 3082
+   Avg. Band: 6.156
+   Avg. Alignment time (sec.): 0.0363527
+   Avg. Precomputation time (sec.): 0.0588624
+   Avg. Number of expansions: 1539
    Avg. Number of Trie expansions: 1105.67
-   Avg. Number of Ref. expandions: 1976.33
+   Avg. Number of Ref. expandions: 433.333
 
 
 Cost: 7
    Tests: 3
-   Avg. Band: 49.3547
-   Avg. Alignment time (sec.): 0.160838
-   Avg. Precomputation time (sec.): 0.186037
-   Avg. Number of expansions: 12338.7
+   Avg. Band: 24.7067
+   Avg. Alignment time (sec.): 0.129923
+   Avg. Precomputation time (sec.): 0.154199
+   Avg. Number of expansions: 6176.67
    Avg. Number of Trie expansions: 5196.33
-   Avg. Number of Ref. expandions: 7142.33
+   Avg. Number of Ref. expandions: 980.333
 
 
 Cost: 8
@@ -170,12 +170,12 @@ Cost: 10
 
 Cost: 11
    Tests: 1
-   Avg. Band: 80.136
-   Avg. Alignment time (sec.): 0.315462
-   Avg. Precomputation time (sec.): 0.334981
-   Avg. Number of expansions: 20034
+   Avg. Band: 71.508
+   Avg. Alignment time (sec.): 0.317373
+   Avg. Precomputation time (sec.): 0.336493
+   Avg. Number of expansions: 17877
    Avg. Number of Trie expansions: 13858
-   Avg. Number of Ref. expandions: 6176
+   Avg. Number of Ref. expandions: 4019
 
 
 Cost: 12

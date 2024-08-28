@@ -20,6 +20,8 @@ cost_t special_heuristic_cost = 0;
 int nindel = 0;///can be taken as ndel and nins if deletion cost ==  insertion cost
 string heuristic;
 
+//ofstream erroroutput;
+
 chrono::time_point<chrono::high_resolution_clock> gettimenow_chrono(){
     return chrono::high_resolution_clock::now();
 }

@@ -129,11 +129,24 @@ void ensure_info_is_not_changed(MatchingKmers &info, bool lamp){
     }
 }
 
+    inline void print_query_seeds(vector<int> &seeds, vector<int> &nseeds){
+        cerr << "start of print_query_seeds\n";
+        cerr << "Positive seeds:\n";
+        for (auto i: seeds)
+            cerr << i << " ";
+        cerr << "\nNegative seeds:\n";
+        for (auto i: nseeds)
+            cerr << i << " ";
+        cerr << "end of print_query_seeds()";
+    }
+
+
 int main(int argc, char *argv[]){
     /*ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);*/
     cerr <<"Start of the program\n";
+    //erroroutput.open("errormessages.out\n");
     int d, k, locinsdist, locdrange;
     int locindaligns;
     string typealignment;
@@ -173,10 +186,11 @@ int main(int argc, char *argv[]){
     /*check_are_vectors_sorted(rootdmer);
     cerr << "Ended check sorted\n";
     return 0;*/
-    for (int testcase=1; testcase<=testcases; ++testcase, cerr << '\n' /*, cout<<endl*/){
-        cerr << "Query "<< testcase << ":\n";
+    for (int testcase=1; testcase<=testcases; ++testcase, cerr << '\n'/*, erroroutput << "\n"*/ /*, cout<<endl*/){
+        //cerr << "Query "<< testcase << ":\n";
+        //erroroutput << "Query "<< testcase << ":\n";
         //cout << "Query "<< testcase << ":\n";
-        int result;
+        int rezult;
         //t = clock();
         if (typealignment == "single-read"){
             //cerr << "If for single read alingment\n";
@@ -193,6 +207,7 @@ int main(int argc, char *argv[]){
                 //t = clock();
                 info.seeds = query_into_seeds(query, k, rootkmer);
                 info.nseeds = query_into_seeds(nquery, k, rootkmer);
+                //print_query_seeds(info.seeds, info.nseeds);
                 nindel = info.seeds.size();
                 //t = clock() - t;
                 //cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
@@ -221,8 +236,9 @@ int main(int argc, char *argv[]){
             }
 
             //t = clock();
-            vector<pair<cost_t, int> > alignments;
-            alignments = astar_single_read_alignment(query, nquery, ref, d, k, rootdmer, info, 1);
+            //vector<pair<cost_t, int> > alignments;
+            //alignments
+            rezult = astar_single_read_alignment(query, nquery, ref, d, k, rootdmer, info, 1);
             //cerr << "alignmnets.size(): " << alignments.size() << "\n"; 
             //cerr << "Here after single-end alignment\n";
             //cerr << "Cost: " << alignments.front().first << "\n";
@@ -230,7 +246,7 @@ int main(int argc, char *argv[]){
             //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
             //evalsts.aligntime += runtime(t);
             double precomptime = runtimechrono(startprecomp, gettimenow_chrono());
-            if (alignments.size()) seevals[alignments.front().first].precomptime += precomptime;
+            if (rezult != -1) seevals[rezult].precomptime += precomptime;
         }
         else if (typealignment == "paired-end"){ //paired-end alignment joint
             pair<string, string> queryp;
@@ -252,12 +268,12 @@ int main(int argc, char *argv[]){
             }
             cerr << "setting crumbs done\n";
             auto startaln = chrono::high_resolution_clock::now();
-            result = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
+            rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
             auto endaln = chrono::high_resolution_clock::now();
             double runtimealn = runtimechrono(startaln, endaln);
-            cerr << "Cost: " << result << "\n";
+            cerr << "Cost: " << rezult << "\n";
             cerr << "Alignment: " << runtimealn << "\n";
-            cout << "Cost: " << result << "\n";
+            cout << "Cost: " << rezult << "\n";
             cout << "Alignment: " << runtimealn << "\n";
             cout << "\n";
         }

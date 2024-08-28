@@ -278,9 +278,7 @@ map<tuple<int, Node, bool>, cost_t>& get_expanded_states(bool del = false){
     return expanded_states;
 }
 
-bool to_explore(int qpos, Node p, bool negative, cost_t g){
-    //static map<pair<int, Node>, cost_t> expanded_states;
-    //map<pair<int, Node>, cost_t> & expanded_states = get_expanded_states();
+/*bool to_explore(int qpos, Node p, bool negative, cost_t g){
     map<tuple<int, Node, bool>, cost_t> & expanded_states = get_expanded_states();
     if (expanded_states.find({qpos, p, negative}) == expanded_states.end()){
         expanded_states[{qpos, p, negative}] = g;
@@ -294,13 +292,27 @@ bool to_explore(int qpos, Node p, bool negative, cost_t g){
         return false;
     }
     assert(false);
+}*/
+
+bool to_explore(int qpos, Node p, bool negative, cost_t g){
+    map<tuple<int, Node, bool>, cost_t> & ex_st = get_expanded_states();
+    tuple<int, Node, bool> cur({qpos, p, negative});
+    if (ex_st.find(cur) == ex_st.end()) return true;
+    if (ex_st[cur] > g) return true;
+    return false;
+}
+
+inline void expand_state(int qpos, Node p, bool negative, cost_t g){
+    map<tuple<int, Node, bool>, cost_t > & ex_st = get_expanded_states();
+    tuple<int, Node, bool> cur({qpos, p, negative});
+    ex_st[cur] = g;
 }
 
 bool gready_available(string &query, string &ref, int qpos, Node p){
-    if (!p.is_in_trie())
-        return false;
-    if (ref.size() > p.rpos && query[qpos] == ref[p.rpos])
-        return true;
+    if (p.is_in_trie()) return false;
+    if (p.rpos < (int)ref.size())
+        if (query[qpos] == ref[p.rpos])
+            return true;
     return false;
 }
 
@@ -355,15 +367,14 @@ vector<Statesr> & get_next_states_sr(int qpos, Node p, char cqpos, string &ref, 
         }
     }
     else{
-        next.push_back(createStatesr(qpos + 1, p.rpos, 1, k, seeds, crumbs));
-        //cout << "inheritor\n";
-        if (p.rpos < ref.size()){
-            next.push_back(createStatesr(qpos, p.rpos + 1, 1, k, seeds, crumbs));
-            //cout << "inheritor\n";
-            if (cqpos == ref[p.rpos])
-                next.push_back(createStatesr(qpos + 1, p.rpos + 1, 0, k, seeds, crumbs));
-            else next.push_back(createStatesr(qpos + 1, p.rpos + 1, 1, k, seeds, crumbs));
-            //cout << "inheritor\n";
+        if (p.rpos < ref.size() && cqpos == ref[p.rpos])
+            next.push_back(createStatesr(qpos + 1, p.rpos + 1, 0, k, seeds, crumbs));
+        else{
+            next.push_back(createStatesr(qpos + 1, p.rpos, 1, k, seeds, crumbs));
+            if (p.rpos < ref.size()){
+                next.push_back(createStatesr(qpos, p.rpos + 1, 1, k, seeds, crumbs));
+                next.push_back(createStatesr(qpos + 1, p.rpos + 1, 1, k, seeds, crumbs));
+            }
         }
     }
     //cout << "The end of getting heirs\n";
@@ -443,9 +454,9 @@ void push_first_single_end_states_customQ(BucketQueueSE &Q, MatchingKmers &info,
     }
 }
 
-vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nquery, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info, int numaligns){
+int astar_single_read_alignment(string &query, string &nquery, string &ref, int d, int k, Trie *rootdmer, MatchingKmers &info, int numaligns){
     cerr << "Query's size: " << query.size() << '\n';
-    vector< pair<cost_t, int> > alignments;
+    //vector< pair<cost_t, int> > alignments;
     int n = query.size();
     int m = ref.size();
     int cntexpansions = 0;
@@ -482,111 +493,55 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
         chrono::duration<double> takentime = nowt - startt;
         if (takentime.count() > 7){
             cerr << "Alignment time more than 7 sec. Not alignable sample\n";
-            return alignments;
+            get_expanded_states(true);
+            //return alignments;
+            return -1;
         }
 
-
-        //cur = q.top();
-        cntexpansions++;
-        //q.pop();
-        //cur = Q.Top().second;
         cur = Q.Top();
         Q.Pop();
-        /*if (cur.negative) 
-            cerr << "negative strand price: " << cur.negative << "\n"; */
-        //cerr << "popped from Q\n";
-        //cerr << "cur.g: " << cur.g <<  " cur.negative: " << cur.negative << "\n";
-        /*if (cntshow < 10){
-            cout << "Number of missing crumbs of Node: " << info.crumbs[cur.p].count() << " ";
-            cur.print();
-        }*/
-        /*if (minmaxcost < cur.g){
-            minmaxcost = cur.g;
-            cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative
-            << " cur.qpos: " << cur.qpos << "\n";
-        }*/
-        if (cur.p.is_in_trie()){
-            /*if (istrie == false)
-                istrie = true;*/
-            cntexpansionsTrie++;  
-            /*if (info.crumbs[cur.p].count() == 0)
-                cntTrienodeswithoutcrumbs++;*/
-            /*auto it = expandedstates.find({cur.qpos, cur.p});
-            if (it != expandedstates.end())
-                cntreexpandedTrienodes++;*/
-        }
-        else{
-            //istrie = true;
-            //cntswitchfromtrietoline++;
-            cntexpansionsref++;
-            /*auto it = expandedstates.find({cur.qpos, cur.p});
-            if (it != expandedstates.end())
-                cntreexpandedrefnodes++;*/
-        }
-        if (cur.qpos == n){
-            /*if (cntaligns == 0)
-                showcounters_for_the_best_aligner(cntexpansions, cntexpansionsTrie, cntexpansionsref,cntTrienodeswithoutcrumbs,
-                    cntreexpandedTrienodes, cntreexpandedrefnodes, cntswitchfromtrietoline, n);*/
-            //cerr << "cur.qpos: " << cur.qpos << "\n";
-            alignments.push_back({cur.g, cur.p.rpos});
-            cntaligns++;
-            if (cntaligns == numaligns)
-                break;
-        }
-        if (to_explore(cur.qpos, cur.p, cur.negative, cur.g)){
-            //cerr << "allowed to explore cur\n";
-            /*while (to_explore(cur.qpos, cur.p, cur.g) && gready_available(query, ref, cur.qpos, cur.p) && cur.qpos < n ){
-                cur.qpos++;
-                cur.p.rpos++;
-                cntexpansions++;
+
+            if (minmaxcost < cur.g){
+                minmaxcost = cur.g;
+                cerr << "New mimimal maximum cost achieved: " << minmaxcost << " cur.negative: " << cur.negative
+                << " cur.qpos: " << cur.qpos << "\n";
             }
-            if (cur.qpos == n)
-                break;*/
+
+       ++cntexpansions;
+        if (cur.p.is_in_trie())
+            ++cntexpansionsTrie;  
+        else ++cntexpansionsref;
+        if (cur.qpos == n) break;
+        if (to_explore(cur.qpos, cur.p, cur.negative, cur.g)){
+            expand_state(cur.qpos, cur.p, cur.negative, cur.g);
+
             string & curquery = (cur.negative)? nquery: query;
             vector<int> & curseeds = (cur.negative)? info.nseeds: info.seeds;
             crumbs_t & curcrumbs = (cur.negative)? info.ncrumbs: info.crumbs;
-            bool changed = false; // are cur.qpos | cur.p changed
-            //cerr << "before Greedy while\n";
-            while (cur.qpos < n && gready_available(curquery, ref, cur.qpos, cur.p)){//if
-                cur.qpos++;
-                cur.p.rpos++;
-                cntexpansions++;
-                changed = true;
-                if (!to_explore(cur.qpos, cur.p, cur.negative, cur.g))
-                    break;
-                //q.push(cur);
-                //cur.h = chosen_heuristic(cur.qpos, cur.p, k, curseeds, curcrumbs);
-                //Q.Push(cur.g + cur.h, cur);
-            }
-            //cerr << "after greedy while\n";
-            if (cur.qpos == n){
-                //cerr << "cur.qpos: " << cur.qpos << "\n";
-                alignments.push_back({cur.g, cur.p.rpos});
-                cntaligns++;
-                if (cntaligns == numaligns)
-                    break;
-            }
-            //cerr << "chech whether normal expansion is possible\n";
-            //else{
-            if (!changed | to_explore(cur.qpos, cur.p, cur.negative, cur.g)){
-                //cerr << "Normal expansion possible\b";
-                vector<Statesr> & nextst = get_next_states_sr(cur.qpos, cur.p, curquery[cur.qpos], ref, k, info.last, info.prevpos, curseeds, curcrumbs);
-                /*if (cntshow < 10){
-                    cntshow++;
-                    showinfoaboutstatesrancestors(nextst, info);
+
+            //if (gready_available(curquery, ref, cur.qpos, cur.p)){
+            if (false){
+                /*while(cur.qpos < n && gready_available(curquery, ref, cur.qpos, cur.p)){
+                    ++cur.qpos;
+                    ++cur.p.rpos;
                 }*/
+                ++cur.qpos;
+                ++cur.p.rpos;
+                Q.Push(createStatesr(cur.qpos, cur.p, cur.g, k, curseeds, curcrumbs));
+            }
+            else{
+                vector<Statesr> & nextst = get_next_states_sr(cur.qpos, cur.p, curquery[cur.qpos], ref, k, info.last, info.prevpos, curseeds, curcrumbs);
                 for (auto i: nextst){
                     i.g += cur.g;
                     i.negative = cur.negative;
-                    //q.push(i);
-                    //Q.Push(i.g + i.h, i);
                     Q.Push(i);
                 }
-                //cerr << "nbs pushed in the Q\n";
             }
-            //else cerr << "Not possible normal expansion\n";
         }
-        //cerr << "end of the while(!Q.Empty())\n";
+        //cur = q.top();
+        //cntexpansions++;
+        //q.pop();
+        //cur = Q.Top().second;
     }
     //t = clock() - t;
     auto endt = chrono::high_resolution_clock::now();
@@ -605,5 +560,7 @@ vector<pair<cost_t, int> > astar_single_read_alignment(string &query, string &nq
         seevals[cur.g].add_entry((double)cntexpansions / (double)n, cntexpansions, cntexpansionsTrie, cntexpansionsref, aligntime);
     //cerr << "In single-end alignments.size(): " << alignments.size() << "\n";
     cerr << "Cost: " << cur.g << '\n';
-    return alignments;
+    cerr << "Align time: " << aligntime << "\n";
+    //return alignments;
+    return cur.g;
 }
