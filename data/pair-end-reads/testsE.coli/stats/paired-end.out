@@ -1,111 +1,111 @@
 D: 10 k: 12
-reading reference: 0.001887s.
-constructing trie: 1.36117s.
+reading reference: 0.001811s.
+constructing trie: 1.27223s.
 
 Trie crumbs set with the optimization: 6669
 Trie crumbs set with the optimization: 7346
-Band: 1000.95
-Times heuristic is infinity: 57182
+Band: 1361.93
+Times heuristic is infinity: 49216
 Cost: 10
-Alignment: 15.5493
+Alignment: 18.2099
 
 Trie crumbs set with the optimization: 7687
 Trie crumbs set with the optimization: 8637
-Band: 4.306
-Times heuristic is infinity: 560
+Band: 9.1
+Times heuristic is infinity: 2166
 Cost: 4
-Alignment: 0.117728
+Alignment: 0.247765
 
 Trie crumbs set with the optimization: 6503
 Trie crumbs set with the optimization: 5721
-Band: 4278.58
-Times heuristic is infinity: 959086
+Band: 4927.05
+Times heuristic is infinity: 951680
 Cost: 14
-Alignment: 54.5412
+Alignment: 57.3585
 
 Trie crumbs set with the optimization: 6575
 Trie crumbs set with the optimization: 8002
-Band: 654.42
-Times heuristic is infinity: 63672
+Band: 660.096
+Times heuristic is infinity: 56136
 Cost: 8
-Alignment: 10.1893
+Alignment: 9.97843
 
 Trie crumbs set with the optimization: 6632
 Trie crumbs set with the optimization: 6223
-Band: 31.852
-Times heuristic is infinity: 1960
+Band: 36.054
+Times heuristic is infinity: 1418
 Cost: 9
-Alignment: 0.659273
+Alignment: 0.743223
 
 Trie crumbs set with the optimization: 5826
 Trie crumbs set with the optimization: 6981
-Band: 372.08
-Times heuristic is infinity: 54446
+Band: 476.788
+Times heuristic is infinity: 53360
 Cost: 9
-Alignment: 5.91964
+Alignment: 6.90605
 
 Trie crumbs set with the optimization: 6802
 Trie crumbs set with the optimization: 6260
-Band: 4110.92
-Times heuristic is infinity: 345542
+Band: 5800.75
+Times heuristic is infinity: 432996
 Cost: 14
-Alignment: 50.2667
+Alignment: 64.9376
 
 Trie crumbs set with the optimization: 7568
 Trie crumbs set with the optimization: 6374
-Band: 397.338
-Times heuristic is infinity: 20408
+Band: 579.508
+Times heuristic is infinity: 22542
 Cost: 7
-Alignment: 6.84985
+Alignment: 8.44647
 
 Trie crumbs set with the optimization: 7654
 Trie crumbs set with the optimization: 6750
-Band: 940.536
-Times heuristic is infinity: 65650
+Band: 1233.47
+Times heuristic is infinity: 72142
 Cost: 9
-Alignment: 14.8708
+Alignment: 16.7535
 
 Trie crumbs set with the optimization: 6614
 Trie crumbs set with the optimization: 6610
-Band: 6056.46
-Times heuristic is infinity: 450494
+Band: 7188.26
+Times heuristic is infinity: 487432
 Cost: 14
-Alignment: 69.7387
+Alignment: 73.9569
 
 Trie crumbs set with the optimization: 6196
 Trie crumbs set with the optimization: 7530
-Band: 4108.77
-Times heuristic is infinity: 253298
+Band: 4483.7
+Times heuristic is infinity: 241042
 Cost: 15
-Alignment: 54.9558
+Alignment: 55.3471
 
 Trie crumbs set with the optimization: 6645
 Trie crumbs set with the optimization: 7590
-Band: 14314.7
-Times heuristic is infinity: 2262570
+Band: 16043.2
+Times heuristic is infinity: 2488236
 Cost: 16
-Alignment: 139.654
+Alignment: 148.944
 
 Trie crumbs set with the optimization: 6839
 Trie crumbs set with the optimization: 5684
-Band: 19148.7
-Times heuristic is infinity: 2977798
+Band: 20102.1
+Times heuristic is infinity: 3018567
 Cost: 22
-Alignment: 172.242
+Alignment: 177.001
 
 Trie crumbs set with the optimization: 7280
 Trie crumbs set with the optimization: 6513
-Band: 4187.62
-Times heuristic is infinity: 132270
+Band: 4471.94
+Times heuristic is infinity: 122160
 Cost: 13
-Alignment: 53.0667
+Alignment: 54.2601
 
 Trie crumbs set with the optimization: 6361
 Trie crumbs set with the optimization: 5597
-Band: 41.1494
-Times heuristic is infinity: 4810
+Band: 71.508
+Times heuristic is infinity: 7942
 Cost: 11
-Alignment: 0.878049
+Alignment: 1.51026
 
 Cost: 0
    Tests: 0

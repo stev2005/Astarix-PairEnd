@@ -238,6 +238,28 @@ map<tuple<int, Node, Node>, cost_t>& get_expanded_prstates(bool del = false){
     return expanded_prstates;
 }
 
+inline void push_first_prstates_in_customQ(BucketQueuePE &Q, int m, Trie *root, int d, int k, MatchingKmers &info){
+    cost_t h = pairend_heuristic(0, root, root, k, info);
+    Statepr cur = createStatepr(0, root, root, 0, h);
+    Q.Push(cur);
+    for (int i = m - d + 1; i < m; ++i){
+        h = pairend_heuristic(0, Node(root), Node(i), k, info);
+        cur = createStatepr(0, root, i, 0, h);
+        Q.Push(cur);
+        h = pairend_heuristic(0, Node(i), Node(root), k, info);
+        cur = createStatepr(0, i, root, 0, h);
+        Q.Push(cur);
+    }
+    for (int i = m - d + 1; i < m; ++i){
+        for (int j = i; j < m; ++j){
+            h = pairend_heuristic(0, Node(i), Node(j), k, info);
+            cur = createStatepr(0, i, j, 0, h);
+            Q.Push(cur);
+        }
+    }
+
+}
+
 bool to_explore_pr(int qpos, Node p1, Node p2, cost_t g){
     //cout << "to explore:\n";
     //cout << "qpos: " << qpos  << " p1.u: " << p1.u << " p1.rpos: " << p1.rpos << " p2.u: " << p2.u << " p2.rpos: " << p2.rpos << " g: " << g << "\n";
@@ -438,10 +460,12 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
     int n = queryp.first.size();
     int m = ref.size();
     cntinfhvalues = 0;
-    priority_queue<Statepr> q;
+    //priority_queue<Statepr> q;
+    BucketQueuePE Q;
     punishl = readdist - drange;
     punishr = readdist + drange;
-    push_first_prstates_in_q(q, m, root, d, k, info);
+    //push_first_prstates_in_q(q, m, root, d, k, info);
+    push_first_prstates_in_customQ(Q, m, root, d, k, info);
     Statepr cur;
     long long cntexpansions = 0;
     long long cntTrieTrieexpansions = 0;
@@ -451,9 +475,9 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
 
     int minmaxcost = -1;
 
-    while (!q.empty()){
-        cur = q.top();
-        q.pop();
+    while (!Q.Empty()){
+        cur = Q.Top();
+        Q.Pop();
         //cntexpansions++;
         increasecnt(cur.qpos, cur.p1, cur.p2, cntexpansions, cntTrieTrieexpansions, cntrefTrieexpansions, cntTrierefexpansions, cntrefrefexpansions);
         if (cur.qpos == n)
@@ -472,14 +496,14 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, string &ref, i
                            seed_heuristic(cur.qpos + 1, Node(cur.p2.rpos + 1), k, info.seeds2, info.crumbs2); */
                 cost_t h = pairend_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), k, info);
                 Statepr nextstate = createStatepr(cur.qpos + 1, cur.p1.rpos + 1, cur.p2.rpos + 1, cur.g, h);
-                q.push(nextstate);
+                Q.Push(nextstate);
             }
             else{
                 vector<Statepr> &nextpr = get_next_pr(cur.qpos, cur.p1, cur.p2, k, queryp, ref, info);
                 for (auto i: nextpr){
                     i.g += cur.g;
                     //if (i.g + i.h < 15) cerr << "inheritor: qpos: " << i.qpos << " g: " << i.g << " h:" << i.h << "\n";
-                    q.push(i);
+                    Q.Push(i);
                 }
             }
         }
