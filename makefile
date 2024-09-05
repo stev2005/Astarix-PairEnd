@@ -5,7 +5,7 @@ PE_StatsDIR=data/pair-end-reads/testsE.coli/stats
 PairedEndCompareDijkstraIndDIR=data/pair-end-reads/Comparison/'Dijkstra independent'
 PairedEndCompareDijkstraJointDIR=data/pair-end-reads/Comparison/'Dijkstra joint'
 PairedEndCompareAstarIndDIR=data/pair-end-reads/Comparison/'Astarix independent'
-EcoliDIR=data/EcoliRef/reference.in
+EcoliDIR=data/EcoliRef/reference.fa
 EcoliREF="--reference $(EcoliDIR)"
 PE=paired-end
 SH=seed_heuristic
@@ -15,8 +15,14 @@ default: main
 main:
 	g++ main.cpp -o main.exe
 
+run:
+	./main.exe
+
+test:
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/single-read.out
+
 testsingleread_seed_heuristic:
-	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 12 $(EcoliREF) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/single-read.out
+	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 12 --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/single-read.out
 
 exptestsingleread_seed_heuristic:
 	time ./main.exe --alignment single-read --heuristic $(SH) --trie-depth 10 --seed-len 11 --reference $(EcoliDIR) --query $(SingleReadDIR)/1.in >$(SingleReadStatsDIR)/exptestsingleread_statsAstar.out
@@ -39,7 +45,13 @@ testchep_dijkstra_heuristic:
 	time ./main.exe --alignment $(PE) --heuristic dijkstra_heuristic --trie-depth 10 --seed-len 15 --insert-distance 5000 --filter-distance-difference 500 --punish-heuristic-cost 20 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out
 
 testpairend_seed_heuristic:
-	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --trie-positions-limit-checker 0 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out
+	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 5000 --filter-distance-difference 50 --trie-positions-limit-checker 0 --reference $(EcoliDIR) --query1 $(PE_DIR)/pe_reads1.in --query2 $(PE_DIR)/pe_reads2.in  >$(PE_StatsDIR)/$(PE).out
+
+testpairend_seed_heuristic_Artfq:
+	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 1000 --filter-distance-difference 20  --reference $(EcoliDIR) --query1 $(PE_DIR)/paired_end_ART_tests1.fq --query2 $(PE_DIR)/paired_end_ART_tests2.fq  >$(PE_StatsDIR)/$(PE).out
+
+testpairend_seed_heuristic_Art:
+	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --insert-distance 1000 --filter-distance-difference 20  --reference $(EcoliDIR) --query1 $(PE_DIR)/Art_reads1.in --query2 $(PE_DIR)/Art_reads2.in  >$(PE_StatsDIR)/$(PE).out
 
 testpairend_seed_heuristic_without_trie_opt:
 	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 10 --seed-len 12 --trie-crumbs-opt NO --insert-distance 5000 --filter-distance-difference 50 --trie-positions-limit-checker 0 --reference $(EcoliDIR) --query $(PE_DIR)/1.in >$(PE_StatsDIR)/$(PE).out
