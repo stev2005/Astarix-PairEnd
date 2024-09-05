@@ -16,11 +16,21 @@ cost_t maximum_edit_cost;
 char special_sign = '$';
 cost_t special_cost = 0;
 cost_t special_heuristic_cost = 0;
+cost_t cequal = 0;
+cost_t csub = 1;
+cost_t cdel = 1;
+cost_t cins = 1;
+cost_t cdmin = 1;
+int ndel = 0;
+int nins = 0;
+const string single_end_alignment = "single-read";
+const string paired_end_alignment = "paired-end";
+
+int get_nins_ndel_value(int qsz, int ssz, cost_t cop){
+    return ((qsz * cequal + ssz * cdmin) % cop)? (qsz * cequal + ssz * cdmin) / cop + 1: (qsz * cequal + ssz * cdmin);
+}
 
 int nindel = 0;///can be taken as ndel and nins if deletion cost ==  insertion cost
-string heuristic;
-
-//ofstream erroroutput;
 
 chrono::time_point<chrono::high_resolution_clock> gettimenow_chrono(){
     return chrono::high_resolution_clock::now();
@@ -31,7 +41,7 @@ double runtimechrono(chrono::time_point<chrono::high_resolution_clock> start, ch
     return takentime.count();
 }
 
-struct Evaluations{
+struct EvaluationsPE{
     eval_t cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions, cntpunishedstates;
     /// cnts percentages to cntexpansions;
     eval_tr percntTrieTrieexpansions, percntTrierefexpansions, percntrefTrieexpansions, percntrefrefexpansions;
@@ -43,7 +53,7 @@ struct Evaluations{
     ///stats for single read
     eval_tr sraligntime, srcrumbingtime;
     
-    Evaluations(){
+    EvaluationsPE(){
         cntexpansions = 0;
         cntTrieTrieexpansions = 0;
         cntTrierefexpansions = 0;
@@ -54,7 +64,8 @@ struct Evaluations{
     }
     
     void update_astar_cnts(eval_t _cntexpansions, eval_t _cntTrieTrieexpansions,eval_t _cntTrierefexpansions, eval_t _cntrefTrieexpansions,
-    eval_t _cntrefrefexpansions, eval_tr _band, eval_t _cntpunishedstates){
+    eval_t _cntrefrefexpansions, eval_tr _band, eval_t _cntpunishedstates, eval_tr _aligntime){
+        ++ntests;
         cntexpansions += _cntexpansions;
         cntTrieTrieexpansions += _cntTrieTrieexpansions;
         cntTrierefexpansions += _cntTrierefexpansions;
@@ -62,6 +73,7 @@ struct Evaluations{
         cntrefrefexpansions += _cntrefrefexpansions;
         band += _band;
         cntpunishedstates += _cntpunishedstates;
+        aligntime += _aligntime;
     }
 
     void update_astar_percentages(eval_tr _percntTrieTrieexpansions, eval_tr _percntTrierefexpansions, eval_tr _percntrefTrieexpansions, eval_tr _percntrefrefexpansions){
@@ -87,7 +99,7 @@ struct Evaluations{
         cout << "Average Stats for this test group:\n";
         cout << "   Number of tests: " << ntests << "\n";
         cout << "   Error-rate: " << "(you have to know it in advance)\n";
-        cout << "   Avg. runtime filtering legit from faux matches: " << filtermatchestime / ntestsr << " (sec.)\n";
+        //cout << "   Avg. runtime filtering legit from faux matches: " << filtermatchestime / ntestsr << " (sec.)\n";
         cout << "   Avg. run-time setting crumbs: " << getcrumbstime / ntestsr<< " (sec.)\n";
         cout << "   Avg. run-time joint alignment: " << aligntime / ntestsr << " (sec.)\n";
         cout << "   Trie depth: " << d << "\n";
@@ -136,7 +148,7 @@ struct Evaluations{
         cout << "   expanded states u, v ∈ Gr (% of all): " << percntrefrefexpansions << endl;
     }
 };
-Evaluations evalsts;
+EvaluationsPE peevals[128];
 
 struct EvaluationsSE{
     eval_t cntexpansions, cntTrieexpansions, cntrefexpansions;

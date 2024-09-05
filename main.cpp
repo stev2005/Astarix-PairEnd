@@ -1,319 +1,133 @@
 #include "headers/header.h"
-#include<bits/stdc++.h>
-//#include "headers/dp.h"
+#include <bits/stdc++.h>
 #include "headers/trie.h"
+#include "headers/readinput.h"
+#include "headers/readparameters.h"
+#include "headers/astar/statesstruct.h"
 #include "headers/astar/astar_single_reads.h"
 #include "headers/astar/astar_pair-end.h"
-#include "headers/readparameters.h"
-#include "headers/readinput.h"
 using namespace std;
 
-void printtriecrumbs(map <Node, bitset<64> > &crumbs, Trie *T, string s){
-    cout << "string s: "<< s << " crumbs: ";
-    for (int i = 0; i < 4; ++i)
-        cout << crumbs[Node(T)][i] << " ";
-    cout << endl;
-    for (int i = 0; i < 4; ++i)
-        if (T->child[i] != nullptr)
-            printtriecrumbs(crumbs, T->child[i], s + base[i]);
-}
-
-void printoutcrumbs(map<Node, bitset<64> > &crumbs, Trie *root){
-    for (auto it = crumbs.begin(); it != crumbs.end(); ++it){
-        Node cur = it->first;
-        if (cur.is_in_trie() == false){
-            cout << "Node in the reference "<<cur.rpos<<"\n";
-            for (int i = 0; i < 4; ++i)
-                cout << it->second[i] << " ";
-            cout << endl;
-        }
-    }
-    printtriecrumbs(crumbs, root, "");
-}
-
-inline void building_tries(string &ref, int d, int k, Trie *&rootdmer, Trie *&rootkmer, MatchingKmers &info){
-    clock_t t = clock();
-    construct_trie(ref, d, rootdmer, info.last, info.prevpos, info.backtotrieconnection, true);
-    ++k;
-    construct_trie(ref, k, rootkmer, info.lastkmer, info.prevposkmer, info.backtotrieconnectionkmer, false);
-    --k;
-    t = clock() - t;
-    cout << "constructing trie: "<< (double) t / CLOCKS_PER_SEC << "s.\n"; 
-}
-
-inline void printmatches(MatchingKmers &info){
-    vector<pair<int, int> > matches;
-    vector<int> & lastkmer = info.lastkmer;
-    vector<int> & prevposkmer = info.prevposkmer;
-    vector<int> & seeds = info.seeds;
-    for (int i = 0; i < seeds.size(); ++i){
-        if (seeds[i] == -1) continue;
-        for (int j = lastkmer[seeds[i]]; j != -1; j = prevposkmer[j])
-            matches.push_back({j, i});
-    }
-    sort(matches.begin(), matches.end());
-    cout << "mathces1:\n";
-    for (auto i: matches)
-        cout << i.first << " " << i.second << "\n";
-    cout << "\n";
-}
-
-double runtime(clock_t t){
-    return (double) t / CLOCKS_PER_SEC;
-}
-
-void check_are_vectors_sorted(Trie* T){
-    if (T == nullptr)
-        return;
-    int sz = T->positions.size();
-    cout << "sz: " << sz << endl;
-    for (int i = 1; i < sz; ++i)
-        if (T->positions[i - 1] > T->positions[i]){
-            cerr << "Not sorted\n";
-        }
-    for (int i = 0; i < 4; ++i){
-        cout << "From: " << T << " to child: " << i << endl; 
-        check_are_vectors_sorted(T->child[i]);
-    }
-}
-
-void make_paired_ends_same_size(pair<string, string> &q){
-    while (q.first.size() !=  q.second.size()){
-        if (q.first.size() < q.second.size())
-            q.first.push_back(special_sign);
-        else q.second.push_back(special_sign);
-    }
+inline void init_precompute(int argc, char *argv[], int &d, int &k, string &ref, string &fileref, string &filequery,
+                            string &filequery1, string &filequery2,
+                            string &typealignment, string &heuristic, string &triecrumbsopt, int &insdist, int &drange,
+                            Trie *&rootdmer, Trie *&rootkmer, MatchingKmers &info){
+    cerr << "Precomppute started\n";
+    parameters_default_values(d, k, fileref, filequery, filequery1, filequery2, typealignment, heuristic, triecrumbsopt, insdist, drange);
+    read_parameters(argc, argv, d, k, fileref, filequery, filequery1, filequery2, typealignment, heuristic, triecrumbsopt, insdist, drange);
+    read_reference(fileref, ref);
+    if (typealignment == single_end_alignment) set_query_input_file(filequery);
+    else set_pe_query_input_file(filequery1,  filequery2);
+    auto startt = move(gettimenow_chrono());
+    cerr << "To build tries\n";
+    construct_trie_dmer(ref, d, rootdmer, info.last, info.prevpos, info.backtotrieconnection);
+    construct_trie_kmer(ref, k, rootkmer, info.lastkmer, info.prevposkmer, info.backtotrieconnectionkmer);
+    cerr << "Precompute done\n";
 }
 
 string get_reverse_complement(string s){
     reverse(s.begin(), s.end());
-    for (int i = 0; i < (int)s.size(); ++i){
+    for (int i = 0; i < (int)s.size(); ++i)
         for (int j = 0; j < alphabetsz; ++j)
             if (s[i] == base[j]){
                 s[i] = base[j ^ 1];
                 break;
             }
-        /*switch (s[i])
-        {
-        case base[0]:
-            s[i] = base[1];
-            break;
-        case base[1]:
-            s[i] = base[0];
-            break;
-        case base[2]:
-            s[i] = base[3];
-            break;
-        case base[3]:
-            s[i] = base[2];
-            break;
-        default:
-            assert(false);
-            break;
-        }*/
-    }
     return s;
 }
 
-void ensure_info_is_not_changed(MatchingKmers &info, bool lamp){
-    static MatchingKmers infocopy;
-    if (lamp){
-        infocopy.crumbseeds1 = info.crumbseeds1;
-        infocopy.crumbseeds2 = info.crumbseeds2;
-        if (infocopy == info)
-            cerr << "info is not changed\n";
-        else cerr << "info is changed\n";
-    }
-    else{
-        infocopy = info;
-    }
+inline void print_query_seeds(vector<int> &seeds, vector<int> &nseeds){
+    cerr << "start of print_query_seeds\n";
+    cerr << "Positive seeds:\n";
+    for (auto i: seeds)
+        cerr << i << " ";
+    cerr << "\nNegative seeds:\n";
+    for (auto i: nseeds)
+        cerr << i << " ";
+    cerr << "\nend of print_query_seeds()\n";
 }
 
-    inline void print_query_seeds(vector<int> &seeds, vector<int> &nseeds){
-        cerr << "start of print_query_seeds\n";
-        cerr << "Positive seeds:\n";
-        for (auto i: seeds)
-            cerr << i << " ";
-        cerr << "\nNegative seeds:\n";
-        for (auto i: nseeds)
-            cerr << i << " ";
-        cerr << "end of print_query_seeds()";
-    }
-
+inline void make_ends_equally_long(string &s1, string &s2){
+    string add(abs((int)s1.size() - (int)s2.size()), special_sign);
+    if (s1.size() < s2.size()) s1 += add;
+    else s2 +=  add;
+}
 
 int main(int argc, char *argv[]){
-    /*ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);*/
-    cerr <<"Start of the program\n";
-    //erroroutput.open("errormessages.out\n");
-    int d, k, locinsdist, locdrange;
-    int locindaligns;
-    string typealignment;
-    string& heuristiclocal = heuristic;
-    string fileref, filequery;
-    string triecrumbsopt;
-    parameters_default_values(d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit, triecrumbsopt);
-    read_parameters(argc, argv, d, k, typealignment, heuristiclocal, locinsdist, locdrange, fileref, filequery, infheuristic, locindaligns, occurposlimit, triecrumbsopt);
-    insdist = locinsdist;
-    drange = locdrange;
-    indaligns = locindaligns;
-    evalsts.d = d;
-    evalsts.k = k;
-    evalsts.drange = drange;
-    cout << "D: " << d << " k: " << k << endl;
+    cerr << "Start of the program\n";
+    int d, k;
     string ref;
-    int testcases;
-    cerr << "int k has a value equal to " << k << "\n";
-    clock_t t = clock();
-    //cin >> ref ;
-    read_reference(fileref, ref);
-    t = clock() - t;
-    cerr << "entered reference\n";
-    cout << "reading reference: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-    set_query_in_file(filequery);
-    //cin >> testcases ;
-    testcases = get_num_testcases();
-    evalsts.ntests = testcases;
-    //cerr << "entered num of tescases\n" ;
+    string fileref, filequery;
+    string filequery1, filequery2;
+    string typealignment;
+    string heuristic;
+    string triecrumbsopt;
+    Trie *rootdmer = new Trie(), *rootkmer = new Trie();
     MatchingKmers info;
-    Trie *rootdmer = new Trie();
-    Trie *rootkmer = new Trie();
-    building_tries(ref, d, k, rootdmer, rootkmer, info);
-    cout << "\n";
-    cerr << "inited kmers\n" ;
-    cerr << "occurposlimit: " << occurposlimit << "\n";
-    /*check_are_vectors_sorted(rootdmer);
-    cerr << "Ended check sorted\n";
-    return 0;*/
-    for (int testcase=1; testcase<=testcases; ++testcase, cerr << '\n'/*, erroroutput << "\n"*/ /*, cout<<endl*/){
-        //cerr << "Query "<< testcase << ":\n";
-        //erroroutput << "Query "<< testcase << ":\n";
-        //cout << "Query "<< testcase << ":\n";
-        int rezult;
-        //t = clock();
+    init_precompute(argc, argv, d, k, ref, fileref, filequery, filequery1, filequery2, typealignment, heuristic,
+    triecrumbsopt, insdist, drange, rootdmer, rootkmer, info);
+    int testcase = 0;
+    while (!queyreof(typealignment)){
+        ++testcase;
+        cerr << "Query: " << testcase << "\n";
+        cout << "Query: " << testcase << "\n";
         if (typealignment == "single-read"){
-            //cerr << "If for single read alingment\n";
-            string query;
-            //cin>>query;
-            query = get_single_read_query();
-            string nquery = get_reverse_complement(query);
-            //cerr << "nquery: " << nquery << "\n";
-            t = clock() - t;
-            //cout << "Reading query: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            maximum_edit_cost = query.size() + 1;
-            auto startprecomp = gettimenow_chrono();
-            if (heuristic == "seed_heuristic"){
-                //t = clock();
-                info.seeds = query_into_seeds(query, k, rootkmer);
-                info.nseeds = query_into_seeds(nquery, k, rootkmer);
-                //print_query_seeds(info.seeds, info.nseeds);
-                nindel = info.seeds.size();
-                //t = clock() - t;
-                //cout << "breaking query into seeds: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-                //t = clock();
+            string query = get_single_read_query();
+            string nquery = move(get_reverse_complement(query));
+            if (heuristic == single_end_alignment){
+                cerr << "seed heuristic choosen\n";
+                query_into_seeds(query, k, rootkmer, info.seeds);
+                query_into_seeds(nquery, k, rootkmer, info.nseeds);
+                cerr << "query's seeds obtained\n";
+                print_query_seeds(info.seeds, info.nseeds);
+                nins = get_nins_ndel_value(query.size(), info.seeds.size(), cins);
+                ndel = get_nins_ndel_value(query.size(), info.seeds.size(), cdel);
+                assert(nins);
+                assert(ndel);
                 if (triecrumbsopt == "yes"){
-                    getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer/*, info.last, info.prevpos*/, 0/*, vector<unordered_set<int> > () = {}*/);
-                    getcrumbs_trieopt(ref, d, k, info.ncrumbs, info.nseeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer/*, info.last, info.prevpos*/, 0/* vector<unordered_set<int> > () = {}*/);
+                    getcrumbs_trieopt(ref, d, k, info.seeds, info.lastkmer, info.prevposkmer, info.backtotrieconnection, info.crumbs);
+                    getcrumbs_trieopt(ref, d, k, info.nseeds, info.lastkmer, info.prevposkmer, info.backtotrieconnection, info.ncrumbs);
                 }
                 else{
-                    getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, 0/*, vector<unordered_set<int> > () = {}*/);
-                    getcrumbs(ref, d, k, info.ncrumbs, info.nseeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, 0/*, vector<unordered_set<int> > () = {}*/);
+                    getcrumbs(ref, d, k, info.seeds, info.lastkmer, info.prevposkmer, info.backtotrieconnection, info.crumbs);
+                    getcrumbs(ref, d, k, info.nseeds, info.lastkmer, info.prevposkmer, info.backtotrieconnection, info.ncrumbs);
                 }
-                //t = clock() - t;
-                /*getcrumbs_trieopt(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, info.last, info.prevpos, 0, vector<unordered_set<int> > () = {});
-                getcrumbs(ref, d, k, info.crumbs, info.seeds, info.backtotrieconnection,
-                    info.lastkmer, info.prevposkmer, 0, vector<unordered_set<int> > () = {});*/
-                //cout << "Precompute of crumbs: " << (double) t / CLOCKS_PER_SEC << "s.\n";
-                //evalsts.getcrumbstime += runtime(t);
-                //printoutcrumbs(info.crumbs, root);
-                //printmatches(info);
+                cerr << "prep comp for h. done\n";
             }
-
-            //t = clock();
-            //vector<pair<cost_t, int> > alignments;
-            //alignments
-            rezult = astar_single_read_alignment(query, nquery, ref, d, k, rootdmer, info, 1);
-            //cerr << "alignmnets.size(): " << alignments.size() << "\n"; 
-            //cerr << "Here after single-end alignment\n";
-            //cerr << "Cost: " << alignments.front().first << "\n";
-            //t = clock() - t;
-            //cout << "Alignment: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-            //evalsts.aligntime += runtime(t);
-            double precomptime = runtimechrono(startprecomp, gettimenow_chrono());
-            if (rezult != -1) seevals[rezult].precomptime += precomptime;
+            astar_single_read_alignment(query, nquery, ref, d, k, rootdmer, info);
         }
-        else if (typealignment == "paired-end"){ //paired-end alignment joint
+        else if (typealignment == paired_end_alignment){
             pair<string, string> queryp;
-            queryp = get_pair_end_query();
-            int szlongerread = max(queryp.first.size(), queryp.second.size());
-            nindel = (szlongerread % k)? szlongerread / k + 1: szlongerread / k;
-            info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
-            info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-            //filter_matches(info, szlongerread);
-            innerdist = insdist - queryp.first.size() - queryp.second.size();///inner distance
-            readdist = innerdist + queryp.first.size();///distance between reads position with same indexes
-            make_paired_ends_same_size(queryp);
-            cerr << "crumbs to be set\n";
-            if (triecrumbsopt == "yes"){
-                get_crumbs_pairedend_trie_opt(ref, d, k, info);
+            queryp = move(get_pair_end_query());
+            pair<string, string> nqueryp;
+            nqueryp.first = get_reverse_complement(queryp.first);
+            nqueryp.second = get_reverse_complement(queryp.second);
+            if (heuristic == "seed_heuristic"){
+                cerr << "seed heuristic choosen\n";
+                query_into_seeds(queryp.first, k, rootkmer, info.seeds1);
+                query_into_seeds(nqueryp.second, k, rootkmer, info.nseeds2);
+                query_into_seeds(nqueryp.first, k, rootkmer, info.nseeds1);
+                query_into_seeds(queryp.second, k, rootkmer, info.seeds2);
+                if (triecrumbsopt == "yes") getcrumbs_trieopt_pairend(ref, queryp.first.size(), queryp.second.size(), d, k, info);
+                else getcrumbs_pairend(ref, queryp.first.size(), queryp.second.size(), d, k, info);
+                cerr << "prep comp for h. done\n";
             }
-            else{
-                get_crumbs_pairend(ref, d, k, info);
-            }
-            cerr << "setting crumbs done\n";
-            auto startaln = chrono::high_resolution_clock::now();
-            rezult = astar_pairend_read_alignment(queryp, ref, d, k, rootdmer, info);
-            auto endaln = chrono::high_resolution_clock::now();
-            double runtimealn = runtimechrono(startaln, endaln);
-            cerr << "Cost: " << rezult << "\n";
-            cerr << "Alignment: " << runtimealn << "\n";
-            cout << "Cost: " << rezult << "\n";
-            cout << "Alignment: " << runtimealn << "\n";
-            cout << "\n";
+            readdist = insdist - queryp.second.size();
+            innerdist = readdist - queryp.first.size();
+            make_ends_equally_long(queryp.first, queryp.second);
+            make_ends_equally_long(nqueryp.first, nqueryp.second);
+            cost_t rezult = astar_pairend_read_alignment(queryp, nqueryp, ref, d, k, rootdmer, info);
         }
         else{
             cerr << "No such alignment type is supported\n";
             cerr << "Program is going to abort\n";
             abort();
         }
-        t = clock();
         info.clearquerydata();
-        t = clock() - t;
-        //cout << "Cleaning help vectors: "<< (double) t / CLOCKS_PER_SEC << "s.\n";
-        //cout << "Here 20\n";
-    }
-    //cerr << "Here 30\n";
-    //evalsts.print_stats();
-    for (int i = 0; i < 128; ++i, cout << "\n"){
-        cout << "Cost: " << i << "\n";
-            seevals[i].print_info();
         cout << "\n";
     }
-    cerr << "End of the main.\n";
+    delete rootdmer;
+    delete rootkmer;
+    close_query_in_files();
     return 0;
 }
-
-/*else if (typealignment == "paired-end_independent"){
-            pair <string, string> queryp;
-            queryp = get_pair_end_query();
-            nindel = queryp.first.size() / k;
-            if (queryp.first.size() % k != 0)
-                nindel++;
-            info.seeds1 = query_into_seeds(queryp.first, k, rootkmer);
-            info.seeds2 = query_into_seeds(queryp.second, k, rootkmer);
-            t = clock();
-            getcrumbs(ref, d, k, info.crumbs1, info.seeds1, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds1);
-            getcrumbs(ref, d, k, info.crumbs2, info.seeds2, info.backtotrieconnection, info.lastkmer, info.prevposkmer, 0, info.crumbseeds2);
-            t = clock() - t;
-            evalsts.getcrumbstime += runtime(t);
-            t = clock();
-            cost_t rezult = astar_pairend_read_alignment_independent(queryp, ref, d, k, rootdmer, info, indaligns);
-            cout << "Independent alignement passed\n";
-            cout << "Cost: " << rezult << endl;
-        }*/
