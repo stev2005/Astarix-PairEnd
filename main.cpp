@@ -99,6 +99,9 @@ int main(int argc, char *argv[]){
         else if (typealignment == paired_end_alignment){
             pair<string, string> queryp;
             queryp = move(get_pair_end_query());
+            cout << "the query\n";
+            cout << "   " << queryp.first << "\n";
+            cout << "   " << queryp.second << "\n";
             pair<string, string> nqueryp;
             nqueryp.first = get_reverse_complement(queryp.first);
             nqueryp.second = get_reverse_complement(queryp.second);

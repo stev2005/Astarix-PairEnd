@@ -65,14 +65,31 @@ string get_single_read_query(){
 pair<string, string> get_pair_end_query(){
     string seqid, descr, quality;
     pair<string, string> query;
-    finread1 >> seqid;
-    finread1 >> query.first;
-    finread1 >> descr;
-    finread1 >> quality;
-    finread2 >> seqid;
-    finread2 >> query.second;
-    finread2 >> descr;
-    finread2 >> quality;
+    cout << "Show input info:\n";
+    //finread1 >> seqid;
+    //finread1 >> query.first;
+    //finread1 >> descr;
+    //finread1 >> quality;
+    getline(finread1, seqid);
+    getline(finread1, query.first);
+    getline(finread1, descr);
+    getline(finread1, quality);
+    cout << "   1seqid: " << seqid << "\n";
+    cout << "   1read: " << query.first << "\n";
+    cout << "   1descr: " << descr << "\n";
+    cout << "   1quality: " << quality << "\n";
+    //finread2 >> seqid;
+    //finread2 >> query.second;
+    //finread2 >> descr;
+    //finread2 >> quality;
+    getline(finread2, seqid);
+    getline(finread2, query.second);
+    getline(finread2, descr);
+    getline(finread2, quality);
+    cout << "   2seqid: " << seqid << "\n";
+    cout << "   2read: " << query.second << "\n";
+    cout << "   2descr: " << descr << "\n";
+    cout << "   2quality: " << quality << "\n";
     return query;
 }
 

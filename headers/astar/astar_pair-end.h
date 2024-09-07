@@ -152,8 +152,18 @@ inline void show_minmaxcost(int &minmaxcost, Statepr &cur, string &query1, strin
         minmaxcost = cur.g;
         cerr << "New mimimal maximum cost achieved: " << minmaxcost << " h: " << cur.h << " cur.negative: " << cur.negative
         << " cur.qpos: " << cur.qpos << " is in trie: " << cur.p1.is_in_trie() << " is in trie: " << cur.p2.is_in_trie()
-        << " query[cur.qpos - 1]: " << query1[cur.qpos - 1] << " " << query2[cur.qpos - 1] << "\n";
+        /*<< " query[cur.qpos - 1]: " << query1[cur.qpos - 1] << " " << query2[cur.qpos - 1]*/ << "\n";
     }
+}
+
+bool gready_available_pr(string & read1, string &read2, string &ref, int qpos, Node p1, Node p2){
+    //if (p1.is_in_trie() == false && p2.is_in_trie() == false){
+    if (!p1.is_in_trie() && !p2.is_in_trie()){
+        if (ref.size() > p1.rpos && ref.size() > p2.rpos &&
+            (read1[qpos] == ref[p1.rpos] || read1[qpos] == special_sign) && (read2[qpos] == ref[p2.rpos] || read2[qpos] == special_sign))
+            return true;
+    }
+    return false;
 }
 
 cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, string> &nqueryp, string &ref, int d, int k, Trie *root, MatchingKmers &info){
@@ -203,12 +213,20 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, s
             curcrumbs1 = &info.crumbs1;
             curcrumbs2 = &info.ncrumbs2;
         }
-        vector<Statepr> nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
-                                      ref, info.last, info.prevpos, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2));
-        for (auto i: nextpr){
-            i.g += cur.g;
-            i.negative = cur.negative;
-            q.push(i);
+        if (gready_available_pr(*read1, *read2, ref, cur.qpos, cur.p1, cur.p2)){
+            cost_t h = pairend_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), k, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2);
+            Statepr nextstate = createStatepr(cur.qpos + 1, cur.p1.rpos + 1, cur.p2.rpos + 1, cur.g, h);
+            nextstate.negative = cur.negative;
+            q.push(nextstate);
+        }
+        else{
+            vector<Statepr> nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
+                                        ref, info.last, info.prevpos, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2));
+            for (auto i: nextpr){
+                i.g += cur.g;
+                i.negative = cur.negative;
+                q.push(i);
+            }
         }
     }
     get_expanded_prstates(true);
@@ -223,5 +241,49 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, s
     cout << "Alignmnet time: " << aligntime << "s.\n";
     cout << "Cost: " << cur.g << "\n";
     cout << "Band: " << (double)cntexpansions / (double) ((int)queryp.first.size() << 1) << "\n";
+    /*Statepr cheapest = cur;
+    auto startt2 = gettimenow_chrono(); 
+    while(!q.empty()){
+        cur = q.top();
+        q.pop();
+        show_minmaxcost(minmaxcost, cur, queryp.first, queryp.second);
+        increasecnt(cur.p1, cur.p2, cntexpansions, cntTrieTrieexpansions, cntrefTrieexpansions, cntTrierefexpansions, cntrefrefexpansions);
+        if (cur.g + cur.h > cheapest.g) break;
+        if (cur.qpos == n) {
+            cerr << "New instance: " << cur.qpos << " " << cur.p1.rpos << " " << cur.p2.rpos << "\n";
+            continue;
+        }
+        if (!to_explore_pr(cur.qpos, cur.p1, cur.p2, cur.g, cur.negative)) continue;
+        expand_state_pr(cur.qpos, cur.p1, cur.p2, cur.g, cur.negative);
+        vector<int> *curseeds1, *curseeds2;
+        crumbs_t *curcrumbs1, *curcrumbs2;
+        string *read1, *read2;
+        if (cur.negative){
+            read1 = &queryp.second;
+            read2 = &nqueryp.first;
+            curseeds1 = &info.seeds2;
+            curseeds2 = &info.nseeds1;
+            curcrumbs1 = &info.crumbs2;
+            curcrumbs2 = &info.ncrumbs1;
+        }
+        else{
+            read1 = &queryp.first;
+            read2 = &nqueryp.second;
+            curseeds1 = &info.seeds1;
+            curseeds2 = &info.nseeds2;
+            curcrumbs1 = &info.crumbs1;
+            curcrumbs2 = &info.ncrumbs2;
+        }
+        vector<Statepr> nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
+                                      ref, info.last, info.prevpos, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2));
+        for (auto i: nextpr){
+            i.g += cur.g;
+            i.negative = cur.negative;
+            q.push(i);
+        }
+    }
+    auto endt2 = gettimenow_chrono();
+    auto takentime2 = runtimechrono(startt2, endt2);
+    cerr << "Time for finding new instances with cost " << cheapest.g << ": " << takentime2 << "\n";*/
     return cur.g;
 }
