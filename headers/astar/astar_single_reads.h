@@ -137,6 +137,9 @@ vector<Statesr> get_next_states_sr(int qpos, Node p, char cqpos, string &ref, in
     if (cqpos == special_sign){
         next.push_back(createStatesr(qpos, p, special_cost, k, seeds, crumbs));
         next.push_back(createStatesr(qpos + 1, p, special_cost, k, seeds, crumbs));
+        if (!p.is_in_trie()){
+            next.push_back(createStatesr(qpos + 1, p.rpos + 1, special_cost, k, seeds, crumbs));
+        }
     }
     else if (p.is_in_trie()){
         if (p.u->isleaf()){
