@@ -64,8 +64,8 @@ struct EvaluationsPE{
     }
     
     void update_astar_cnts(eval_t _cntexpansions, eval_t _cntTrieTrieexpansions,eval_t _cntTrierefexpansions, eval_t _cntrefTrieexpansions,
-    eval_t _cntrefrefexpansions, eval_tr _band, eval_t _cntpunishedstates, eval_tr _aligntime){
-        ++ntests;
+    eval_t _cntrefrefexpansions, eval_tr _band, eval_t _cntpunishedstates/*, eval_tr _aligntime*/){
+        //++ntests;
         cntexpansions += _cntexpansions;
         cntTrieTrieexpansions += _cntTrieTrieexpansions;
         cntTrierefexpansions += _cntTrierefexpansions;
@@ -73,7 +73,7 @@ struct EvaluationsPE{
         cntrefrefexpansions += _cntrefrefexpansions;
         band += _band;
         cntpunishedstates += _cntpunishedstates;
-        aligntime += _aligntime;
+        //aligntime += _aligntime;
     }
 
     void update_astar_percentages(eval_tr _percntTrieTrieexpansions, eval_tr _percntTrierefexpansions, eval_tr _percntrefTrieexpansions, eval_tr _percntrefrefexpansions){
@@ -105,9 +105,9 @@ struct EvaluationsPE{
         cout << "   Trie depth: " << d << "\n";
         cout << "   Seeds lenght: " << k << " (bp.)\n";
         cout << "   Drange: " << drange << "\n";
-        cout << "   Avg. matches per seed: " << matchesperseed / ntestsr << "\n";
-        cout << "   Avg. legit matches per seed: " << legitmatchesperseed / ntestsr << "\n";
-        cout << "   Avg. crumbs per legit match: " << crumbsperlegitmatch / ntestsr << "\n";
+        //cout << "   Avg. matches per seed: " << matchesperseed / ntestsr << "\n";
+        //cout << "   Avg. legit matches per seed: " << legitmatchesperseed / ntestsr << "\n";
+        //cout << "   Avg. crumbs per legit match: " << crumbsperlegitmatch / ntestsr << "\n";
         cout << "   Avg. band: " << band / ntestsr << "\n";
         cout << "   Avg. expanded states: " << (double) cntexpansions / ntestsr << "\n";
         cout << "   Avg. expanded states u, v ∈ Trie: " << (double) cntTrieTrieexpansions / ntestsr << "\n";
@@ -123,18 +123,18 @@ struct EvaluationsPE{
 
     void print_stats(){
         eval_tr ntestsr = ntests;
-        cout << "Stats for this test group:\n";
+        //cout << "Stats for this test group:\n";
         cout << "   Number of tests: " << ntests << "\n";
-        cout << "   Error-rate: " << "(you have to know it in advance)\n";
-        cout << "   runtime filtering legit from faux matches: " << filtermatchestime  << " (sec.)\n";
-        cout << "   run-time setting crumbs: " << getcrumbstime << " (sec.)\n";
+        //cout << "   Error-rate: " << "(you have to know it in advance)\n";
+        //cout << "   runtime filtering legit from faux matches: " << filtermatchestime  << " (sec.)\n";
+        //cout << "   run-time setting crumbs: " << getcrumbstime << " (sec.)\n";
         cout << "   run-time joint alignment: " << aligntime << " (sec.)\n";
         cout << "   Trie depth: " << d << "\n";
         cout << "   Seeds lenght: " << k << " (bp.)\n";
         cout << "   Drange: " << drange << "\n";
-        cout << "   matches per seed: " << matchesperseed  << "\n";
-        cout << "   legit matches per seed: " << legitmatchesperseed << "\n";
-        cout << "   crumbs per legit match: " << crumbsperlegitmatch << "\n";
+        //cout << "   matches per seed: " << matchesperseed  << "\n";
+        //cout << "   legit matches per seed: " << legitmatchesperseed << "\n";
+        //cout << "   crumbs per legit match: " << crumbsperlegitmatch << "\n";
         cout << "   band: " << band << "\n";
         cout << "   expanded states: " << cntexpansions << "\n";
         cout << "   expanded states u, v ∈ Trie: " << cntTrieTrieexpansions << "\n";
@@ -142,10 +142,10 @@ struct EvaluationsPE{
         cout << "   expanded states u ∈ Gr, v ∈ Trie: " << cntrefTrieexpansions << "\n";
         cout << "   expanded states u, v ∈ Gr: " << cntrefrefexpansions << "\n";
         cout << "   punished states: " << cntpunishedstates << "\n";
-        cout << "   expanded states u, v∈ Trie (% of all): " << percntTrieTrieexpansions << "\n";
-        cout << "   expanded states u ∈ Trie, v ∈ Gr (% of all): " << percntTrierefexpansions << "\n";
-        cout << "   expanded states u∈Gr, v∈Trie (% of all): " << percntrefTrieexpansions << "\n";
-        cout << "   expanded states u, v ∈ Gr (% of all): " << percntrefrefexpansions << endl;
+        cout << "   expanded states u, v∈ Trie (% of all): " << (eval_tr) cntTrieTrieexpansions / (eval_tr)cntexpansions * (eval_tr) 100 << "\n";
+        cout << "   expanded states u ∈ Trie, v ∈ Gr (% of all): " << (eval_tr) cntTrierefexpansions / (eval_tr)cntexpansions * (eval_tr) 100<< "\n";
+        cout << "   expanded states u∈Gr, v∈Trie (% of all): " << cntrefTrieexpansions / (eval_tr)cntexpansions * (eval_tr )100<< "\n";
+        cout << "   expanded states u, v ∈ Gr (% of all): " << cntrefrefexpansions / (eval_tr)cntexpansions * (eval_tr) 100<< endl;
     }
 };
 EvaluationsPE peevals[128];

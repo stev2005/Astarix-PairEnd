@@ -186,7 +186,7 @@ bool gready_available_pr(Statepr &cur, vector<Statepr> &nextpr, Statepr &heir){
     return false;
 }
 
-cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, string> &nqueryp, string &ref, int d, int k, Trie *root, MatchingKmers &info){
+Statepr astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, string> &nqueryp, string &ref, int d, int k, Trie *root, MatchingKmers &info){
     int n = queryp.first.size();
     int m = ref.size();
     priority_queue<Statepr> q;
@@ -199,7 +199,7 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, s
     long long cntrefTrieexpansions = 0;
     long long cntTrierefexpansions = 0;
     long long cntrefrefexpansions = 0;
-    auto startt = gettimenow_chrono();
+    //auto startt = gettimenow_chrono();
     int minmaxcost = -1;
     while (!q.empty()){
         cur = q.top();
@@ -236,7 +236,6 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, s
         vector<Statepr> nextpr;
         Statepr heir = cur;
         do{
-            //cout << "do while " << cur.qpos << " " << cur.p1.rpos << " " << cur.p2.rpos << " " << cur.g << " " << cur.h << " " << cur.negative << "\n";
             cur = heir;
             if (cur.qpos == n) break;
             nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
@@ -248,56 +247,24 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, s
             i.negative = cur.negative;
             q.push(i);
         }
-        /*vector<Statepr> nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
-                                        ref, info.last, info.prevpos, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2));
-        for (auto i: nextpr){
-            i.g += cur.g;
-            i.negative = cur.negative;
-            q.push(i);
-        }*/
-        /*while (gready_available_pr(*read1, *read2, ref, cur.qpos, cur.p1, cur.p2) &&
-               to_explore_pr(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), cur.g, cur.negative)){
-            ++cur.qpos;
-            ++cur.p1.rpos;
-            ++cur.p2.rpos;
-            expand_state_pr(cur.qpos, cur.p1, cur.p2, cur.g, cur.negative);
-        }
-        if (gready_available_pr(*read1, *read2, ref, cur.qpos, cur.p1, cur.p2) &&
-            !to_explore_pr(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), cur.g, cur.negative)) continue;*/
-        /*if (gready_available_pr(*read1, *read2, ref, cur.qpos, cur.p1, cur.p2)){
-            cost_t h = pairend_heuristic(cur.qpos + 1, Node(cur.p1.rpos + 1), Node(cur.p2.rpos + 1), k, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2);
-            Statepr nextstate = createStatepr(cur.qpos + 1, cur.p1.rpos + 1, cur.p2.rpos + 1, cur.g, h);
-            nextstate.negative = cur.negative;
-            q.push(nextstate);
-        }
-        else{
-            vector<Statepr> nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
-                                        ref, info.last, info.prevpos, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2));
-            for (auto i: nextpr){
-                i.g += cur.g;
-                i.negative = cur.negative;
-                q.push(i);
-            }
-        }*/
     }
     get_expanded_prstates(true);
-    auto endt = gettimenow_chrono();
-    double aligntime = runtimechrono(startt, endt);
+    //auto endt = gettimenow_chrono();
+    //double aligntime = runtimechrono(startt, endt);
     peevals[cur.g].update_astar_cnts(cntexpansions, cntTrieTrieexpansions, cntTrierefexpansions, cntrefTrieexpansions, cntrefrefexpansions,
-                                     (double)cntexpansions / (double) ((int)queryp.first.size() << 1), cntpunishes, aligntime);
+                                     (double)cntexpansions / (double) ((int)queryp.first.size() << 1), cntpunishes/*, aligntime*/);
     cerr << "cur.qpos: " << cur.qpos << " cur.negative: " << cur.negative << " cntexpansions: " <<  cntexpansions <<"\n";
-    cerr << "Alignment time: " << aligntime << "s.\n";
+    //cerr << "Alignment time: " << aligntime << "s.\n";
     cerr << "Band: " << (double)cntexpansions / (double) ((int)queryp.first.size() << 1) << "\n";
-    cerr << "Cost: " << cur.g << "\n";
-    cerr << "End position read1: " << cur.p1.rpos << "\n";
-    cerr << "End position read2: " << cur.p2.rpos << "\n";
-    cerr << "Negativity of strand (first read): " << cur.negative << "\n"; 
-    cout << "Alignmnet time: " << aligntime << "s.\n";
+    
+    //cout << "Alignmnet time: " << aligntime << "s.\n";
     cout << "Cost: " << cur.g << "\n";
     cout << "Band: " << (double)cntexpansions / (double) ((int)queryp.first.size() << 1) << "\n";
     cout << "End position read1: " << cur.p1.rpos << "\n";
     cout << "End position read2: " << cur.p2.rpos << "\n";
     cout << "Negativity of strand (first read): " << cur.negative << "\n";
+    return cur;
+}
     /*Statepr cheapest = cur;
     auto startt2 = gettimenow_chrono(); 
     while(!q.empty()){
@@ -342,5 +309,3 @@ cost_t astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, s
     auto endt2 = gettimenow_chrono();
     auto takentime2 = runtimechrono(startt2, endt2);
     cerr << "Time for finding new instances with cost " << cheapest.g << ": " << takentime2 << "\n";*/
-    return cur.g;
-}

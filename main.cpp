@@ -54,6 +54,9 @@ inline void make_ends_equally_long(string &s1, string &s2){
 }
 
 int main(int argc, char *argv[]){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
     cerr << "Start of the program\n";
     int d, k;
     string ref;
@@ -67,6 +70,8 @@ int main(int argc, char *argv[]){
     init_precompute(argc, argv, d, k, ref, fileref, filequery, filequery1, filequery2, typealignment, heuristic,
     triecrumbsopt, insdist, drange, rootdmer, rootkmer, info);
     int testcase = 0;
+    cout << "Insert distance: " << insdist << "\nMaximum deviation from the insert distance: " << drange
+    << "\nSize of dmers: " << d << "\nSize of kmers: " << k << "\n";
     while (!queyreof(typealignment)){
         ++testcase;
         cerr << "Query: " << testcase << "\n";
@@ -103,9 +108,11 @@ int main(int argc, char *argv[]){
             cout << "   " << queryp.first << "\n";
             cout << "   " << queryp.second << "\n";
             pair<string, string> nqueryp;
+            auto startt = gettimenow_chrono();
             nqueryp.first = get_reverse_complement(queryp.first);
             nqueryp.second = get_reverse_complement(queryp.second);
             if (heuristic == "seed_heuristic"){
+                auto crstart = gettimenow_chrono();
                 cerr << "seed heuristic choosen\n";
                 query_into_seeds(queryp.first, k, rootkmer, info.seeds1);
                 query_into_seeds(nqueryp.second, k, rootkmer, info.nseeds2);
@@ -113,13 +120,26 @@ int main(int argc, char *argv[]){
                 query_into_seeds(queryp.second, k, rootkmer, info.seeds2);
                 if (triecrumbsopt == "yes") getcrumbs_trieopt_pairend(ref, queryp.first.size(), queryp.second.size(), d, k, info);
                 else getcrumbs_pairend(ref, queryp.first.size(), queryp.second.size(), d, k, info);
-                cerr << "prep comp for h. done\n";
+                double crumbtime = runtimechrono(crstart, gettimenow_chrono());
+                cout << "crumbing time: " << crumbtime << "\n";
+                cerr << "crumbing time: " << crumbtime << "\n";
+                //cerr << "prep comp for h. done\n";
             }
             readdist = insdist - queryp.second.size();
             innerdist = readdist - queryp.first.size();
             make_ends_equally_long(queryp.first, queryp.second);
             make_ends_equally_long(nqueryp.first, nqueryp.second);
-            cost_t rezult = astar_pairend_read_alignment(queryp, nqueryp, ref, d, k, rootdmer, info);
+            Statepr rezult =  move(astar_pairend_read_alignment(queryp, nqueryp, ref, d, k, rootdmer, info));
+            auto endt = gettimenow_chrono();
+            double aligntime = runtimechrono(startt, endt);
+            cerr << "Runtime alignment: " << aligntime <<  "\n";
+            cerr << "Cost: " << rezult.g << "\n";
+            cerr << "End position read1: " << rezult.p1.rpos << "\n";
+            cerr << "End position read2: " << rezult.p2.rpos << "\n";
+            cerr << "Negativity of strand (first read): " << rezult.negative << "\n"; 
+            cout << "Runtime alignment: " << aligntime <<  "\n";
+            peevals[rezult.g].aligntime += aligntime;
+            ++peevals[rezult.g].ntests;
         }
         else{
             cerr << "No such alignment type is supported\n";
@@ -132,5 +152,7 @@ int main(int argc, char *argv[]){
     delete rootdmer;
     delete rootkmer;
     close_query_in_files();
+    for (int i = 0; i < 100; ++i)
+        peevals[i].print_stats();
     return 0;
 }
