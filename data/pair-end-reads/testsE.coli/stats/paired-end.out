@@ -15,13 +15,18 @@ Show input info:
 the query
    AAGCCATTTACTGGGCGCCCCCCTCAGTCGTATTGAGTGCGTCAATGAAAAAGCGGATACGGCGTTGTGGGCTTTGTATGACAGCCAGGGAAACCCAATGCCGTTAATGGCAAGAAGCTTTAGTACGCCCGGAAAAGCCCGACAACTGGCATGGAAAACCACCATGCTGGCAAGAAGTGGGACTGTCCGTATGCCGACTATTTATGGTGTGATGACGCATGAAGAACACCCCGGCCCCGATGTCCTGCTA
    GCGGCAGCACGCGCGCCTGGCGTTCGTTCAGGGTTTCGGTCACCAGCTGTGTCGGCTGCACCGAGTTCGGCAGTCCCTGAATGGCAAACGGCTTGATATCCACTTTACGATCGCGTCCGGCAACCTGTTGCAGACGCACACCGACCACCACGCGCTGGTGGCGCGAGTTAATGGTGTCGAGCATCGAATAACAGACAAGTGCTTTCAGCTTACCGTGCAGACCTTTATCGCGCGAACCGCTGGTGGCCCC
-crumbing time: 0.00331198
+crumbing time: 0.00401339
 Cost: 10
-Band: 888.644
+Band: 200.336
 End position read1: 972024
 End position read2: 976773
 Negativity of strand (first read): 0
-Runtime alignment: 11.9601
+   expanded states: 100168
+   expanded states u, v ∈ Trie: 95918
+   expanded states u ∈ Trie, v ∈ Gr: 1666
+   expanded states u ∈ Gr, v ∈ Trie: 1663
+   expanded states u, v ∈ Gr: 921
+Runtime alignment: 21.1805
 
 Query: 2
 Show input info:
@@ -36,13 +41,18 @@ Show input info:
 the query
    ATCGGGTTGCTCATCGTTAGCCGACTGTGCTTTCAAATCGTCCGGCGTGCCGCTGGCGATTAATTTCCCGCGGTACACCAGGCCGATGCGGTCGCAATATTCCGCTTCATCCATAAAGTGGGTGGTGACCATCACCGTGACGCCTTTCTCTACCATGCTGTTGATGTGCAGCCAAAATTCACGGCGGGTGAGGGGGTCAACGCCGGAAGTCGGTTCGTCGAGAAACAGAATGTCCGGTTCATGCATCAGC
    GATAAGCGTAGCGCATCAGGCAGTTTTGCGTTTGTTCATCAGCCTGATGCCGGGCATGCACCGGCAGCAAAGATTACTGCGCAGCGGCAGGTTTACGCGGACGGCGGCGACGTTGTTGTTCGCCTGCCGGTTTGGCATCGCCGAGGCGGCGAGACGGTTTTTCTGCAGGTTTCGCGCTTGCAGATTTTGCGCCACCTTCCCCACGGCGTGGTTGCTGTTGACCGCGACCACCACCTTGCCCACGACCGCC
-crumbing time: 0.018079
+crumbing time: 0.110402
 Cost: 4
-Band: 14.722
+Band: 7.228
 End position read1: 827560
 End position read2: 832309
 Negativity of strand (first read): 0
-Runtime alignment: 0.377454
+   expanded states: 3614
+   expanded states u, v ∈ Trie: 3378
+   expanded states u ∈ Trie, v ∈ Gr: 64
+   expanded states u ∈ Gr, v ∈ Trie: 72
+   expanded states u, v ∈ Gr: 100
+Runtime alignment: 0.819468
 
 Query: 3
 Show input info:
@@ -57,13 +67,18 @@ Show input info:
 the query
    TCCGCTTCCCACGTCAGCCAGCCGCGATCCTGCATGGCATCGAGCAGGGTGCGCATATGACGACGCGAGCAGCTCAATAACGCTGCCAGTTCGTTGAGCGTTGTGTCCTGCGATTTACCCTCGCAGCATTGCCACAGGCGGATGAACTGTTGTTGCAGACGAGCAGATGGCATCCCCGGGGAACTCCTGTGCAAAAGACAGCAATTTTATTTTCCCTATATTAAGTCAATAATTCCTAACGATGAAGCAA
    AACTACAACGGTCGCCGCTTCCACGGCGTCGGCCTGGCTACCGATATTGTCGAGTCATCTGCCAAAGCCACAACGCACGTTCTGAACAATATGTGGCGTGCCGCAGAAGTCGGGAAAGAGTTGCAACGCAAAGCTCAACACAACGAAAACAACAAGGAAACCGTGTGATGTCGAAGAATTACCATATTGCCGTATTGCCGGGGGACGGTATTGGTCCGGAAGTGATGACCCAGGCGCTGAAAGTGCTGGA
-crumbing time: 0.00385363
+crumbing time: 0.00396669
 Cost: 14
-Band: 3928.79
+Band: 1107.71
 End position read1: 77376
 End position read2: 82125
 Negativity of strand (first read): 0
-Runtime alignment: 45.2287
+   expanded states: 553856
+   expanded states u, v ∈ Trie: 487286
+   expanded states u ∈ Trie, v ∈ Gr: 29190
+   expanded states u ∈ Gr, v ∈ Trie: 30347
+   expanded states u, v ∈ Gr: 7033
+Runtime alignment: 117.298
 
 Query: 4
 Show input info:
@@ -78,13 +93,18 @@ Show input info:
 the query
    CCGCCGCGAACACGCCAAATGACAGAGTTGAAAGAGCCATAGCAGCAACAACAGTATTGATAGTTTTCATAATTAATCTCTCGCAGGTGATTTTTGTATAAGTGACGTTGTTTCGTCGATGTGATGAGTATCACGTACGGCTACGAGAGATAAAATCGAAGAGAATTGACCGCCTTGTTCAAATAAATTGATTGATATCTAACCTACTGATAAACCATTTATTTGTTGTACTTATGAACTTGTTTTATAC
    TATGGATGATGCCGTTAAAAATCGCCCCACTCTCTTTTTGCCGACGCAGACGAATGGCGCGGTTAAGCCCCGGATTAGAACTGATAATCGCCTGCGCACTGCTTAACGCCTGGCTGCTGGTTTCACTACCGGTGCATCGCCAGCCATATTCATGTACGCCAATCAGCGGATAAATACAGTTCGCACCAACGCCGATATCCAGAATGCTGGCATTCGCTGGAATTGTTCCGCTTGCTTCTGCCAGTAAATC
-crumbing time: 0.0470448
+crumbing time: 0.583479
 Cost: 8
-Band: 199.96
+Band: 98.802
 End position read1: 838105
 End position read2: 842854
 Negativity of strand (first read): 0
-Runtime alignment: 3.58461
+   expanded states: 49401
+   expanded states u, v ∈ Trie: 47079
+   expanded states u ∈ Trie, v ∈ Gr: 827
+   expanded states u ∈ Gr, v ∈ Trie: 883
+   expanded states u, v ∈ Gr: 612
+Runtime alignment: 11.151
 
 Query: 5
 Show input info:
@@ -99,13 +119,18 @@ Show input info:
 the query
    GGCTGTTAAGCGGCGTATTGTCGGCAACCAGCGTCGACTGTACAGCAGCAATTTCGCCTGAAGCCAGAGATTCACGCAGTTGATCTGCATGCTTCTTTGGCACCATCACGTACTGCGGGCCACTTGCGCCCAGCGTGGAGCCCCCCACGCCAGCGTTGAATGTCTTCAGCTTGCTGACGGAAATCCCCGCCATATCTGCTACCTTCGCCATTTCAACCGGGCTGCTCAGGTGCACACGCGCCAGAGCACG
    GTGAAACGTACCAGGTAGCGCAGGGAGATAGCGTCAGTGAGTTTGTCATTTTTATAGTCGGACCATACTGTTGATTTCAGCGTAGAGTCGTATTTCCCTGTCTGCAACATATCCTGGTAAACAATAATCGCTTTCTGATGTCCTTTTGCAGCCACAAAACGCAGTGCCTGCATCCAGTTCATATTCTCAGCACTGGCAACATCCTCGTTCTCATTTTTATCTTTGATTTCGTTACAAGTCAGAGGCTTTT
-crumbing time: 0.00565151
+crumbing time: 0.0031122
 Cost: 9
-Band: 453.396
+Band: 181.28
 End position read1: 233184
 End position read2: 237933
 Negativity of strand (first read): 0
-Runtime alignment: 6.95599
+   expanded states: 90640
+   expanded states u, v ∈ Trie: 86015
+   expanded states u ∈ Trie, v ∈ Gr: 1826
+   expanded states u ∈ Gr, v ∈ Trie: 1444
+   expanded states u, v ∈ Gr: 1355
+Runtime alignment: 19.1565
 
 Query: 6
 Show input info:
@@ -120,13 +145,18 @@ Show input info:
 the query
    TTTTCGACGGGACTCGCCGCCGCCGAGCCGGGGTTCCCGCTGGCGCAATTGAAAACTTTCGTCGATCAGGAATTTGCCCAAATAAAACATGTCCTGCATGGCATTAGTTTGTTGGGGCAGTGCCCGGATAGCATCAACGCTGCGCTGATTTGCCGTGGCGAGATTTTGTCGATCGCCATTATGGCCGGCGTATTAGAAGCGCGCGGTCACAACGTTACTGTTATCGATCCGGTCGAAAAACTGCTGGCAG
    GGATTGTTACCCGGCATTTGTCATTTAGCGGTGATGTTTGCCTGGACCATGACCGCCGTGATGATCATGAGGAGCTTTCTTATGGTGGCGCGGCGGTGGCGGCGGTCCGTGTAGGTGCCAGCGATTGCCTCGCCATTCATAATGTTGTTTCCACCAGCCGTGGTCGCGCCAGTGACCTCCATCCCAGTAATAGCCACGATTATCACGATCGCCTATCTGTAAAAAAACTGACGGGACTAACGTAATTTCC
-crumbing time: 0.0138553
+crumbing time: 0.00285657
 Cost: 9
-Band: 533.012
+Band: 122.078
 End position read1: 805
 End position read2: 5554
 Negativity of strand (first read): 0
-Runtime alignment: 7.00642
+   expanded states: 61039
+   expanded states u, v ∈ Trie: 58599
+   expanded states u ∈ Trie, v ∈ Gr: 1093
+   expanded states u ∈ Gr, v ∈ Trie: 654
+   expanded states u, v ∈ Gr: 693
+Runtime alignment: 13.1157
 
 Query: 7
 Show input info:
@@ -141,13 +171,18 @@ Show input info:
 the query
    ATGAACAGTTCTTGCCAAAAGCGCTCTTACTGTATCTGACGCATATCGACGCAGAAGTGGAAGGCGACACCCATTTCCCGGATTACGAGCCGGATGACTGGGAATCGGTATTCAGCGAATTCCACGATGCTGATGCGCAGAACTCTCACAGCTATTGCTTTAGAGTTCTGGAGCGGCGGTAATTTTGTATAGAATTTACGGCTAGCGCCGGATGCGACGCCGGTCGCGTCTTATCCGGCCTTCCTATATC
    AACAGGCTACGCTGCCTAAGTACTATTCCACTGCTGAGCAATATAAGAATGGTATTTCGCAGGTAGGTGCTGTCGCCAGCTGGCCAATTGCCGATCGTTGGTCCATTGTTGGGGCCTACTAATGCAACGTTAATGCTAACAAGCAAGCCGACTCTATGTTAGGTGTGCAATACAGCTCCTGCTGCTATGCAATTCGCGTCGGTTACGAGCGGAAGCTGAACGGTTGGGATAACGATAAACAACATGCGGT
-crumbing time: 0.0135283
+crumbing time: 0.0437581
 Cost: 14
-Band: 5893.56
+Band: 1041.56
 End position read1: 50370
-End position read2: 55119
+End position read2: 55117
 Negativity of strand (first read): 0
-Runtime alignment: 58.6769
+   expanded states: 520781
+   expanded states u, v ∈ Trie: 463191
+   expanded states u ∈ Trie, v ∈ Gr: 27204
+   expanded states u ∈ Gr, v ∈ Trie: 24071
+   expanded states u, v ∈ Gr: 6315
+Runtime alignment: 110.853
 
 Query: 8
 Show input info:
@@ -162,13 +197,18 @@ Show input info:
 the query
    GCGTTTATCTGCACTGGCGGGCCGCTTTTACCATGAACCCTCTGACAATTTACGTCTCGTGGGCGTAACGGGCACCAACGGCAAAACCACGACTACCCAGCTGTTGGCGCAGTGGAGCCAACTGCTTGGCGAAATCAGCGCGGTAATGGGCACCGTTGGTAACGGCCTGCTGGGGAAAGTGATCCCGACAGAAAATACAACCGGTTCGGCAGTCGATGTTCAGCATGAGCTGGCGGGGCTGGTGGATCAG
    GGCGCGGCATTTTCAGGCGAGGGAGAGATAAACGCATCAACCTAACTCCTTCGCCAGACGGGCAAACTCATTGCCTCGTTGTTCAAAGTTCTTGAACTGATCAAGGCATTTTCAGGCTGGGGAGAGCAGAACCATATCGCCCGGCTGAACACGCGGAGCCAGCAAGCGCATCGCCTGTTCCATAGTTTCGGTTTGTTCTGCCACTTCCGGGCGTAGCGCCGCCAGCTGCGCGCCGTCACGACCGGGACAA
-crumbing time: 0.0544641
+crumbing time: 0.538811
 Cost: 7
-Band: 174.728
+Band: 41.008
 End position read1: 93690
 End position read2: 98439
 Negativity of strand (first read): 0
-Runtime alignment: 2.90612
+   expanded states: 20504
+   expanded states u, v ∈ Trie: 20312
+   expanded states u ∈ Trie, v ∈ Gr: 42
+   expanded states u ∈ Gr, v ∈ Trie: 72
+   expanded states u, v ∈ Gr: 78
+Runtime alignment: 5.24524
 
 Query: 9
 Show input info:
@@ -183,13 +223,18 @@ Show input info:
 the query
    AGGTTTATCTCAATGAAAAAGCTGCAAATTGCGGTAGGTATTATTCGCAACGAGAACAATGAAATCTTTATAACGCGTCGCGCAGCAGATGCGCACATGGCGAATAAACTGGAGTTTCCCGGCGGTAAAATTGAAATGGGTGGGGCGTTGGAGCAGGCGGTGGTGCGTGAACTTCAGGAAGAAGTCGGGATTACCCCCCAACATTTTTCGCTATTTGAAAAACTGGAATATGAATTCCCGGACAGGCATA
    ATTGTCGCCGGCAGCAAGGGGAGCCCATCCACATTCCAGACAATGTATGGCCATCGCCGCTGCCCCACTGGCAGGCACCCGGTTGTGTACATTGCTACCACGGTTTTTATGGTCGTACGGCCTTATTTGAAGTTCTGCCCATAACGCCGGTCATTCGTCAGCTTATTTCCGCTAATACCGACGTTGAATCGCTGGAAACGCACGCACGACAGGCGGGTATGCGTACGCTTTTTGAAAACGGCTGCCTGGC
-crumbing time: 0.00431944
+crumbing time: 0.00319603
 Cost: 9
-Band: 1807.01
+Band: 367.832
 End position read1: 111281
 End position read2: 116030
 Negativity of strand (first read): 0
-Runtime alignment: 21.9435
+   expanded states: 183916
+   expanded states u, v ∈ Trie: 174782
+   expanded states u ∈ Trie, v ∈ Gr: 4906
+   expanded states u ∈ Gr, v ∈ Trie: 3459
+   expanded states u, v ∈ Gr: 769
+Runtime alignment: 40.6438
 
 Query: 10
 Show input info:
@@ -204,13 +249,18 @@ Show input info:
 the query
    GTTGGCAGTTAAAACTGTATTGGATGGTATGACGGGTGCCGTGACTGTCTGTTTTACCGGTACAGCTTTCTTCGTTGTGGTAATAACTTTCTTACGCTACATTGACTTCAGCGAGCCGGTTTGTTGCGCCAGTTGCCGCAATCGCTGTACCGAGTCCATCACGTCCTGCGGCTGGGCCAGAAAAGCATCGCCCAGGTTTTGCACCCATTGCGGGTTTTCGCCCATCAATGCCATCAATTGTGGAAAGGCC
    AGAAATTGAAAAAACTGAAACTGCATGGCTTTAATAATCTGACCAAAAGTCTGAGTTTTTGTATTTACGATATCTGCTACGCCAAAACTGCCGAAGAGCGCGACGGTTATATTGCTTATATCGATGAACTCTATAATGCCAACCGTCTGACCGAAATCCTGTCAGAAACCTGTTCCATTATCGGGGCTAATATTCTTAACATCGCCCGATGTAGCGTAGAACCACAGGGTGCCAGCGTCACTATTCTGGT
-crumbing time: 0.0296168
+crumbing time: 0.00319594
 Cost: 14
-Band: 7784.63
+Band: 2089.7
 End position read1: 130838
 End position read2: 135587
 Negativity of strand (first read): 0
-Runtime alignment: 73.691
+   expanded states: 1044851
+   expanded states u, v ∈ Trie: 877644
+   expanded states u ∈ Trie, v ∈ Gr: 75751
+   expanded states u ∈ Gr, v ∈ Trie: 79969
+   expanded states u, v ∈ Gr: 11487
+Runtime alignment: 195.462
 
 Query: 11
 Show input info:
@@ -225,13 +275,18 @@ Show input info:
 the query
    ACCGAACAAAAACAGATAACCACGGGCACCAGACTGACAATCAATCCGGCAATCAACATCTGACCGCCAATCGCGCCCAGGCCGTTATTAATACCGCTACGGCGCTCAGACCAACGCCTGCCATAAACACCATCAAGCCGAACTCTTTCACCATGCTTAATGCACCCTGCGAATGTAACCGAAGGTCGGGTGGTTAGCACGCATAAAGCCCAGCATAAAACCGGCGAATAACAACCCGGCAGCGTT
    AATCTGCTCTTCGCTCTGACGCACGAACCATGCAGGAACTGCTCATAGGTTACGCCCTGCATAACGGATAAAGACTGGCAAACCACCAGCTTTGGCAGATTATCATCCTGCATATCAAGAAATGCTTTCACGGTCAGCGAACTGGCATTGATGGCAGATAAATCCGCCGCCAGCGGCAATACGGCTGAAGGTCGGACTTCCGCCTTTATGGCAGAACTAACAGGATCGTGTTATCGATCAGATCGATCAGTTGGCATC
-crumbing time: 0.0796053
+crumbing time: 0.892744
 Cost: 15
-Band: 3760.5
+Band: 1014.47
 End position read1: 888598
 End position read2: 893337
 Negativity of strand (first read): 0
-Runtime alignment: 43.3208
+   expanded states: 523465
+   expanded states u, v ∈ Trie: 475670
+   expanded states u ∈ Trie, v ∈ Gr: 20749
+   expanded states u ∈ Gr, v ∈ Trie: 23610
+   expanded states u, v ∈ Gr: 3436
+Runtime alignment: 106.484
 
 Query: 12
 Show input info:
@@ -246,13 +301,18 @@ Show input info:
 the query
    TAGGAGCCGTGAATGGTAACCTGCCCGCGTTTCCACGCTGATTGCATAATGGTGGAGTGGCCCAGGTTATACACCTGTTCCATGACGTTCAGTTCACACAAGGTATCCAGACGGCGCTCTTGCGGCATTTCGCCGAGCAATGAGCTATGTTTGAACCAGATATCGCGGATATGCAGCAGCCAGTTGTTGATAAGCCCCAGTTCCGGGTTTTCAACTGCGGCTTGTACGCCGCCGCAACCGTAGTA
    AAATCTTCAATGAAACTCCCCGACTCTAAATGAAGCGTGTTGAGGTCACAAAGTTCGCGTAATTCCACTGGCAAATGTATCTCCAGAGCTGCTAAGTCGCGAGCCGTCTCCGCATGCATTAAAAATTGTTTAAATACCGCGTCATGCGGTGTGGTACTCGGTGCATCCATCTTCCCTGTCTTCCGTGTGGCTTTGCGTGAAGGCAGTATCCAGTCAAGGCGCGCTATCGTCAGCCACCTCTTTATTGTTTACCGAGCAGCGTTCA
-crumbing time: 0.037324
+crumbing time: 0.00297305
 Cost: 16
-Band: 15094.8
-End position read1: 142396
+Band: 3088.34
+End position read1: 142399
 End position read2: 147128
 Negativity of strand (first read): 0
-Runtime alignment: 128.242
+   expanded states: 1636821
+   expanded states u, v ∈ Trie: 1245618
+   expanded states u ∈ Trie, v ∈ Gr: 179319
+   expanded states u ∈ Gr, v ∈ Trie: 185636
+   expanded states u, v ∈ Gr: 26248
+Runtime alignment: 276.889
 
 Query: 13
 Show input info:
@@ -267,13 +327,18 @@ Show input info:
 the query
    TTACGTCATCATTGTGAATTAATATGCAAATAAAGTGAGTGAATATTCTCTGGAGGGTGTTTTGATTAAGTCAGCGCTATTGGTTCTGGAAGACGGAACCCAGTTTCACGGTCGGGGGGCCATAGGGGCAACAGGAACGCGCGGCGGTTGGGGAAGTCGTTTTCAATACTTCAATGACCGGTTATCAAGAAATCCTCACTGATCCTTCCTATTCTCGTCAAATCGTTACTCTTACTTATCCAACCATATTGGCAATGTCGGCACC
    TTTTCCCGACTGTTATTGCGCAGGCGCGCGTAAATTTGCTCATCGATATCGACCACTTTAACCAGTCGCTGACACTGGCATGCCCTTCCAGCTTATTAGATCATCTTAACTTCGCAGCTTATTTCTGTGACTTCCGACAGCAGAGAAGTCAGGGTATTAACCGCCTTGCTGTGTTCAATATCGTTATGAATAGAGATCTCTCTTGCTATCACCCACCGATTTTCAGCCATCATCCATTCGGCGATT
-crumbing time: 0.126135
+crumbing time: 1.3074
 Cost: 22
-Band: 15208.3
+Band: 2956.89
 End position read1: 29845
 End position read2: 34608
 Negativity of strand (first read): 0
-Runtime alignment: 129.212
+   expanded states: 1567154
+   expanded states u, v ∈ Trie: 1168585
+   expanded states u ∈ Trie, v ∈ Gr: 180817
+   expanded states u ∈ Gr, v ∈ Trie: 177428
+   expanded states u, v ∈ Gr: 40324
+Runtime alignment: 264.464
 
 Query: 14
 Show input info:
@@ -288,13 +353,18 @@ Show input info:
 the query
    GTAACCCTCTGACTCTTCGGGATGCATTATTCCGAAGTTTGTTGAGTTTACTTGACAGATTGCAGGTTTCGTCCTGTAATCAAGCACTAAGGGCGGCTACGGCCGCCCTTAATCAATGCAGCAACAGCAGCCGCTTAAAAAGCCTTTAAGGAACCGGAGGAATCATGACCAAGTCAGAATTGATAGAAAGACTTGCCACCCAGCAATCGCACATTCCCGCCAAGACGGTTGAAGATGCAGTAAAAGAGATGCTGGAGCATATGGCCT
    TCTGCCGACAATAACAGCGGATAAGATTCAGCCTTACCACCATATCCCCGCGATACGACTGCCACGCGAATACCGCGCTGTTGCAACTGTTCCAGCCAGACAACGACCGGGGTTTTTCCGTTGCCGCCTGCGGTGAGATTACCAACCACGACAACCGGTACGGGGGCACGCCAGGCGCGCTTCAGTTTTAGTTTATAGCAAAGACGGATCGCGCCACTCACCAGGCCATACAACCAGGAGAGTGGCA
-crumbing time: 0.130499
+crumbing time: 1.20972
 Cost: 13
-Band: 3030.44
+Band: 840.345
 End position read1: 963930
 End position read2: 968684
 Negativity of strand (first read): 0
-Runtime alignment: 36.9382
+   expanded states: 448744
+   expanded states u, v ∈ Trie: 412779
+   expanded states u ∈ Trie, v ∈ Gr: 18785
+   expanded states u ∈ Gr, v ∈ Trie: 14050
+   expanded states u, v ∈ Gr: 3130
+Runtime alignment: 92.6255
 
 Query: 15
 Show input info:
@@ -309,14 +379,20 @@ Show input info:
 the query
    CGTTATAAGCGTCCACGCCATTGTTCAGCACAATGCGCGGTTCGTTGGCGGGTAAGGCGTGACGTGCTGAAGGTTCATCCGGCTCCGGCAGTTGCACACCTTCAAGCTGTTCACTATGCGCCAGTTCCGCGACGAGTGCTTGTTGGAGCAGTTCCTCTTTAGCGCCAGTATCCGCTAACGTGCAATCCGCCAGCACGCCAGCAAACTGGACAAACTCCGGGATCTCATCGAAGCGATTGAG
    ACGCCGTATGGAAGTTCGCCCTGACGCACGATGACCTGCCGCAGATTGCAGCATTTTGGTAAGCATGTCGAACATGAACTGGGACTGGAGTGTGAATGGTCCTGGCACGATCAGGTGGATATTGCACGCGGCGGCAACAGCAAAGGTAAACGTTTGACGATATGGGTTGAGGCGCAAGGTTGGTCGATGGAAAACGTCGTGGCATTCGGCGATTTTTTTAATGATATCAGTATGCTGGAAGCCGCTGGTAC
-crumbing time: 0.0362791
+crumbing time: 0.467182
 Cost: 11
-Band: 98.6833
+Band: 41.1335
 End position read1: 793225
 End position read2: 797974
 Negativity of strand (first read): 0
-Runtime alignment: 1.82048
+   expanded states: 20649
+   expanded states u, v ∈ Trie: 19667
+   expanded states u ∈ Trie, v ∈ Gr: 434
+   expanded states u ∈ Gr, v ∈ Trie: 358
+   expanded states u, v ∈ Gr: 190
+Runtime alignment: 4.63664
 
+tests with cost: 0
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -333,6 +409,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 1
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -349,6 +427,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 2
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -365,6 +445,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 3
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -381,22 +463,26 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 4
    Number of tests: 1
-   run-time joint alignment: 0.377454 (sec.)
+   run-time joint alignment: 0.819468 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 14.722
-   expanded states: 7361
-   expanded states u, v ∈ Trie: 6703
-   expanded states u ∈ Trie, v ∈ Gr: 165
-   expanded states u ∈ Gr, v ∈ Trie: 185
-   expanded states u, v ∈ Gr: 308
-   punished states: 4013
-   expanded states u, v∈ Trie (% of all): 91.061
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 2.24154
-   expanded states u∈Gr, v∈Trie (% of all): 2.51325
-   expanded states u, v ∈ Gr (% of all): 4.18421
+   band: 7.228
+   expanded states: 3614
+   expanded states u, v ∈ Trie: 3378
+   expanded states u ∈ Trie, v ∈ Gr: 64
+   expanded states u ∈ Gr, v ∈ Trie: 72
+   expanded states u, v ∈ Gr: 100
+   punished states: 2622
+   expanded states u, v∈ Trie (% of all): 93.4698
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 1.77089
+   expanded states u∈Gr, v∈Trie (% of all): 1.99225
+   expanded states u, v ∈ Gr (% of all): 2.76702
+
+tests with cost: 5
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -413,6 +499,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 6
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -429,86 +517,98 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 7
    Number of tests: 1
-   run-time joint alignment: 2.90612 (sec.)
+   run-time joint alignment: 5.24524 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 174.728
-   expanded states: 87364
-   expanded states u, v ∈ Trie: 86556
-   expanded states u ∈ Trie, v ∈ Gr: 189
-   expanded states u ∈ Gr, v ∈ Trie: 228
-   expanded states u, v ∈ Gr: 391
-   punished states: 109774
-   expanded states u, v∈ Trie (% of all): 99.0751
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 0.216336
-   expanded states u∈Gr, v∈Trie (% of all): 0.260977
-   expanded states u, v ∈ Gr (% of all): 0.447553
+   band: 41.008
+   expanded states: 20504
+   expanded states u, v ∈ Trie: 20312
+   expanded states u ∈ Trie, v ∈ Gr: 42
+   expanded states u ∈ Gr, v ∈ Trie: 72
+   expanded states u, v ∈ Gr: 78
+   punished states: 94146
+   expanded states u, v∈ Trie (% of all): 99.0636
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 0.204838
+   expanded states u∈Gr, v∈Trie (% of all): 0.351151
+   expanded states u, v ∈ Gr (% of all): 0.380414
+
+tests with cost: 8
    Number of tests: 1
-   run-time joint alignment: 3.58461 (sec.)
+   run-time joint alignment: 11.151 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 199.96
-   expanded states: 99980
-   expanded states u, v ∈ Trie: 95063
-   expanded states u ∈ Trie, v ∈ Gr: 1531
-   expanded states u ∈ Gr, v ∈ Trie: 1634
-   expanded states u, v ∈ Gr: 1752
-   punished states: 72157
-   expanded states u, v∈ Trie (% of all): 95.082
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 1.53131
-   expanded states u∈Gr, v∈Trie (% of all): 1.63433
-   expanded states u, v ∈ Gr (% of all): 1.75235
+   band: 98.802
+   expanded states: 49401
+   expanded states u, v ∈ Trie: 47079
+   expanded states u ∈ Trie, v ∈ Gr: 827
+   expanded states u ∈ Gr, v ∈ Trie: 883
+   expanded states u, v ∈ Gr: 612
+   punished states: 70178
+   expanded states u, v∈ Trie (% of all): 95.2997
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 1.67406
+   expanded states u∈Gr, v∈Trie (% of all): 1.78741
+   expanded states u, v ∈ Gr (% of all): 1.23884
+
+tests with cost: 9
    Number of tests: 3
-   run-time joint alignment: 35.9059 (sec.)
+   run-time joint alignment: 72.9159 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 2793.42
-   expanded states: 1396710
-   expanded states u, v ∈ Trie: 1332002
-   expanded states u ∈ Trie, v ∈ Gr: 30886
-   expanded states u ∈ Gr, v ∈ Trie: 22110
-   expanded states u, v ∈ Gr: 11712
-   punished states: 269359
-   expanded states u, v∈ Trie (% of all): 95.3671
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 2.21134
-   expanded states u∈Gr, v∈Trie (% of all): 1.58301
-   expanded states u, v ∈ Gr (% of all): 0.838542
+   band: 671.19
+   expanded states: 335595
+   expanded states u, v ∈ Trie: 319396
+   expanded states u ∈ Trie, v ∈ Gr: 7825
+   expanded states u ∈ Gr, v ∈ Trie: 5557
+   expanded states u, v ∈ Gr: 2817
+   punished states: 245611
+   expanded states u, v∈ Trie (% of all): 95.1731
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 2.33168
+   expanded states u∈Gr, v∈Trie (% of all): 1.65586
+   expanded states u, v ∈ Gr (% of all): 0.839405
+
+tests with cost: 10
    Number of tests: 1
-   run-time joint alignment: 11.9601 (sec.)
+   run-time joint alignment: 21.1805 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 888.644
-   expanded states: 444322
-   expanded states u, v ∈ Trie: 425881
-   expanded states u ∈ Trie, v ∈ Gr: 7014
-   expanded states u ∈ Gr, v ∈ Trie: 6810
-   expanded states u, v ∈ Gr: 4617
-   punished states: 3866
-   expanded states u, v∈ Trie (% of all): 95.8496
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 1.57858
-   expanded states u∈Gr, v∈Trie (% of all): 1.53267
-   expanded states u, v ∈ Gr (% of all): 1.03911
+   band: 200.336
+   expanded states: 100168
+   expanded states u, v ∈ Trie: 95918
+   expanded states u ∈ Trie, v ∈ Gr: 1666
+   expanded states u ∈ Gr, v ∈ Trie: 1663
+   expanded states u, v ∈ Gr: 921
+   punished states: 2506
+   expanded states u, v∈ Trie (% of all): 95.7571
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 1.66321
+   expanded states u∈Gr, v∈Trie (% of all): 1.66021
+   expanded states u, v ∈ Gr (% of all): 0.919455
+
+tests with cost: 11
    Number of tests: 1
-   run-time joint alignment: 1.82048 (sec.)
+   run-time joint alignment: 4.63664 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 98.6833
-   expanded states: 49539
-   expanded states u, v ∈ Trie: 47090
-   expanded states u ∈ Trie, v ∈ Gr: 946
-   expanded states u ∈ Gr, v ∈ Trie: 945
-   expanded states u, v ∈ Gr: 558
-   punished states: 462229
-   expanded states u, v∈ Trie (% of all): 95.0564
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 1.90961
-   expanded states u∈Gr, v∈Trie (% of all): 1.90759
-   expanded states u, v ∈ Gr (% of all): 1.12639
+   band: 41.1335
+   expanded states: 20649
+   expanded states u, v ∈ Trie: 19667
+   expanded states u ∈ Trie, v ∈ Gr: 434
+   expanded states u ∈ Gr, v ∈ Trie: 358
+   expanded states u, v ∈ Gr: 190
+   punished states: 421626
+   expanded states u, v∈ Trie (% of all): 95.2443
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 2.1018
+   expanded states u∈Gr, v∈Trie (% of all): 1.73374
+   expanded states u, v ∈ Gr (% of all): 0.920141
+
+tests with cost: 12
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -525,70 +625,80 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 13
    Number of tests: 1
-   run-time joint alignment: 36.9382 (sec.)
+   run-time joint alignment: 92.6255 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 3030.44
-   expanded states: 1618255
-   expanded states u, v ∈ Trie: 1524597
-   expanded states u ∈ Trie, v ∈ Gr: 46996
-   expanded states u ∈ Gr, v ∈ Trie: 34982
-   expanded states u, v ∈ Gr: 11680
-   punished states: 461462
-   expanded states u, v∈ Trie (% of all): 94.2124
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 2.90412
-   expanded states u∈Gr, v∈Trie (% of all): 2.16171
-   expanded states u, v ∈ Gr (% of all): 0.721765
+   band: 840.345
+   expanded states: 448744
+   expanded states u, v ∈ Trie: 412779
+   expanded states u ∈ Trie, v ∈ Gr: 18785
+   expanded states u ∈ Gr, v ∈ Trie: 14050
+   expanded states u, v ∈ Gr: 3130
+   punished states: 421030
+   expanded states u, v∈ Trie (% of all): 91.9854
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 4.18613
+   expanded states u∈Gr, v∈Trie (% of all): 3.13096
+   expanded states u, v ∈ Gr (% of all): 0.697502
+
+tests with cost: 14
    Number of tests: 3
-   run-time joint alignment: 177.597 (sec.)
+   run-time joint alignment: 423.613 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 17607
-   expanded states: 8803490
-   expanded states u, v ∈ Trie: 7771693
-   expanded states u ∈ Trie, v ∈ Gr: 459597
-   expanded states u ∈ Gr, v ∈ Trie: 451523
-   expanded states u, v ∈ Gr: 120677
-   punished states: 332073
-   expanded states u, v∈ Trie (% of all): 88.2797
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 5.22062
-   expanded states u∈Gr, v∈Trie (% of all): 5.12891
-   expanded states u, v ∈ Gr (% of all): 1.37079
+   band: 4238.98
+   expanded states: 2119488
+   expanded states u, v ∈ Trie: 1828121
+   expanded states u ∈ Trie, v ∈ Gr: 132145
+   expanded states u ∈ Gr, v ∈ Trie: 134387
+   expanded states u, v ∈ Gr: 24835
+   punished states: 297931
+   expanded states u, v∈ Trie (% of all): 86.253
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 6.23476
+   expanded states u∈Gr, v∈Trie (% of all): 6.34054
+   expanded states u, v ∈ Gr (% of all): 1.17175
+
+tests with cost: 15
    Number of tests: 1
-   run-time joint alignment: 43.3208 (sec.)
+   run-time joint alignment: 106.484 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 3760.5
-   expanded states: 1940419
-   expanded states u, v ∈ Trie: 1801051
-   expanded states u ∈ Trie, v ∈ Gr: 57473
-   expanded states u ∈ Gr, v ∈ Trie: 68828
-   expanded states u, v ∈ Gr: 13067
-   punished states: 163394
-   expanded states u, v∈ Trie (% of all): 92.8176
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 2.96189
-   expanded states u∈Gr, v∈Trie (% of all): 3.54707
-   expanded states u, v ∈ Gr (% of all): 0.673411
+   band: 1014.47
+   expanded states: 523465
+   expanded states u, v ∈ Trie: 475670
+   expanded states u ∈ Trie, v ∈ Gr: 20749
+   expanded states u ∈ Gr, v ∈ Trie: 23610
+   expanded states u, v ∈ Gr: 3436
+   punished states: 146619
+   expanded states u, v∈ Trie (% of all): 90.8695
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 3.96378
+   expanded states u∈Gr, v∈Trie (% of all): 4.51033
+   expanded states u, v ∈ Gr (% of all): 0.656395
+
+tests with cost: 16
    Number of tests: 1
-   run-time joint alignment: 128.242 (sec.)
+   run-time joint alignment: 276.889 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 15094.8
-   expanded states: 8000231
-   expanded states u, v ∈ Trie: 6090527
-   expanded states u ∈ Trie, v ∈ Gr: 868587
-   expanded states u ∈ Gr, v ∈ Trie: 887703
-   expanded states u, v ∈ Gr: 153414
-   punished states: 318325
-   expanded states u, v∈ Trie (% of all): 76.1294
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 10.857
-   expanded states u∈Gr, v∈Trie (% of all): 11.096
-   expanded states u, v ∈ Gr (% of all): 1.91762
+   band: 3088.34
+   expanded states: 1636821
+   expanded states u, v ∈ Trie: 1245618
+   expanded states u ∈ Trie, v ∈ Gr: 179319
+   expanded states u ∈ Gr, v ∈ Trie: 185636
+   expanded states u, v ∈ Gr: 26248
+   punished states: 291636
+   expanded states u, v∈ Trie (% of all): 76.0998
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 10.9553
+   expanded states u∈Gr, v∈Trie (% of all): 11.3413
+   expanded states u, v ∈ Gr (% of all): 1.6036
+
+tests with cost: 17
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -605,6 +715,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 18
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -621,6 +733,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 19
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -637,6 +751,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 20
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -653,6 +769,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 21
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -669,22 +787,26 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 22
    Number of tests: 1
-   run-time joint alignment: 129.212 (sec.)
+   run-time joint alignment: 264.464 (sec.)
    Trie depth: 0
    Seeds lenght: 0 (bp.)
    Drange: 0
-   band: 15208.3
-   expanded states: 8060375
-   expanded states u, v ∈ Trie: 6022785
-   expanded states u ∈ Trie, v ∈ Gr: 905768
-   expanded states u ∈ Gr, v ∈ Trie: 897760
-   expanded states u, v ∈ Gr: 234062
-   punished states: 455976
-   expanded states u, v∈ Trie (% of all): 74.7209
-   expanded states u ∈ Trie, v ∈ Gr (% of all): 11.2373
-   expanded states u∈Gr, v∈Trie (% of all): 11.1379
-   expanded states u, v ∈ Gr (% of all): 2.90386
+   band: 2956.89
+   expanded states: 1567154
+   expanded states u, v ∈ Trie: 1168585
+   expanded states u ∈ Trie, v ∈ Gr: 180817
+   expanded states u ∈ Gr, v ∈ Trie: 177428
+   expanded states u, v ∈ Gr: 40324
+   punished states: 415674
+   expanded states u, v∈ Trie (% of all): 74.5673
+   expanded states u ∈ Trie, v ∈ Gr (% of all): 11.5379
+   expanded states u∈Gr, v∈Trie (% of all): 11.3217
+   expanded states u, v ∈ Gr (% of all): 2.57307
+
+tests with cost: 23
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -701,6 +823,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 24
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -717,6 +841,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 25
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -733,6 +859,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 26
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -749,6 +877,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 27
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -765,6 +895,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 28
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -781,6 +913,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 29
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -797,6 +931,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 30
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -813,6 +949,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 31
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -829,6 +967,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 32
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -845,6 +985,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 33
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -861,6 +1003,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 34
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -877,6 +1021,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 35
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -893,6 +1039,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 36
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -909,6 +1057,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 37
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -925,6 +1075,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 38
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -941,6 +1093,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 39
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -957,6 +1111,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 40
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -973,6 +1129,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 41
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -989,6 +1147,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 42
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1005,6 +1165,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 43
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1021,6 +1183,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 44
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1037,6 +1201,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 45
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1053,6 +1219,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 46
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1069,6 +1237,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 47
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1085,6 +1255,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 48
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1101,6 +1273,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 49
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1117,6 +1291,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 50
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1133,6 +1309,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 51
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1149,6 +1327,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 52
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1165,6 +1345,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 53
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1181,6 +1363,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 54
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1197,6 +1381,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 55
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1213,6 +1399,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 56
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1229,6 +1417,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 57
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1245,6 +1435,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 58
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1261,6 +1453,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 59
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1277,6 +1471,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 60
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1293,6 +1489,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 61
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1309,6 +1507,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 62
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1325,6 +1525,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 63
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1341,6 +1543,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 64
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1357,6 +1561,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 65
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1373,6 +1579,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 66
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1389,6 +1597,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 67
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1405,6 +1615,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 68
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1421,6 +1633,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 69
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1437,6 +1651,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 70
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1453,6 +1669,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 71
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1469,6 +1687,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 72
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1485,6 +1705,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 73
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1501,6 +1723,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 74
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1517,6 +1741,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 75
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1533,6 +1759,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 76
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1549,6 +1777,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 77
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1565,6 +1795,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 78
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1581,6 +1813,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 79
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1597,6 +1831,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 80
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1613,6 +1849,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 81
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1629,6 +1867,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 82
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1645,6 +1885,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 83
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1661,6 +1903,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 84
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1677,6 +1921,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 85
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1693,6 +1939,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 86
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1709,6 +1957,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 87
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1725,6 +1975,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 88
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1741,6 +1993,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 89
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1757,6 +2011,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 90
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1773,6 +2029,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 91
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1789,6 +2047,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 92
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1805,6 +2065,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 93
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1821,6 +2083,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 94
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1837,6 +2101,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 95
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1853,6 +2119,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 96
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1869,6 +2137,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 97
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1885,6 +2155,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 98
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1901,6 +2173,8 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+
+tests with cost: 99
    Number of tests: 0
    run-time joint alignment: 0 (sec.)
    Trie depth: 0
@@ -1917,3 +2191,4 @@ Runtime alignment: 1.82048
    expanded states u ∈ Trie, v ∈ Gr (% of all): -nan
    expanded states u∈Gr, v∈Trie (% of all): -nan
    expanded states u, v ∈ Gr (% of all): -nan
+

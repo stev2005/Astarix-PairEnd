@@ -98,7 +98,15 @@ bool to_explore_pr(int qpos, Node &&p1, Node &&p2, cost_t g, bool negative){
     return false;
 }
 
-inline void expand_state_pr(int qpos, Node &p1, Node &p2, cost_t &g, bool &negative){
+bool to_expand_pr(int qpos, Node &&p1, Node &&p2, cost_t g, bool negative){
+    map<tuple<int, Node, Node, bool>, cost_t> & expanded_prstates = get_expanded_prstates();
+    tuple<int, Node, Node, bool> state(qpos, p1, p2, negative);
+    if (expanded_prstates.find(state) == expanded_prstates.end()) return true;
+    if (expanded_prstates[state] >= g) return true;
+    return false;
+}
+
+inline void expand_state_pr(int qpos, Node &p1, Node &p2, cost_t g, bool &negative){
     map<tuple<int, Node, Node, bool>, cost_t> & expanded_prstates = get_expanded_prstates();
     tuple<int, Node, Node, bool> state(qpos, p1, p2, negative);
     expanded_prstates[state] = g;
@@ -171,16 +179,12 @@ bool gready_available_pr(Statepr &cur, vector<Statepr> &nextpr, Statepr &heir){
     if (cur.p2.is_in_trie()) return false;
     for (auto i: nextpr){
         if (i.g == 0 && i.qpos == cur.qpos + 1 && i.p1.rpos == cur.p1.rpos + 1 && i.p2.rpos == cur.p2.rpos + 1){
-            /*if (i.p1.rpos != cur.p1.rpos + 1){
-                cerr << "cur's info: " << cur.qpos << " " << cur.p1.rpos << " " << cur.p2.rpos << " " << cur.g << " " << cur.h << " " << cur.negative << "\n";
-                cerr << "i's info: " << i.qpos << " " << i.p1.rpos << " " << i.p2.rpos << " " << i.g << " " << i.h << "\n";
-                assert(i.p1.rpos == cur.p1.rpos + 1);
-            }
-            assert(i.p2.rpos == cur.p2.rpos + 1);*/
             heir = i;
             heir.negative = cur.negative;
             heir.g = cur.g;
-            return true;
+            return to_explore_pr(heir.qpos, move(heir.p1), move(heir.p2), heir.g, heir.negative);
+            /*if (to_explore_pr(heir.qpos, move(heir.p1), move(heir.p2), heir.g, heir.negative))
+                return true;*/
         }
     }
     return false;
@@ -212,7 +216,7 @@ Statepr astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, 
         show_minmaxcost(minmaxcost, cur, queryp.first, queryp.second);
         increasecnt(cur.p1, cur.p2, cntexpansions, cntTrieTrieexpansions, cntrefTrieexpansions, cntTrierefexpansions, cntrefrefexpansions);
         if (cur.qpos == n) break;
-        if (!to_explore_pr(cur.qpos, move(cur.p1), move(cur.p2), cur.g, cur.negative)) continue;
+        if (!to_expand_pr(cur.qpos, move(cur.p1), move(cur.p2), cur.g, cur.negative)) continue;
         expand_state_pr(cur.qpos, cur.p1, cur.p2, cur.g, cur.negative);
         vector<int> *curseeds1, *curseeds2;
         crumbs_t *curcrumbs1, *curcrumbs2;
@@ -237,6 +241,7 @@ Statepr astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, 
         Statepr heir = cur;
         do{
             cur = heir;
+            expand_state_pr(cur.qpos, cur.p1, cur.p2, cur.g, cur.negative);
             if (cur.qpos == n) break;
             nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
                                         ref, info.last, info.prevpos, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2));
@@ -245,7 +250,10 @@ Statepr astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, 
         for (auto i: nextpr){
             i.g += cur.g;
             i.negative = cur.negative;
-            q.push(i);
+            if (to_explore_pr(i.qpos, move(i.p1), move(i.p2), i.g, i.negative)){
+                q.push(i);
+                expand_state_pr(i.qpos, i.p1, i.p2, i.g, i.negative); 
+            }
         }
     }
     get_expanded_prstates(true);
@@ -263,6 +271,12 @@ Statepr astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, 
     cout << "End position read1: " << cur.p1.rpos << "\n";
     cout << "End position read2: " << cur.p2.rpos << "\n";
     cout << "Negativity of strand (first read): " << cur.negative << "\n";
+    cout << "   expanded states: " << cntexpansions << "\n";
+    cout << "   expanded states u, v ∈ Trie: " << cntTrieTrieexpansions << "\n";
+    cout << "   expanded states u ∈ Trie, v ∈ Gr: " << cntTrierefexpansions << "\n";
+    cout << "   expanded states u ∈ Gr, v ∈ Trie: " << cntrefTrieexpansions << "\n";
+    cout << "   expanded states u, v ∈ Gr: " << cntrefrefexpansions << "\n";
+
     return cur;
 }
     /*Statepr cheapest = cur;

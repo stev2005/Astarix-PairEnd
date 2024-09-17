@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 #include <chrono>
 #include "bucketqueue.h"
+#include <signal.h>
 using namespace std;
 const int alphabetsz = 4;
 const char base[alphabetsz] = {'A', 'T', 'G', 'C'};

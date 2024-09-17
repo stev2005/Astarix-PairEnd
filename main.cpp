@@ -53,11 +53,29 @@ inline void make_ends_equally_long(string &s1, string &s2){
     else s2 +=  add;
 }
 
+inline void print_evals(int _signal = 0){
+    for (int i = 0; i < 100; ++i){
+        cout << "tests with cost: " << i << "\n";
+        peevals[i].print_stats();
+        cout << "\n";
+    }
+}
+
+inline void print_evals_stopprogram(int _sig){
+    print_evals();
+    exit(_sig);
+}
+
 int main(int argc, char *argv[]){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
     cerr << "Start of the program\n";
+    signal(SIGABRT, print_evals_stopprogram);
+    signal(SIGSEGV, print_evals_stopprogram);
+    signal(SIGBUS, print_evals_stopprogram);
+    signal(SIGTERM, print_evals_stopprogram);
+    signal(SIGTSTP, print_evals_stopprogram);
     int d, k;
     string ref;
     string fileref, filequery;
@@ -152,7 +170,6 @@ int main(int argc, char *argv[]){
     delete rootdmer;
     delete rootkmer;
     close_query_in_files();
-    for (int i = 0; i < 100; ++i)
-        peevals[i].print_stats();
+    print_evals();
     return 0;
 }
