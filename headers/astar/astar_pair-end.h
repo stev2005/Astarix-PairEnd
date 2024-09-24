@@ -83,33 +83,42 @@ inline void increasecnt(Node &p1, Node &p2, long long &cntexpansions, long long 
     }
 }
 
-map<tuple<int, Node, Node, bool>, cost_t>& get_expanded_prstates(bool del = false){
-    static map<tuple<int, Node, Node, bool>, cost_t> expanded_prstates;
+map<tuple<int, Node, Node, bool>, pair<cost_t, bool> >& get_expanded_prstates(bool del = false){
+    static map<tuple<int, Node, Node, bool>, pair<cost_t, bool> > expanded_prstates;//cost_t achieved cost of the explored state, bool: is it already expanded
     if (del == true)
         expanded_prstates.clear();
     return expanded_prstates;
 }
 
 bool to_explore_pr(int qpos, Node &&p1, Node &&p2, cost_t g, bool negative){
-    map<tuple<int, Node, Node, bool>, cost_t> & expanded_prstates = get_expanded_prstates();
+    map<tuple<int, Node, Node, bool>, pair<cost_t, bool> > & expanded_prstates = get_expanded_prstates();
     tuple<int, Node, Node, bool> state(qpos, p1, p2, negative);
     if (expanded_prstates.find(state) == expanded_prstates.end()) return true;
-    if (expanded_prstates[state] > g) return true;
+    if (expanded_prstates[state].first > g) return true;
     return false;
 }
 
 bool to_expand_pr(int qpos, Node &&p1, Node &&p2, cost_t g, bool negative){
-    map<tuple<int, Node, Node, bool>, cost_t> & expanded_prstates = get_expanded_prstates();
+    map<tuple<int, Node, Node, bool>, pair<cost_t, bool> > & expanded_prstates = get_expanded_prstates();
     tuple<int, Node, Node, bool> state(qpos, p1, p2, negative);
     if (expanded_prstates.find(state) == expanded_prstates.end()) return true;
-    if (expanded_prstates[state] >= g) return true;
+    if (expanded_prstates[state].first > g){/*cerr << "The almost impossible if\n";*/ return true;}
+    if (expanded_prstates[state].first == g && expanded_prstates[state].second == false) return true;
     return false;
 }
 
-inline void expand_state_pr(int qpos, Node &p1, Node &p2, cost_t g, bool &negative){
-    map<tuple<int, Node, Node, bool>, cost_t> & expanded_prstates = get_expanded_prstates();
+inline void explore_state_pr(int qpos, Node &p1, Node &p2, cost_t g, bool &negative){
+    map<tuple<int, Node, Node, bool>, pair<cost_t, bool> > & expanded_prstates = get_expanded_prstates();
     tuple<int, Node, Node, bool> state(qpos, p1, p2, negative);
-    expanded_prstates[state] = g;
+    expanded_prstates[state].first = g;
+    expanded_prstates[state].second = false;
+}
+
+inline void expand_state_pr(int qpos, Node &p1, Node &p2, cost_t g, bool &negative){
+    map<tuple<int, Node, Node, bool>, pair<cost_t, bool> > & expanded_prstates = get_expanded_prstates();
+    tuple<int, Node, Node, bool> state(qpos, p1, p2, negative);
+    expanded_prstates[state].first = g;
+    expanded_prstates[state].second = true;
 }
 
 bool punish(Node &p1, Node &p2){
@@ -164,7 +173,7 @@ inline void show_minmaxcost(int &minmaxcost, Statepr &cur, string &query1, strin
     }
 }
 
-bool gready_available_pr(string & read1, string &read2, string &ref, int &qpos, Node &p1, Node &p2){
+bool greedy_available_pr(string & read1, string &read2, string &ref, int &qpos, Node &p1, Node &p2){
     if (p1.is_in_trie()) return false;
     if (p2.is_in_trie()) return false;
     if (ref.size() <= p1.rpos) return false;
@@ -174,7 +183,7 @@ bool gready_available_pr(string & read1, string &read2, string &ref, int &qpos, 
     return true;
 }
 
-bool gready_available_pr(Statepr &cur, vector<Statepr> &nextpr, Statepr &heir){
+bool greedy_available_pr(Statepr &cur, vector<Statepr> &nextpr, Statepr &heir){
     if (cur.p1.is_in_trie()) return false;
     if (cur.p2.is_in_trie()) return false;
     for (auto i: nextpr){
@@ -239,20 +248,22 @@ Statepr astar_pairend_read_alignment(pair<string, string> &queryp, pair<string, 
         }
         vector<Statepr> nextpr;
         Statepr heir = cur;
+        bool rezgreedy;
         do{
             cur = heir;
             expand_state_pr(cur.qpos, cur.p1, cur.p2, cur.g, cur.negative);
             if (cur.qpos == n) break;
             nextpr = move(get_next_states_pr(cur.qpos, cur.p1, cur.p2, k, (*read1)[cur.qpos], (*read2)[cur.qpos],
                                         ref, info.last, info.prevpos, *curseeds1, *curseeds2, *curcrumbs1, *curcrumbs2));
-        }while (gready_available_pr(cur, nextpr, heir));
+        }while (rezgreedy = greedy_available_pr(cur, nextpr, heir) && to_expand_pr(heir.qpos, move(heir.p1), move(heir.p2), heir.g, heir.negative));
         if (cur.qpos == n) break;
+        if (rezgreedy) continue; // available greedy but no need to expand the match; when there's a match -> no need to explore edits
         for (auto i: nextpr){
             i.g += cur.g;
             i.negative = cur.negative;
             if (to_explore_pr(i.qpos, move(i.p1), move(i.p2), i.g, i.negative)){
                 q.push(i);
-                expand_state_pr(i.qpos, i.p1, i.p2, i.g, i.negative); 
+                explore_state_pr(i.qpos, i.p1, i.p2, i.g, i.negative); 
             }
         }
     }
