@@ -6,6 +6,7 @@
 #include "headers/astar/statesstruct.h"
 #include "headers/astar/astar_single_reads.h"
 #include "headers/astar/astar_pair-end.h"
+#include "headers/astar/astar_pair-end_4D.h"
 using namespace std;
 
 inline void init_precompute(int argc, char *argv[], int &d, int &k, string &ref, string &fileref, string &filequery,
@@ -158,6 +159,48 @@ int main(int argc, char *argv[]){
             cout << "Runtime alignment: " << aligntime <<  "\n";
             peevals[rezult.g].aligntime += aligntime;
             ++peevals[rezult.g].ntests;
+        }
+        else if (typealignment == paired_end_alignment_4D){
+            cerr << "paired end 4D alignment\n";
+            pair<string, string> queryp;
+            queryp = move(get_pair_end_query());
+            cout << "the query\n";
+            cout << "   " << queryp.first << "\n";
+            cout << "   " << queryp.second << "\n";
+            pair<string, string> nqueryp;
+            auto startt = gettimenow_chrono();
+            nqueryp.first = get_reverse_complement(queryp.first);
+            nqueryp.second = get_reverse_complement(queryp.second);
+            if (heuristic == "seed_heuristic"){
+                auto crstart = gettimenow_chrono();
+                cerr << "seed heuristic choosen\n";
+                query_into_seeds(queryp.first, k, rootkmer, info.seeds1);
+                query_into_seeds(nqueryp.second, k, rootkmer, info.nseeds2);
+                query_into_seeds(nqueryp.first, k, rootkmer, info.nseeds1);
+                query_into_seeds(queryp.second, k, rootkmer, info.seeds2);
+                if (triecrumbsopt == "yes") getcrumbs_trieopt_pairend(ref, queryp.first.size(), queryp.second.size(), d, k, info);
+                else getcrumbs_pairend(ref, queryp.first.size(), queryp.second.size(), d, k, info);
+                double crumbtime = runtimechrono(crstart, gettimenow_chrono());
+                cout << "crumbing time: " << crumbtime << "\n";
+                cerr << "crumbing time: " << crumbtime << "\n";
+                //cerr << "prep comp for h. done\n";
+            }
+            readdist = insdist - queryp.second.size();
+            innerdist = readdist - queryp.first.size();
+            make_ends_equally_long(queryp.first, queryp.second);
+            make_ends_equally_long(nqueryp.first, nqueryp.second);
+            //Statepr4D rezult = move(astar_pairend_read4D_alignment(queryp, nqueryp, ref, d, k, rootdmer, info));
+            astar_pairend_read4D_alignment(queryp, nqueryp, ref, d, k, rootdmer, info);
+            auto endt = gettimenow_chrono();
+            double aligntime = runtimechrono(startt, endt);
+            cerr << "Runtime alignment: " << aligntime <<  "\n";
+            /*cerr << "Cost: " << rezult.g << "\n";
+            cerr << "End position read1: " << rezult.p1.rpos << "\n";
+            cerr << "End position read2: " << rezult.p2.rpos << "\n";
+            cerr << "Negativity of strand (first read): " << rezult.negative << "\n"; 
+            cout << "Runtime alignment: " << aligntime <<  "\n";
+            peevals[rezult.g].aligntime += aligntime;
+            ++peevals[rezult.g].ntests;*/
         }
         else{
             cerr << "No such alignment type is supported\n";

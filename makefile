@@ -8,6 +8,7 @@ PairedEndCompareAstarIndDIR=data/pair-end-reads/Comparison/'Astarix independent'
 EcoliDIR=data/EcoliRef/reference.fa
 EcoliREF="--reference $(EcoliDIR)"
 PE=paired-end
+PE4D=paired-end-4D
 SH=seed_heuristic
 
 default: main
@@ -46,6 +47,9 @@ testchep_dijkstra_heuristic:
 
 testpairend_seed_heuristic:
 	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 11 --seed-len 14 --insert-distance 5000 --filter-distance-difference 50 --trie-positions-limit-checker 0 --reference $(EcoliDIR) --query1 $(PE_DIR)/pe_reads1.fq --query2 $(PE_DIR)/pe_reads2.fq  >$(PE_StatsDIR)/$(PE).out
+
+testpairend4D_seed_heuristic:
+	time ./main.exe --alignment $(PE4D) --heuristic $(SH) --trie-depth 11 --seed-len 14 --insert-distance 5000 --filter-distance-difference 50 --trie-positions-limit-checker 0 --reference $(EcoliDIR) --query1 $(PE_DIR)/pe_reads1.fq --query2 $(PE_DIR)/pe_reads2.fq  >$(PE_StatsDIR)/$(PE).out
 
 testpairend_seed_heuristic_Artfq_problem:
 	time ./main.exe --alignment $(PE) --heuristic $(SH) --trie-depth 11 --seed-len 15 --insert-distance 1000 --filter-distance-difference 20  --reference $(EcoliDIR) --query1 $(PE_DIR)/ART_problem_test1.fq --query2 $(PE_DIR)/ART_problem_test2.fq  >$(PE_StatsDIR)/problem.out

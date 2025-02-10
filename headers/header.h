@@ -26,6 +26,7 @@ int ndel = 0;
 int nins = 0;
 const string single_end_alignment = "single-read";
 const string paired_end_alignment = "paired-end";
+const string paired_end_alignment_4D = "paired-end-4D";
 
 int get_nins_ndel_value(int qsz, int ssz, cost_t cop){
     return ((qsz * cequal + ssz * cdmin) % cop)? (qsz * cequal + ssz * cdmin) / cop + 1: (qsz * cequal + ssz * cdmin);

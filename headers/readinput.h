@@ -100,8 +100,8 @@ inline void close_query_in_files(){
 }
 
 bool queyreof(string &typealignment){
-    if (typealignment == "single-read") return fin2.eof();
-    else if (typealignment == "paired-end") return finread1.eof();
+    if (typealignment == single_end_alignment) return fin2.eof();
+    else if (typealignment == paired_end_alignment || typealignment == paired_end_alignment_4D) return finread1.eof();
     else{
         cerr << "No such alignment supported\n";
         cerr << "Terminating the program\n";

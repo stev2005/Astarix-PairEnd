@@ -84,10 +84,10 @@ struct MatchingKmers{///fast and convinient way to pass a lot of data structures
 
 struct  Statesr{
     ///State single read
-    int qpos;
     Node p;
     cost_t g;///edit distance of alignment of using qpos and p
     cost_t h;///value of heuristic function of using qpos and p
+    int qpos;
     bool negative;//is the state for the positive or negative strand
     Statesr(){}
     Statesr(int _qpos, Node _p){
@@ -128,6 +128,23 @@ struct Statepr{
     Statepr(int _qpos, Node _p1, Node _p2, cost_t _g, cost_t _h, bool _negative = false):
             qpos(_qpos), p1(_p1), p2(_p2), g(_g), h(_h), negative(_negative){}
     bool operator<(const Statepr &other) const{//only for priority_queue
+        return g + h >  other.g + other.h;
+    }
+};
+
+struct Statepr4D{
+    int qpos1;
+    int qpos2;
+    Node p1;
+    Node p2;
+    cost_t g;
+    cost_t h;
+    bool negative;
+    Statepr4D(){}
+    Statepr4D(int _qpos1, int _qpos2, Node _p1, Node _p2): qpos1(_qpos1), qpos2(_qpos2), p1(_p1), p2(_p2), g(0), h(0), negative(false){}
+    Statepr4D(int _qpos1, int _qpos2, Node _p1, Node _p2, cost_t _g, cost_t _h, bool _negative = false):
+            qpos1(_qpos1), qpos2(_qpos2), p1(_p1), p2(_p2), g(_g), h(_h), negative(_negative){}
+    bool operator<(const Statepr4D &other) const{//only for priority_queue
         return g + h >  other.g + other.h;
     }
 };
